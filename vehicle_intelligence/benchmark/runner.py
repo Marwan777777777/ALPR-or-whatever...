@@ -107,13 +107,13 @@ class BenchmarkRunner:
         fps = (1000.0 / mean_ms) if mean_ms > 0 else 0.0
 
         return LatencyMetrics(
-            mean_ms=round(mean_ms, 2),
-            std_ms=round(float(np.std(arr)), 2),
-            min_ms=round(float(np.min(arr)), 2),
-            p50_ms=round(float(np.percentile(arr, 50)), 2),
-            p95_ms=round(float(np.percentile(arr, 95)), 2),
-            p99_ms=round(float(np.percentile(arr, 99)), 2),
-            max_ms=round(float(np.max(arr)), 2),
+            mean_ms=round(mean_ms, 3),
+            std_ms=round(float(np.std(arr)), 3),
+            min_ms=round(float(np.min(arr)), 3),
+            p50_ms=round(float(np.percentile(arr, 50)), 3),
+            p95_ms=round(float(np.percentile(arr, 95)), 3),
+            p99_ms=round(float(np.percentile(arr, 99)), 3),
+            max_ms=round(float(np.max(arr)), 3),
             fps=round(fps, 1),
         )
 

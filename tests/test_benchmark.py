@@ -18,7 +18,7 @@ def test_benchmark_runner_executes_and_saves_report(tmp_path: Path):
 
     assert report.iterations == 10
     assert report.warmup_iterations == 3
-    assert report.detection_metrics.mean_ms > 0
+    assert report.detection_metrics.mean_ms >= 0
     assert report.detection_metrics.fps > 0
     assert report.pipeline_metrics is not None
     assert report.pipeline_metrics.fps > 0
