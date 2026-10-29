@@ -1,0 +1,142 @@
+[
+  {
+    "filename": "0010.jpg",
+    "expected_plate_text": "نقق ٧٤٨",
+    "expected_digits": "٧٤٨",
+    "expected_letters": "نقق",
+    "plate_confidence": 0.8194
+  },
+  {
+    "filename": "0013.jpg",
+    "expected_plate_text": "ھأق ٤٧٦",
+    "expected_digits": "٤٧٦",
+    "expected_letters": "ھأق",
+    "plate_confidence": 0.8497
+  },
+  {
+    "filename": "0014.jpg",
+    "expected_plate_text": "روى ٤٨٥١",
+    "expected_digits": "٤٨٥١",
+    "expected_letters": "روى",
+    "plate_confidence": 0.8195
+  },
+  {
+    "filename": "0015.jpg",
+    "expected_plate_text": "روى ٤٨٥١",
+    "expected_digits": "٤٨٥١",
+    "expected_letters": "روى",
+    "plate_confidence": 0.8113
+  },
+  {
+    "filename": "0018.jpg",
+    "expected_plate_text": "عىق ٦٤٨٣",
+    "expected_digits": "٦٤٨٣",
+    "expected_letters": "عىق",
+    "plate_confidence": 0.8207
+  },
+  {
+    "filename": "0019.jpg",
+    "expected_plate_text": "عىق ٦٤٨٣",
+    "expected_digits": "٦٤٨٣",
+    "expected_letters": "عىق",
+    "plate_confidence": 0.8222
+  },
+  {
+    "filename": "0038.jpg",
+    "expected_plate_text": "س ٢",
+    "expected_digits": "٢",
+    "expected_letters": "س",
+    "plate_confidence": 0.7716
+  },
+  {
+    "filename": "0041.jpg",
+    "expected_plate_text": "قوى ١١١١",
+    "expected_digits": "١١١١",
+    "expected_letters": "قوى",
+    "plate_confidence": 0.7498
+  },
+  {
+    "filename": "0044.jpg",
+    "expected_plate_text": "مم ٦٦٦٦",
+    "expected_digits": "٦٦٦٦",
+    "expected_letters": "مم",
+    "plate_confidence": 0.8003
+  },
+  {
+    "filename": "0045.jpg",
+    "expected_plate_text": "ع ٥٥",
+    "expected_digits": "٥٥",
+    "expected_letters": "ع",
+    "plate_confidence": 0.8175
+  },
+  {
+    "filename": "0063.jpg",
+    "expected_plate_text": "مون ١١١١",
+    "expected_digits": "١١١١",
+    "expected_letters": "مون",
+    "plate_confidence": 0.7619
+  },
+  {
+    "filename": "0064.jpg",
+    "expected_plate_text": "سىد ٩٩٩",
+    "expected_digits": "٩٩٩",
+    "expected_letters": "سىد",
+    "plate_confidence": 0.8301
+  },
+  {
+    "filename": "0068.jpg",
+    "expected_plate_text": "أعف ١١١",
+    "expected_digits": "١١١",
+    "expected_letters": "أعف",
+    "plate_confidence": 0.7615
+  },
+  {
+    "filename": "0070.jpg",
+    "expected_plate_text": "سىف ٢",
+    "expected_digits": "٢",
+    "expected_letters": "سىف",
+    "plate_confidence": 0.8178
+  },
+  {
+    "filename": "0074.jpg",
+    "expected_plate_text": "جنى ٧٧٧",
+    "expected_digits": "٧٧٧",
+    "expected_letters": "جنى",
+    "plate_confidence": 0.787
+  },
+  {
+    "filename": "0078.jpg",
+    "expected_plate_text": "عدل ٢٢٢٢",
+    "expected_digits": "٢٢٢٢",
+    "expected_letters": "عدل",
+    "plate_confidence": 0.7976
+  },
+  {
+    "filename": "0080.jpg",
+    "expected_plate_text": "س ٢",
+    "expected_digits": "٢",
+    "expected_letters": "س",
+    "plate_confidence": 0.7773
+  },
+  {
+    "filename": "0088.jpg",
+    "expected_plate_text": "ھأد ١١١١",
+    "expected_digits": "١١١١",
+    "expected_letters": "ھأد",
+    "plate_confidence": 0.695
+  },
+  {
+    "filename": "0089.jpg",
+    "expected_plate_text": "نصر ٧٧٧٧",
+    "expected_digits": "٧٧٧٧",
+    "expected_letters": "نصر",
+    "plate_confidence": 0.7928
+  },
+  {
+    "filename": "0091.jpg",
+    "expected_plate_text": "ججج ٨٨٨٨",
+    "expected_digits": "٨٨٨٨",
+    "expected_letters": "ججج",
+    "plate_confidence": 0.7679
+  }
+]

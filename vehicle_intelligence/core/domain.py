@@ -172,3 +172,23 @@ class VehicleSessionSummary(BaseModel):
     permits: List[PermitResult] = Field(default_factory=list)
     needs_review: bool = False
     review_reasons: List[str] = Field(default_factory=list)
+
+
+class ALPRPlateResult(BaseModel):
+    """Complete, end-to-end ALPR result schema for CLI and API."""
+    source_id: str = Field(..., description="Image name, video frame, or camera stream ID")
+    timestamp: float = Field(default=0.0, description="Timestamp of inference")
+    plate_text: str = Field(default="", description="Logical full plate text in standard order")
+    letters: str = Field(default="", description="Extracted Arabic letters (read RTL)")
+    digits: str = Field(default="", description="Extracted Arabic numerals (read LTR)")
+    per_character_confidences: List[float] = Field(default_factory=list, description="Confidence per detected character")
+    plate_confidence: float = Field(..., ge=0.0, le=1.0, description="Composite plate confidence")
+    detector_confidence: float = Field(..., ge=0.0, le=1.0, description="Plate detector bounding box confidence")
+    needs_review: bool = Field(default=False, description="Flag indicating human review is required")
+    review_reasons: List[str] = Field(default_factory=list, description="Explanations if needs_review is True")
+    bounding_box: BoundingBox = Field(..., description="Plate bounding box [x1, y1, x2, y2]")
+    vehicle_bounding_box: Optional[BoundingBox] = Field(default=None, description="Enclosing vehicle bounding box")
+    track_id: Optional[int] = Field(default=None, description="Tracking ID if video transit mode")
+    crop_path: Optional[str] = Field(default=None, description="Path to saved plate crop image")
+    annotated_image_path: Optional[str] = Field(default=None, description="Path to saved annotated visualization")
+

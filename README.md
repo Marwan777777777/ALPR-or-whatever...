@@ -149,30 +149,100 @@ pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
 
 ---
 
-## Verification & Execution
+## Verification & Full Reproduction Pipeline
 
-### Run Automated Tests
+### 1. Automated Headline Reproduction Script
+The repository provides an end-to-end PowerShell reproduction script that verifies manifest integrity, runs all unit/domain/golden regression tests, and reproduces headline detection and OCR metrics:
+
 ```powershell
-.\.venv\Scripts\python.exe -m pytest tests/
-```
-Output:
-```
-============================= 24 passed in 1.20s ==============================
+# Run full reproduction pipeline
+powershell -ExecutionPolicy Bypass -File scripts/reproduce_all.ps1
 ```
 
-### Run Reproducible Benchmark
+### 2. Manual Reproduction Commands
 ```powershell
-# Benchmark detector and pipeline with synthetic frames
-.\.venv\Scripts\python.exe scripts/run_benchmark.py --detector mock --iterations 50
+# 1. Run all regression test suites (including 20 golden samples)
+.\.venv\Scripts\python.exe -m pytest -v
 
-# Benchmark OpenCV motion detector
-.\.venv\Scripts\python.exe scripts/run_benchmark.py --detector motion --iterations 30
+# 2. Evaluate Plate Detector on Cleaned Test Split
+.\.venv\Scripts\python.exe scripts/evaluate_plate_detector.py `
+  --weights artifacts/runs/detect/ealpr_cleaned_yolov8n/weights/best.pt `
+  --dataset-dir artifacts/ealpr_yolo_dataset_cleaned `
+  --gt-dir artifacts/splits/cleaned_ground_truth `
+  --output-dir artifacts/evaluation_cleaned_verified `
+  --conf 0.25
 
-# Benchmark with real Egyptian vehicle image
-.\.venv\Scripts\python.exe scripts/run_benchmark.py --detector mock --image "C:\Users\MARWAN\plate_project\images_raw\EALPR-master\EALPR Vechicles dataset\Vehicles\0001.jpg"
+# 3. Evaluate End-to-End ALPR and OCR (Separated Part A, B, and C)
+.\.venv\Scripts\python.exe scripts/audit_end_to_end_and_ocr.py
+
+# 4. Generate 27-Class Character Confusion Matrix
+.\.venv\Scripts\python.exe scripts/generate_character_confusion_matrix.py
+
+# 5. Run Multi-Batch FP32 vs FP16 Latency & Throughput Benchmark
+.\.venv\Scripts\python.exe scripts/benchmark_multi_batch_throughput.py
 ```
 
-### Process Image or Video Feed
+---
+
+## Command-Line Interface (`scripts/alpr_cli.py`)
+
+The ALPR CLI supports single images, image directories, video files, and simulated gate replay:
+
 ```powershell
-.\.venv\Scripts\python.exe scripts/process_media.py "C:\Users\MARWAN\plate_project\images_raw\EALPR-master\EALPR Vechicles dataset\Vehicles\0001.jpg"
+# Process a single vehicle image
+.\.venv\Scripts\python.exe scripts/alpr_cli.py --input path/to/vehicle.jpg --output-dir artifacts/cli_output
+
+# Process an entire folder of vehicle images (outputs crops, JSONs, and summary.csv)
+.\.venv\Scripts\python.exe scripts/alpr_cli.py --input path/to/folder --output-dir artifacts/cli_folder_output
+
+# Process a video stream sampled at 2.0 FPS
+.\.venv\Scripts\python.exe scripts/alpr_cli.py --input path/to/video.mp4 --fps 2.0 --output-dir artifacts/cli_video_output
+
+# Simulated Gate Replay Mode (tracks vehicles, selects best frame per transit, emits JSON lines)
+.\.venv\Scripts\python.exe scripts/alpr_cli.py --input path/to/gate_cctv.mp4 --fps 2.0 --gate-replay --output-dir artifacts/gate_transit_output
 ```
+
+---
+
+## Own-Data Readiness (Gate Video Tools)
+
+### Ingest Gate Video & Drop Near-Duplicates
+```powershell
+# Ingests video, drops near-duplicates via dHash (dist <= 3), and generates YOLO pre-labels
+.\.venv\Scripts\python.exe scripts/ingest_gate_footage.py --video path/to/gate.mp4 --output-dir data/gate_raw/ --fps 2.0
+```
+
+Folder layout created under `data/gate_raw/`:
+```
+data/gate_raw/
+├── images/
+│   ├── gate_frame_00001.jpg
+│   └── gate_frame_00002.jpg
+├── labels/
+│   ├── gate_frame_00001.txt   # YOLO format: 0 xc yc w h
+│   └── gate_frame_00002.txt
+└── gate_ingest_manifest.json
+```
+
+### Evaluate on Labeled Gate Frames with Environmental Slicing
+```powershell
+.\.venv\Scripts\python.exe scripts/evaluate_on_gate_frames.py `
+  --dataset-dir data/gate_raw `
+  --tags data/gate_raw/conditions.json `
+  --output-dir artifacts/evaluation_gate
+```
+
+---
+
+## REST API Service
+
+A thin REST API is provided in `vehicle_intelligence/api/app.py`:
+- `GET /health`: Health status.
+- `POST /v1/read-plate`: Uploads an image file and returns structured `ALPRPlateResult` JSON.
+- Built-in `/docs` Swagger documentation page.
+
+To start the server:
+```powershell
+.\.venv\Scripts\python.exe vehicle_intelligence/api/app.py --host 0.0.0.0 --port 8000
+```
+
