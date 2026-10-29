@@ -32,11 +32,13 @@ class EndToEndALPRPipeline:
         det_conf: float = 0.25,
         char_conf: float = 0.25,
         confidence_threshold: float = 0.82,  # Calibrated on validation split
+        agnostic_nms: bool = False,
     ):
         self.device = device
         self.det_conf = det_conf
         self.char_conf = char_conf
         self.confidence_threshold = confidence_threshold
+        self.agnostic_nms = agnostic_nms
 
         self.detector = YOLO(str(detector_weights))
         self.char_detector = YOLO(str(char_weights))
@@ -94,12 +96,12 @@ class EndToEndALPRPipeline:
             plate_box = BoundingBox(x1=bx1, y1=by1, x2=bx2, y2=by2)
             plate_crop = image[by1:by2, bx1:bx2]
 
-            # 2. Run character detection with tuned parameters (agnostic_nms=True)
+            # 2. Run character detection with configurable agnostic_nms
             c_res = self.char_detector.predict(
                 source=plate_crop,
                 conf=self.char_conf,
                 iou=0.70,
-                agnostic_nms=True,
+                agnostic_nms=self.agnostic_nms,
                 imgsz=320,
                 device=self.device,
                 verbose=False,

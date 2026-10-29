@@ -53,8 +53,9 @@ models/weights/
 *.engine
 *.tensorrt
 data/raw/
-data/gate_raw/
+data/gate_*
 data/processed/
+artifacts/triage/
 artifacts/benchmark_reports/
 artifacts/visualizations/
 artifacts/training_qa_samples/
