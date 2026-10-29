@@ -28,6 +28,7 @@ def prepare_dataset(
     ealpr_vehicles_dir: Path | str,
     splits_dir: Path | str = "artifacts/splits",
     output_dir: Path | str = "artifacts/ealpr_yolo_dataset",
+    manifest_name: str = "split_manifest.json",
 ) -> Path:
     logger = setup_logger("prepare_dataset")
     ealpr_root = Path(ealpr_vehicles_dir)
@@ -44,7 +45,7 @@ def prepare_dataset(
     images_base = out_path / "images"
     labels_base = out_path / "labels"
 
-    manifest_file = splits_path / "split_manifest.json"
+    manifest_file = splits_path / manifest_name
     if not manifest_file.is_file():
         raise FileNotFoundError(f"Split manifest not found at {manifest_file}")
 
@@ -157,7 +158,8 @@ if __name__ == "__main__":
         help="Path to EALPR Vehicles dataset folder containing 'Vehicles' and 'Vehicles Labeling'",
     )
     parser.add_argument("--splits-dir", type=str, default="artifacts/splits", help="Path to splits directory")
+    parser.add_argument("--manifest-name", type=str, default="split_manifest.json", help="Manifest filename")
     parser.add_argument("--output-dir", type=str, default="artifacts/ealpr_yolo_dataset", help="Output directory")
     args = parser.parse_args()
 
-    prepare_dataset(args.dataset_root, args.splits_dir, args.output_dir)
+    prepare_dataset(args.dataset_root, args.splits_dir, args.output_dir, args.manifest_name)

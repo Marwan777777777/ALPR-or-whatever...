@@ -1,0 +1,13 @@
+{
+  "total_vehicles": 2087,
+  "total_vehicles_in_splits": 2087,
+  "hamming_threshold": 2,
+  "pixel_duplicate_cross_split_count": 0,
+  "pixel_duplicate_cross_split_pairs": [],
+  "plate_text_cross_split_count": 0,
+  "plate_text_cross_split_pairs": [],
+  "dhash_cross_split_count": 0,
+  "dhash_cross_split_pairs": [],
+  "phash_cross_split_count": 0,
+  "phash_cross_split_pairs": []
+}

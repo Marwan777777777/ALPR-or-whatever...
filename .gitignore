@@ -58,9 +58,14 @@ artifacts/benchmark_reports/
 artifacts/visualizations/
 artifacts/training_qa_samples/
 artifacts/ealpr_yolo_dataset/
+artifacts/ealpr_yolo_dataset_cleaned/
+artifacts/ealpr_characters_yolo_dataset/
 artifacts/checkpoints/
 artifacts/runs/
 artifacts/evaluation/
+artifacts/evaluation_cleaned_*/
+artifacts/evaluation_ocr/
+artifacts/benchmark/
 runs/
 *.mp4
 *.avi
