@@ -49,7 +49,22 @@ def run_evaluation_on_split(
     valid_exts = {".jpg", ".jpeg", ".png"}
     img_files = sorted([f for f in images_dir.iterdir() if f.is_file() and f.suffix.lower() in valid_exts])
 
-    logger.info(f"Loaded {len(ground_truths)} ground truth boxes across {len(img_files)} images.")
+    gt_stems = set(gt.image_id for gt in ground_truths)
+    img_stems = set(f.stem for f in img_files)
+
+    if gt_stems != img_stems:
+        diff_gt = gt_stems - img_stems
+        diff_img = img_stems - gt_stems
+        raise ValueError(
+            f"Split integrity violation in split '{split_name}'!\n"
+            f"Image directory '{images_dir}' has {len(img_stems)} images, but ground truth '{gt_json_path}' "
+            f"has {len(gt_stems)} unique images.\n"
+            f"  - Stems in GT but missing from images: {len(diff_gt)} (e.g. {sorted(list(diff_gt))[:5]})\n"
+            f"  - Stems in images but missing from GT: {len(diff_img)} (e.g. {sorted(list(diff_img))[:5]})\n"
+            f"Evaluator rejected execution because evaluating mismatched splits produces corrupt metrics."
+        )
+
+    logger.info(f"Loaded {len(ground_truths)} ground truth boxes across {len(img_files)} images (split verified).")
 
     predictions: List[PredictedPlate] = []
     per_image_preds: dict[str, list[PredictedPlate]] = {}
@@ -220,6 +235,7 @@ def main():
     parser.add_argument("--weights", type=str, required=True, help="Path to best.pt weights")
     parser.add_argument("--dataset-dir", type=str, default="artifacts/ealpr_yolo_dataset", help="YOLO dataset dir")
     parser.add_argument("--splits-dir", type=str, default="artifacts/splits", help="Splits directory")
+    parser.add_argument("--gt-dir", type=str, default=None, help="Explicit directory containing ground truth JSON files")
     parser.add_argument("--output-dir", type=str, default="artifacts/evaluation", help="Evaluation output directory")
     parser.add_argument("--conf", type=float, default=0.25, help="Confidence threshold")
     args = parser.parse_args()
@@ -235,12 +251,19 @@ def main():
     data_dir = Path(args.dataset_dir)
     splits_dir = Path(args.splits_dir)
 
+    if args.gt_dir is not None:
+        resolved_gt_dir = Path(args.gt_dir)
+    elif "cleaned" in str(data_dir).lower():
+        resolved_gt_dir = splits_dir / "cleaned_ground_truth" if (splits_dir / "cleaned_ground_truth").exists() else splits_dir
+    else:
+        resolved_gt_dir = splits_dir / "baseline_ground_truth" if (splits_dir / "baseline_ground_truth").exists() else splits_dir
+
     # 1. Validation split evaluation
     val_res = run_evaluation_on_split(
         model=model,
         split_name="val",
         images_dir=data_dir / "images" / "val",
-        gt_json_path=splits_dir / "val_ground_truth_plates.json",
+        gt_json_path=resolved_gt_dir / "val_ground_truth_plates.json",
         output_dir=out_dir,
         conf_thresh=args.conf,
     )
@@ -250,7 +273,7 @@ def main():
         model=model,
         split_name="test",
         images_dir=data_dir / "images" / "test",
-        gt_json_path=splits_dir / "test_ground_truth_plates.json",
+        gt_json_path=resolved_gt_dir / "test_ground_truth_plates.json",
         output_dir=out_dir,
         conf_thresh=args.conf,
     )

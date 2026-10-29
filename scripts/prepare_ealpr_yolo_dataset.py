@@ -29,6 +29,7 @@ def prepare_dataset(
     splits_dir: Path | str = "artifacts/splits",
     output_dir: Path | str = "artifacts/ealpr_yolo_dataset",
     manifest_name: str = "split_manifest.json",
+    gt_dir: Path | str | None = None,
 ) -> Path:
     logger = setup_logger("prepare_dataset")
     ealpr_root = Path(ealpr_vehicles_dir)
@@ -60,7 +61,11 @@ def prepare_dataset(
 
     logger.info(f"Preparing dataset with splits: train={len(splits['train'])}, val={len(splits['val'])}, test={len(splits['test'])}")
 
-    gt_json_dir = splits_path
+    if gt_dir is None:
+        gt_subdir_name = "cleaned_ground_truth" if "cleaned" in manifest_name.lower() else "baseline_ground_truth"
+        gt_json_dir = splits_path / gt_subdir_name
+    else:
+        gt_json_dir = Path(gt_dir)
     gt_json_dir.mkdir(parents=True, exist_ok=True)
 
     for split_name, stems in splits.items():
@@ -160,6 +165,7 @@ if __name__ == "__main__":
     parser.add_argument("--splits-dir", type=str, default="artifacts/splits", help="Path to splits directory")
     parser.add_argument("--manifest-name", type=str, default="split_manifest.json", help="Manifest filename")
     parser.add_argument("--output-dir", type=str, default="artifacts/ealpr_yolo_dataset", help="Output directory")
+    parser.add_argument("--gt-dir", type=str, default=None, help="Explicit directory for ground truth JSON files")
     args = parser.parse_args()
 
-    prepare_dataset(args.dataset_root, args.splits_dir, args.output_dir, args.manifest_name)
+    prepare_dataset(args.dataset_root, args.splits_dir, args.output_dir, args.manifest_name, args.gt_dir)

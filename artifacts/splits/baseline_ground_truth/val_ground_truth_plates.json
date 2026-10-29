@@ -1,0 +1,3511 @@
+[
+  {
+    "image_id": "1387",
+    "box": {
+      "x1": 0.49555499999999997,
+      "y1": 0.715556,
+      "x2": 0.681111,
+      "y2": 0.795556
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1728",
+    "box": {
+      "x1": 0.3208335,
+      "y1": 0.5854165,
+      "x2": 0.5694445,
+      "y2": 0.6812495000000001
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1361",
+    "box": {
+      "x1": 0.2277775,
+      "y1": 0.349333,
+      "x2": 0.5844445,
+      "y2": 0.496889
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0860",
+    "box": {
+      "x1": 0.44351850000000004,
+      "y1": 0.3296295,
+      "x2": 0.6787035,
+      "y2": 0.49629650000000003
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1759",
+    "box": {
+      "x1": 0.391667,
+      "y1": 0.6083339999999999,
+      "x2": 0.611111,
+      "y2": 0.688542
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0257",
+    "box": {
+      "x1": 0.358889,
+      "y1": 0.4666665,
+      "x2": 0.596667,
+      "y2": 0.5555555
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1627",
+    "box": {
+      "x1": 0.5249999999999999,
+      "y1": 0.8185185,
+      "x2": 0.625926,
+      "y2": 0.8759255
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0602",
+    "box": {
+      "x1": 0.1959465,
+      "y1": 0.543561,
+      "x2": 0.38513549999999996,
+      "y2": 0.594697
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1427",
+    "box": {
+      "x1": 0.40333399999999997,
+      "y1": 0.5928895,
+      "x2": 0.567778,
+      "y2": 0.6622225
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "2037",
+    "box": {
+      "x1": 0.391667,
+      "y1": 0.48703749999999996,
+      "x2": 0.517709,
+      "y2": 0.6000004999999999
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0667",
+    "box": {
+      "x1": 0.402084,
+      "y1": 0.5354169999999999,
+      "x2": 0.601042,
+      "y2": 0.635417
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0835",
+    "box": {
+      "x1": 0.44500000000000006,
+      "y1": 0.576,
+      "x2": 0.635,
+      "y2": 0.652
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1563",
+    "box": {
+      "x1": 0.4527775,
+      "y1": 0.4901315,
+      "x2": 0.5175925,
+      "y2": 0.5542765
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0632",
+    "box": {
+      "x1": 0.674219,
+      "y1": 0.5388885,
+      "x2": 0.799219,
+      "y2": 0.6805555
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1037",
+    "box": {
+      "x1": 0.4398145,
+      "y1": 0.3841595,
+      "x2": 0.7981475,
+      "y2": 0.5425605
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0613",
+    "box": {
+      "x1": 0.148611,
+      "y1": 0.6333335,
+      "x2": 0.295833,
+      "y2": 0.7250004999999999
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1474",
+    "box": {
+      "x1": 0.3750005,
+      "y1": 0.722772,
+      "x2": 0.6083335000000001,
+      "y2": 0.8737619999999999
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "2048",
+    "box": {
+      "x1": 0.2447915,
+      "y1": 0.291666,
+      "x2": 0.4104165,
+      "y2": 0.39722199999999996
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1625",
+    "box": {
+      "x1": 0.47295,
+      "y1": 0.525305,
+      "x2": 0.65096,
+      "y2": 0.6212909999999999
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1502",
+    "box": {
+      "x1": 0.4708995,
+      "y1": 0.46438749999999995,
+      "x2": 0.6269845000000001,
+      "y2": 0.5641025
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1276",
+    "box": {
+      "x1": 0.5333334999999999,
+      "y1": 0.42839550000000004,
+      "x2": 0.7009265,
+      "y2": 0.5703705
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1801",
+    "box": {
+      "x1": 0.4002755,
+      "y1": 0.8657144999999999,
+      "x2": 0.6588725,
+      "y2": 0.9971435
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1360",
+    "box": {
+      "x1": 0.403333,
+      "y1": 0.48977800000000005,
+      "x2": 0.5955550000000001,
+      "y2": 0.566222
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0140",
+    "box": {
+      "x1": 0.3706665,
+      "y1": 0.339165,
+      "x2": 0.5293335,
+      "y2": 0.419919
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0882",
+    "box": {
+      "x1": 0.442308,
+      "y1": 0.42051249999999996,
+      "x2": 0.584616,
+      "y2": 0.4923075
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0744",
+    "box": {
+      "x1": 0.426852,
+      "y1": 0.439815,
+      "x2": 0.6740740000000001,
+      "y2": 0.570371
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0400",
+    "box": {
+      "x1": 0.43543199999999993,
+      "y1": 0.44918850000000005,
+      "x2": 0.628602,
+      "y2": 0.5260455
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1373",
+    "box": {
+      "x1": 0.45999999999999996,
+      "y1": 0.5573335,
+      "x2": 0.727778,
+      "y2": 0.6844445
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1899",
+    "box": {
+      "x1": 0.38194500000000003,
+      "y1": 0.8010415000000001,
+      "x2": 0.6013890000000001,
+      "y2": 0.8718745
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1406",
+    "box": {
+      "x1": 0.38111100000000003,
+      "y1": 0.343111,
+      "x2": 0.6066670000000001,
+      "y2": 0.447111
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1101",
+    "box": {
+      "x1": 0.45699999999999996,
+      "y1": 0.659153,
+      "x2": 0.624,
+      "y2": 0.739405
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1063",
+    "box": {
+      "x1": 0.412356,
+      "y1": 0.3437495,
+      "x2": 0.6106320000000001,
+      "y2": 0.45156250000000003
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1851",
+    "box": {
+      "x1": 0.402778,
+      "y1": 0.49166600000000005,
+      "x2": 0.608334,
+      "y2": 0.567708
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1852",
+    "box": {
+      "x1": 0.3986115,
+      "y1": 0.4916665,
+      "x2": 0.6097225000000001,
+      "y2": 0.5687495
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1501",
+    "box": {
+      "x1": 0.4444445,
+      "y1": 0.36533299999999996,
+      "x2": 0.5655555,
+      "y2": 0.413333
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1451",
+    "box": {
+      "x1": 0.3694445,
+      "y1": 0.6213019999999999,
+      "x2": 0.6055555,
+      "y2": 0.778698
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1598",
+    "box": {
+      "x1": 0.4527775,
+      "y1": 0.6920799999999999,
+      "x2": 0.6407404999999999,
+      "y2": 0.76832
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0518",
+    "box": {
+      "x1": 0.28495250000000005,
+      "y1": 0.392827,
+      "x2": 0.6851655,
+      "y2": 0.5550809999999999
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1758",
+    "box": {
+      "x1": 0.4285709999999999,
+      "y1": 0.5599999999999999,
+      "x2": 0.638095,
+      "y2": 0.635714
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1789",
+    "box": {
+      "x1": 0.4574075,
+      "y1": 0.41041700000000003,
+      "x2": 0.5944445,
+      "y2": 0.447917
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1927",
+    "box": {
+      "x1": 0.4656255,
+      "y1": 0.7902779999999999,
+      "x2": 0.6364585,
+      "y2": 0.9
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1513",
+    "box": {
+      "x1": 0.43888950000000004,
+      "y1": 0.317284,
+      "x2": 0.6722225000000001,
+      "y2": 0.48765400000000003
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1046",
+    "box": {
+      "x1": 0.34259249999999997,
+      "y1": 0.471831,
+      "x2": 0.6005295,
+      "y2": 0.639085
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1241",
+    "box": {
+      "x1": 0.43666650000000007,
+      "y1": 0.433778,
+      "x2": 0.5899995,
+      "y2": 0.496
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0892",
+    "box": {
+      "x1": 0.42086999999999997,
+      "y1": 0.4399995,
+      "x2": 0.593044,
+      "y2": 0.5269565
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1702",
+    "box": {
+      "x1": 0.42999950000000003,
+      "y1": 0.571195,
+      "x2": 0.6214285,
+      "y2": 0.6693950000000001
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1492",
+    "box": {
+      "x1": 0.140741,
+      "y1": 0.45925950000000004,
+      "x2": 0.38888900000000004,
+      "y2": 0.6308645
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0706",
+    "box": {
+      "x1": 0.3319995,
+      "y1": 0.3573335,
+      "x2": 0.5626665,
+      "y2": 0.4840005
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0888",
+    "box": {
+      "x1": 0.3509255,
+      "y1": 0.4481485,
+      "x2": 0.5185185,
+      "y2": 0.5370375000000001
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1929",
+    "box": {
+      "x1": 0.45416650000000003,
+      "y1": 0.370833,
+      "x2": 0.6180555,
+      "y2": 0.434375
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0219",
+    "box": {
+      "x1": 0.342188,
+      "y1": 0.41562550000000004,
+      "x2": 0.49374999999999997,
+      "y2": 0.4953125
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0075",
+    "box": {
+      "x1": 0.04,
+      "y1": 0.5119995,
+      "x2": 0.086,
+      "y2": 0.5426665
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0075",
+    "box": {
+      "x1": 0.34099999999999997,
+      "y1": 0.5013335,
+      "x2": 0.386,
+      "y2": 0.5346665
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0075",
+    "box": {
+      "x1": 0.616,
+      "y1": 0.5106665,
+      "x2": 0.6589999999999999,
+      "y2": 0.5453335
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0075",
+    "box": {
+      "x1": 0.918,
+      "y1": 0.509333,
+      "x2": 0.961,
+      "y2": 0.5413330000000001
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1644",
+    "box": {
+      "x1": 0.366667,
+      "y1": 0.728125,
+      "x2": 0.586111,
+      "y2": 0.8083330000000001
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1189",
+    "box": {
+      "x1": 0.3599995,
+      "y1": 0.566222,
+      "x2": 0.5366664999999999,
+      "y2": 0.634666
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1895",
+    "box": {
+      "x1": 0.12963,
+      "y1": 0.626042,
+      "x2": 0.303704,
+      "y2": 0.6937500000000001
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1669",
+    "box": {
+      "x1": 0.33758,
+      "y1": 0.528662,
+      "x2": 0.5,
+      "y2": 0.6273880000000001
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1621",
+    "box": {
+      "x1": 0.2620375,
+      "y1": 0.5088895,
+      "x2": 0.4740745,
+      "y2": 0.5962965
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0053",
+    "box": {
+      "x1": 0.4052995,
+      "y1": 0.6662305000000001,
+      "x2": 0.5554465,
+      "y2": 0.7748695
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0677",
+    "box": {
+      "x1": 0.3593755,
+      "y1": 0.436458,
+      "x2": 0.5950525,
+      "y2": 0.536458
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1757",
+    "box": {
+      "x1": 0.38611049999999997,
+      "y1": 0.553125,
+      "x2": 0.5152774999999999,
+      "y2": 0.615625
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1391",
+    "box": {
+      "x1": 0.332891,
+      "y1": 0.45778349999999995,
+      "x2": 0.5477449999999999,
+      "y2": 0.5699204999999999
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0817",
+    "box": {
+      "x1": 0.5416665,
+      "y1": 0.5430555,
+      "x2": 0.7458335,
+      "y2": 0.6472224999999999
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1942",
+    "box": {
+      "x1": 0.353319,
+      "y1": 0.5187505,
+      "x2": 0.563169,
+      "y2": 0.5770835
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1313",
+    "box": {
+      "x1": 0.19166650000000002,
+      "y1": 0.425562,
+      "x2": 0.3601855,
+      "y2": 0.557584
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0718",
+    "box": {
+      "x1": 0.4706665,
+      "y1": 0.2293335,
+      "x2": 0.6773334999999999,
+      "y2": 0.3400005
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "2082",
+    "box": {
+      "x1": 0.2800005,
+      "y1": 0.6702220000000001,
+      "x2": 0.4511115,
+      "y2": 0.744
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "2032",
+    "box": {
+      "x1": 0.2388885,
+      "y1": 0.4510415,
+      "x2": 0.5314814999999999,
+      "y2": 0.5354165
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "2024",
+    "box": {
+      "x1": 0.3213335,
+      "y1": 0.4884665,
+      "x2": 0.5626665,
+      "y2": 0.6268655
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0671",
+    "box": {
+      "x1": 0.3574075,
+      "y1": 0.4540745,
+      "x2": 0.5750005,
+      "y2": 0.5474075
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0815",
+    "box": {
+      "x1": 0.409259,
+      "y1": 0.3592235,
+      "x2": 0.585185,
+      "y2": 0.4909845
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0392",
+    "box": {
+      "x1": 0.42375,
+      "y1": 0.451,
+      "x2": 0.6275,
+      "y2": 0.533
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1847",
+    "box": {
+      "x1": 0.42361150000000003,
+      "y1": 0.5875005,
+      "x2": 0.6250005000000001,
+      "y2": 0.6531255
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0045",
+    "box": {
+      "x1": 0.5233915,
+      "y1": 0.4093565,
+      "x2": 0.7017545000000001,
+      "y2": 0.4970755
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "2087",
+    "box": {
+      "x1": 0.33333349999999995,
+      "y1": 0.39444499999999993,
+      "x2": 0.7114585,
+      "y2": 0.641667
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "2029",
+    "box": {
+      "x1": 0.443056,
+      "y1": 0.5239579999999999,
+      "x2": 0.6375000000000001,
+      "y2": 0.592708
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0624",
+    "box": {
+      "x1": 0.4458335,
+      "y1": 0.654687,
+      "x2": 0.5687504999999999,
+      "y2": 0.760937
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0715",
+    "box": {
+      "x1": 0.3773335,
+      "y1": 0.6778975,
+      "x2": 0.5146665,
+      "y2": 0.7587605
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0941",
+    "box": {
+      "x1": 0.3218745,
+      "y1": 0.31718799999999997,
+      "x2": 0.7062495,
+      "y2": 0.5125
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0405",
+    "box": {
+      "x1": 0.20232150000000002,
+      "y1": 0.5576925,
+      "x2": 0.3134325,
+      "y2": 0.6648355
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0452",
+    "box": {
+      "x1": 0.27499999999999997,
+      "y1": 0.42533299999999996,
+      "x2": 0.669,
+      "y2": 0.677333
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0962",
+    "box": {
+      "x1": 0.428889,
+      "y1": 0.3617775,
+      "x2": 0.643333,
+      "y2": 0.4488885
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0076",
+    "box": {
+      "x1": 0.5122220000000001,
+      "y1": 0.42044400000000004,
+      "x2": 0.724444,
+      "y2": 0.516444
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0782",
+    "box": {
+      "x1": 0.186111,
+      "y1": 0.750926,
+      "x2": 0.484259,
+      "y2": 0.8990739999999999
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0218",
+    "box": {
+      "x1": 0.2481485,
+      "y1": 0.4059265,
+      "x2": 0.4092595,
+      "y2": 0.4733335
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1436",
+    "box": {
+      "x1": 0.143488,
+      "y1": 0.7533875,
+      "x2": 0.258278,
+      "y2": 0.8455285
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0323",
+    "box": {
+      "x1": 0.27037,
+      "y1": 0.5469130000000001,
+      "x2": 0.368518,
+      "y2": 0.624691
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1911",
+    "box": {
+      "x1": 0.3708335,
+      "y1": 0.579167,
+      "x2": 0.5416665,
+      "y2": 0.6861109999999999
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0505",
+    "box": {
+      "x1": 0.456,
+      "y1": 0.5355869999999999,
+      "x2": 0.612,
+      "y2": 0.635231
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1505",
+    "box": {
+      "x1": 0.605556,
+      "y1": 0.473778,
+      "x2": 0.7755559999999999,
+      "y2": 0.571556
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1667",
+    "box": {
+      "x1": 0.49413000000000007,
+      "y1": 0.39453400000000005,
+      "x2": 0.664888,
+      "y2": 0.461144
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0842",
+    "box": {
+      "x1": 0.3462965,
+      "y1": 0.49722249999999996,
+      "x2": 0.5055555,
+      "y2": 0.5805555
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0679",
+    "box": {
+      "x1": 0.521297,
+      "y1": 0.4296295,
+      "x2": 0.7157410000000001,
+      "y2": 0.5361105
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1508",
+    "box": {
+      "x1": 0.3835895,
+      "y1": 0.6617409999999999,
+      "x2": 0.5076925,
+      "y2": 0.718391
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0364",
+    "box": {
+      "x1": 0.46104599999999996,
+      "y1": 0.493595,
+      "x2": 0.5816439999999999,
+      "y2": 0.542271
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0047",
+    "box": {
+      "x1": 0.4457365,
+      "y1": 0.5503874999999999,
+      "x2": 0.5930234999999999,
+      "y2": 0.6511625
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0843",
+    "box": {
+      "x1": 0.355,
+      "y1": 0.605,
+      "x2": 0.535,
+      "y2": 0.673
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0359",
+    "box": {
+      "x1": 0.4152775,
+      "y1": 0.5177780000000001,
+      "x2": 0.6236105000000001,
+      "y2": 0.605556
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0329",
+    "box": {
+      "x1": 0.220915,
+      "y1": 0.33891150000000003,
+      "x2": 0.488889,
+      "y2": 0.4487445
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1737",
+    "box": {
+      "x1": 0.4729165,
+      "y1": 0.590278,
+      "x2": 0.5885415,
+      "y2": 0.6652779999999999
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0313",
+    "box": {
+      "x1": 0.4505025,
+      "y1": 0.5879395,
+      "x2": 0.6241034999999999,
+      "y2": 0.6708545
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1534",
+    "box": {
+      "x1": 0.396667,
+      "y1": 0.673778,
+      "x2": 0.636667,
+      "y2": 0.7697780000000001
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1271",
+    "box": {
+      "x1": 0.29648199999999997,
+      "y1": 0.403685,
+      "x2": 0.5113059999999999,
+      "y2": 0.557789
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1735",
+    "box": {
+      "x1": 0.3559325,
+      "y1": 0.6484375,
+      "x2": 0.6135595,
+      "y2": 0.7140625
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1145",
+    "box": {
+      "x1": 0.3814814999999999,
+      "y1": 0.4342785,
+      "x2": 0.6240745,
+      "y2": 0.5966495
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0723",
+    "box": {
+      "x1": 0.4213335,
+      "y1": 0.49597900000000006,
+      "x2": 0.6106665,
+      "y2": 0.596515
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0207",
+    "box": {
+      "x1": 0.4400005,
+      "y1": 0.6293329999999999,
+      "x2": 0.6213335,
+      "y2": 0.721333
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1365",
+    "box": {
+      "x1": 0.5,
+      "y1": 0.531556,
+      "x2": 0.634444,
+      "y2": 0.585778
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1750",
+    "box": {
+      "x1": 0.4069445,
+      "y1": 0.669792,
+      "x2": 0.5958335,
+      "y2": 0.732292
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1915",
+    "box": {
+      "x1": 0.38865099999999997,
+      "y1": 0.757143,
+      "x2": 0.513919,
+      "y2": 0.8471430000000001
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0427",
+    "box": {
+      "x1": 0.40448199999999995,
+      "y1": 0.47737,
+      "x2": 0.5112059999999999,
+      "y2": 0.52263
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0731",
+    "box": {
+      "x1": 0.398667,
+      "y1": 0.722667,
+      "x2": 0.634667,
+      "y2": 0.818667
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1678",
+    "box": {
+      "x1": 0.4361115,
+      "y1": 0.5222220000000001,
+      "x2": 0.5675924999999999,
+      "y2": 0.576296
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0745",
+    "box": {
+      "x1": 0.4180555,
+      "y1": 0.590278,
+      "x2": 0.5444445,
+      "y2": 0.659722
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0630",
+    "box": {
+      "x1": 0.4000005,
+      "y1": 0.4583335,
+      "x2": 0.6111115,
+      "y2": 0.5416665
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0082",
+    "box": {
+      "x1": 0.331989,
+      "y1": 0.533557,
+      "x2": 0.580645,
+      "y2": 0.691275
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0258",
+    "box": {
+      "x1": 0.40032650000000003,
+      "y1": 0.723312,
+      "x2": 0.5718955,
+      "y2": 0.845316
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0879",
+    "box": {
+      "x1": 0.37129650000000003,
+      "y1": 0.501852,
+      "x2": 0.6055555,
+      "y2": 0.622222
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0300",
+    "box": {
+      "x1": 0.42125,
+      "y1": 0.463,
+      "x2": 0.62,
+      "y2": 0.549
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1130",
+    "box": {
+      "x1": 0.44219099999999995,
+      "y1": 0.3591115,
+      "x2": 0.6450309999999999,
+      "y2": 0.4560005
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1192",
+    "box": {
+      "x1": 0.3133335,
+      "y1": 0.5955555,
+      "x2": 0.5844445,
+      "y2": 0.6924445
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1762",
+    "box": {
+      "x1": 0.7067675,
+      "y1": 0.60043,
+      "x2": 0.8517725,
+      "y2": 0.692804
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0070",
+    "box": {
+      "x1": 0.47870399999999996,
+      "y1": 0.725,
+      "x2": 0.5759259999999999,
+      "y2": 0.775
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1116",
+    "box": {
+      "x1": 0.42407400000000006,
+      "y1": 0.5655074999999999,
+      "x2": 0.64537,
+      "y2": 0.6550705
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0302",
+    "box": {
+      "x1": 0.5816990000000001,
+      "y1": 0.49019599999999997,
+      "x2": 0.857843,
+      "y2": 0.6862739999999999
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1415",
+    "box": {
+      "x1": 0.48333299999999996,
+      "y1": 0.4,
+      "x2": 0.6033329999999999,
+      "y2": 0.454222
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1749",
+    "box": {
+      "x1": 0.516667,
+      "y1": 0.4041665,
+      "x2": 0.6541669999999999,
+      "y2": 0.48333349999999997
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1871",
+    "box": {
+      "x1": 0.4291665,
+      "y1": 0.6093755,
+      "x2": 0.6624995,
+      "y2": 0.6875005
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1784",
+    "box": {
+      "x1": 0.40694499999999995,
+      "y1": 0.669792,
+      "x2": 0.6291669999999999,
+      "y2": 0.744792
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1147",
+    "box": {
+      "x1": 0.3992895,
+      "y1": 0.441706,
+      "x2": 0.6172985,
+      "y2": 0.538388
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0874",
+    "box": {
+      "x1": 0.373856,
+      "y1": 0.66318,
+      "x2": 0.569934,
+      "y2": 0.7426780000000001
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1445",
+    "box": {
+      "x1": 0.511111,
+      "y1": 0.43456799999999995,
+      "x2": 0.6592589999999999,
+      "y2": 0.546914
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1128",
+    "box": {
+      "x1": 0.4177775,
+      "y1": 0.32,
+      "x2": 0.6511105,
+      "y2": 0.419556
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0903",
+    "box": {
+      "x1": 0.3749995,
+      "y1": 0.8435375,
+      "x2": 0.6138885,
+      "y2": 0.9739225
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1518",
+    "box": {
+      "x1": 0.3685185,
+      "y1": 0.7049385,
+      "x2": 0.5574075000000001,
+      "y2": 0.8283955
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1880",
+    "box": {
+      "x1": 0.35972250000000006,
+      "y1": 0.5760415,
+      "x2": 0.5708335,
+      "y2": 0.6593745000000001
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0533",
+    "box": {
+      "x1": 0.3810035,
+      "y1": 0.6165674999999999,
+      "x2": 0.5784425,
+      "y2": 0.6968405
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1304",
+    "box": {
+      "x1": 0.3685185,
+      "y1": 0.7105265,
+      "x2": 0.4268515,
+      "y2": 0.7763155
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0264",
+    "box": {
+      "x1": 0.4444445,
+      "y1": 0.6323525,
+      "x2": 0.5702615000000001,
+      "y2": 0.6825975000000001
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1579",
+    "box": {
+      "x1": 0.432203,
+      "y1": 0.37933950000000005,
+      "x2": 0.704449,
+      "y2": 0.5105845
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0682",
+    "box": {
+      "x1": 0.722222,
+      "y1": 0.6814819999999999,
+      "x2": 0.900926,
+      "y2": 0.803704
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0004",
+    "box": {
+      "x1": 0.4222225,
+      "y1": 0.519791,
+      "x2": 0.5458335,
+      "y2": 0.5583330000000001
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0087",
+    "box": {
+      "x1": 0.369444,
+      "y1": 0.4555555,
+      "x2": 0.571296,
+      "y2": 0.5370365
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0563",
+    "box": {
+      "x1": 0.22083350000000002,
+      "y1": 0.283333,
+      "x2": 0.8114585,
+      "y2": 0.6430549999999999
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1776",
+    "box": {
+      "x1": 0.352273,
+      "y1": 0.6156244999999999,
+      "x2": 0.5890150000000001,
+      "y2": 0.6697915
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1299",
+    "box": {
+      "x1": 0.558334,
+      "y1": 0.4418315,
+      "x2": 0.7277779999999999,
+      "y2": 0.5754945
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0186",
+    "box": {
+      "x1": 0.36041650000000003,
+      "y1": 0.572222,
+      "x2": 0.5374995,
+      "y2": 0.6944440000000001
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0101",
+    "box": {
+      "x1": 0.3593745,
+      "y1": 0.33518499999999996,
+      "x2": 0.5885415,
+      "y2": 0.514815
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1922",
+    "box": {
+      "x1": 0.43611099999999997,
+      "y1": 0.665625,
+      "x2": 0.668055,
+      "y2": 0.740625
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1873",
+    "box": {
+      "x1": 0.4354165,
+      "y1": 0.6937495,
+      "x2": 0.5958335,
+      "y2": 0.7718745
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1034",
+    "box": {
+      "x1": 0.39259249999999996,
+      "y1": 0.429276,
+      "x2": 0.5259254999999999,
+      "y2": 0.5625
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0537",
+    "box": {
+      "x1": 0.4425,
+      "y1": 0.472,
+      "x2": 0.6275000000000001,
+      "y2": 0.542
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1298",
+    "box": {
+      "x1": 0.6870365,
+      "y1": 0.495062,
+      "x2": 0.8009255,
+      "y2": 0.569136
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1298",
+    "box": {
+      "x1": 0.1657405,
+      "y1": 0.351852,
+      "x2": 0.2555555,
+      "y2": 0.420988
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1407",
+    "box": {
+      "x1": 0.33444450000000003,
+      "y1": 0.36177800000000004,
+      "x2": 0.6611115,
+      "y2": 0.496
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0413",
+    "box": {
+      "x1": 0.28174999999999994,
+      "y1": 0.484201,
+      "x2": 0.667022,
+      "y2": 0.609735
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0701",
+    "box": {
+      "x1": 0.3546295,
+      "y1": 0.448148,
+      "x2": 0.5157404999999999,
+      "y2": 0.560494
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1469",
+    "box": {
+      "x1": 0.4435184999999999,
+      "y1": 0.6768514999999999,
+      "x2": 0.6342595,
+      "y2": 0.7648145
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0428",
+    "box": {
+      "x1": 0.7171875000000001,
+      "y1": 0.6604165,
+      "x2": 0.8515625,
+      "y2": 0.7687495
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1238",
+    "box": {
+      "x1": 0.38777799999999996,
+      "y1": 0.3155555,
+      "x2": 0.515556,
+      "y2": 0.3742225
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0574",
+    "box": {
+      "x1": 0.37181699999999995,
+      "y1": 0.4448215,
+      "x2": 0.521223,
+      "y2": 0.5212225
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0554",
+    "box": {
+      "x1": 0.410886,
+      "y1": 0.513236,
+      "x2": 0.57524,
+      "y2": 0.582408
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0315",
+    "box": {
+      "x1": 0.7929565000000001,
+      "y1": 0.2374045,
+      "x2": 0.8249735,
+      "y2": 0.2544835
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0315",
+    "box": {
+      "x1": 0.3927425,
+      "y1": 0.7959005,
+      "x2": 0.6286015,
+      "y2": 0.8872755
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1921",
+    "box": {
+      "x1": 0.4027775,
+      "y1": 0.755208,
+      "x2": 0.6041665,
+      "y2": 0.830208
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1520",
+    "box": {
+      "x1": 0.374444,
+      "y1": 0.564444,
+      "x2": 0.61,
+      "y2": 0.652444
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0216",
+    "box": {
+      "x1": 0.741406,
+      "y1": 0.6142534999999999,
+      "x2": 0.7960940000000001,
+      "y2": 0.6685525
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0233",
+    "box": {
+      "x1": 0.3920895,
+      "y1": 0.33398399999999995,
+      "x2": 0.7685545,
+      "y2": 0.677734
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0538",
+    "box": {
+      "x1": 0.39218749999999997,
+      "y1": 0.38593750000000004,
+      "x2": 0.6640625,
+      "y2": 0.5250005
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0272",
+    "box": {
+      "x1": 0.1453335,
+      "y1": 0.5709219999999999,
+      "x2": 0.3106665,
+      "y2": 0.698582
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0209",
+    "box": {
+      "x1": 0.3919995,
+      "y1": 0.2719995,
+      "x2": 0.5386664999999999,
+      "y2": 0.35066650000000005
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1358",
+    "box": {
+      "x1": 0.2281255,
+      "y1": 0.8593755,
+      "x2": 0.44375050000000005,
+      "y2": 1.0000005
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0611",
+    "box": {
+      "x1": 0.4251335,
+      "y1": 0.725067,
+      "x2": 0.5935825,
+      "y2": 0.808625
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1134",
+    "box": {
+      "x1": 0.414445,
+      "y1": 0.422222,
+      "x2": 0.5966670000000001,
+      "y2": 0.496
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1367",
+    "box": {
+      "x1": 0.3927275,
+      "y1": 0.492121,
+      "x2": 0.5393945,
+      "y2": 0.569697
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0013",
+    "box": {
+      "x1": 0.44027800000000006,
+      "y1": 0.48124999999999996,
+      "x2": 0.597222,
+      "y2": 0.542708
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "2007",
+    "box": {
+      "x1": 0.4346665,
+      "y1": 0.6360005,
+      "x2": 0.5453335,
+      "y2": 0.6933335
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1339",
+    "box": {
+      "x1": 0.49999999999999994,
+      "y1": 0.7507240000000001,
+      "x2": 0.7027779999999999,
+      "y2": 0.927536
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1252",
+    "box": {
+      "x1": 0.40666599999999997,
+      "y1": 0.36977800000000005,
+      "x2": 0.542222,
+      "y2": 0.430222
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0617",
+    "box": {
+      "x1": 0.700521,
+      "y1": 0.7250975000000001,
+      "x2": 0.8378909999999999,
+      "y2": 0.7900385
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1440",
+    "box": {
+      "x1": 0.021296499999999996,
+      "y1": 0.241336,
+      "x2": 0.9037035,
+      "y2": 0.696782
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1111",
+    "box": {
+      "x1": 0.38888849999999997,
+      "y1": 0.390222,
+      "x2": 0.5755555,
+      "y2": 0.474666
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1826",
+    "box": {
+      "x1": 0.3387265,
+      "y1": 0.632988,
+      "x2": 0.4778855,
+      "y2": 0.6917099999999999
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1904",
+    "box": {
+      "x1": 0.422222,
+      "y1": 0.6385415,
+      "x2": 0.619444,
+      "y2": 0.7156245
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0580",
+    "box": {
+      "x1": 0.595833,
+      "y1": 0.624,
+      "x2": 0.771875,
+      "y2": 0.707556
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0755",
+    "box": {
+      "x1": 0.5120375,
+      "y1": 0.6027785,
+      "x2": 0.7444445000000001,
+      "y2": 0.7342595
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0497",
+    "box": {
+      "x1": 0.36,
+      "y1": 0.34799949999999996,
+      "x2": 0.508,
+      "y2": 0.4226665
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1690",
+    "box": {
+      "x1": 0.5796294999999999,
+      "y1": 0.44537,
+      "x2": 0.6953705,
+      "y2": 0.518518
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0713",
+    "box": {
+      "x1": 0.369333,
+      "y1": 0.502667,
+      "x2": 0.497333,
+      "y2": 0.574667
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0268",
+    "box": {
+      "x1": 0.3151925,
+      "y1": 0.546875,
+      "x2": 0.3956915,
+      "y2": 0.621875
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1663",
+    "box": {
+      "x1": 0.591667,
+      "y1": 0.6601849999999999,
+      "x2": 0.740741,
+      "y2": 0.740741
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1035",
+    "box": {
+      "x1": 0.461333,
+      "y1": 0.425134,
+      "x2": 0.693333,
+      "y2": 0.544118
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0433",
+    "box": {
+      "x1": 0.37177899999999997,
+      "y1": 0.4740405,
+      "x2": 0.500613,
+      "y2": 0.5372454999999999
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1100",
+    "box": {
+      "x1": 0.412037,
+      "y1": 0.472039,
+      "x2": 0.609259,
+      "y2": 0.649671
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0147",
+    "box": {
+      "x1": 0.4531245,
+      "y1": 0.336111,
+      "x2": 0.6947915,
+      "y2": 0.505555
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0201",
+    "box": {
+      "x1": 0.3919995,
+      "y1": 0.4866665,
+      "x2": 0.5666665,
+      "y2": 0.5733335
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1152",
+    "box": {
+      "x1": 0.32500049999999997,
+      "y1": 0.592592,
+      "x2": 0.6564814999999999,
+      "y2": 0.747222
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1272",
+    "box": {
+      "x1": 0.24999949999999999,
+      "y1": 0.369778,
+      "x2": 0.4366665,
+      "y2": 0.47200000000000003
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0937",
+    "box": {
+      "x1": 0.24907399999999996,
+      "y1": 0.5486885,
+      "x2": 0.425,
+      "y2": 0.6413855
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0016",
+    "box": {
+      "x1": 0.41145899999999996,
+      "y1": 0.6694450000000001,
+      "x2": 0.5604169999999999,
+      "y2": 0.766667
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0145",
+    "box": {
+      "x1": 0.4659249999999999,
+      "y1": 0.5947915,
+      "x2": 0.659249,
+      "y2": 0.6656245
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1539",
+    "box": {
+      "x1": 0.6805559999999999,
+      "y1": 0.525926,
+      "x2": 0.801852,
+      "y2": 0.5953700000000001
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1670",
+    "box": {
+      "x1": 0.47685199999999994,
+      "y1": 0.5342595,
+      "x2": 0.6,
+      "y2": 0.5981485000000001
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0935",
+    "box": {
+      "x1": 0.321296,
+      "y1": 0.291666,
+      "x2": 0.550926,
+      "y2": 0.422222
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0612",
+    "box": {
+      "x1": 0.39907450000000005,
+      "y1": 0.437963,
+      "x2": 0.6083335000000001,
+      "y2": 0.536111
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1321",
+    "box": {
+      "x1": 0.14,
+      "y1": 0.569149,
+      "x2": 0.312,
+      "y2": 0.703901
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1829",
+    "box": {
+      "x1": 0.4027775,
+      "y1": 0.5385414999999999,
+      "x2": 0.6263885,
+      "y2": 0.6218745
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0265",
+    "box": {
+      "x1": 0.114063,
+      "y1": 0.65875,
+      "x2": 0.25781299999999996,
+      "y2": 0.74125
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1964",
+    "box": {
+      "x1": 0.417708,
+      "y1": 0.4700750000000001,
+      "x2": 0.6114580000000001,
+      "y2": 0.5860350000000001
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1725",
+    "box": {
+      "x1": 0.22499999999999998,
+      "y1": 0.6555555,
+      "x2": 0.328704,
+      "y2": 0.7407405
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0485",
+    "box": {
+      "x1": 0.38703699999999996,
+      "y1": 0.45370350000000004,
+      "x2": 0.556481,
+      "y2": 0.5444445
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0642",
+    "box": {
+      "x1": 0.42499950000000003,
+      "y1": 0.703125,
+      "x2": 0.6541665000000001,
+      "y2": 0.7916669999999999
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1466",
+    "box": {
+      "x1": 0.4981485,
+      "y1": 0.3259265,
+      "x2": 0.6601855,
+      "y2": 0.43333350000000004
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1371",
+    "box": {
+      "x1": 0.41574049999999996,
+      "y1": 0.4344055,
+      "x2": 0.6296295,
+      "y2": 0.5829205
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "2059",
+    "box": {
+      "x1": 0.1958335,
+      "y1": 0.2520835,
+      "x2": 0.7250005,
+      "y2": 0.5250005
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0531",
+    "box": {
+      "x1": 0.39274300000000006,
+      "y1": 0.3928265,
+      "x2": 0.613661,
+      "y2": 0.48078550000000003
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0646",
+    "box": {
+      "x1": 0.35555499999999995,
+      "y1": 0.7125,
+      "x2": 0.608333,
+      "y2": 0.786458
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1069",
+    "box": {
+      "x1": 0.42333350000000003,
+      "y1": 0.6142225,
+      "x2": 0.5844445,
+      "y2": 0.6755555000000001
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1156",
+    "box": {
+      "x1": 0.42777750000000003,
+      "y1": 0.5957975,
+      "x2": 0.6212965,
+      "y2": 0.7367125000000001
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1947",
+    "box": {
+      "x1": 0.3194445,
+      "y1": 0.5020835,
+      "x2": 0.48611150000000003,
+      "y2": 0.5802085
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1346",
+    "box": {
+      "x1": 0.4033335,
+      "y1": 0.4257775,
+      "x2": 0.5866665,
+      "y2": 0.4968885
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0857",
+    "box": {
+      "x1": 0.343519,
+      "y1": 0.44074099999999994,
+      "x2": 0.589815,
+      "y2": 0.563889
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0164",
+    "box": {
+      "x1": 0.414583,
+      "y1": 0.5125,
+      "x2": 0.640625,
+      "y2": 0.665278
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1268",
+    "box": {
+      "x1": 0.2388885,
+      "y1": 0.259555,
+      "x2": 0.48777750000000003,
+      "y2": 0.373333
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0078",
+    "box": {
+      "x1": 0.47499949999999996,
+      "y1": 0.5435180000000001,
+      "x2": 0.5916665,
+      "y2": 0.597222
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0078",
+    "box": {
+      "x1": 0.200926,
+      "y1": 0.375926,
+      "x2": 0.24629600000000001,
+      "y2": 0.401852
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1217",
+    "box": {
+      "x1": 0.501852,
+      "y1": 0.4769735,
+      "x2": 0.581482,
+      "y2": 0.5559205
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1185",
+    "box": {
+      "x1": 0.35555600000000004,
+      "y1": 0.395513,
+      "x2": 0.581482,
+      "y2": 0.550177
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0501",
+    "box": {
+      "x1": 0.36072550000000003,
+      "y1": 0.415884,
+      "x2": 0.6104585,
+      "y2": 0.5311699999999999
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1165",
+    "box": {
+      "x1": 0.573148,
+      "y1": 0.46481500000000003,
+      "x2": 0.719444,
+      "y2": 0.545371
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0242",
+    "box": {
+      "x1": 0.28594600000000003,
+      "y1": 0.670504,
+      "x2": 0.46385,
+      "y2": 0.8402879999999999
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0825",
+    "box": {
+      "x1": 0.3524705,
+      "y1": 0.599466,
+      "x2": 0.5100135,
+      "y2": 0.683578
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0478",
+    "box": {
+      "x1": 0.3737165,
+      "y1": 0.46633800000000003,
+      "x2": 0.6262835,
+      "y2": 0.56486
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1382",
+    "box": {
+      "x1": 0.298889,
+      "y1": 0.4311115,
+      "x2": 0.621111,
+      "y2": 0.5760005
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0136",
+    "box": {
+      "x1": 0.4062505,
+      "y1": 0.4291665,
+      "x2": 0.5770835000000001,
+      "y2": 0.5458335
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1218",
+    "box": {
+      "x1": 0.4077775,
+      "y1": 0.42755550000000003,
+      "x2": 0.5988885,
+      "y2": 0.5084445000000001
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0137",
+    "box": {
+      "x1": 0.24735849999999998,
+      "y1": 0.42343700000000006,
+      "x2": 0.3741195,
+      "y2": 0.578125
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0377",
+    "box": {
+      "x1": 0.20277850000000003,
+      "y1": 0.463704,
+      "x2": 0.3592595,
+      "y2": 0.528148
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0161",
+    "box": {
+      "x1": 0.461111,
+      "y1": 0.5562505,
+      "x2": 0.620833,
+      "y2": 0.6156254999999999
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1039",
+    "box": {
+      "x1": 0.3898145,
+      "y1": 0.3157895,
+      "x2": 0.5296295,
+      "y2": 0.4440785
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0113",
+    "box": {
+      "x1": 0.40625,
+      "y1": 0.5,
+      "x2": 0.6635420000000001,
+      "y2": 0.814136
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0319",
+    "box": {
+      "x1": 0.34151600000000004,
+      "y1": 0.4713915,
+      "x2": 0.595518,
+      "y2": 0.5738685
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1086",
+    "box": {
+      "x1": 0.40185150000000003,
+      "y1": 0.46305399999999997,
+      "x2": 0.5379625,
+      "y2": 0.627258
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1028",
+    "box": {
+      "x1": 0.509259,
+      "y1": 0.717592,
+      "x2": 0.7111109999999999,
+      "y2": 0.84537
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0975",
+    "box": {
+      "x1": 0.36388899999999996,
+      "y1": 0.5824024999999999,
+      "x2": 0.533333,
+      "y2": 0.7234635
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1196",
+    "box": {
+      "x1": 0.3688885,
+      "y1": 0.41066650000000005,
+      "x2": 0.5677775,
+      "y2": 0.4977775
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "2086",
+    "box": {
+      "x1": 0.41562550000000004,
+      "y1": 0.31093699999999996,
+      "x2": 0.5828125000000001,
+      "y2": 0.398437
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0114",
+    "box": {
+      "x1": 0.3680005,
+      "y1": 0.64169,
+      "x2": 0.4493335,
+      "y2": 0.70436
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0641",
+    "box": {
+      "x1": 0.30416600000000005,
+      "y1": 0.3666665,
+      "x2": 0.734722,
+      "y2": 0.5270835
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1531",
+    "box": {
+      "x1": 0.401852,
+      "y1": 0.5210395,
+      "x2": 0.550926,
+      "y2": 0.6175745
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1766",
+    "box": {
+      "x1": 0.395833,
+      "y1": 0.5114580000000001,
+      "x2": 0.6736110000000001,
+      "y2": 0.567708
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1109",
+    "box": {
+      "x1": 0.323148,
+      "y1": 0.527778,
+      "x2": 0.45092600000000005,
+      "y2": 0.598148
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1506",
+    "box": {
+      "x1": 0.42777800000000005,
+      "y1": 0.438222,
+      "x2": 0.6733340000000001,
+      "y2": 0.534222
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1186",
+    "box": {
+      "x1": 0.3788885,
+      "y1": 0.4053335,
+      "x2": 0.5155555,
+      "y2": 0.4622225
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0116",
+    "box": {
+      "x1": 0.43466649999999996,
+      "y1": 0.4486485,
+      "x2": 0.6439995,
+      "y2": 0.5540535
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0442",
+    "box": {
+      "x1": 0.286667,
+      "y1": 0.5333330000000001,
+      "x2": 0.431111,
+      "y2": 0.611111
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0604",
+    "box": {
+      "x1": 0.380556,
+      "y1": 0.5202595,
+      "x2": 0.630556,
+      "y2": 0.7487845000000001
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0385",
+    "box": {
+      "x1": 0.43529450000000003,
+      "y1": 0.4037655,
+      "x2": 0.5790855,
+      "y2": 0.4633885
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0314",
+    "box": {
+      "x1": 0.3516945,
+      "y1": 0.7163415000000001,
+      "x2": 0.5752115,
+      "y2": 0.8018625
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0995",
+    "box": {
+      "x1": 0.340741,
+      "y1": 0.4518515000000001,
+      "x2": 0.546297,
+      "y2": 0.5629625
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1471",
+    "box": {
+      "x1": 0.405555,
+      "y1": 0.716172,
+      "x2": 0.559259,
+      "y2": 0.854786
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1355",
+    "box": {
+      "x1": 0.42963,
+      "y1": 0.6641980000000001,
+      "x2": 0.553704,
+      "y2": 0.738272
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "2063",
+    "box": {
+      "x1": 0.3518515,
+      "y1": 0.43333350000000004,
+      "x2": 0.47916650000000005,
+      "y2": 0.4722225
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1604",
+    "box": {
+      "x1": 0.35658900000000004,
+      "y1": 0.7085265,
+      "x2": 0.633721,
+      "y2": 0.7906974999999999
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1496",
+    "box": {
+      "x1": 0.39111150000000006,
+      "y1": 0.414222,
+      "x2": 0.5444445,
+      "y2": 0.47466600000000003
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1426",
+    "box": {
+      "x1": 0.32555500000000004,
+      "y1": 0.6835555,
+      "x2": 0.541111,
+      "y2": 0.7724445
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1839",
+    "box": {
+      "x1": 0.488889,
+      "y1": 0.3510415,
+      "x2": 0.6736110000000001,
+      "y2": 0.4291665
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0581",
+    "box": {
+      "x1": 0.3599035,
+      "y1": 0.7443765,
+      "x2": 0.5966184999999999,
+      "y2": 0.8404915
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0930",
+    "box": {
+      "x1": 0.26666650000000003,
+      "y1": 0.472222,
+      "x2": 0.5277775,
+      "y2": 0.6425919999999999
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1607",
+    "box": {
+      "x1": 0.38781449999999995,
+      "y1": 0.4215,
+      "x2": 0.5599615,
+      "y2": 0.485692
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1605",
+    "box": {
+      "x1": 0.3884295,
+      "y1": 0.5667035,
+      "x2": 0.6942145,
+      "y2": 0.6968025
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0540",
+    "box": {
+      "x1": 0.34777749999999996,
+      "y1": 0.7697775,
+      "x2": 0.6011105,
+      "y2": 0.8808885
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0798",
+    "box": {
+      "x1": 0.4375,
+      "y1": 0.42812550000000005,
+      "x2": 0.60625,
+      "y2": 0.5187505
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0001",
+    "box": {
+      "x1": 0.4625,
+      "y1": 0.5068125,
+      "x2": 0.618056,
+      "y2": 0.5858315
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0775",
+    "box": {
+      "x1": 0.44691749999999997,
+      "y1": 0.6712334999999999,
+      "x2": 0.5890405,
+      "y2": 0.7414385
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0334",
+    "box": {
+      "x1": 0.389333,
+      "y1": 0.5581945,
+      "x2": 0.545333,
+      "y2": 0.7030875
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1806",
+    "box": {
+      "x1": 0.38749999999999996,
+      "y1": 0.6822914999999999,
+      "x2": 0.572222,
+      "y2": 0.7468745
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1977",
+    "box": {
+      "x1": 0.4031245,
+      "y1": 0.614583,
+      "x2": 0.5421875,
+      "y2": 0.7020829999999999
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0434",
+    "box": {
+      "x1": 0.3666665,
+      "y1": 0.49866649999999996,
+      "x2": 0.49999950000000004,
+      "y2": 0.5679995
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0984",
+    "box": {
+      "x1": 0.5000005000000001,
+      "y1": 0.40296,
+      "x2": 0.6111115,
+      "y2": 0.509868
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1970",
+    "box": {
+      "x1": 0.3596585,
+      "y1": 0.4193,
+      "x2": 0.6157955,
+      "y2": 0.533732
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0831",
+    "box": {
+      "x1": 0.3093335,
+      "y1": 0.22666650000000002,
+      "x2": 0.5720004999999999,
+      "y2": 0.37599950000000004
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0337",
+    "box": {
+      "x1": 0.3514645,
+      "y1": 0.5555559999999999,
+      "x2": 0.4958155,
+      "y2": 0.675
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0481",
+    "box": {
+      "x1": 0.34666600000000003,
+      "y1": 0.37422249999999996,
+      "x2": 0.582222,
+      "y2": 0.4568895
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1543",
+    "box": {
+      "x1": 0.41333349999999996,
+      "y1": 0.640889,
+      "x2": 0.5922225,
+      "y2": 0.708445
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0188",
+    "box": {
+      "x1": 0.2973335,
+      "y1": 0.530998,
+      "x2": 0.4760005,
+      "y2": 0.640162
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0027",
+    "box": {
+      "x1": 0.41770799999999997,
+      "y1": 0.6944445,
+      "x2": 0.561458,
+      "y2": 0.7930555
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1713",
+    "box": {
+      "x1": 0.5988884999999999,
+      "y1": 0.43459949999999997,
+      "x2": 0.7455555,
+      "y2": 0.5386785
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1106",
+    "box": {
+      "x1": 0.3509255,
+      "y1": 0.5445545,
+      "x2": 0.46296249999999994,
+      "y2": 0.6534655
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1335",
+    "box": {
+      "x1": 0.3766665,
+      "y1": 0.42933299999999996,
+      "x2": 0.5255555,
+      "y2": 0.488889
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0100",
+    "box": {
+      "x1": 0.40925899999999993,
+      "y1": 0.5115350000000001,
+      "x2": 0.687963,
+      "y2": 0.667001
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0197",
+    "box": {
+      "x1": 0.472222,
+      "y1": 0.47083349999999996,
+      "x2": 0.654166,
+      "y2": 0.5416664999999999
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1126",
+    "box": {
+      "x1": 0.41888849999999994,
+      "y1": 0.336,
+      "x2": 0.5955554999999999,
+      "y2": 0.411556
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1654",
+    "box": {
+      "x1": 0.395834,
+      "y1": 0.6989584999999999,
+      "x2": 0.590278,
+      "y2": 0.7645835
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0906",
+    "box": {
+      "x1": 0.40740699999999996,
+      "y1": 0.302632,
+      "x2": 0.555555,
+      "y2": 0.4375
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0151",
+    "box": {
+      "x1": 0.358333,
+      "y1": 0.230555,
+      "x2": 0.6468750000000001,
+      "y2": 0.423611
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0508",
+    "box": {
+      "x1": 0.376852,
+      "y1": 0.440741,
+      "x2": 0.5805560000000001,
+      "y2": 0.538889
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0946",
+    "box": {
+      "x1": 0.29777750000000003,
+      "y1": 0.298667,
+      "x2": 0.45111049999999997,
+      "y2": 0.36711099999999997
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1797",
+    "box": {
+      "x1": 0.3011525,
+      "y1": 0.679688,
+      "x2": 0.4740635,
+      "y2": 0.8937499999999999
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0372",
+    "box": {
+      "x1": 0.419444,
+      "y1": 0.7074075,
+      "x2": 0.623148,
+      "y2": 0.7822225
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1930",
+    "box": {
+      "x1": 0.39999999999999997,
+      "y1": 0.5093755,
+      "x2": 0.5499999999999999,
+      "y2": 0.5739585
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0284",
+    "box": {
+      "x1": 0.4407685,
+      "y1": 0.5858239999999999,
+      "x2": 0.5901815,
+      "y2": 0.649872
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0917",
+    "box": {
+      "x1": 0.35,
+      "y1": 0.2209875,
+      "x2": 0.65,
+      "y2": 0.4283945
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "2049",
+    "box": {
+      "x1": 0.35277749999999997,
+      "y1": 0.22916650000000002,
+      "x2": 0.9611105,
+      "y2": 0.6958335
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1782",
+    "box": {
+      "x1": 0.4266665,
+      "y1": 0.5757574999999999,
+      "x2": 0.6169695,
+      "y2": 0.6703025
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0389",
+    "box": {
+      "x1": 0.34687500000000004,
+      "y1": 0.49218700000000004,
+      "x2": 0.453125,
+      "y2": 0.567187
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0506",
+    "box": {
+      "x1": 0.48399949999999997,
+      "y1": 0.4964415,
+      "x2": 0.6306665,
+      "y2": 0.5925265
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0220",
+    "box": {
+      "x1": 0.39200050000000003,
+      "y1": 0.41199949999999996,
+      "x2": 0.5973335,
+      "y2": 0.5066665
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1639",
+    "box": {
+      "x1": 0.4324075,
+      "y1": 0.7620454999999999,
+      "x2": 0.6407404999999999,
+      "y2": 0.8383985
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0693",
+    "box": {
+      "x1": 0.34088399999999996,
+      "y1": 0.7197914999999999,
+      "x2": 0.492988,
+      "y2": 0.8052085
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1491",
+    "box": {
+      "x1": 0.408889,
+      "y1": 0.4346665,
+      "x2": 0.576667,
+      "y2": 0.5039995
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0823",
+    "box": {
+      "x1": 0.39807149999999997,
+      "y1": 0.391184,
+      "x2": 0.5977965,
+      "y2": 0.504132
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0121",
+    "box": {
+      "x1": 0.25000049999999996,
+      "y1": 0.4625005,
+      "x2": 0.3781255,
+      "y2": 0.5333335
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "0198",
+    "box": {
+      "x1": 0.37656300000000004,
+      "y1": 0.371875,
+      "x2": 0.5390630000000001,
+      "y2": 0.454687
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1323",
+    "box": {
+      "x1": 0.214815,
+      "y1": 0.6687975,
+      "x2": 0.315741,
+      "y2": 0.7429665
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1338",
+    "box": {
+      "x1": 0.3828125,
+      "y1": 0.6328125,
+      "x2": 0.5859375,
+      "y2": 0.7312495000000001
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  },
+  {
+    "image_id": "1379",
+    "box": {
+      "x1": 0.44666649999999997,
+      "y1": 0.344889,
+      "x2": 0.5577774999999999,
+      "y2": 0.391111
+    },
+    "class_name": "license_plate",
+    "is_difficult": false
+  }
+]

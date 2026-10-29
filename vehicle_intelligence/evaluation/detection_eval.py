@@ -62,7 +62,9 @@ class PlateDetectionEvaluator:
     def evaluate(
         self,
         ground_truths: List[GroundTruthPlate],
-        predictions: List[PredictedPlate]
+        predictions: List[PredictedPlate],
+        expected_image_ids: Optional[Set[str] | List[str]] = None,
+        strict_image_match: bool = False,
     ) -> DetectionMetricsReport:
         """Evaluates plate detection precision, recall, and AP at specified IoU threshold."""
         # Group by image_id
@@ -74,7 +76,34 @@ class PlateDetectionEvaluator:
         for pred in predictions:
             pred_by_image.setdefault(pred.image_id, []).append(pred)
 
-        all_image_ids = sorted(list(set(gt_by_image.keys()).union(set(pred_by_image.keys()))))
+        gt_stems = set(gt_by_image.keys())
+        pred_stems = set(pred_by_image.keys())
+
+        # Validate image set alignment if requested
+        if expected_image_ids is not None:
+            expected_set = set(expected_image_ids)
+            if gt_stems != expected_set:
+                raise ValueError(
+                    f"Ground-truth image set mismatch! GT contains {len(gt_stems)} images, "
+                    f"expected {len(expected_set)}. Symmetric diff count: {len(gt_stems ^ expected_set)}"
+                )
+            if not pred_stems.issubset(expected_set):
+                extra_preds = pred_stems - expected_set
+                raise ValueError(
+                    f"Predictions contain {len(extra_preds)} image IDs outside the expected split! "
+                    f"Examples: {sorted(list(extra_preds))[:5]}"
+                )
+
+        if strict_image_match:
+            # If strict matching is required and both sets have images, ensure predictions do not evaluate outside GT
+            if pred_stems and not pred_stems.issubset(gt_stems):
+                extra_preds = pred_stems - gt_stems
+                raise ValueError(
+                    f"Split mismatch: {len(extra_preds)} predicted image IDs not found in ground truth! "
+                    f"Examples: {sorted(list(extra_preds))[:5]}"
+                )
+
+        all_image_ids = sorted(list(gt_stems.union(pred_stems)))
 
         total_gt = len(ground_truths)
         total_pred = len(predictions)

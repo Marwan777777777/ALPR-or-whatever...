@@ -119,3 +119,35 @@ def test_evaluator_reproduces_known_ap_value():
     expected_ap = round(34 / 45, 4)
     assert report.average_precision == expected_ap
 
+
+def test_evaluator_rejects_split_ground_truth_mismatch():
+    """Validates that PlateDetectionEvaluator raises ValueError on split mismatch."""
+    box = BoundingBox(x1=10.0, y1=10.0, x2=50.0, y2=30.0)
+
+    # Ground truth contains images from Split A
+    gts = [
+        GroundTruthPlate(image_id="split_a_img_1", box=box),
+        GroundTruthPlate(image_id="split_a_img_2", box=box),
+    ]
+
+    # Predictions contain images from Split B (e.g. after split change or checkout mismatch)
+    preds = [
+        PredictedPlate(image_id="split_b_img_99", box=box, confidence=0.9),
+    ]
+
+    evaluator = PlateDetectionEvaluator(iou_threshold=0.50)
+
+    # 1. Strict image match should fail when prediction images are not in GT
+    with pytest.raises(ValueError, match="Split mismatch"):
+        evaluator.evaluate(gts, preds, strict_image_match=True)
+
+    # 2. Expected image IDs check should fail when GT does not match expected
+    expected_split_b = {"split_b_img_99"}
+    with pytest.raises(ValueError, match="Ground-truth image set mismatch"):
+        evaluator.evaluate(gts, preds, expected_image_ids=expected_split_b)
+
+    # 3. Expected image IDs check should fail when predictions leak outside expected
+    expected_split_a = {"split_a_img_1", "split_a_img_2"}
+    with pytest.raises(ValueError, match="outside the expected split"):
+        evaluator.evaluate(gts, preds, expected_image_ids=expected_split_a)
+
