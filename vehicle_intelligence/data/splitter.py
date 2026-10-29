@@ -63,15 +63,20 @@ class LeakageResistantSplitter:
         return v_stems, v_to_plates
 
     def _find_duplicate_clusters(self) -> List[Set[str]]:
-        """Finds vehicle stems that share identical MD5 image hashes."""
+        """Finds vehicle stems that share identical file or decoded pixel hashes."""
         v_dir = self.root / "EALPR Vechicles dataset" / "Vehicles"
         hash_to_stems = defaultdict(list)
 
         if v_dir.exists():
-            for f in v_dir.glob("*"):
+            import cv2
+            for f in sorted(v_dir.glob("*")):
                 if f.is_file() and f.suffix.lower() in {".jpg", ".jpeg", ".png"}:
                     try:
-                        h = hashlib.md5(f.read_bytes()).hexdigest()
+                        img = cv2.imread(str(f))
+                        if img is not None:
+                            h = hashlib.md5(img.tobytes()).hexdigest()
+                        else:
+                            h = hashlib.md5(f.read_bytes()).hexdigest()
                         hash_to_stems[h].append(f.stem)
                     except Exception:
                         pass

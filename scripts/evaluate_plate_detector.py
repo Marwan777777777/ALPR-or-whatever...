@@ -164,18 +164,23 @@ def run_evaluation_on_split(
         f"Recall={report_50.recall:.4f}, F1={report_50.f1_score:.4f}, AP={report_50.average_precision:.4f}"
     )
 
+    gt_by_image_list: dict[str, list[GroundTruthPlate]] = {}
+    for g in ground_truths:
+        gt_by_image_list.setdefault(g.image_id, []).append(g)
+
     return {
         "metrics": combined_metrics,
         "report_50": report_50,
+        "report_75": report_75,
         "per_image_preds": per_image_preds,
         "img_files": {f.stem: f for f in img_files},
-        "gt_by_image": {g.image_id: g for g in ground_truths},
+        "gt_by_image": gt_by_image_list,
     }
 
 
 def render_visual_sample(
     img_path: Path,
-    gt_box: BoundingBox | None,
+    gt_boxes: list[BoundingBox],
     pred_boxes: list[PredictedPlate],
     save_path: Path,
     title: str = "",
@@ -186,12 +191,13 @@ def render_visual_sample(
     h, w = img.shape[:2]
     canvas = img.copy()
 
-    # Draw Ground Truth in GREEN
-    if gt_box:
+    # Draw Ground Truths in GREEN
+    for idx, gt_box in enumerate(gt_boxes, start=1):
         gx1, gy1 = int(round(gt_box.x1 * w)), int(round(gt_box.y1 * h))
         gx2, gy2 = int(round(gt_box.x2 * w)), int(round(gt_box.y2 * h))
         cv2.rectangle(canvas, (gx1, gy1), (gx2, gy2), (0, 255, 0), 2)
-        cv2.putText(canvas, "GT Plate", (gx1, max(15, gy1 - 6)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1, cv2.LINE_AA)
+        lbl = f"GT Plate {idx}" if len(gt_boxes) > 1 else "GT Plate"
+        cv2.putText(canvas, lbl, (gx1, max(15, gy1 - 6)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1, cv2.LINE_AA)
 
     # Draw Predictions in CYAN / BLUE
     for p in pred_boxes:
@@ -261,7 +267,7 @@ def main():
         if stem in test_files:
             render_visual_sample(
                 img_path=test_files[stem],
-                gt_box=gt_map[stem].box if stem in gt_map else None,
+                gt_boxes=[g.box for g in gt_map.get(stem, [])],
                 pred_boxes=pred_map.get(stem, []),
                 save_path=visual_dir / f"test_sample_tp_{i}_{stem}.jpg",
                 title=f"Test Sample {i} [TP Match, IoU={test_matches[stem].matched_ious[0] if test_matches[stem].matched_ious else 0:.2f}]",
@@ -274,7 +280,7 @@ def main():
         if stem in test_files:
             render_visual_sample(
                 img_path=test_files[stem],
-                gt_box=gt_map[stem].box if stem in gt_map else None,
+                gt_boxes=[g.box for g in gt_map.get(stem, [])],
                 pred_boxes=pred_map.get(stem, []),
                 save_path=visual_dir / f"test_sample_failure_fn_{stem}.jpg",
                 title=f"Test Hard Case [False Negative: Missing Detection]",
@@ -286,7 +292,7 @@ def main():
         if stem in test_files:
             render_visual_sample(
                 img_path=test_files[stem],
-                gt_box=gt_map[stem].box if stem in gt_map else None,
+                gt_boxes=[g.box for g in gt_map.get(stem, [])],
                 pred_boxes=pred_map.get(stem, []),
                 save_path=visual_dir / f"test_sample_fp_or_low_iou_{stem}.jpg",
                 title=f"Test Edge Case [Extra Box or Low IoU]",

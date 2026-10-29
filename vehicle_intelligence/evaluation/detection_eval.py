@@ -46,6 +46,7 @@ class DetectionMetricsReport(BaseModel):
     recall: float
     f1_score: float
     average_precision: float
+    ap_11point: float = 0.0
     mean_matched_iou: float
     per_image_matches: Dict[str, ImageDetectionMatch] = Field(default_factory=dict)
 
@@ -135,8 +136,8 @@ class PlateDetectionEvaluator:
         recall = (total_tp / total_gt) if total_gt > 0 else 0.0
         f1 = (2 * precision * recall / (precision + recall)) if (precision + recall) > 0 else 0.0
 
-        # Calculate Average Precision (11-point interpolated AP)
-        ap = self._calculate_ap(scored_detections, total_gt)
+        # Calculate Average Precision (Continuous all-point PR AUC and legacy 11-point)
+        ap_continuous, ap_11pt = self._calculate_ap(scored_detections, total_gt)
 
         mean_iou = float(np.mean(all_matched_ious)) if all_matched_ious else 0.0
 
@@ -150,14 +151,15 @@ class PlateDetectionEvaluator:
             precision=round(precision, 4),
             recall=round(recall, 4),
             f1_score=round(f1, 4),
-            average_precision=round(ap, 4),
+            average_precision=round(ap_continuous, 4),
+            ap_11point=round(ap_11pt, 4),
             mean_matched_iou=round(mean_iou, 4),
             per_image_matches=per_image_matches,
         )
 
-    def _calculate_ap(self, scored_detections: List[Tuple[float, bool]], total_gt: int) -> float:
+    def _calculate_ap(self, scored_detections: List[Tuple[float, bool]], total_gt: int) -> Tuple[float, float]:
         if total_gt == 0 or not scored_detections:
-            return 0.0
+            return 0.0, 0.0
 
         # Sort by confidence descending
         scored_detections.sort(key=lambda x: x[0], reverse=True)
@@ -176,11 +178,19 @@ class PlateDetectionEvaluator:
             precisions.append(tp_accum / (tp_accum + fp_accum))
             recalls.append(tp_accum / total_gt)
 
-        # 11-point interpolation
-        ap = 0.0
+        # 1. Continuous all-point interpolation (VOC 2010+ / COCO standard)
+        mrec = np.concatenate(([0.0], recalls, [recalls[-1]]))
+        mpre = np.concatenate(([1.0], precisions, [0.0]))
+        for i in range(len(mpre) - 2, -1, -1):
+            mpre[i] = max(mpre[i], mpre[i + 1])
+        i = np.where(mrec[1:] != mrec[:-1])[0]
+        ap_continuous = float(np.sum((mrec[i + 1] - mrec[i]) * mpre[i + 1]))
+
+        # 2. Legacy 11-point interpolation (PASCAL VOC 2007)
+        ap_11pt = 0.0
         for r_thresh in np.linspace(0, 1.0, 11):
             valid_p = [p for p, r in zip(precisions, recalls) if r >= r_thresh]
             p_max = max(valid_p) if valid_p else 0.0
-            ap += p_max / 11.0
+            ap_11pt += p_max / 11.0
 
-        return float(ap)
+        return ap_continuous, ap_11pt
