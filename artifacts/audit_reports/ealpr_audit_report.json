@@ -1,0 +1,696 @@
+{
+  "dataset_name": "EALPR-master",
+  "dataset_root": "C:\\Users\\MARWAN\\plate_project\\images_raw\\EALPR-master",
+  "provenance_citation": "Youssef et al., ACIRS 2022 (doi: 10.1109/ACIRS55390.2022.9845514)",
+  "license_status": "UNSPECIFIED_NO_LICENSE_FILE (Academic citation requested in README.md, no commercial license grant included)",
+  "vehicles_audit": {
+    "name": "Vehicles",
+    "image_count": 2087,
+    "annotation_file_count": 2087,
+    "total_bounding_boxes": 2143,
+    "class_distribution": {
+      "license_plate": 2143
+    },
+    "dimension_stats": {
+      "min_width": 240,
+      "max_width": 2048,
+      "min_height": 342,
+      "max_height": 1536,
+      "mean_width": 825.1,
+      "mean_height": 872.0,
+      "common_resolutions": [
+        [
+          [
+            800,
+            1000
+          ],
+          45
+        ],
+        [
+          [
+            937,
+            1171
+          ],
+          38
+        ],
+        [
+          [
+            750,
+            750
+          ],
+          33
+        ],
+        [
+          [
+            720,
+            960
+          ],
+          28
+        ],
+        [
+          [
+            960,
+            720
+          ],
+          22
+        ]
+      ]
+    },
+    "corrupt_images": [],
+    "missing_annotations": [],
+    "orphan_annotations": [],
+    "annotation_errors": [],
+    "duplicate_groups": [
+      {
+        "hash_md5": "f4060e41bf992a39e85da27f8b10e6f8",
+        "files": [
+          "0610.jpg",
+          "0619.jpg"
+        ]
+      },
+      {
+        "hash_md5": "73e77a386e770e80ca2b469b84dcbfa6",
+        "files": [
+          "1168.jpg",
+          "1682.jpg"
+        ]
+      },
+      {
+        "hash_md5": "52b4695a1521131c3de2b22860451db4",
+        "files": [
+          "1816.jpg",
+          "1817.jpg"
+        ]
+      },
+      {
+        "hash_md5": "3ad53cf7c8a33263d66a0923eefc2973",
+        "files": [
+          "1851.jpg",
+          "1852.jpg"
+        ]
+      }
+    ]
+  },
+  "plates_audit": {
+    "name": "Plates",
+    "image_count": 2069,
+    "annotation_file_count": 0,
+    "total_bounding_boxes": 0,
+    "class_distribution": {},
+    "dimension_stats": {
+      "min_width": 43,
+      "max_width": 777,
+      "min_height": 29,
+      "max_height": 531,
+      "mean_width": 160.1,
+      "mean_height": 88.3,
+      "common_resolutions": [
+        [
+          [
+            143,
+            77
+          ],
+          3
+        ],
+        [
+          [
+            217,
+            122
+          ],
+          3
+        ],
+        [
+          [
+            181,
+            95
+          ],
+          3
+        ],
+        [
+          [
+            162,
+            89
+          ],
+          3
+        ],
+        [
+          [
+            149,
+            76
+          ],
+          2
+        ]
+      ]
+    },
+    "corrupt_images": [],
+    "missing_annotations": [],
+    "orphan_annotations": [],
+    "annotation_errors": [],
+    "duplicate_groups": [
+      {
+        "hash_md5": "5f4c85e86ddfbf66b2a2b32f647e32b9",
+        "files": [
+          "0022_license_plate_1.png",
+          "0030_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "d6ce6e2db8976d9331eb99a3399b9e68",
+        "files": [
+          "0023_license_plate_1.png",
+          "0031_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "02f3329e916c81bc24bdbf7052d42585",
+        "files": [
+          "0156_license_plate_1.png",
+          "0164_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "86d18596ec6b684c5c585408b0b52db0",
+        "files": [
+          "0496_license_plate_1.png",
+          "1978_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "d82664f6966e3a20d007da981dfe4441",
+        "files": [
+          "0497_license_plate_1.png",
+          "1971_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "9f3d055d96e686b92997852a9bab45b3",
+        "files": [
+          "0498_license_plate_1.png",
+          "1976_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "bc6d13cdd71f6abeff702b408f57e92f",
+        "files": [
+          "0501_license_plate_1.png",
+          "1970_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "1db4555b74c01aadf7bd6d488aa552a7",
+        "files": [
+          "0504_license_plate_1.png",
+          "1980_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "50dca051de36e029e0766d4d1169f1df",
+        "files": [
+          "0505_license_plate_1.png",
+          "1979_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "44d008d39a4c4eb8d0dc92f7ace0f846",
+        "files": [
+          "0506_license_plate_1.png",
+          "1968_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "f86faaf6f063e07d94069a7259b15f3d",
+        "files": [
+          "0507_license_plate_1.png",
+          "1985_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "9515fb0b3bc2758a647dca5d46b20360",
+        "files": [
+          "0510_license_plate_1.png",
+          "1986_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "6dfc67f65ccd3f3d8c800af9bf2aa3ee",
+        "files": [
+          "0512_license_plate_1.png",
+          "1984_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "f511d69389b300b76afeeb602ce1c714",
+        "files": [
+          "0513_license_plate_1.png",
+          "2001_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "e2882701d1c1a20c9d4c80d8d2488361",
+        "files": [
+          "0514_license_plate_1.png",
+          "1972_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "fcd8f1dbe0c7165bf6008855e1db776e",
+        "files": [
+          "0516_license_plate_1.png",
+          "1993_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "7fcb34e33d0ac2ef15f66ffe0419e884",
+        "files": [
+          "0517_license_plate_1.png",
+          "1973_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "c65c589246c2ea6f538645045230c7b6",
+        "files": [
+          "0518_license_plate_1.png",
+          "1989_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "e88d26d733a12d0e6fb6c2077210272c",
+        "files": [
+          "0521_license_plate_1.png",
+          "1982_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "2b69f744229eba6c1325c7c1a8a55325",
+        "files": [
+          "0522_license_plate_1.png",
+          "1990_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "f6fef1b7b39088108a5dfb44f6c5c531",
+        "files": [
+          "0523_license_plate_1.png",
+          "1988_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "4729ea3969db3812c54cf956eb56a8da",
+        "files": [
+          "0524_license_plate_1.png",
+          "1999_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "043352f430dc4f738de38b9478a36ae1",
+        "files": [
+          "0525_license_plate_1.png",
+          "1996_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "508110fe161d41765ede5e21080ccb2f",
+        "files": [
+          "0526_license_plate_1.png",
+          "2005_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "9036cf3c3a6ac686f45fdc49bd533b06",
+        "files": [
+          "0529_license_plate_1.png",
+          "1995_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "d532595f308d21fd52340516e7e47d57",
+        "files": [
+          "0531_license_plate_1.png",
+          "1987_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "84436dfae6b67b923bafe56937596ead",
+        "files": [
+          "0532_license_plate_1.png",
+          "2002_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "80090930ac127f9f0b2fb77a8e1cdc31",
+        "files": [
+          "0533_license_plate_1.png",
+          "1983_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "6b53cd0e48c6d7ea9e8a98c8f4ffa72e",
+        "files": [
+          "0534_license_plate_1.png",
+          "2003_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "ba9ea472144102b2eddb79d929deb339",
+        "files": [
+          "0535_license_plate_1.png",
+          "1977_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "3280a2a47f20e9e041ae7170215e5546",
+        "files": [
+          "0536_license_plate_1.png",
+          "1994_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "16a3eab8f17cf51222694674fad47e8c",
+        "files": [
+          "0537_license_plate_1.png",
+          "2006_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "059d61cb6ca89ae4bf25caec1c689c7a",
+        "files": [
+          "0538_license_plate_1.png",
+          "1997_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "c0a82f727c76a6cce08e582ace33171e",
+        "files": [
+          "0542_license_plate_1.png",
+          "1992_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "17963f6e9a359f136df81f1b0ff4edd6",
+        "files": [
+          "0543_license_plate_1.png",
+          "1998_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "b6d310e66b9e20146074c4a5003d34d3",
+        "files": [
+          "0545_license_plate_1.png",
+          "2007_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "97115900021771380472c83a0503cd68",
+        "files": [
+          "0546_license_plate_1.png",
+          "2008_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "dbce0167281f29898de39ca2a34334e6",
+        "files": [
+          "0549_license_plate_1.png",
+          "2009_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "1c268dd769aa261bd89ebbbd573f5310",
+        "files": [
+          "0551_license_plate_1.png",
+          "2010_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "4521c6dfc8a9980eaadc2e051aceb0ab",
+        "files": [
+          "0553_license_plate_1.png",
+          "2012_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "1d249f4728f8416acc949efdfce3e49a",
+        "files": [
+          "0554_license_plate_1.png",
+          "2013_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "99641207c1bf9dfcf17edd10bdce83a1",
+        "files": [
+          "0555_license_plate_1.png",
+          "2014_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "f9bd03e3c38c4557fa40db1df41b7f79",
+        "files": [
+          "0556_license_plate_1.png",
+          "2011_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "065b0b870d7d809b81a4b2b454fd2a05",
+        "files": [
+          "0557_license_plate_1.png",
+          "2017_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "60535f4073c12e2ab8f6086715a8e375",
+        "files": [
+          "0559_license_plate_1.png",
+          "2016_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "b68759bee643fc4f1a186543cc01be53",
+        "files": [
+          "0610_license_plate_1.png",
+          "0619_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "29d140408c15c1b4d23b901bbf7cf0df",
+        "files": [
+          "0637_license_plate_1.png",
+          "2021_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "e1eb985a989ecbfc6054bfc69e795862",
+        "files": [
+          "1168_license_plate_1.png",
+          "1682_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "e3894397f9490c7f0b9e58b5960b5107",
+        "files": [
+          "1816_license_plate_1.png",
+          "1817_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "af1a0e2f76ae0321cc719a25c662cda1",
+        "files": [
+          "1851_license_plate_1.png",
+          "1852_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "c2eab6dc973bdc26d1156b329809335f",
+        "files": [
+          "1934_license_plate_1.png",
+          "1955_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "f6a3e4c6ce072e5fa893e7e394a1b404",
+        "files": [
+          "1939_license_plate_1.png",
+          "1962_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "d71409002dded23a7ba543ece7a0688b",
+        "files": [
+          "2044_license_plate_1.png",
+          "2056_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "4df1d96252b4c7622915a54783b4e5a8",
+        "files": [
+          "2059_license_plate_1.png",
+          "2074_license_plate_1.png"
+        ]
+      },
+      {
+        "hash_md5": "ee0482dbbaac40f2c2e032bc0b321051",
+        "files": [
+          "2065_license_plate_1.png",
+          "2073_license_plate_1.png"
+        ]
+      }
+    ]
+  },
+  "characters_audit": {
+    "name": "Characters",
+    "image_count": 10505,
+    "annotation_file_count": 1983,
+    "total_bounding_boxes": 10797,
+    "class_distribution": {
+      "٧": 550,
+      "١": 1408,
+      "٢": 435,
+      "٦": 1058,
+      "ن": 272,
+      "ط": 163,
+      "س": 434,
+      "٣": 400,
+      "٩": 403,
+      "٤": 615,
+      "٥": 644,
+      "ج": 224,
+      "ب": 211,
+      "و": 273,
+      "ص": 150,
+      "٨": 291,
+      "م": 616,
+      "أ": 465,
+      "ع": 323,
+      "د": 358,
+      "ھ": 280,
+      "ف": 191,
+      "ق": 211,
+      "ر": 383,
+      "ى": 217,
+      "ل": 221,
+      "٠": 1
+    },
+    "dimension_stats": null,
+    "corrupt_images": [],
+    "missing_annotations": [
+      "0075_license_plate_2.txt",
+      "0286_license_plate_1.txt",
+      "0742_license_plate_1.txt",
+      "1080_license_plate_1.txt",
+      "1080_license_plate_3.txt"
+    ],
+    "orphan_annotations": [],
+    "annotation_errors": [],
+    "duplicate_groups": []
+  },
+  "linkage": {
+    "total_vehicles": 2087,
+    "total_plates": 2069,
+    "total_character_labels": 1983,
+    "vehicles_with_plates": 2027,
+    "plates_with_characters": 1983,
+    "full_chain_linked_vehicles": 1955,
+    "unlinked_vehicles": [
+      "0563",
+      "0564",
+      "0566",
+      "0567",
+      "0568",
+      "0569",
+      "0571",
+      "0572",
+      "0573",
+      "0575",
+      "0576",
+      "0577",
+      "0578",
+      "0579",
+      "0581",
+      "0583",
+      "0584",
+      "0585",
+      "0587",
+      "0589",
+      "0590",
+      "0591",
+      "0592",
+      "0594",
+      "0595",
+      "0596",
+      "0597",
+      "0598",
+      "0599",
+      "0600",
+      "0601",
+      "0602",
+      "0605",
+      "0606",
+      "0607",
+      "0608",
+      "0609",
+      "0611",
+      "0613",
+      "0614",
+      "0615",
+      "0616",
+      "0617",
+      "0618",
+      "0620",
+      "0622",
+      "0623",
+      "0624",
+      "0625",
+      "0626"
+    ],
+    "unlinked_plates": [
+      "0075_license_plate_1",
+      "0075_license_plate_3",
+      "0104_license_plate_3",
+      "0206_license_plate_2",
+      "0219_license_plate_1",
+      "0231_license_plate_1",
+      "0239_license_plate_1",
+      "0243_license_plate_1",
+      "0244_license_plate_1",
+      "0267_license_plate_1",
+      "0448_license_plate_2",
+      "0449_license_plate_2",
+      "0466_license_plate_1",
+      "0621_license_plate_1",
+      "0651_license_plate_1",
+      "0735_license_plate_2",
+      "0803_license_plate_2",
+      "0808_license_plate_1",
+      "0832_license_plate_1",
+      "0833_license_plate_1",
+      "0932_license_plate_1",
+      "0983_license_plate_1",
+      "1007_license_plate_1",
+      "1018_license_plate_1",
+      "1041_license_plate_1",
+      "1056_license_plate_1",
+      "1075_license_plate_1",
+      "1076_license_plate_1",
+      "1088_license_plate_1",
+      "1095_license_plate_1",
+      "1097_license_plate_1",
+      "1099_license_plate_1",
+      "1100_license_plate_1",
+      "1122_license_plate_1",
+      "1156_license_plate_1",
+      "1162_license_plate_1",
+      "1171_license_plate_1",
+      "1177_license_plate_1",
+      "1182_license_plate_1",
+      "1187_license_plate_1",
+      "1216_license_plate_1",
+      "1217_license_plate_1",
+      "1219_license_plate_1",
+      "1301_license_plate_1",
+      "1304_license_plate_1",
+      "1332_license_plate_1",
+      "1378_license_plate_1",
+      "1401_license_plate_1",
+      "1402_license_plate_1",
+      "1403_license_plate_1"
+    ]
+  }
+}

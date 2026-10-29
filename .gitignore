@@ -55,6 +55,7 @@ models/weights/
 data/raw/
 data/processed/
 artifacts/benchmark_reports/
+artifacts/visualizations/
 *.mp4
 *.avi
 
