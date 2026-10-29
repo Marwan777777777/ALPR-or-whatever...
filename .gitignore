@@ -56,6 +56,12 @@ data/raw/
 data/processed/
 artifacts/benchmark_reports/
 artifacts/visualizations/
+artifacts/training_qa_samples/
+artifacts/ealpr_yolo_dataset/
+artifacts/checkpoints/
+artifacts/runs/
+artifacts/evaluation/
+runs/
 *.mp4
 *.avi
 

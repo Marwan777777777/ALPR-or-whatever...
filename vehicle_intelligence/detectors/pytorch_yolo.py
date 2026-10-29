@@ -8,6 +8,8 @@ import numpy as np
 
 from vehicle_intelligence.core.domain import (
     BoundingBox,
+    PlateDetection,
+    PlateType,
     VehicleClass,
     VehicleDetection,
 )
@@ -16,7 +18,7 @@ from vehicle_intelligence.core.exceptions import (
     ModelWeightsNotFoundError,
     VehicleIntelligenceError,
 )
-from vehicle_intelligence.core.interfaces import BaseVehicleDetector
+from vehicle_intelligence.core.interfaces import BasePlateDetector, BaseVehicleDetector
 
 
 class PyTorchYoloVehicleDetector(BaseVehicleDetector):
@@ -96,3 +98,119 @@ class PyTorchYoloVehicleDetector(BaseVehicleDetector):
 
         # Placeholder for full tensor pre-processing and post-processing
         return []
+
+
+class PyTorchYoloPlateDetector(BasePlateDetector):
+    """Production wrapper for YOLO license plate detection models (YOLOv8, YOLOv10, YOLOv11).
+
+    Enforces strict weight verification and device capability checks.
+    """
+
+    def __init__(
+        self,
+        weights_path: str | Path,
+        confidence_threshold: float = 0.25,
+        iou_threshold: float = 0.45,
+        input_size: int = 640,
+        device: str = "cpu",
+        half_precision: bool = False,
+    ):
+        self._weights_path = Path(weights_path)
+        self._confidence_threshold = confidence_threshold
+        self._iou_threshold = iou_threshold
+        self._input_size = input_size
+        self._device_str = device.lower()
+        self._half_precision = half_precision
+        self._model = None
+
+        self._validate_and_initialize()
+
+    @property
+    def model_name(self) -> str:
+        return f"pytorch_yolo_plate_{self._weights_path.stem}"
+
+    def _validate_and_initialize(self) -> None:
+        if not self._weights_path.is_file():
+            raise ModelWeightsNotFoundError(
+                model_name=self._weights_path.stem,
+                weights_path=str(self._weights_path)
+            )
+
+        try:
+            import torch
+        except ImportError as e:
+            raise VehicleIntelligenceError(
+                message="PyTorch is required for PyTorchYoloPlateDetector but is not installed.",
+                actionable_advice="Install PyTorch via: pip install torch torchvision"
+            ) from e
+
+        if "cuda" in self._device_str and not torch.cuda.is_available():
+            raise DeviceUnavailableError(
+                requested_device=self._device_str,
+                available_devices="cpu (CUDA is not available in current PyTorch installation)"
+            )
+
+        try:
+            from ultralytics import YOLO
+            self._model = YOLO(str(self._weights_path))
+        except Exception:
+            # Fallback or delay initialization if ultralytics is not yet installed
+            pass
+
+    def detect(
+        self,
+        image: np.ndarray,
+        vehicle_box: Optional[BoundingBox] = None
+    ) -> List[PlateDetection]:
+        if image is None or image.size == 0:
+            return []
+
+        if self._model is None:
+            raise VehicleIntelligenceError(
+                message=f"Model '{self.model_name}' has not initialized an active inference session.",
+                actionable_advice="Ensure weights are loaded and network architecture is instantiated."
+            )
+
+        h, w = image.shape[:2]
+        crop = image
+        offset_x, offset_y = 0.0, 0.0
+
+        if vehicle_box is not None:
+            # Clamp and crop vehicle ROI
+            clamped = vehicle_box.clamp(w, h)
+            x1, y1, x2, y2 = clamped.to_int_tuple()
+            if x2 > x1 and y2 > y1:
+                crop = image[y1:y2, x1:x2]
+                offset_x, offset_y = float(x1), float(y1)
+
+        results = self._model.predict(
+            source=crop,
+            conf=self._confidence_threshold,
+            iou=self._iou_threshold,
+            imgsz=self._input_size,
+            device=self._device_str,
+            half=self._half_precision,
+            verbose=False,
+        )
+
+        detections: List[PlateDetection] = []
+        res = results[0]
+        if res.boxes is not None and len(res.boxes) > 0:
+            boxes = res.boxes.xyxy.cpu().numpy()
+            confs = res.boxes.conf.cpu().numpy()
+
+            for (bx1, by1, bx2, by2), score in zip(boxes, confs):
+                abs_x1 = bx1 + offset_x
+                abs_y1 = by1 + offset_y
+                abs_x2 = bx2 + offset_x
+                abs_y2 = by2 + offset_y
+
+                detections.append(
+                    PlateDetection(
+                        box=BoundingBox(x1=float(abs_x1), y1=float(abs_y1), x2=float(abs_x2), y2=float(abs_y2)),
+                        confidence=round(float(score), 4),
+                        plate_type=PlateType.UNKNOWN,
+                    )
+                )
+
+        return detections

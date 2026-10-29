@@ -58,3 +58,40 @@ def test_pytorch_yolo_raises_when_weights_missing(tmp_path: Path):
 
     assert "missing_yolov10m" in str(exc_info.value)
     assert "not found at" in str(exc_info.value)
+
+
+def test_pytorch_yolo_plate_raises_when_weights_missing(tmp_path: Path):
+    from vehicle_intelligence.detectors.pytorch_yolo import PyTorchYoloPlateDetector
+    non_existent = tmp_path / "missing_plate_weights.pt"
+    with pytest.raises(ModelWeightsNotFoundError) as exc_info:
+        PyTorchYoloPlateDetector(weights_path=non_existent)
+
+    assert "missing_plate_weights" in str(exc_info.value)
+    assert "not found at" in str(exc_info.value)
+
+
+def test_pytorch_yolo_plate_detector_inference_on_checkpoint():
+    weights_path = Path("artifacts/runs/detect/ealpr_baseline_yolov8n/weights/best.pt")
+    if not weights_path.is_file():
+        pytest.skip("Trained weights not found")
+
+    import cv2
+    from vehicle_intelligence.detectors.pytorch_yolo import PyTorchYoloPlateDetector
+    detector = PyTorchYoloPlateDetector(weights_path=weights_path, device="cuda")
+    assert detector.model_name == "pytorch_yolo_plate_best"
+
+    test_img_path = Path("artifacts/ealpr_yolo_dataset/images/test/0003.jpg")
+    if not test_img_path.is_file():
+        pytest.skip("Test image not found")
+
+    img = cv2.imread(str(test_img_path))
+    assert img is not None
+
+    detections = detector.detect(img)
+    assert len(detections) >= 1
+    det = detections[0]
+    assert det.confidence > 0.5
+    assert det.box.width > 0
+    assert det.box.height > 0
+
+
