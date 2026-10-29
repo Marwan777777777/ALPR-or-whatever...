@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vehicle-intelligence"
+version = "0.1.0"
+description = "Production-grade Vehicle Intelligence & License Plate Recognition System for Gate CCTV"
+authors = [
+    {name = "Computer Vision Engineering Team"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+keywords = ["computer-vision", "alpr", "vehicle-intelligence", "egyptian-license-plates", "cctv"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Image Recognition",
+]
+dependencies = [
+    "numpy>=1.26.0",
+    "opencv-python-headless>=4.9.0",
+    "pydantic>=2.7.0",
+    "pydantic-settings>=2.2.0",
+    "pyyaml>=6.0.1",
+    "pillow>=10.2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+]
+gpu = [
+    # PyTorch with CUDA is recommended for model inference.
+    # On Windows, install via: pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+    "torch>=2.2.0",
+    "torchvision>=0.17.0",
+]
+api = [
+    "fastapi>=0.110.0",
+    "uvicorn[standard]>=0.28.0",
+]
+ocr = [
+    # Optional local OCR dependencies
+    "paddlepaddle-gpu; platform_system != 'Darwin'",
+    "paddleocr>=2.7.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["vehicle_intelligence*"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"

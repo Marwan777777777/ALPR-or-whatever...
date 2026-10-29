@@ -1,0 +1,35 @@
+app_name: "VehicleIntelligenceSystem"
+environment: "development"
+log_level: "INFO"
+log_as_json: false
+
+detector:
+  model_family: "mock" # options: 'mock', 'opencv_motion', 'yolov10', 'rtdetr', 'yolov8'
+  weights_path: null
+  confidence_threshold: 0.45
+  iou_threshold: 0.45
+  input_size: 640
+  device: "cpu" # 'cpu', 'cuda', 'cuda:0'
+  half_precision: true
+
+ocr:
+  engine_family: "mock" # options: 'mock', 'paddleocr', 'easyocr', 'custom_crnn'
+  weights_path: null
+  min_confidence_for_acceptance: 0.75
+  device: "cpu"
+  enable_arabic_transcription: true
+
+tracking:
+  tracker_type: "bytetrack"
+  track_thresh: 0.50
+  track_buffer: 30
+  match_thresh: 0.80
+
+privacy:
+  enable_face_blurring: true
+  enable_background_masking: true
+  retention_days: 30
+  anonymize_after_days: 7
+  audit_logging_enabled: true
+
+streams: []

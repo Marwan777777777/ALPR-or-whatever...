@@ -1,0 +1,75 @@
+# Example configuration for 8-16 Gate CCTV Camera Streams
+app_name: "GateSurveillanceCluster"
+environment: "production"
+log_level: "INFO"
+log_as_json: true
+
+detector:
+  model_family: "yolov10"
+  weights_path: "models/weights/yolov10m_vehicles.onnx"
+  confidence_threshold: 0.50
+  iou_threshold: 0.45
+  input_size: 640
+  device: "cuda:0"
+  half_precision: true
+
+ocr:
+  engine_family: "paddleocr"
+  weights_path: "models/weights/egyptian_plate_ocr_v1"
+  min_confidence_for_acceptance: 0.80
+  device: "cuda:0"
+  enable_arabic_transcription: true
+
+tracking:
+  tracker_type: "bytetrack"
+  track_thresh: 0.55
+  track_buffer: 45
+  match_thresh: 0.80
+
+privacy:
+  enable_face_blurring: true
+  enable_background_masking: true
+  retention_days: 30
+  anonymize_after_days: 7
+  audit_logging_enabled: true
+
+streams:
+  - camera_id: "gate_01_inbound"
+    source_url: "rtsp://admin:pass@192.168.10.101:554/h264/main"
+    target_fps: 8.0
+    roi_coordinates: [100, 200, 1820, 1000]
+
+  - camera_id: "gate_01_outbound"
+    source_url: "rtsp://admin:pass@192.168.10.102:554/h264/main"
+    target_fps: 8.0
+    roi_coordinates: [100, 200, 1820, 1000]
+
+  - camera_id: "gate_02_inbound"
+    source_url: "rtsp://admin:pass@192.168.10.103:554/h264/main"
+    target_fps: 8.0
+    roi_coordinates: [150, 250, 1800, 950]
+
+  - camera_id: "gate_02_outbound"
+    source_url: "rtsp://admin:pass@192.168.10.104:554/h264/main"
+    target_fps: 8.0
+    roi_coordinates: [150, 250, 1800, 950]
+
+  - camera_id: "gate_03_inbound"
+    source_url: "rtsp://admin:pass@192.168.10.105:554/h264/main"
+    target_fps: 8.0
+    roi_coordinates: [120, 220, 1800, 980]
+
+  - camera_id: "gate_03_outbound"
+    source_url: "rtsp://admin:pass@192.168.10.106:554/h264/main"
+    target_fps: 8.0
+    roi_coordinates: [120, 220, 1800, 980]
+
+  - camera_id: "gate_04_inbound"
+    source_url: "rtsp://admin:pass@192.168.10.107:554/h264/main"
+    target_fps: 8.0
+    roi_coordinates: [100, 200, 1820, 1000]
+
+  - camera_id: "gate_04_outbound"
+    source_url: "rtsp://admin:pass@192.168.10.108:554/h264/main"
+    target_fps: 8.0
+    roi_coordinates: [100, 200, 1820, 1000]

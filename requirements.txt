@@ -1,0 +1,19 @@
+# Core Computer Vision & Processing
+numpy>=1.26.0
+opencv-python-headless>=4.9.0
+pillow>=10.2.0
+
+# Structured Schema, Validation & Configuration
+pydantic>=2.7.0
+pydantic-settings>=2.2.0
+pyyaml>=6.0.1
+python-dotenv>=1.0.0
+
+# Testing & Quality
+pytest>=8.0.0
+
+# Optional / Production acceleration profiles:
+# For GPU inference with PyTorch:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+# For FastAPI service:
+#   pip install fastapi uvicorn
