@@ -481,11 +481,15 @@ def score_labeled_csv(
         }
 
     report = {
+        "validation_failed": bool(validation_errors),
+        "validation_error_count": len(validation_errors),
+        "validation_errors": validation_errors,
         "metadata": {
             "csv_path": str(csv_path),
             "csv_sha256": csv_hash,
             "git_commit": get_git_commit_hash(),
             "random_seed": seed,
+            "validation_failed": bool(validation_errors),
             "config": config,
         },
         "sha256_hash": csv_hash,
@@ -693,6 +697,10 @@ def main():
     dis = report["step_3i_disagreements_model_legacy_agree_against_human"]
     print(f"\n[Model and Legacy Agree against Human Label]")
     print(f"  Count: {dis['count']} | Sample IDs: {dis['sample_ids']}")
+
+    if report.get("validation_failed"):
+        print(f"\n[VALIDATION FAILED] {report.get('validation_error_count', 0)} error(s) recorded in JSON. Exiting with non-zero code.")
+        sys.exit(1)
 
 
 if __name__ == "__main__":

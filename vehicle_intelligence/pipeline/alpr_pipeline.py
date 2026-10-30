@@ -44,8 +44,9 @@ class EndToEndALPRPipeline:
             char_conf: Character confidence cutoff (default: 0.25).
             confidence_threshold: Calibrated multi-tier confidence threshold (default: 0.82).
             agnostic_nms: If True, executes class-agnostic NMS across all character classes.
-                Defaults to False (class-aware NMS) to preserve tightly adjacent bounding
-                boxes of distinct classes and reproduce the verified 93.38% E2E test benchmark.
+                Defaults to False for reproducibility. Measured validation fact: validation split
+                exact match is 276/300 with agnostic_nms=True vs 275/300 with agnostic_nms=False
+                (no test-split comparison prior to freezing).
         """
         self.device = device
         self.det_conf = det_conf

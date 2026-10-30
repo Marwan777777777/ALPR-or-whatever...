@@ -254,6 +254,6 @@ The baseline end-to-end ALPR pipeline (`EndToEndALPRPipeline`) operates under th
 - **Plate Detection**: `conf = 0.25`, `iou = 0.70`, `imgsz = 640`, `agnostic_nms = False`
 - **Character Recognition (27 Classes)**: `conf = 0.25`, `iou = 0.70`, `imgsz = 320`, `agnostic_nms = False`
 - **Default `agnostic_nms = False` Policy**:
-  Class-aware Non-Maximum Suppression (`agnostic_nms=False`) is the canonical, frozen default. It ensures that spatially proximate or overlapping character detections belonging to different classes (e.g., adjacent digits and closely kerned Arabic letter strokes) are not suppressed across distinct classes. This setting reproduces the audited 93.38% (282/302) end-to-end exact match performance.
+  Class-aware Non-Maximum Suppression (`agnostic_nms = False`) is the default setting for reproducibility. Measured validation fact: validation split exact match is 276/300 (92.00%) with `agnostic_nms = True` versus 275/300 (91.67%) with `agnostic_nms = False` (+1 plate difference, 64 vs 67 edit distance). No test-split comparison was performed prior to freezing, and `agnostic_nms = False` is maintained as the default for reproducibility across evaluation splits.
 
 
