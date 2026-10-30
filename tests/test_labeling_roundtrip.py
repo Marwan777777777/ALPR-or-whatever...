@@ -285,3 +285,108 @@ def test_synthetic_fixtures_comprehensive(tmp_path: Path):
     # 6. Verification of JSON output
     assert json_out.exists()
     assert report["sha256_hash"] is not None
+
+
+def test_step3_metrics_synthetic_fixture(tmp_path: Path):
+    """Synthetic test fixture testing Mission 007C Step 3 (a)-(j) metrics:
+    - Step 3a: Exact match in-vocab readable crop
+    - Step 3b: OOV rate (with documented OOV 'ك')
+    - Step 3c: All-in accuracy (penalizing misses, unreadable, OOV, wrong crop)
+    - Step 3d: No-detection stratum tracking
+    - Step 3e: Agreement comparisons and Latin transliterated legacy strings
+    - Step 3f: Error taxonomy and CER
+    - Step 3g: Format check rule (>3 letters or >4 digits)
+    - Step 3h: Transit ID cluster bootstrap CI and candidate groups
+    """
+    csv_file = tmp_path / "mock_step3_fixture.csv"
+    json_out = tmp_path / "mock_step3_summary.json"
+
+    # Synthetic mock rows with transit_id column
+    # Transit 101: 2 frames of the same vehicle
+    #   - Frame 1: Perfect match (crop=yes, readable)
+    #   - Frame 2: 1 substitution error (crop=yes, readable)
+    # Transit 102: Format violation prediction (>3 letters: 4 letters predicted)
+    # Transit 103: Documented OOV letter 'ك' (crop=yes, unsupported_chars=yes)
+    # Transit 104: Wrong crop (crop_is_plate=no)
+    # Transit 105: No-detection stratum (crop_is_plate=no_crop, pred empty, visible=yes)
+    # Transit 106: Latin legacy ANPR fallback (legacy=abc1234)
+    rows = [
+        # Frame 1: transit_101, exact match
+        'mock_frame_01.jpg,طىف1234,طىف ١٢٣٤,yes,no,readable,طىف,١٢٣٤,yes,daylight,exact,transit_101',
+        # Frame 2: transit_101, substitution error (ط vs ص)
+        'mock_frame_02.jpg,طىف1234,صىف ١٢٣٤,yes,no,readable,طىف,١٢٣٤,yes,daylight,sub,transit_101',
+        # Frame 3: transit_102, format violation (>3 letters: predicted 4 letters: أبجد)
+        'mock_frame_03.jpg,أبج5678,أبجد ٥٦٧٨,yes,no,readable,أبج,٥٦٧٨,yes,daylight,fmt_err,transit_102',
+        # Frame 4: transit_103, OOV letter ك (unsupported_chars=yes)
+        'mock_frame_04.jpg,كفل9999,,yes,yes,readable,كفل,٩٩٩٩,yes,daylight,oov_plate,transit_103',
+        # Frame 5: transit_104, wrong crop (crop_is_plate=no)
+        'mock_frame_05.jpg,رقم1111,,no,no,unreadable,,,yes,daylight,wrong_crop,transit_104',
+        # Frame 6: transit_105, 19-frame stratum style (no crop, missed detection)
+        'mock_frame_06.jpg,رقم2222,,no_crop,no,readable,رقم,٢٢٢٢,yes,daylight,stratum_miss,transit_105',
+        # Frame 7: transit_106, Latin legacy fallback string
+        'mock_frame_07.jpg,abc1234,طىف ١٢٣٤,yes,no,readable,طىف,١٢٣٤,yes,night,latin_legacy,transit_106',
+    ]
+
+    header = "file,legacy_text,predicted_text,crop_is_plate,unsupported_chars,status,true_letters,true_digits,plate_visible_to_eye,lighting,notes,transit_id\n"
+    csv_file.write_text("\ufeff" + header + "\n".join(rows) + "\n", encoding="utf-8")
+
+    report = score_labeled_csv(csv_file, json_output_path=json_out, bootstrap_draws=200, seed=123)
+
+    # 1. Step 3a: Exact match on in-vocab readable crop
+    # In-vocab readable with crop=yes: Frames 1, 2, 3, 7 (4 total).
+    # Exact matches: Frame 1 and Frame 7 (2 total).
+    s3a = report["step_3a_exact_match_in_vocab"]
+    assert s3a["numerator"] == 2
+    assert s3a["denominator"] == 4
+    assert s3a["accuracy_pct"] == 50.0
+
+    # 2. Step 3b: OOV Rate (one 'ك')
+    s3b = report["step_3b_oov_rate"]
+    assert s3b["oov_characters_count"] == 1
+    assert s3b["character_breakdown"] == {"ك": 1}
+    assert s3b["oov_plates_count"] == 1
+
+    # 3. Step 3c: All-in accuracy
+    # Total frames: 7. Succeeded: 2 (Frame 1 and Frame 7).
+    s3c = report["step_3c_all_in_accuracy"]
+    assert s3c["all_frames_denominator"] == 7
+    assert s3c["exact_matches"] == 2
+    assert s3c["all_in_accuracy_all_frames_pct"] == round(2 / 7 * 100.0, 2)
+
+    # 4. Step 3d: No-detection stratum
+    s3d = report["step_3d_no_detection_stratum"]
+    assert s3d["total_stratum_frames"] == 1
+    assert s3d["plate_visible_counts"]["yes"] == 1
+
+    # 5. Step 3e: Agreement and Latin legacy
+    s3e = report["step_3e_agreement_comparisons"]
+    assert s3e["latin_legacy_count"] == 1
+    assert s3e["latin_legacy_samples"][0]["legacy_text"] == "abc1234"
+
+    # 6. Step 3f: Error taxonomy
+    s3f = report["step_3f_error_taxonomy"]
+    assert s3f["wrong_plates_count"] == 2  # Frame 2 and Frame 3
+    assert s3f["substitutions"] >= 1       # Frame 2 (ط vs ص)
+    assert s3f["insertions"] >= 1          # Frame 3 (د)
+    assert s3f["macro_cer"] > 0
+    assert s3f["micro_cer"] > 0
+
+    # 7. Step 3g: Format check rule
+    s3g = report["step_3g_format_check_rule"]
+    assert s3g["wrong_predictions_violating"] == 1  # Frame 3 flagged
+    assert s3g["correct_predictions_violating"] == 0 # Zero false alarms on exact matches
+
+    # 8. Step 3h: Cluster bootstrap CI
+    s3h = report["step_3h_grouping"]
+    assert s3h["has_transit_id_column"] is True
+    assert s3h["cluster_bootstrap_ci"] is not None
+    assert len(s3h["cluster_bootstrap_ci"]["ci_95"]) == 2
+
+    # 9. JSON output metadata verification
+    assert json_out.exists()
+    meta = report["metadata"]
+    assert meta["random_seed"] == 123
+    assert meta["csv_sha256"] is not None
+    assert meta["config"]["det_conf"] == 0.25
+    assert meta["config"]["agnostic_nms"] is False
+

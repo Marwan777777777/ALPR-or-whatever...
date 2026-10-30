@@ -83,3 +83,10 @@ $RECYCLE.BIN/
 *.log
 .env
 .env.local
+
+# Triage completed annotations and scratch
+completed_annotations*.csv
+scratch/
+artifacts/review/
+
+

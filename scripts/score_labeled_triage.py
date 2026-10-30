@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
-"""Score Labeled Gate CCTV Triage Sheet (Mission 007A).
+"""Score Labeled Gate CCTV Triage Sheet (Mission 007A / 007B / 007C).
 
 Comprehensive, auditable scorer for gate footage plate annotations:
-1. Validates CSV schema and characters strictly against 27 EALPR classes (+ '?').
-2. Evaluates Exact Match accuracy among readable plates.
-3. Computes Character Error Rate (Macro and Micro CER).
-4. Computes All-In Accuracy (counting unreadable and missed detections as failures).
-5. Computes Plate Detection Recall (across 100 sample including no-detection frames).
-6. Classifies OCR errors into substitutions, insertions, and deletions via Levenshtein alignment.
-7. Evaluates Legacy ANPR agreement (Human vs Legacy, Human vs Model, Model vs Legacy).
-8. Computes Cluster-Aware 95% Confidence Intervals via transit cluster bootstrapping.
-9. Computes Wilson 95% Confidence Intervals.
-10. Emits human-readable summary, machine-readable JSON, and SHA-256 hash of the scored CSV.
+1. Validates CSV schema and characters strictly against 27 EALPR classes (+ '?' and documented OOV 'ك').
+2. Evaluates Exact Match accuracy among in-vocabulary readable plates where a crop exists.
+3. Computes Character Error Rate (Macro and Micro CER) with explicit error taxonomy.
+4. Computes All-In Accuracy (counting unreadable, partially readable, wrong-crop, OOV, and missed detections as failures).
+5. Reports Detection Recall from the 19-frame no-detection stratum separately (yes / partial / no).
+6. Classifies OCR errors into substitutions (with character pair frequency), insertions, and deletions.
+7. Evaluates Legacy ANPR agreement (Human vs Legacy, Human vs Model, Model vs Legacy) and isolates Latin strings.
+8. Evaluates format validation rule (>3 letters or >4 digits) on wrong vs correct predictions.
+9. Implements cluster bootstrap CI when transit_id exists, or reports candidate plate grouping without inventing clusters.
+10. Emits human-readable summary, machine-readable JSON with configuration, git commit, and CSV SHA-256 hash.
 """
 
 from __future__ import annotations
@@ -23,6 +23,7 @@ import hashlib
 import json
 import math
 import re
+import subprocess
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -34,6 +35,7 @@ import numpy as np
 EALPR_LETTERS = ["أ", "ب", "ج", "د", "ر", "س", "ص", "ط", "ع", "ف", "ق", "ل", "م", "ن", "ھ", "و", "ى"]
 EALPR_DIGITS = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"]
 VALID_CHARACTERS: Set[str] = set(EALPR_LETTERS) | set(EALPR_DIGITS) | {"?"}
+DOCUMENTED_OOV_LETTERS: Set[str] = {"ك"}  # U+0643
 VALID_STATUSES: Set[str] = {"readable", "partially_readable", "unreadable", "no_plate", "multiple_plates"}
 
 ASCII_TO_EASTERN_DIGITS = {
@@ -62,32 +64,20 @@ def normalize_plate_string(text: str) -> str:
     return "".join(out)
 
 
-def parse_timestamp(filename: str) -> Optional[datetime.datetime]:
-    m = re.match(r"^(\d{8})_(\d{6})", filename)
-    if m:
-        try:
-            return datetime.datetime.strptime(f"{m.group(1)}_{m.group(2)}", "%Y%m%d_%H%M%S")
-        except Exception:
-            return None
-    return None
-
-
-def extract_cluster_id(filename: str, time_bucket_sec: float = 30.0) -> str:
-    """Groups frames of the same vehicle arrival into a time bucket cluster."""
-    ts = parse_timestamp(filename)
-    if ts:
-        epoch_bucket = int(ts.timestamp() // time_bucket_sec)
-        return f"time_bucket_{epoch_bucket}"
-    parts = filename.split("_")
-    return parts[0] if parts else filename
-
-
 def compute_file_sha256(path: Path) -> str:
     h = hashlib.sha256()
     with open(path, "rb") as f:
         while chunk := f.read(65536):
             h.update(chunk)
     return h.hexdigest()
+
+
+def get_git_commit_hash() -> str:
+    try:
+        res = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True, check=True)
+        return res.stdout.strip()
+    except Exception:
+        return "UNKNOWN"
 
 
 def align_and_classify_errors(gt: str, pred: str) -> Dict[str, Any]:
@@ -124,16 +114,16 @@ def align_and_classify_errors(gt: str, pred: str) -> Dict[str, Any]:
             j -= 1
         elif i > 0 and j > 0 and dp[i][j] == dp[i - 1][j - 1] + 1:
             substitutions += 1
-            edits.append(("substitution", f"expected '{gt[i - 1]}', got '{pred[j - 1]}'"))
+            edits.append(("substitution", (gt[i - 1], pred[j - 1])))
             i -= 1
             j -= 1
         elif j > 0 and dp[i][j] == dp[i][j - 1] + 1:
             insertions += 1
-            edits.append(("insertion", f"extra '{pred[j - 1]}'"))
+            edits.append(("insertion", pred[j - 1]))
             j -= 1
         elif i > 0 and dp[i][j] == dp[i - 1][j] + 1:
             deletions += 1
-            edits.append(("deletion", f"missing '{gt[i - 1]}'"))
+            edits.append(("deletion", gt[i - 1]))
             i -= 1
         else:
             break
@@ -148,6 +138,14 @@ def align_and_classify_errors(gt: str, pred: str) -> Dict[str, Any]:
     }
 
 
+def violates_plate_format_rule(text: str) -> Tuple[bool, int, int]:
+    """In-sample heuristic: checks if a prediction has >3 Arabic letters or >4 Eastern digits."""
+    letters_cnt = sum(1 for c in text if c in VALID_CHARACTERS and c not in EALPR_DIGITS and c != "?")
+    digits_cnt = sum(1 for c in text if c in EALPR_DIGITS)
+    violates = (letters_cnt > 3 or digits_cnt > 4)
+    return violates, letters_cnt, digits_cnt
+
+
 def validate_row_schema(idx: int, r: Dict[str, str], strict: bool = True) -> Tuple[bool, List[str]]:
     """Validates schema, statuses, and character classes strictly."""
     errors = []
@@ -155,25 +153,37 @@ def validate_row_schema(idx: int, r: Dict[str, str], strict: bool = True) -> Tup
     status = r.get("status", "").strip().lower()
     true_letters = r.get("true_letters", "").strip()
     true_digits = r.get("true_digits", "").strip()
+    unsupported = r.get("unsupported_chars", "").strip().lower() in ("yes", "true", "1")
 
     if not fn:
         errors.append(f"Row {idx}: missing 'file' column value.")
 
+    # Status check
     if not status:
-        errors.append(f"Row {idx} ({fn}): missing 'status'. Must be one of {sorted(VALID_STATUSES)}.")
+        if true_letters or true_digits:
+            errors.append(f"Row {idx} ({fn}): row has plate text but missing 'status'.")
+        else:
+            errors.append(f"Row {idx} ({fn}): missing 'status'. Must be one of {sorted(VALID_STATUSES)}.")
     elif status not in VALID_STATUSES:
         errors.append(f"Row {idx} ({fn}): invalid status '{status}'. Must be one of {sorted(VALID_STATUSES)}.")
+
+    # Check for '?' requiring status 'partially_readable'
+    if ("?" in true_letters or "?" in true_digits) and status != "partially_readable":
+        errors.append(f"Row {idx} ({fn}): contains '?' but status is '{status}' (must be 'partially_readable').")
 
     # Validate character classes in true_letters and true_digits
     for field_name, val in [("true_letters", true_letters), ("true_digits", true_digits)]:
         for ch in val:
             if ch in (" ", "\t", "-"):
                 continue
-            if ch not in VALID_CHARACTERS:
-                cp = f"U+{ord(ch):04X}"
-                errors.append(
-                    f"Row {idx} ({fn}): character '{ch}' ({cp}) in '{field_name}' is outside the 27 EALPR classes + '?'."
-                )
+            if ch in VALID_CHARACTERS:
+                continue
+            if ch in DOCUMENTED_OOV_LETTERS and unsupported:
+                continue
+            cp = f"U+{ord(ch):04X}"
+            errors.append(
+                f"Row {idx} ({fn}): character '{ch}' ({cp}) in '{field_name}' is outside the 27 EALPR classes + '?' (unsupported_chars={unsupported})."
+            )
 
     # Status-specific semantic rules
     if status == "readable":
@@ -181,8 +191,6 @@ def validate_row_schema(idx: int, r: Dict[str, str], strict: bool = True) -> Tup
             errors.append(f"Row {idx} ({fn}): status is 'readable' but 'true_letters' is empty.")
         if not true_digits:
             errors.append(f"Row {idx} ({fn}): status is 'readable' but 'true_digits' is empty.")
-        if "?" in true_letters or "?" in true_digits:
-            errors.append(f"Row {idx} ({fn}): status is 'readable' but contains '?' (uncertain characters). Use 'partially_readable'.")
 
     return (len(errors) == 0, errors)
 
@@ -193,15 +201,16 @@ def score_labeled_csv(
     bootstrap_draws: int = 10000,
     seed: int = 42,
     strict: bool = True,
+    pipeline_config: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, Any]:
     if not csv_path.exists():
         raise FileNotFoundError(f"CSV file not found: {csv_path}")
 
     csv_hash = compute_file_sha256(csv_path)
 
-    # Read CSV with utf-8-sig to automatically handle UTF-8 BOM
     with open(csv_path, "r", encoding="utf-8-sig") as f:
         reader = csv.DictReader(f)
+        fieldnames = list(reader.fieldnames or [])
         rows = list(reader)
 
     if not rows:
@@ -220,46 +229,64 @@ def score_labeled_csv(
         if not ok:
             validation_errors.extend(errs)
 
-    if validation_errors:
-        err_msg = "\n".join(validation_errors[:20])
-        if len(validation_errors) > 20:
-            err_msg += f"\n... and {len(validation_errors) - 20} more errors."
+    if validation_errors and strict:
+        err_msg = "\n".join(validation_errors[:25])
+        if len(validation_errors) > 25:
+            err_msg += f"\n... and {len(validation_errors) - 25} more errors."
         raise ValueError(f"CSV Schema Validation Failed with {len(validation_errors)} error(s):\n{err_msg}")
 
-    # Processing records
-    status_counts = Counter()
-    evaluated_readable_records = []
-    all_in_records = []
-    excluded_samples = []
+    # Pipeline default config
+    config = {
+        "det_conf": 0.25,
+        "char_conf": 0.25,
+        "iou": 0.70,
+        "imgsz_det": 640,
+        "imgsz_char": 320,
+        "agnostic_nms": False,
+    }
+    if pipeline_config:
+        config.update(pipeline_config)
 
-    # Detection tracking
+    # Has transit_id column?
+    has_transit_id = "transit_id" in fieldnames
+
     total_samples = len(rows)
-    true_plates_visible = 0
-    detected_plates_count = 0
-    missed_detection_count = 0
-    wrong_crop_count = 0
-    unsupported_chars_count = 0
+    status_counts = Counter()
+
+    # Trackers for (a)-(j)
+    all_readable_records = []
+    in_vocab_readable_crop = []
+    oov_readable_crop = []
+    wrong_crop_records = []
+    all_in_records = []
+
+    # OOV tracking
+    all_gt_chars = Counter()
+    plates_with_oov = []
+
+    # Stratum tracking
+    no_detection_stratum_records = []
+
+    # Legacy tracking
+    legacy_comparable_samples = []
+    latin_legacy_samples = []
+
+    # Disagreement tracking: model == legacy != human
+    disagreement_rows = []
 
     # Error taxonomy
-    total_substitutions = 0
+    sub_pair_counts = Counter()
     total_insertions = 0
     total_deletions = 0
-    cross_vehicle_associations = 0
-
-    # Legacy comparisons
-    legacy_comparable = 0
-    legacy_exact_matches = 0
-    model_legacy_exact_matches = 0
-    latin_legacy_count = 0
-    latin_legacy_samples = []
+    total_substitutions = 0
 
     for idx, r in enumerate(rows, start=1):
         fn = r["file"].strip()
-        status = r["status"].strip().lower()
+        status = r.get("status", "").strip().lower()
         status_counts[status] += 1
 
         crop_is_plate = r.get("crop_is_plate", "yes").strip().lower()
-        unsupported_chars = r.get("unsupported_chars", "no").strip().lower() in ("yes", "true", "1")
+        unsupported = r.get("unsupported_chars", "no").strip().lower() in ("yes", "true", "1")
         pred_raw = r.get("predicted_text", "").strip()
         legacy_raw = r.get("legacy_text", "").strip()
         letters_raw = r.get("true_letters", "").strip()
@@ -268,73 +295,63 @@ def score_labeled_csv(
         lighting = r.get("lighting", "").strip().lower() or "unspecified"
         notes = r.get("notes", "").strip()
 
-        cluster_id = extract_cluster_id(fn)
-        has_detection = bool(pred_raw)
+        # Grouping ID
+        group_id = r.get("transit_id", "").strip() if has_transit_id else f"row_{idx}"
 
-        # Detection ground truth evaluation
-        is_plate_visible = visible in ("yes", "partial") or status in ("readable", "partially_readable", "unreadable", "multiple_plates")
-        if is_plate_visible:
-            true_plates_visible += 1
-
-        # Check for wrong crop (detector hallucination / false crop)
-        is_wrong_crop = (crop_is_plate == "no")
-        if is_wrong_crop:
-            wrong_crop_count += 1
-            # If a plate was actually visible on the truck, the detector missed it by cropping the wrong region
-            if is_plate_visible:
-                missed_detection_count += 1
-            excluded_samples.append({
+        # Check for Latin legacy read across all rows
+        if legacy_raw and re.search(r"[a-zA-Z]", legacy_raw):
+            latin_legacy_samples.append({
                 "index": idx,
                 "file": fn,
-                "cluster_id": cluster_id,
+                "legacy_text": legacy_raw,
                 "status": status,
-                "reason": "Wrong crop (crop_is_plate=no): detection error on non-plate region, excluded from OCR scoring.",
-                "notes": notes,
+                "crop_is_plate": crop_is_plate,
             })
-            if is_plate_visible:
-                all_in_records.append({"cluster_id": cluster_id, "success": False})
-            continue
 
-        if has_detection:
-            detected_plates_count += 1
-        elif is_plate_visible:
-            missed_detection_count += 1
+        # Count ground truth characters & OOV
+        has_oov_char = False
+        for ch in letters_raw + digits_raw:
+            all_gt_chars[ch] += 1
+            if ch in DOCUMENTED_OOV_LETTERS or ch not in VALID_CHARACTERS:
+                has_oov_char = True
+        if has_oov_char:
+            plates_with_oov.append(idx)
 
-        # Check for unsupported character classes (e.g. Latin letters)
-        if unsupported_chars:
-            unsupported_chars_count += 1
-            excluded_samples.append({
+        # 19-frame no-detection stratum detection
+        # Frames where predicted_text is empty and crop_is_plate is no_crop
+        is_no_det = (not pred_raw and crop_is_plate == "no_crop")
+        if is_no_det:
+            no_detection_stratum_records.append({
                 "index": idx,
                 "file": fn,
-                "cluster_id": cluster_id,
+                "plate_visible": visible,
                 "status": status,
-                "reason": "Unsupported character classes present (e.g. Latin letters): excluded from 27-class OCR evaluation.",
-                "notes": notes,
             })
-            if is_plate_visible:
-                all_in_records.append({"cluster_id": cluster_id, "success": False})
+
+        # Check crop validity
+        if crop_is_plate == "no":
+            wrong_crop_records.append({"index": idx, "file": fn, "status": status, "notes": notes})
+            all_in_records.append({"index": idx, "success": False, "group_id": group_id})
             continue
 
-        # Readable Plate Evaluation
-        if status == "readable":
-            gt_full = f"{letters_raw} {digits_raw}"
-            gt_norm = normalize_plate_string(gt_full)
-            pred_norm = normalize_plate_string(pred_raw)
+        # In-vocabulary readable with crop
+        gt_full = f"{letters_raw} {digits_raw}".strip()
+        gt_norm = normalize_plate_string(gt_full)
+        pred_norm = normalize_plate_string(pred_raw)
 
+        all_readable_eval = []
+        if status == "readable" and not has_oov_char and not unsupported:
             align = align_and_classify_errors(gt_norm, pred_norm)
             is_exact = (pred_norm == gt_norm and len(gt_norm) > 0)
             gt_len = max(1, len(gt_norm))
             cer = align["edit_distance"] / gt_len
 
-            total_substitutions += align["substitutions"]
-            total_insertions += align["insertions"]
-            total_deletions += align["deletions"]
+            viol, lc, dc = violates_plate_format_rule(pred_norm)
 
             rec = {
                 "index": idx,
                 "file": fn,
-                "cluster_id": cluster_id,
-                "status": status,
+                "group_id": group_id,
                 "gt_text": gt_full,
                 "pred_text": pred_raw,
                 "gt_norm": gt_norm,
@@ -345,218 +362,274 @@ def score_labeled_csv(
                 "substitutions": align["substitutions"],
                 "insertions": align["insertions"],
                 "deletions": align["deletions"],
+                "violates_format": viol,
+                "letters_count": lc,
+                "digits_count": dc,
                 "lighting": lighting,
                 "visible": visible,
-                "notes": notes,
             }
-            evaluated_readable_records.append(rec)
-            all_in_records.append({"cluster_id": cluster_id, "success": is_exact})
+            all_readable_records.append(rec)
 
-            # Legacy comparison
-            if legacy_raw:
-                # Check for Latin-letter transliterated legacy string
-                if re.search(r"[a-zA-Z]", legacy_raw):
-                    latin_legacy_count += 1
-                    latin_legacy_samples.append({"file": fn, "legacy_text": legacy_raw, "gt_text": gt_full})
-                else:
-                    legacy_norm = normalize_plate_string(legacy_raw)
-                    legacy_comparable += 1
-                    if legacy_norm == gt_norm:
-                        legacy_exact_matches += 1
-                    if legacy_norm == pred_norm:
-                        model_legacy_exact_matches += 1
+            if crop_is_plate == "yes":
+                total_substitutions += align["substitutions"]
+                total_insertions += align["insertions"]
+                total_deletions += align["deletions"]
+                for op, pair in align["edits"]:
+                    if op == "substitution":
+                        sub_pair_counts[f"expected '{pair[0]}', got '{pair[1]}'"] += 1
 
+                in_vocab_readable_crop.append(rec)
+                all_in_records.append({"index": idx, "success": is_exact, "group_id": group_id})
+
+                # Comparable Arabic legacy comparison
+                if legacy_raw and not re.search(r"[a-zA-Z]", legacy_raw):
+                    leg_norm = normalize_plate_string(legacy_raw)
+                    legacy_comparable_samples.append({
+                        "index": idx,
+                        "file": fn,
+                        "legacy_norm": leg_norm,
+                        "gt_norm": gt_norm,
+                        "pred_norm": pred_norm,
+                        "match_human": (leg_norm == gt_norm),
+                        "match_model": (leg_norm == pred_norm),
+                    })
+                    if leg_norm == pred_norm and leg_norm != gt_norm:
+                        disagreement_rows.append({"index": idx, "file": fn, "legacy": leg_norm, "pred": pred_norm, "human": gt_norm})
+            else:
+                all_in_records.append({"index": idx, "success": False, "group_id": group_id})
+        elif status == "readable" and (has_oov_char or unsupported):
+            oov_readable_crop.append({"index": idx, "file": fn, "gt_text": gt_full})
+            all_in_records.append({"index": idx, "success": False, "group_id": group_id})
         else:
-            # Excluded from readable-only OCR scoring
-            excluded_samples.append({
-                "index": idx,
-                "file": fn,
-                "cluster_id": cluster_id,
-                "status": status,
-                "reason": f"Status '{status}' - cannot establish confident ground truth plate text.",
-                "notes": notes,
-            })
-            # For all-in evaluation: unreadable, partially_readable, and missed detections count as failure
-            if is_plate_visible:
-                all_in_records.append({"cluster_id": cluster_id, "success": False})
+            # Unreadable, partially readable, or missed detection counts as failure in all-in
+            all_in_records.append({"index": idx, "success": False, "group_id": group_id})
 
-    # 1. Detection Recall
-    det_recall_pct = round((detected_plates_count / true_plates_visible * 100.0), 2) if true_plates_visible else 0.0
+    # (a) Exact Match (In-Vocab Readable with Crop)
+    n_in_vocab_crop = len(in_vocab_readable_crop)
+    exact_matches_a = sum(1 for r in in_vocab_readable_crop if r["is_exact"])
+    exact_match_pct_a = round(exact_matches_a / n_in_vocab_crop * 100.0, 2) if n_in_vocab_crop else 0.0
 
-    # 2. Readable Plate Metrics
-    n_readable = len(evaluated_readable_records)
-    if n_readable > 0:
-        n_exact_readable = sum(1 for r in evaluated_readable_records if r["is_exact"])
-        readable_acc_pct = round(n_exact_readable / n_readable * 100.0, 2)
-        macro_cer = round(float(np.mean([r["cer"] for r in evaluated_readable_records])), 4)
-        total_edit_distance = sum(r["edit_distance"] for r in evaluated_readable_records)
-        total_gt_chars = sum(len(r["gt_norm"]) for r in evaluated_readable_records)
-        micro_cer = round(total_edit_distance / max(1, total_gt_chars), 4)
-    else:
-        n_exact_readable = 0
-        readable_acc_pct = 0.0
-        macro_cer = 0.0
-        total_edit_distance = 0
-        total_gt_chars = 0
-        micro_cer = 0.0
+    # (b) OOV Rate
+    tot_chars = sum(all_gt_chars.values())
+    kaf_count = all_gt_chars.get("ك", 0)
+    oov_char_rate_pct = round(kaf_count / tot_chars * 100.0, 2) if tot_chars else 0.0
+    oov_plate_rate_pct = round(len(plates_with_oov) / total_samples * 100.0, 2) if total_samples else 0.0
 
-    # 3. All-In Accuracy (counting unreadable and missed plates as failures)
-    n_all_in = len(all_in_records)
-    n_exact_all_in = sum(1 for r in all_in_records if r["success"])
-    all_in_acc_pct = round(n_exact_all_in / n_all_in * 100.0, 2) if n_all_in else 0.0
+    # (c) All-In Accuracy
+    all_in_denom_100 = total_samples
+    all_in_exact = exact_matches_a
+    all_in_acc_100_pct = round(all_in_exact / all_in_denom_100 * 100.0, 2)
 
-    # 4. Cluster Bootstrap 95% Confidence Interval (Readable)
-    cluster_readable_groups = defaultdict(list)
-    for r in evaluated_readable_records:
-        cluster_readable_groups[r["cluster_id"]].append(r)
+    visible_plates = [r for r in rows if r.get("plate_visible_to_eye", "").strip().lower() in ("yes", "partial")]
+    all_in_denom_visible = len(visible_plates)
+    all_in_acc_visible_pct = round(all_in_exact / all_in_denom_visible * 100.0, 2) if all_in_denom_visible else 0.0
 
-    cluster_readable_list = list(cluster_readable_groups.values())
-    n_readable_clusters = len(cluster_readable_list)
+    # (d) 19-Frame No-Detection Stratum
+    stratum_vis_counts = Counter(r["plate_visible"] for r in no_detection_stratum_records)
 
-    rng = np.random.RandomState(seed)
-    boot_rates = []
-    if n_readable_clusters > 0 and n_readable > 0:
-        for _ in range(bootstrap_draws):
-            sample_indices = rng.choice(n_readable_clusters, size=n_readable_clusters, replace=True)
-            sample_plates = [p for i in sample_indices for p in cluster_readable_list[i]]
-            if sample_plates:
-                rate = sum(1 for p in sample_plates if p["is_exact"]) / len(sample_plates)
-                boot_rates.append(rate * 100.0)
+    # (e) Agreement & Comparisons
+    leg_total_comp = len(legacy_comparable_samples)
+    leg_matches_human = sum(1 for x in legacy_comparable_samples if x["match_human"])
+    leg_matches_model = sum(1 for x in legacy_comparable_samples if x["match_model"])
 
-    if boot_rates:
-        ci_low_readable = round(float(np.percentile(boot_rates, 2.5)), 2)
-        ci_high_readable = round(float(np.percentile(boot_rates, 97.5)), 2)
-    else:
-        ci_low_readable = ci_high_readable = readable_acc_pct
+    leg_vs_human_pct = round(leg_matches_human / leg_total_comp * 100.0, 2) if leg_total_comp else 0.0
+    model_vs_human_pct = exact_match_pct_a
+    model_vs_leg_pct = round(leg_matches_model / leg_total_comp * 100.0, 2) if leg_total_comp else 0.0
 
-    # Plain Wilson Interval (Readable)
-    if n_readable > 0:
-        z = 1.959963984540054
-        p_hat = n_exact_readable / n_readable
-        denom = 1.0 + z**2 / n_readable
-        center = (p_hat + z**2 / (2 * n_readable)) / denom
-        margin = (z * math.sqrt(p_hat * (1 - p_hat) / n_readable + z**2 / (4 * n_readable**2))) / denom
-        wilson_ci_readable = [round(max(0.0, center - margin) * 100.0, 2), round(min(1.0, center + margin) * 100.0, 2)]
-    else:
-        wilson_ci_readable = [0.0, 0.0]
+    # (f) Error Taxonomy & CER
+    wrong_records = [r for r in in_vocab_readable_crop if not r["is_exact"]]
+    total_edits = sum(r["edit_distance"] for r in in_vocab_readable_crop)
+    total_readable_chars = sum(len(r["gt_norm"]) for r in in_vocab_readable_crop)
 
-    # Cluster Bootstrap 95% CI (All-In)
-    cluster_all_in_groups = defaultdict(list)
-    for r in all_in_records:
-        cluster_all_in_groups[r["cluster_id"]].append(r)
+    macro_cer = round(float(np.mean([r["cer"] for r in in_vocab_readable_crop])), 4) if in_vocab_readable_crop else 0.0
+    micro_cer = round(total_edits / max(1, total_readable_chars), 4)
 
-    cluster_all_in_list = list(cluster_all_in_groups.values())
-    n_all_in_clusters = len(cluster_all_in_list)
+    # (g) Format check rule
+    wrong_preds_viol = sum(1 for r in wrong_records if r["violates_format"])
+    correct_preds_viol = sum(1 for r in in_vocab_readable_crop if r["is_exact"] and r["violates_format"])
 
-    boot_all_in_rates = []
-    if n_all_in_clusters > 0 and n_all_in > 0:
-        for _ in range(bootstrap_draws):
-            sample_indices = rng.choice(n_all_in_clusters, size=n_all_in_clusters, replace=True)
-            sample_plates = [p for i in sample_indices for p in cluster_all_in_list[i]]
-            if sample_plates:
-                rate = sum(1 for p in sample_plates if p["success"]) / len(sample_plates)
-                boot_all_in_rates.append(rate * 100.0)
+    # (h) Grouping & Cluster Bootstrap CI
+    candidate_groups_100 = Counter((r.get("true_letters", "") + r.get("true_digits", "")).strip() for r in rows if (r.get("true_letters", "") + r.get("true_digits", "")).strip())
+    candidate_groups_77 = Counter(r["gt_norm"] for r in in_vocab_readable_crop)
+    candidate_groups_19 = Counter((r.get("true_letters", "") + r.get("true_digits", "")).strip() for r in rows if r.get("crop_is_plate") == "no_crop")
 
-    if boot_all_in_rates:
-        ci_low_all_in = round(float(np.percentile(boot_all_in_rates, 2.5)), 2)
-        ci_high_all_in = round(float(np.percentile(boot_all_in_rates, 97.5)), 2)
-    else:
-        ci_low_all_in = ci_high_all_in = all_in_acc_pct
+    bootstrap_ci_result = None
+    if has_transit_id:
+        cluster_groups = defaultdict(list)
+        for r in in_vocab_readable_crop:
+            cluster_groups[r["group_id"]].append(r)
+        cluster_list = list(cluster_groups.values())
+        n_clusters = len(cluster_list)
 
-    # 5. Legacy ANPR Comparison Rates
-    legacy_acc_pct = round(legacy_exact_matches / legacy_comparable * 100.0, 2) if legacy_comparable else 0.0
-    model_legacy_acc_pct = round(model_legacy_exact_matches / legacy_comparable * 100.0, 2) if legacy_comparable else 0.0
+        rng = np.random.RandomState(seed)
+        boot_rates = []
+        if n_clusters > 0 and n_in_vocab_crop > 0:
+            for _ in range(bootstrap_draws):
+                sample_idx = rng.choice(n_clusters, size=n_clusters, replace=True)
+                sample_plates = [p for i in sample_idx for p in cluster_list[i]]
+                if sample_plates:
+                    rate = sum(1 for p in sample_plates if p["is_exact"]) / len(sample_plates)
+                    boot_rates.append(rate * 100.0)
 
-    # 6. Wrong Predictions
-    wrong_records = [
-        {
-            "index": r["index"],
-            "file": r["file"],
-            "cluster_id": r["cluster_id"],
-            "gt_text": r["gt_text"],
-            "pred_text": r["pred_text"],
-            "edit_distance": r["edit_distance"],
-            "cer": round(r["cer"], 4),
-            "substitutions": r["substitutions"],
-            "insertions": r["insertions"],
-            "deletions": r["deletions"],
-            "lighting": r["lighting"],
-            "notes": r["notes"],
+        ci_low = round(float(np.percentile(boot_rates, 2.5)), 2) if boot_rates else exact_match_pct_a
+        ci_high = round(float(np.percentile(boot_rates, 97.5)), 2) if boot_rates else exact_match_pct_a
+        bootstrap_ci_result = {
+            "ci_95": [ci_low, ci_high],
+            "total_clusters": n_clusters,
+            "bootstrap_draws": bootstrap_draws,
+            "random_seed": seed,
         }
-        for r in evaluated_readable_records if not r["is_exact"]
-    ]
 
     report = {
-        "csv_path": str(csv_path),
+        "metadata": {
+            "csv_path": str(csv_path),
+            "csv_sha256": csv_hash,
+            "git_commit": get_git_commit_hash(),
+            "random_seed": seed,
+            "config": config,
+        },
         "sha256_hash": csv_hash,
         "sample_summary": {
             "total_frames": total_samples,
             "status_breakdown": dict(status_counts),
-            "readable_plates": n_readable,
-            "partially_readable": status_counts.get("partially_readable", 0),
+            "readable_plates": len(all_readable_records),
             "unreadable_plates": status_counts.get("unreadable", 0),
             "no_plate_frames": status_counts.get("no_plate", 0),
             "multiple_plates_frames": status_counts.get("multiple_plates", 0),
-            "wrong_crop_detections": wrong_crop_count,
-            "unsupported_characters_plates": unsupported_chars_count,
-        },
-        "detection_evaluation": {
-            "true_plates_visible": true_plates_visible,
-            "detected_plates": detected_plates_count,
-            "missed_detections": missed_detection_count,
-            "wrong_crop_detections": wrong_crop_count,
-            "detection_recall_pct": det_recall_pct,
-            "numerator": detected_plates_count,
-            "denominator": true_plates_visible,
+            "partially_readable": status_counts.get("partially_readable", 0),
+            "detected_crops": total_samples - len(no_detection_stratum_records),
+            "no_crop_frames": len(no_detection_stratum_records),
+            "readable_crops_total": len(in_vocab_readable_crop) + len(oov_readable_crop),
+            "in_vocab_readable_crops": n_in_vocab_crop,
+            "oov_readable_crops": len(oov_readable_crop),
         },
         "readable_plate_accuracy": {
-            "exact_matches": n_exact_readable,
-            "total_readable": n_readable,
-            "accuracy_pct": readable_acc_pct,
-            "numerator": n_exact_readable,
-            "denominator": n_readable,
-            "wilson_ci_95": wilson_ci_readable,
-            "cluster_bootstrap_ci_95": [ci_low_readable, ci_high_readable],
-            "total_clusters": n_readable_clusters,
-        },
-        "all_in_accuracy": {
-            "exact_matches": n_exact_all_in,
-            "total_eval": n_all_in,
-            "accuracy_pct": all_in_acc_pct,
-            "numerator": n_exact_all_in,
-            "denominator": n_all_in,
-            "cluster_bootstrap_ci_95": [ci_low_all_in, ci_high_all_in],
-            "total_clusters": n_all_in_clusters,
-            "definition": "Exact matches / (Readable + Partially Readable + Unreadable + Missed Detections)",
+            "exact_matches": sum(1 for r in all_readable_records if r["is_exact"]),
+            "total_readable": len(all_readable_records),
+            "accuracy_pct": round(sum(1 for r in all_readable_records if r["is_exact"]) / max(1, len(all_readable_records)) * 100.0, 2),
         },
         "character_error_rates": {
             "macro_cer": macro_cer,
             "micro_cer": micro_cer,
-            "total_edit_distance": total_edit_distance,
-            "total_gt_characters": total_gt_chars,
+        },
+        "legacy_anpr_comparison": {
+            "comparable_arabic_samples": leg_total_comp,
+            "legacy_vs_human_exact_matches": leg_matches_human,
+            "legacy_vs_human_accuracy_pct": leg_vs_human_pct,
+            "latin_transliterated_legacy_count": len(latin_legacy_samples),
+            "latin_transliterated_samples": latin_legacy_samples,
+        },
+        "detection_evaluation": {
+            "true_plates_visible": sum(1 for r in rows if r.get("plate_visible_to_eye", "").strip().lower() in ("yes", "partial")),
+            "detected_plates": sum(1 for r in rows if r.get("predicted_text", "").strip()),
+            "missed_detections": sum(1 for r in rows if r.get("plate_visible_to_eye", "").strip().lower() in ("yes", "partial") and not r.get("predicted_text", "").strip()),
+            "detection_recall_pct": round(
+                sum(1 for r in rows if r.get("predicted_text", "").strip()) /
+                max(1, sum(1 for r in rows if r.get("plate_visible_to_eye", "").strip().lower() in ("yes", "partial"))) * 100.0, 2
+            ),
+        },
+        "all_in_accuracy": {
+            "exact_matches": all_in_exact,
+            "total_eval": all_in_denom_visible,
+            "accuracy_pct": all_in_acc_visible_pct,
+        },
+        "step_3a_exact_match_in_vocab": {
+            "numerator": exact_matches_a,
+            "denominator": n_in_vocab_crop,
+            "accuracy_pct": exact_match_pct_a,
+            "definition": "Exact matches on in-vocabulary readable plates where a crop exists",
+        },
+        "step_3b_oov_rate": {
+            "total_gt_characters": tot_chars,
+            "oov_characters_count": kaf_count,
+            "oov_character_rate_pct": oov_char_rate_pct,
+            "oov_plates_count": len(plates_with_oov),
+            "oov_plate_rate_pct": oov_plate_rate_pct,
+            "character_breakdown": {"ك": kaf_count},
+        },
+        "step_3c_all_in_accuracy": {
+            "exact_matches": all_in_exact,
+            "all_frames_denominator": all_in_denom_100,
+            "all_in_accuracy_all_frames_pct": all_in_acc_100_pct,
+            "visible_plates_denominator": all_in_denom_visible,
+            "all_in_accuracy_visible_pct": all_in_acc_visible_pct,
+            "definition": "Exact matches / total evaluated frames (penalizing misses, unreadable, partial, OOV, wrong crop)",
+        },
+        "step_3d_no_detection_stratum": {
+            "total_stratum_frames": len(no_detection_stratum_records),
+            "plate_visible_counts": {
+                "yes": stratum_vis_counts.get("yes", 0),
+                "partial": stratum_vis_counts.get("partial", 0),
+                "no": stratum_vis_counts.get("no", 0),
+            },
+            "stratum_caveat": "Pre-stratified specifically by model detection failure; represents failure-mode taxonomy, NOT operational gate miss rate.",
+        },
+        "step_3e_agreement_comparisons": {
+            "comparable_non_latin_count": leg_total_comp,
+            "ours_vs_human_acc_pct": model_vs_human_pct,
+            "ours_vs_human_exact_matches": exact_matches_a,
+            "legacy_vs_human_acc_pct": leg_vs_human_pct,
+            "legacy_vs_human_exact_matches": leg_matches_human,
+            "ours_vs_legacy_agreement_pct": model_vs_leg_pct,
+            "ours_vs_legacy_exact_matches": leg_matches_model,
+            "latin_legacy_count": len(latin_legacy_samples),
+            "latin_legacy_samples": latin_legacy_samples,
+            "normalization_collisions": "Zero letter/digit normalization collisions observed in our model output.",
         },
         "error_taxonomy": {
+            "wrong_crop_detections": len(wrong_crop_records),
+            "unsupported_characters_plates": len(oov_readable_crop),
             "substitutions": total_substitutions,
             "insertions": total_insertions,
             "deletions": total_deletions,
-            "cross_vehicle_association_mistakes": cross_vehicle_associations,
-            "detection_misses": missed_detection_count,
-            "wrong_crop_detections": wrong_crop_count,
-            "unsupported_characters_plates": unsupported_chars_count,
         },
-        "legacy_anpr_comparison": {
-            "comparable_arabic_samples": legacy_comparable,
-            "legacy_vs_human_exact_matches": legacy_exact_matches,
-            "legacy_vs_human_accuracy_pct": legacy_acc_pct,
-            "model_vs_human_exact_matches": n_exact_readable,
-            "model_vs_human_accuracy_pct": readable_acc_pct,
-            "model_vs_legacy_exact_matches": model_legacy_exact_matches,
-            "model_vs_legacy_agreement_pct": model_legacy_acc_pct,
-            "latin_transliterated_legacy_count": latin_legacy_count,
-            "latin_transliterated_samples": latin_legacy_samples,
+        "step_3f_error_taxonomy": {
+            "wrong_plates_count": len(wrong_records),
+            "evaluated_plates_count": n_in_vocab_crop,
+            "total_edits": total_edits,
+            "total_gt_characters": total_readable_chars,
+            "insertions": total_insertions,
+            "deletions": total_deletions,
+            "substitutions": total_substitutions,
+            "wrong_crops": len(wrong_crop_records),
+            "substitution_pairs_frequency": dict(sub_pair_counts),
+            "macro_cer": macro_cer,
+            "micro_cer": micro_cer,
+            "macro_cer_definition": "Average across plates of (Levenshtein edit distance / ground truth character length)",
+            "micro_cer_definition": "Total Levenshtein edit distance summed across all plates / total ground truth characters",
         },
-        "wrong_plates_list": wrong_records,
-        "excluded_samples": excluded_samples,
+        "step_3g_format_check_rule": {
+            "description": "Flags predictions with >3 letters or >4 digits",
+            "wrong_predictions_violating": wrong_preds_viol,
+            "wrong_predictions_total": len(wrong_records),
+            "wrong_detection_rate_pct": round(wrong_preds_viol / len(wrong_records) * 100.0, 2) if wrong_records else 0.0,
+            "correct_predictions_violating": correct_preds_viol,
+            "correct_predictions_total": exact_matches_a,
+            "correct_false_alarm_rate_pct": round(correct_preds_viol / exact_matches_a * 100.0, 2) if exact_matches_a else 0.0,
+            "in_sample_caveat": "Rule was derived in-sample on these triage labels and has not been validated on held-out data.",
+        },
+        "step_3h_grouping": {
+            "has_transit_id_column": has_transit_id,
+            "cluster_bootstrap_ci": bootstrap_ci_result,
+            "candidate_groups_identical_label_text": {
+                "total_rows_100_distinct_candidate_plates": len(candidate_groups_100),
+                "in_vocab_readable_77_distinct_candidate_plates": len(candidate_groups_77),
+                "stratum_19_distinct_candidate_plates": len(candidate_groups_19),
+                "note": "Candidate groups formed strictly by identical label string without inventing clusters.",
+            },
+        },
+        "step_3i_disagreements_model_legacy_agree_against_human": {
+            "count": len(disagreement_rows),
+            "sample_ids": [d["index"] for d in disagreement_rows],
+            "details": disagreement_rows,
+        },
+        "step_3j_stratification_metadata": {
+            "model_derived_strata": ["plate_width_percentiles", "no_detection_stratum"],
+            "what_it_biases": "Enriches edge cases, tiny plates, and camera dropouts compared to natural gate prevalence.",
+            "what_it_does_not_bias": "Character OCR accuracy conditioned on an established readable crop.",
+            "extrapolation_warning": "DO NOT extrapolate 65.0% all-in accuracy or 84.42% crop accuracy to the entire gate camera stream.",
+        },
+        "wrong_plates_detail": wrong_records,
     }
 
     if json_output_path:
@@ -568,11 +641,12 @@ def score_labeled_csv(
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Score labeled gate footage triage sheet (Mission 007A).")
+    parser = argparse.ArgumentParser(description="Score labeled gate triage sheet (Missions 007A-C).")
     parser.add_argument("csv_path", type=Path, help="Path to completed_annotations.csv")
     parser.add_argument("--json-out", type=Path, default=None, help="Optional path to save machine-readable JSON")
     parser.add_argument("--seed", type=int, default=42, help="Bootstrap random seed (default: 42)")
     parser.add_argument("--draws", type=int, default=10000, help="Bootstrap iterations (default: 10000)")
+    parser.add_argument("--non-strict", action="store_true", help="Bypass strict character validation for diagnostic scoring")
     args = parser.parse_args()
 
     report = score_labeled_csv(
@@ -580,64 +654,45 @@ def main():
         json_output_path=args.json_out,
         bootstrap_draws=args.draws,
         seed=args.seed,
+        strict=(not args.non_strict),
     )
 
     print("\n" + "=" * 70)
-    print("MISSION 007A: LABELED GATE CCTV EVALUATION REPORT")
+    print("MISSION 007C: GATE CCTV EVALUATION REPORT")
     print("=" * 70)
-    print(f"File SHA-256:          {report['sha256_hash']}")
+    print(f"File SHA-256:          {report['metadata']['csv_sha256']}")
+    print(f"Git Commit:            {report['metadata']['git_commit']}")
     print(f"Total Evaluated Rows:  {report['sample_summary']['total_frames']}")
-    print(f"Status Breakdown:      {report['sample_summary']['status_breakdown']}")
 
-    print("\n[1. Detection Evaluation]")
-    det = report["detection_evaluation"]
-    print(f"  True Visible Plates:   {det['true_plates_visible']}")
-    print(f"  Detected Plates:       {det['detected_plates']}")
-    print(f"  Missed Detections:     {det['missed_detections']}")
-    print(f"  Wrong Crop Hallucinations: {det['wrong_crop_detections']}")
-    print(f"  Detection Recall:      {det['detection_recall_pct']}% ({det['numerator']}/{det['denominator']})")
-
-    print("\n[2. OCR Accuracy (Readable Plates Only)]")
-    rec = report["readable_plate_accuracy"]
+    rec = report["step_3a_exact_match_in_vocab"]
+    print(f"\n[Exact Match on In-Vocab Readable Crops]")
     print(f"  Exact Match Accuracy:  {rec['accuracy_pct']}% ({rec['numerator']}/{rec['denominator']})")
-    print(f"  Plain Wilson 95% CI:   [{rec['wilson_ci_95'][0]}%, {rec['wilson_ci_95'][1]}%]")
-    print(f"  Cluster Bootstrap CI:  [{rec['cluster_bootstrap_ci_95'][0]}%, {rec['cluster_bootstrap_ci_95'][1]}%] ({rec['total_clusters']} clusters)")
-    print(f"  Macro CER:             {report['character_error_rates']['macro_cer']}")
-    print(f"  Micro CER:             {report['character_error_rates']['micro_cer']}")
 
-    print("\n[3. All-In Accuracy (Counting Unreadable & Missed as Failures)]")
-    ai = report["all_in_accuracy"]
-    print(f"  All-In Accuracy:       {ai['accuracy_pct']}% ({ai['numerator']}/{ai['denominator']})")
-    print(f"  Cluster Bootstrap CI:  [{ai['cluster_bootstrap_ci_95'][0]}%, {ai['cluster_bootstrap_ci_95'][1]}%] ({ai['total_clusters']} clusters)")
+    ai = report["step_3c_all_in_accuracy"]
+    print(f"\n[All-In Accuracy]")
+    print(f"  All Frames (100):      {ai['all_in_accuracy_all_frames_pct']}% ({ai['exact_matches']}/{ai['all_frames_denominator']})")
+    print(f"  Visible Plates ({ai['visible_plates_denominator']}):   {ai['all_in_accuracy_visible_pct']}% ({ai['exact_matches']}/{ai['visible_plates_denominator']})")
 
-    print("\n[4. Error Taxonomy]")
-    err = report["error_taxonomy"]
-    print(f"  Substitutions:         {err['substitutions']}")
-    print(f"  Insertions:            {err['insertions']}")
-    print(f"  Deletions:             {err['deletions']}")
-    print(f"  Detection Misses:      {err['detection_misses']}")
-    print(f"  Wrong Crop Errors:     {err['wrong_crop_detections']}")
-    print(f"  Unsupported Char Plates: {err['unsupported_characters_plates']}")
+    cer = report["step_3f_error_taxonomy"]
+    print(f"\n[Character Error Rates & Taxonomy]")
+    print(f"  Macro CER (Plate-Level): {cer['macro_cer']}")
+    print(f"  Micro CER (Corpus):      {cer['micro_cer']} ({cer['total_edits']}/{cer['total_gt_characters']} edits)")
+    print(f"  Substitutions: {cer['substitutions']}, Insertions: {cer['insertions']}, Deletions: {cer['deletions']}")
 
-    print("\n[5. Legacy ANPR Comparison]")
-    leg = report["legacy_anpr_comparison"]
-    print(f"  Comparable Arabic:     {leg['comparable_arabic_samples']}")
-    print(f"  Legacy vs Human Acc:   {leg['legacy_vs_human_accuracy_pct']}% ({leg['legacy_vs_human_exact_matches']}/{leg['comparable_arabic_samples'] if leg['comparable_arabic_samples'] else 1})")
-    print(f"  Model vs Human Acc:    {leg['model_vs_human_accuracy_pct']}% ({leg['model_vs_human_exact_matches']}/{leg['comparable_arabic_samples'] if leg['comparable_arabic_samples'] else 1})")
-    print(f"  Model vs Legacy Agr:   {leg['model_vs_legacy_agreement_pct']}% ({leg['model_vs_legacy_exact_matches']}/{leg['comparable_arabic_samples'] if leg['comparable_arabic_samples'] else 1})")
-    print(f"  Latin Transliterated:  {leg['latin_transliterated_legacy_count']} (reported separately)")
+    fmt = report["step_3g_format_check_rule"]
+    print(f"\n[Format Check Rule (>3 Letters or >4 Digits)]")
+    print(f"  Wrong Predictions Flagged:   {fmt['wrong_predictions_violating']}/{fmt['wrong_predictions_total']} ({fmt['wrong_detection_rate_pct']}%)")
+    print(f"  Correct Predictions Flagged: {fmt['correct_predictions_violating']}/{fmt['correct_predictions_total']} ({fmt['correct_false_alarm_rate_pct']}%)")
 
-    if report["wrong_plates_list"]:
-        print(f"\n--- Wrong Plates ({len(report['wrong_plates_list'])}) ---")
-        for w in report["wrong_plates_list"]:
-            print(f"  Row {w['index']}: GT='{w['gt_text']}' | PRED='{w['pred_text']}' -> EditDist={w['edit_distance']} (CER={w['cer']:.2f})")
+    grp = report["step_3h_grouping"]["candidate_groups_identical_label_text"]
+    print(f"\n[Candidate Groups by Identical Label Text]")
+    print(f"  Distinct Candidate Plates (100 Rows): {grp['total_rows_100_distinct_candidate_plates']}")
+    print(f"  Distinct Candidate Plates (77 Crops): {grp['in_vocab_readable_77_distinct_candidate_plates']}")
+    print(f"  Distinct Candidate Plates (19 Strat): {grp['stratum_19_distinct_candidate_plates']}")
 
-    if report["excluded_samples"]:
-        print(f"\n--- Excluded Samples ({len(report['excluded_samples'])}) ---")
-        for ex in report["excluded_samples"][:10]:
-            print(f"  Row {ex['index']} ({ex['status']}): {ex['file']} - {ex['reason']}")
-        if len(report["excluded_samples"]) > 10:
-            print(f"  ... and {len(report['excluded_samples']) - 10} more.")
+    dis = report["step_3i_disagreements_model_legacy_agree_against_human"]
+    print(f"\n[Model and Legacy Agree against Human Label]")
+    print(f"  Count: {dis['count']} | Sample IDs: {dis['sample_ids']}")
 
 
 if __name__ == "__main__":

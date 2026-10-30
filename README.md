@@ -246,3 +246,14 @@ To start the server:
 .\.venv\Scripts\python.exe vehicle_intelligence/api/app.py --host 0.0.0.0 --port 8000
 ```
 
+---
+
+## Inference Configuration & NMS Standards
+
+The baseline end-to-end ALPR pipeline (`EndToEndALPRPipeline`) operates under the following documented configuration:
+- **Plate Detection**: `conf = 0.25`, `iou = 0.70`, `imgsz = 640`, `agnostic_nms = False`
+- **Character Recognition (27 Classes)**: `conf = 0.25`, `iou = 0.70`, `imgsz = 320`, `agnostic_nms = False`
+- **Default `agnostic_nms = False` Policy**:
+  Class-aware Non-Maximum Suppression (`agnostic_nms=False`) is the canonical, frozen default. It ensures that spatially proximate or overlapping character detections belonging to different classes (e.g., adjacent digits and closely kerned Arabic letter strokes) are not suppressed across distinct classes. This setting reproduces the audited 93.38% (282/302) end-to-end exact match performance.
+
+
