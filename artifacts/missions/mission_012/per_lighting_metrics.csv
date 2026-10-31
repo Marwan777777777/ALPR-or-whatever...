@@ -1,0 +1,10 @@
+model_id,lighting_regime,frame_count,frames_with_detection,frame_detection_yield_pct,true_positives,false_positives,false_negatives,precision,recall,f1_score
+yolov8n,NIGHT_IR,10,0,0.0,0,0,10,0.0,0.0,0.0
+yolov8n,DAYLIGHT,209,199,95.22,180,53,34,0.7725,0.8411,0.8054
+yolov8n,EVENING_IR,121,28,23.14,20,15,100,0.5714,0.1667,0.2581
+yolov8m,NIGHT_IR,10,3,30.0,2,1,8,0.6667,0.2,0.3077
+yolov8m,DAYLIGHT,209,209,100.0,195,87,19,0.6915,0.9112,0.7863
+yolov8m,EVENING_IR,121,60,49.59,47,36,73,0.5663,0.3917,0.4631
+rtdetr-l,NIGHT_IR,10,9,90.0,5,7,5,0.4167,0.5,0.4545
+rtdetr-l,DAYLIGHT,209,209,100.0,196,168,18,0.5385,0.9159,0.6782
+rtdetr-l,EVENING_IR,121,91,75.21,61,102,59,0.3742,0.5083,0.4311

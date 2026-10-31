@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mission 012: Independent Vehicle Ground Truth Annotation Tool</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header>
+    <div class="brand">
+      <span class="brand-badge">MISSION 012</span>
+      <h1>Egyptian Gate Vehicle Ground Truth Tool</h1>
+    </div>
+
+    <div class="header-nav">
+      <button id="btnPrev" class="btn" title="Previous Frame (P or [)">◀ Prev</button>
+      <div class="sample-counter">
+        <span id="sampleIndexText">Sample 1 of 340</span>
+      </div>
+      <button id="btnNext" class="btn" title="Next Frame (N or ])">Next ▶</button>
+      <input type="number" id="jumpIndex" min="1" max="340" style="width: 65px; background: var(--bg-card); border: 1px solid var(--border); color: #fff; padding: 5px; border-radius: 4px; text-align: center;" placeholder="Jump...">
+      <button id="btnJump" class="btn btn-sm">Go</button>
+      <button id="btnNextUnannotated" class="btn btn-sm" style="color: var(--warning); border-color: var(--warning);" title="Jump to next frame with no annotations">Next Unannotated</button>
+    </div>
+
+    <div class="header-actions">
+      <button id="btnSave" class="btn btn-primary" title="Save annotations (S)">💾 Save Annotations</button>
+      <button id="btnExportJSON" class="btn btn-sm" title="Download JSON ground truth">Export JSON</button>
+      <button id="btnExportCSV" class="btn btn-sm" title="Download CSV ground truth">Export CSV</button>
+      <input type="file" id="importFileInput" accept=".json" style="display: none;">
+      <button id="btnImportJSON" class="btn btn-sm" title="Load existing JSON annotations">Import JSON</button>
+    </div>
+  </header>
+
+  <!-- Main Workspace -->
+  <div class="workspace">
+
+    <!-- Interactive Canvas Area -->
+    <div class="canvas-container" id="canvasContainer">
+      <canvas id="annotationCanvas"></canvas>
+
+      <!-- Floating Canvas Enhancements & Navigation Toolbar -->
+      <div class="canvas-toolbar">
+        <div class="toolbar-group">
+          <span class="toolbar-label">Zoom</span>
+          <button id="btnZoomOut" class="btn btn-sm">-</button>
+          <span id="zoomLevelText" style="font-size: 0.8rem; font-weight: 700; min-width: 45px; text-align: center;">100%</span>
+          <button id="btnZoomIn" class="btn btn-sm">+</button>
+          <button id="btnZoomFit" class="btn btn-sm">Fit</button>
+        </div>
+
+        <div class="toolbar-group slider-ctrl">
+          <span class="toolbar-label">Brightness</span>
+          <input type="range" id="brightnessSlider" min="50" max="250" value="100">
+        </div>
+
+        <div class="toolbar-group slider-ctrl">
+          <span class="toolbar-label">Contrast</span>
+          <input type="range" id="contrastSlider" min="50" max="300" value="100">
+          <button id="btnResetEnhance" class="btn btn-sm" title="Reset image enhancements">↺</button>
+        </div>
+
+        <div class="toolbar-group">
+          <button id="btnTogglePan" class="btn btn-sm" title="Toggle Pan mode (Space + Drag)">✋ Pan</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Sidebar Controls -->
+    <div class="sidebar">
+
+      <!-- Sample Metadata -->
+      <div class="sidebar-section">
+        <div class="section-title">
+          <span>Target Gate Capture</span>
+          <span id="lightingBadge" class="badge badge-daylight">DAYLIGHT</span>
+        </div>
+        <div class="sample-meta">
+          <div class="meta-item">
+            <span class="meta-key">Anonymous ID</span>
+            <span class="meta-val" id="metaSampleId">SAMPLE-001</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-key">Capture Time</span>
+            <span class="meta-val" id="metaTimestamp">01:39:42</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-key">Resolution</span>
+            <span class="meta-val" id="metaResolution">3840 × 2160</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-key">Annotation Status</span>
+            <span class="meta-val" id="metaAnnotStatus" style="color: var(--warning);">Pending</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vehicle Boxes in Frame -->
+      <div class="sidebar-section">
+        <div class="section-title">
+          <span>Vehicles In Frame (<span id="boxCount">0</span>)</span>
+          <button id="btnMarkEmpty" class="btn btn-sm btn-danger" title="Mark this frame as having no vehicle">🚫 No Vehicle</button>
+        </div>
+        <div class="box-list" id="boxList">
+          <!-- Box items populated dynamically -->
+        </div>
+        <div id="emptyBanner" class="empty-frame-banner" style="display: none;">
+          ✓ Marked as Empty Frame (No vehicles present)
+        </div>
+      </div>
+
+      <!-- Active Box Property Editor -->
+      <div class="sidebar-section" id="boxEditorSection">
+        <div class="section-title">
+          <span>Vehicle Attributes</span>
+          <button id="btnDeleteBox" class="btn btn-sm btn-danger" title="Delete selected box (Del)">Delete Box</button>
+        </div>
+
+        <!-- Class Selection -->
+        <div class="form-group">
+          <label class="form-label">Vehicle Body Class</label>
+          <div class="class-grid" id="classGrid">
+            <button class="class-btn" data-class="heavy_truck">
+              <span style="color: var(--cls-heavy-truck);">■</span> Heavy Truck (3)
+            </button>
+            <button class="class-btn" data-class="light_commercial">
+              <span style="color: var(--cls-light-commercial);">■</span> Light Commercial (2)
+            </button>
+            <button class="class-btn" data-class="passenger_car">
+              <span style="color: var(--cls-passenger-car);">■</span> Passenger Car (1)
+            </button>
+            <button class="class-btn" data-class="bus">
+              <span style="color: var(--cls-bus);">■</span> Bus (4)
+            </button>
+            <button class="class-btn" data-class="microbus_van">
+              <span style="color: var(--cls-microbus-van);">■</span> Microbus/Van (5)
+            </button>
+            <button class="class-btn" data-class="motorcycle">
+              <span style="color: var(--cls-motorcycle);">■</span> Motorcycle (6)
+            </button>
+            <button class="class-btn" data-class="tricycle">
+              <span style="color: var(--cls-tricycle);">■</span> Tricycle (7)
+            </button>
+            <button class="class-btn" data-class="other_vehicle">
+              <span style="color: var(--cls-other-vehicle);">■</span> Other Vehicle (8)
+            </button>
+          </div>
+        </div>
+
+        <!-- Visibility / Occlusion Category -->
+        <div class="form-group">
+          <label class="form-label">Visibility / Occlusion</label>
+          <div class="visibility-grid" id="visibilityGrid">
+            <button class="vis-btn selected" data-vis="fully_visible">Fully Visible</button>
+            <button class="vis-btn" data-vis="partially_visible">Partially Visible</button>
+            <button class="vis-btn" data-vis="heavily_occluded">Heavily Occluded</button>
+            <button class="vis-btn" data-vis="truncated_by_frame">Truncated by Frame</button>
+          </div>
+        </div>
+
+        <!-- Adjudication Flag & Notes -->
+        <div class="form-group">
+          <label class="checkbox-group">
+            <input type="checkbox" id="chkAdjudication">
+            <span style="font-size: 0.82rem; font-weight: 600; color: var(--warning);">Flag for Adjudication (Ambiguous)</span>
+          </label>
+          <textarea id="boxNotes" class="notes-input" placeholder="Annotator notes or ambiguity rationale..."></textarea>
+        </div>
+
+        <!-- Coordinates readout -->
+        <div style="font-size: 0.72rem; color: var(--text-muted); display: flex; justify-content: space-between; margin-top: 6px;">
+          <span>Box: <span id="coordsReadout">[x1, y1, x2, y2]</span></span>
+          <span>Size: <span id="sizeReadout">0 × 0 px</span></span>
+        </div>
+      </div>
+
+      <!-- Dataset Progress Stats -->
+      <div class="sidebar-section" style="margin-top: auto;">
+        <div class="section-title">
+          <span>Benchmark Progress</span>
+          <span id="progressPercent" style="color: var(--accent);">0%</span>
+        </div>
+        <div style="background: var(--bg-card); border-radius: 4px; height: 8px; overflow: hidden; margin-bottom: 10px;">
+          <div id="progressBar" style="background: var(--accent); width: 0%; height: 100%; transition: width 0.3s ease;"></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 0.78rem;">
+          <div>Annotated: <strong id="statAnnotated">0 / 340</strong></div>
+          <div>Total Boxes: <strong id="statBoxes">0</strong></div>
+          <div>Flagged: <strong id="statFlagged" style="color: var(--warning);">0</strong></div>
+          <div>Empty: <strong id="statEmpty" style="color: var(--danger);">0</strong></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom Status Bar -->
+  <footer>
+    <div class="footer-stats">
+      <span>Independence Protected: <strong style="color: var(--success);">Zero Model Predictions Exposed</strong></span>
+      <span>Target Domain: <strong>Egyptian Commercial Barrier-Gate Ingress</strong></span>
+    </div>
+    <div class="footer-hotkeys">
+      <span><span class="kbd">Click & Drag</span> Draw Box</span>
+      <span><span class="kbd">1-8</span> Set Class</span>
+      <span><span class="kbd">Del</span> Delete</span>
+      <span><span class="kbd">P</span>/ <span class="kbd">N</span> Prev/Next</span>
+      <span><span class="kbd">S</span> Save</span>
+    </div>
+  </footer>
+
+  <script src="annotator.js"></script>
+</body>
+</html>

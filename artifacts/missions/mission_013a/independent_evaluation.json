@@ -1,0 +1,168 @@
+{
+  "evaluation_title": "Independent Evaluation of Fine-Tuned YOLOv8m on Held-Out Test Set",
+  "checkpoint": "artifacts/missions/mission_013/checkpoints/yolov8m_finetuned_best.pt",
+  "checkpoint_sha256": "b2e462fe4b06f1aa5479d615445c2246941d6ea1a91ebdb235e6b056788ca03d",
+  "dataset_split": "development_test_v1 (72 frames)",
+  "ground_truth_instances": 72,
+  "predictions_total": 79,
+  "primary_metrics": {
+    "true_positives": 70,
+    "false_positives": 9,
+    "false_negatives": 2,
+    "precision_50": 0.8861,
+    "recall_50": 0.9722,
+    "f1_score_50": 0.9272,
+    "coco_map50": 0.9697,
+    "coco_map50_95": 0.8884,
+    "false_positives_per_frame": 0.125,
+    "frame_detection_yield_pct": 100.0
+  },
+  "ap_across_10_iou_thresholds": {
+    "AP@0.50": 0.9697,
+    "AP@0.55": 0.9697,
+    "AP@0.60": 0.9697,
+    "AP@0.65": 0.9697,
+    "AP@0.70": 0.9697,
+    "AP@0.75": 0.9505,
+    "AP@0.80": 0.94,
+    "AP@0.85": 0.94,
+    "AP@0.90": 0.8423,
+    "AP@0.95": 0.3627
+  },
+  "lighting_breakdown": {
+    "NIGHT_IR": {
+      "frames": 2,
+      "detected_frames": 2,
+      "yield_pct": 100.0,
+      "gt_instances": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    "DAYLIGHT": {
+      "frames": 44,
+      "detected_frames": 44,
+      "yield_pct": 100.0,
+      "gt_instances": 45,
+      "tp": 43,
+      "fp": 7,
+      "fn": 2,
+      "precision": 0.86,
+      "recall": 0.9556
+    },
+    "EVENING_IR": {
+      "frames": 26,
+      "detected_frames": 26,
+      "yield_pct": 100.0,
+      "gt_instances": 25,
+      "tp": 25,
+      "fp": 2,
+      "fn": 0,
+      "precision": 0.9259,
+      "recall": 1.0
+    }
+  },
+  "class_breakdown": {
+    "heavy_truck": {
+      "gt_instances": 71,
+      "tp": 70,
+      "recall": 0.9859
+    },
+    "passenger_car": {
+      "gt_instances": 1,
+      "tp": 0,
+      "recall": 0.0
+    }
+  },
+  "visibility_breakdown": {
+    "truncated_by_frame": {
+      "gt_instances": 71,
+      "tp": 70,
+      "recall": 0.9859
+    },
+    "heavily_occluded": {
+      "gt_instances": 1,
+      "tp": 0,
+      "recall": 0.0
+    }
+  },
+  "validation_split_metrics": {
+    "split_name": "validation (72 frames)",
+    "ground_truth_instances": 72,
+    "predictions_total": 76,
+    "true_positives": 70,
+    "false_positives": 6,
+    "false_negatives": 2,
+    "precision_50": 0.9211,
+    "recall_50": 0.9722,
+    "f1_score_50": 0.9459,
+    "coco_map50": 0.9699,
+    "coco_map50_95": 0.8984
+  },
+  "empty_frame_audit": {
+    "empty_frame_filename": "20261015_214003_770_TruckEntry_qmd7185_L84_C92.jpg",
+    "empty_frame_sample_id": "sample_323",
+    "ground_truth_boxes_count": 0,
+    "predicted_boxes_count": 1,
+    "tp": 0,
+    "fp": 1,
+    "fn": 0,
+    "false_alarm_details": {
+      "class": "vehicle",
+      "confidence": 0.7082,
+      "bbox_xyxy": [
+        265.38,
+        0.34,
+        1949.2,
+        958.49
+      ],
+      "description": "False alarm on barrier gate overhead structural canopy during empty gate frame."
+    }
+  },
+  "failure_modes_audit": {
+    "false_negatives_count": 2,
+    "false_negatives_details": [
+      {
+        "sample_id": "sample_089",
+        "filename": "20261015_122545_886_TruckEntry_\u0642\u0628\u06411914_L94_C96.jpg",
+        "missed_class": "passenger_car",
+        "missed_box_xyxy": [
+          0.0,
+          0.0,
+          676.4,
+          350.0
+        ],
+        "visibility": "heavily_occluded",
+        "reason": "Queued passenger car heavily occluded in upper background behind lead heavy truck; dataset contains only 1 passenger car instance in test set."
+      },
+      {
+        "sample_id": "sample_195",
+        "filename": "20261015_150858_326_TruckEntry_\u0631\u062f\u06336815_L95_C96.jpg",
+        "missed_class": "heavy_truck",
+        "missed_box_xyxy": [
+          2323.4,
+          0.0,
+          3840.0,
+          1152.0
+        ],
+        "visibility": "truncated_by_frame",
+        "reason": "Severe edge truncation where vehicle enters ingress lane; model predicted box slightly below 0.25 conf threshold."
+      }
+    ],
+    "false_positives_count": 9,
+    "false_positives_summary": "9 total false alarms across 72 frames (0.125 FP/frame), occurring exclusively on metal barrier gate stanchions, toll booth canopy trusses, and road curb boundaries in DAYLIGHT (7) and EVENING_IR (2). NIGHT_IR had 0 false positives."
+  },
+  "implementation_audit": {
+    "coordinate_format": "xyxy absolute pixel coordinates verified across GT and model predictions; no xyxy vs xywh mismatch.",
+    "normalization": "Absolute pixel dimensions (0-3840, 0-2160) maintained consistently.",
+    "class_mapping": "Consistently mapped single domain class 'vehicle' (id=0) to all annotated vehicle instances.",
+    "iou_calculation": "Standard intersection over union computed with float precision.",
+    "matching_uniqueness": "Strict greedy matching by descending confidence ensures each GT box is matched at most once.",
+    "duplicate_prediction_handling": "Duplicate/unmatched predictions are strictly counted as False Positives.",
+    "ap_integration": "Official COCO 101-point interpolated precision-recall integration verified.",
+    "ap50_95_thresholds": "All 10 IoU thresholds (0.50:0.05:0.95) are evaluated and averaged.",
+    "empty_frame_handling": "Gracefully evaluated without zero-division; empty frame predictions registered as FP."
+  }
+}

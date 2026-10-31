@@ -32,4 +32,12 @@ privacy:
   anonymize_after_days: 7
   audit_logging_enabled: true
 
+paths:
+  data_dir: "data"
+  gate_dir: null
+  weights_dir: "weights"
+  artifacts_dir: "artifacts"
+  golden_dir: "tests/golden"
+
 streams: []
+

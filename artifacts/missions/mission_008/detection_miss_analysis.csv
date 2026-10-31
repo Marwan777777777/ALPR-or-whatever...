@@ -1,0 +1,19 @@
+﻿sample_id,image_dimensions,approximate_plate_visibility,likely_failure_category,human_locatable,plausibly_fixable_by_detector_improvement,detailed_notes
+sample_002,3840x2160,yes,Small or unusual plate,yes,yes,Plate mounted low on truck front chassis; downsampled from 4K to 640x640 reduces plate width below detector threshold. Fixable via multi-scale inference or ROI tile slicing.
+sample_004,3840x2160,partial,Plate outside frame,partial,no,"Truck positioned at extreme left frame boundary; left-side letters cropped out of camera field of view. Physical camera framing limitation, not detector fault."
+sample_006,3840x2160,partial,Oblique angle,yes,yes,Truck entering at steep oblique angle at extreme right border (x=3507). Plate width heavily compressed by perspective; detected at 1280 resolution with conf=0.33.
+sample_008,3840x2160,yes,Oblique angle,yes,yes,Steep turn entering gate at right border (x=3543). Detected with high confidence (conf=0.78) when inference resolution increased to 1280.
+sample_010,3840x2160,partial,Oblique angle,yes,yes,Persistent steep oblique yaw angle entering lane (x=3542). Successfully detected at 1280 resolution with conf=0.81.
+sample_012,3840x2160,yes,Low contrast / IR reflection,yes,yes,Heavy dust and road grime on lower truck bumper creating very low edge contrast against vehicle grille.
+sample_016,3840x2160,yes,Small or unusual plate,yes,yes,Truck entering further back in lane; plate width in 4K image is small (<120px) and lost during 640 downsampling.
+sample_018,3840x2160,yes,Small or unusual plate,yes,yes,Tricycle vehicle featuring square (two-line) plate mounted on non-standard side bracket. Standard detector bias toward rectangular car bumper plates misses this aspect ratio.
+sample_020,3840x2160,yes,Motion blur,yes,yes,Horizontal motion smearing across bumper area as vehicle transits quickly before gate arm.
+sample_022,3840x2160,yes,Plate occlusion,yes,yes,"Plate mounted in deep recess under truck bumper overhang, casting a heavy shadow across top character half."
+sample_024,3840x2160,yes,Small or unusual plate,yes,yes,Plate width 155px in 4K frame; detected with conf=0.86 at 1280 resolution. Direct consequence of 640 downsampling artifact on 4K camera.
+sample_026,3840x2160,yes,Oblique angle,yes,yes,"Truck turning sharply with ~60 deg horizontal yaw, compressing plate bounding box aspect ratio to 1.3."
+sample_028,3840x2160,yes,Motion blur,yes,yes,Noticeable vehicle motion blur and camera shutter lag softening plate border edges.
+sample_030,3840x2160,yes,Small or unusual plate,yes,yes,Square tricycle plate with OOV letter Kaf; successfully detected at 1280 resolution with conf=0.74.
+sample_032,3840x2160,yes,Headlight glare / blooming,yes,yes,Nighttime high-beam truck headlight glare creating an 8.35% saturation bloom directly over the front bumper.
+sample_034,3840x2160,partial,Headlight glare / blooming,partial,yes,Intense headlight blooming obscuring right half of plate; requires local tone mapping or adaptive exposure control.
+sample_036,3840x2160,partial,Low contrast / IR reflection,partial,yes,Monochrome IR night capture with severe retroreflective plate blowout and dark chassis shadow.
+sample_038,3840x2160,yes,Low contrast / IR reflection,yes,yes,Night IR capture of entering tricycle; detected at 1280 resolution with conf=0.68. Affected by IR grain and sensor noise.

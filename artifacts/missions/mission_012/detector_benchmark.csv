@@ -1,0 +1,4 @@
+model_id,architecture,parameters_m,license,total_frames_evaluated,frame_level_yield_pct,object_precision_50,object_recall_50,f1_score_50,mAP_50,mAP_50_95,false_positives_per_image,mean_gpu_latency_ms,throughput_fps
+yolov8n,YOLOv8 Nano (CNN),3.2,AGPL-3.0,340,66.76,0.7463,0.5814,0.6536,0.7463,0.1653,0.2,27.99,35.7
+yolov8m,YOLOv8 Medium (CNN),25.9,AGPL-3.0,340,80.0,0.663,0.7093,0.6854,0.663,0.1582,0.3647,35.23,28.4
+rtdetr-l,RT-DETR Large (Transformer),32.0,Apache-2.0,340,90.88,0.4861,0.7616,0.5934,0.4861,0.1179,0.8147,57.1,17.5

@@ -1,0 +1,254 @@
+{
+  "metadata": {
+    "mission": "MISSION 008",
+    "objective": "Objective 1: Controlled NMS Correction",
+    "eval_date": "2026-10-30",
+    "hardware": {
+      "device": "cuda:0",
+      "gpu_name": "NVIDIA GeForce RTX 4060",
+      "total_inference_time_seconds": 6.2
+    },
+    "model_checkpoints": {
+      "plate_detector": {
+        "path": "artifacts\\runs\\detect\\ealpr_cleaned_yolov8n\\weights\\best.pt",
+        "sha256": "1d9ab549c626ee1b708b3439ad63320515c6de105283a5c980b3c5952337b279"
+      },
+      "character_recognizer": {
+        "path": "artifacts\\runs\\detect_chars\\ealpr_characters_yolov8n\\weights\\best.pt",
+        "sha256": "875b76e18b1df480829f84809e1f26d2c38d2c92c7f66d3bd85492db14488319"
+      }
+    },
+    "fixed_parameters": {
+      "conf_thresh": 0.25,
+      "iou_thresh": 0.7,
+      "imgsz": 320
+    }
+  },
+  "target_5_corrected_crops_verification": [
+    {
+      "row": 25,
+      "sample_id": "sample_025",
+      "ground_truth": "ىرع ٨٢٣١",
+      "pred_agnostic_false": "ىرعم ٨٢٣١",
+      "exact_agnostic_false": false,
+      "pred_agnostic_true": "ىرع ٨٢٣١",
+      "exact_agnostic_true": true
+    },
+    {
+      "row": 45,
+      "sample_id": "sample_045",
+      "ground_truth": "سلج ٥٩٧٩",
+      "pred_agnostic_false": "سلىج ٥٩٧٩",
+      "exact_agnostic_false": false,
+      "pred_agnostic_true": "سلج ٥٩٧٩",
+      "exact_agnostic_true": true
+    },
+    {
+      "row": 47,
+      "sample_id": "sample_047",
+      "ground_truth": "ربع ٢٥٣٨",
+      "pred_agnostic_false": "ربع ٢٥٦٣٨",
+      "exact_agnostic_false": false,
+      "pred_agnostic_true": "ربع ٢٥٣٨",
+      "exact_agnostic_true": true
+    },
+    {
+      "row": 94,
+      "sample_id": "sample_094",
+      "ground_truth": "سلج ١٤١٩",
+      "pred_agnostic_false": "سصلج ١٤١٩",
+      "exact_agnostic_false": false,
+      "pred_agnostic_true": "سلج ١٤١٩",
+      "exact_agnostic_true": true
+    },
+    {
+      "row": 96,
+      "sample_id": "sample_096",
+      "ground_truth": "أجس ٨٢١٤",
+      "pred_agnostic_false": "أجسأ ٨٢١٤",
+      "exact_agnostic_false": false,
+      "pred_agnostic_true": "أجس ٨٢١٤",
+      "exact_agnostic_true": true
+    }
+  ],
+  "historical_baseline_agnostic_false": {
+    "agnostic_nms": false,
+    "total_crops_evaluated": 81,
+    "in_vocab_readable_denominator": 77,
+    "exact_matches_numerator": 67,
+    "exact_match_accuracy_pct": 87.01,
+    "total_edit_distance": 11,
+    "total_gt_characters": 514,
+    "micro_cer": 0.0214,
+    "macro_cer": 0.021,
+    "insertions": 10,
+    "deletions": 1,
+    "substitutions": 0,
+    "wrong_plates_count": 10,
+    "wrong_plates_details": [
+      {
+        "row": 25,
+        "sample_id": "sample_025",
+        "gt": "ىرع٨٢٣١",
+        "pred": "ىرعم٨٢٣١",
+        "edit_distance": 1,
+        "insertions": 1,
+        "deletions": 0,
+        "substitutions": 0
+      },
+      {
+        "row": 41,
+        "sample_id": "sample_041",
+        "gt": "ربأ٤٩٩٢",
+        "pred": "ربأأ٤٩٩٢",
+        "edit_distance": 1,
+        "insertions": 1,
+        "deletions": 0,
+        "substitutions": 0
+      },
+      {
+        "row": 45,
+        "sample_id": "sample_045",
+        "gt": "سلج٥٩٧٩",
+        "pred": "سلىج٥٩٧٩",
+        "edit_distance": 1,
+        "insertions": 1,
+        "deletions": 0,
+        "substitutions": 0
+      },
+      {
+        "row": 47,
+        "sample_id": "sample_047",
+        "gt": "ربع٢٥٣٨",
+        "pred": "ربع٢٥٦٣٨",
+        "edit_distance": 1,
+        "insertions": 1,
+        "deletions": 0,
+        "substitutions": 0
+      },
+      {
+        "row": 68,
+        "sample_id": "sample_068",
+        "gt": "فھو٦٨٣",
+        "pred": "فھو٦٨٣٦",
+        "edit_distance": 1,
+        "insertions": 1,
+        "deletions": 0,
+        "substitutions": 0
+      },
+      {
+        "row": 79,
+        "sample_id": "sample_079",
+        "gt": "وىم٧٣٦",
+        "pred": "وىم٧٣٦٦",
+        "edit_distance": 1,
+        "insertions": 1,
+        "deletions": 0,
+        "substitutions": 0
+      },
+      {
+        "row": 83,
+        "sample_id": "sample_083",
+        "gt": "فىر٧٤٦١",
+        "pred": "فىرأ٧٤٦",
+        "edit_distance": 2,
+        "insertions": 1,
+        "deletions": 1,
+        "substitutions": 0
+      },
+      {
+        "row": 84,
+        "sample_id": "sample_084",
+        "gt": "ألع٦٨٧٦",
+        "pred": "أألع٦٨٧٦",
+        "edit_distance": 1,
+        "insertions": 1,
+        "deletions": 0,
+        "substitutions": 0
+      },
+      {
+        "row": 94,
+        "sample_id": "sample_094",
+        "gt": "سلج١٤١٩",
+        "pred": "سصلج١٤١٩",
+        "edit_distance": 1,
+        "insertions": 1,
+        "deletions": 0,
+        "substitutions": 0
+      },
+      {
+        "row": 96,
+        "sample_id": "sample_096",
+        "gt": "أجس٨٢١٤",
+        "pred": "أجسأ٨٢١٤",
+        "edit_distance": 1,
+        "insertions": 1,
+        "deletions": 0,
+        "substitutions": 0
+      }
+    ]
+  },
+  "mission_008_intended_agnostic_true": {
+    "agnostic_nms": true,
+    "total_crops_evaluated": 81,
+    "in_vocab_readable_denominator": 77,
+    "exact_matches_numerator": 73,
+    "exact_match_accuracy_pct": 94.81,
+    "total_edit_distance": 5,
+    "total_gt_characters": 514,
+    "micro_cer": 0.0097,
+    "macro_cer": 0.0096,
+    "insertions": 4,
+    "deletions": 1,
+    "substitutions": 0,
+    "wrong_plates_count": 4,
+    "wrong_plates_details": [
+      {
+        "row": 41,
+        "sample_id": "sample_041",
+        "gt": "ربأ٤٩٩٢",
+        "pred": "ربأأ٤٩٩٢",
+        "edit_distance": 1,
+        "insertions": 1,
+        "deletions": 0,
+        "substitutions": 0
+      },
+      {
+        "row": 79,
+        "sample_id": "sample_079",
+        "gt": "وىم٧٣٦",
+        "pred": "وىم٧٣٦٦",
+        "edit_distance": 1,
+        "insertions": 1,
+        "deletions": 0,
+        "substitutions": 0
+      },
+      {
+        "row": 83,
+        "sample_id": "sample_083",
+        "gt": "فىر٧٤٦١",
+        "pred": "فىرأ٧٤٦",
+        "edit_distance": 2,
+        "insertions": 1,
+        "deletions": 1,
+        "substitutions": 0
+      },
+      {
+        "row": 84,
+        "sample_id": "sample_084",
+        "gt": "ألع٦٨٧٦",
+        "pred": "أألع٦٨٧٦",
+        "edit_distance": 1,
+        "insertions": 1,
+        "deletions": 0,
+        "substitutions": 0
+      }
+    ]
+  },
+  "delta_improvement": {
+    "exact_matches_gain": 6,
+    "exact_match_pct_gain": 7.8,
+    "cer_reduction_pct": 54.67,
+    "insertions_eliminated": 6
+  }
+}

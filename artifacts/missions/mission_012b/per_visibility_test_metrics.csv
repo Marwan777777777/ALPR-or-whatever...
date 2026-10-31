@@ -1,0 +1,7 @@
+model_id,dataset_split,visibility_category,test_instance_count,recalled_instances,recall_50
+yolov8n,held_out_test_set,truncated_by_frame,71,31,0.4366
+yolov8n,held_out_test_set,heavily_occluded,1,0,0.0
+yolov8m,held_out_test_set,truncated_by_frame,71,50,0.7042
+yolov8m,held_out_test_set,heavily_occluded,1,0,0.0
+rtdetr-l,held_out_test_set,truncated_by_frame,71,54,0.7606
+rtdetr-l,held_out_test_set,heavily_occluded,1,0,0.0

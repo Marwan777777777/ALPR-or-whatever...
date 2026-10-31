@@ -1,0 +1,129 @@
+{
+  "objective": "Explain discrepancies in reported pretrained baselines between Mission 012B and Mission 013.",
+  "verified_identical_constants": {
+    "dataset_split": "Held-out test set / development_test_v1 (72 images)",
+    "ground_truth_instances": "72 vehicle annotations in vehicle_ground_truth.json",
+    "resolution": "640x640",
+    "confidence_threshold": 0.25,
+    "iou_matching_threshold": 0.5,
+    "yolov8m_checkpoint_sha256": "5d4a90cdc7a21786cc59cd19778e9eafff836df9e2da32524737c7ee6efe4fe5",
+    "rtdetr_l_checkpoint_sha256": "6de60b10d4bc566f00cda0f5b4d64afe4b66d48dc9695d2171effb7859d8e73f"
+  },
+  "identified_root_causes": {
+    "root_cause_1_secondary_nms": {
+      "description": "Mission 012B executed a secondary OpenCV DNN NMS pass (cv2.dnn.NMSBoxes, score_threshold=0.25, nms_threshold=0.50) on all model predictions. Mission 013 did not apply this secondary pass, relying on Ultralytics raw predictions.",
+      "effect_on_rtdetr_l": "RT-DETR-L is a query-based vision transformer (300 queries) with no internal NMS. Multiple queries activate on large gate stanchions and infrastructure. In Mission 012B, cv2.dnn.NMSBoxes deduplicated these overlapping queries, reducing total predictions from 226 down to 137 (FPs dropped from 171 to 83). In Mission 013, all raw queries were retained as FPs.",
+      "effect_on_yolov8m": "YOLOv8m has internal NMS (IoU=0.7). Secondary cv2.dnn.NMSBoxes at IoU=0.5 further suppressed 11 borderline overlapping detections, reducing predictions from 106 to 95 and FPs from 54 to 45. In 2 instances, suppression altered IoU matching, changing TP from 52 to 50."
+    },
+    "root_cause_2_class_filtering": {
+      "description": "Mission 012B filtered classes [2, 3, 5, 7] (car, motorcycle, bus, truck), excluding bicycle (class 1). Mission 013 evaluated classes [1, 2, 3, 5, 7], including bicycle.",
+      "effect": "In YOLOv8m, 1 false alarm on gate railing was classified as bicycle (conf >= 0.25). This increased YOLOv8m predictions from 106 to 107 and FP from 54 to 55."
+    },
+    "root_cause_3_evaluator_ap_implementation": {
+      "description": "Mission 012B defined 'mAP_50' as literally precision_50 in code (line 301: 'mAP_50': round(precision, 4)), and 'mAP_50_95' as the mean of precision_th * recall_th across thresholds. Mission 013 implemented standard COCO 101-point interpolated PR curve integration.",
+      "effect": "Mission 012B's reported 'mAP50' of 0.5263 was actually its precision (50/95). Mission 013's reported mAP50 of 0.6029 is the true COCO interpolated Average Precision."
+    }
+  },
+  "ablation_matrix": {
+    "yolov8m_pretrained": {
+      "historical_mission_012b_reported": {
+        "tp": 50,
+        "fp": 45,
+        "fn": 22,
+        "precision": 0.5263,
+        "recall": 0.6944,
+        "mAP50": 0.5263,
+        "mAP50_95": 0.0996,
+        "preds": 95
+      },
+      "reproduced_with_012b_logic (classes=[2,3,5,7], NMS=True)": {
+        "predictions_count": 95,
+        "tp": 50,
+        "fp": 45,
+        "fn": 22,
+        "precision": 0.5263,
+        "recall": 0.6944,
+        "f1": 0.5988,
+        "coco_map50": 0.5874,
+        "coco_map50_95": 0.171,
+        "surrogate_map50_012b": 0.5263,
+        "yield_pct": 86.11,
+        "fp_per_frame": 0.625
+      },
+      "reproduced_with_013_logic (classes=[1,2,3,5,7], NMS=False)": {
+        "predictions_count": 107,
+        "tp": 52,
+        "fp": 55,
+        "fn": 20,
+        "precision": 0.486,
+        "recall": 0.7222,
+        "f1": 0.581,
+        "coco_map50": 0.6029,
+        "coco_map50_95": 0.1763,
+        "surrogate_map50_012b": 0.486,
+        "yield_pct": 86.11,
+        "fp_per_frame": 0.7639
+      },
+      "historical_mission_013_reported": {
+        "tp": 52,
+        "fp": 55,
+        "fn": 20,
+        "precision": 0.486,
+        "recall": 0.7222,
+        "mAP50": 0.6029,
+        "mAP50_95": 0.1763,
+        "preds": 107
+      }
+    },
+    "rtdetr_l_pretrained": {
+      "historical_mission_012b_reported": {
+        "tp": 54,
+        "fp": 83,
+        "fn": 18,
+        "precision": 0.3942,
+        "recall": 0.75,
+        "mAP50": 0.3942,
+        "mAP50_95": 0.0817,
+        "preds": 137
+      },
+      "reproduced_with_012b_logic (classes=[2,3,5,7], NMS=True)": {
+        "predictions_count": 137,
+        "tp": 54,
+        "fp": 83,
+        "fn": 18,
+        "precision": 0.3942,
+        "recall": 0.75,
+        "f1": 0.5167,
+        "coco_map50": 0.6496,
+        "coco_map50_95": 0.1847,
+        "surrogate_map50_012b": 0.3942,
+        "yield_pct": 91.67,
+        "fp_per_frame": 1.1528
+      },
+      "reproduced_with_013_logic (classes=[1,2,3,5,7], NMS=False)": {
+        "predictions_count": 227,
+        "tp": 55,
+        "fp": 172,
+        "fn": 17,
+        "precision": 0.2423,
+        "recall": 0.7639,
+        "f1": 0.3679,
+        "coco_map50": 0.6462,
+        "coco_map50_95": 0.1852,
+        "surrogate_map50_012b": 0.2423,
+        "yield_pct": 91.67,
+        "fp_per_frame": 2.3889
+      },
+      "historical_mission_013_reported": {
+        "tp": 55,
+        "fp": 171,
+        "fn": 17,
+        "precision": 0.2434,
+        "recall": 0.7639,
+        "mAP50": 0.6459,
+        "mAP50_95": 0.1849,
+        "preds": 226
+      }
+    }
+  }
+}

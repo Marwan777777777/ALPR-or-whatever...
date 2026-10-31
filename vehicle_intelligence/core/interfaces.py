@@ -10,6 +10,7 @@ from vehicle_intelligence.core.domain import (
     BoundingBox,
     PlateDetection,
     PlateTextResult,
+    PlateVehicleAssociation,
     PermitResult,
     StickerDetection,
     VehicleAttributes,
@@ -171,3 +172,29 @@ class BaseEvidenceAggregator(ABC):
     def finalize_track(self, track_id: int) -> Optional[VehicleSessionSummary]:
         """Finalize and aggregate evidence for a vehicle that has exited or completed transit."""
         pass
+
+
+class BasePlateVehicleAssociator(ABC):
+    """Interface for associating detected license plates with detected vehicles."""
+
+    @abstractmethod
+    def associate(
+        self,
+        plate_detections: List[PlateDetection],
+        vehicle_detections: List[VehicleDetection],
+        frame_id: Optional[int] = None,
+        timestamp: Optional[float] = None,
+    ) -> List[PlateVehicleAssociation]:
+        """Associate license plate observations with vehicle candidates in a frame.
+
+        Args:
+            plate_detections: List of detected license plates.
+            vehicle_detections: List of detected vehicles (ideally with track_id populated).
+            frame_id: Optional video frame index.
+            timestamp: Optional timestamp in seconds.
+
+        Returns:
+            List of PlateVehicleAssociation results for all detected plates.
+        """
+        pass
+

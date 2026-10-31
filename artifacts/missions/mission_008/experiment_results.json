@@ -1,0 +1,229 @@
+{
+  "metadata": {
+    "mission": "MISSION 008",
+    "date": "2026-10-30",
+    "device": "cuda:0",
+    "gpu_name": "NVIDIA GeForce RTX 4060"
+  },
+  "experiment_a_char_nms_iou": {
+    "experiment_name": "Experiment A: Character NMS IoU Threshold Tuning",
+    "validation_tuning_results": [
+      {
+        "iou_thresh": 0.7,
+        "exact_matches": 282,
+        "total_plates": 300,
+        "exact_match_pct": 94.0,
+        "total_edits": 50,
+        "total_gt_characters": 1550,
+        "cer": 0.0323,
+        "insertions": 37,
+        "deletions": 3
+      },
+      {
+        "iou_thresh": 0.6,
+        "exact_matches": 282,
+        "total_plates": 300,
+        "exact_match_pct": 94.0,
+        "total_edits": 50,
+        "total_gt_characters": 1550,
+        "cer": 0.0323,
+        "insertions": 37,
+        "deletions": 3
+      },
+      {
+        "iou_thresh": 0.55,
+        "exact_matches": 282,
+        "total_plates": 300,
+        "exact_match_pct": 94.0,
+        "total_edits": 49,
+        "total_gt_characters": 1550,
+        "cer": 0.0316,
+        "insertions": 36,
+        "deletions": 3
+      },
+      {
+        "iou_thresh": 0.5,
+        "exact_matches": 282,
+        "total_plates": 300,
+        "exact_match_pct": 94.0,
+        "total_edits": 49,
+        "total_gt_characters": 1550,
+        "cer": 0.0316,
+        "insertions": 36,
+        "deletions": 3
+      },
+      {
+        "iou_thresh": 0.45,
+        "exact_matches": 282,
+        "total_plates": 300,
+        "exact_match_pct": 94.0,
+        "total_edits": 48,
+        "total_gt_characters": 1550,
+        "cer": 0.031,
+        "insertions": 35,
+        "deletions": 3
+      }
+    ],
+    "selected_best_iou_on_val": 0.45,
+    "gate_triage_comparison": {
+      "iou_70": {
+        "iou_thresh": 0.7,
+        "exact_matches": 73,
+        "denominator": 77,
+        "exact_match_pct": 94.81,
+        "total_edits": 5,
+        "cer": 0.0097,
+        "insertions": 4
+      },
+      "iou_45": {
+        "iou_thresh": 0.45,
+        "exact_matches": 75,
+        "denominator": 77,
+        "exact_match_pct": 97.4,
+        "total_edits": 3,
+        "cer": 0.0058,
+        "insertions": 2
+      }
+    }
+  },
+  "experiment_b_crop_padding": {
+    "experiment_name": "Experiment B: Plate Crop Border Padding",
+    "results": [
+      {
+        "padding_percent": 0.0,
+        "detected_plates": 77,
+        "exact_matches": 74,
+        "exact_match_pct": 96.1,
+        "total_edits": 3,
+        "cer": 0.0058
+      },
+      {
+        "padding_percent": 4.0,
+        "detected_plates": 77,
+        "exact_matches": 70,
+        "exact_match_pct": 90.91,
+        "total_edits": 12,
+        "cer": 0.0233
+      },
+      {
+        "padding_percent": 6.0,
+        "detected_plates": 77,
+        "exact_matches": 68,
+        "exact_match_pct": 88.31,
+        "total_edits": 11,
+        "cer": 0.0214
+      },
+      {
+        "padding_percent": 8.0,
+        "detected_plates": 77,
+        "exact_matches": 65,
+        "exact_match_pct": 84.42,
+        "total_edits": 14,
+        "cer": 0.0272
+      },
+      {
+        "padding_percent": 10.0,
+        "detected_plates": 77,
+        "exact_matches": 70,
+        "exact_match_pct": 90.91,
+        "total_edits": 7,
+        "cer": 0.0136
+      }
+    ]
+  },
+  "experiment_c_detector_resolution": {
+    "experiment_name": "Experiment C: Plate Detector Input Resolution on 4K Gate Footage",
+    "results": [
+      {
+        "imgsz": 640,
+        "detected_all_frames": 81,
+        "visible_plates_detected": 81,
+        "visible_plates_total": 99,
+        "detection_recall_pct": 81.82,
+        "recovered_missed_plates_count": 0,
+        "recovered_misses_detail": [],
+        "total_inference_time_seconds": 9.58,
+        "fps": 10.4
+      },
+      {
+        "imgsz": 960,
+        "detected_all_frames": 86,
+        "visible_plates_detected": 86,
+        "visible_plates_total": 99,
+        "detection_recall_pct": 86.87,
+        "recovered_missed_plates_count": 5,
+        "recovered_misses_detail": [
+          {
+            "sample_id": "sample_006",
+            "row": 6,
+            "conf": 0.43
+          },
+          {
+            "sample_id": "sample_008",
+            "row": 8,
+            "conf": 0.53
+          },
+          {
+            "sample_id": "sample_010",
+            "row": 10,
+            "conf": 0.63
+          },
+          {
+            "sample_id": "sample_024",
+            "row": 24,
+            "conf": 0.82
+          },
+          {
+            "sample_id": "sample_036",
+            "row": 36,
+            "conf": 0.26
+          }
+        ],
+        "total_inference_time_seconds": 10.65,
+        "fps": 9.4
+      },
+      {
+        "imgsz": 1280,
+        "detected_all_frames": 86,
+        "visible_plates_detected": 86,
+        "visible_plates_total": 99,
+        "detection_recall_pct": 86.87,
+        "recovered_missed_plates_count": 6,
+        "recovered_misses_detail": [
+          {
+            "sample_id": "sample_006",
+            "row": 6,
+            "conf": 0.33
+          },
+          {
+            "sample_id": "sample_008",
+            "row": 8,
+            "conf": 0.78
+          },
+          {
+            "sample_id": "sample_010",
+            "row": 10,
+            "conf": 0.81
+          },
+          {
+            "sample_id": "sample_024",
+            "row": 24,
+            "conf": 0.86
+          },
+          {
+            "sample_id": "sample_030",
+            "row": 30,
+            "conf": 0.74
+          },
+          {
+            "sample_id": "sample_038",
+            "row": 38,
+            "conf": 0.68
+          }
+        ],
+        "total_inference_time_seconds": 6.55,
+        "fps": 15.3
+      }
+    ]
+  }
+}

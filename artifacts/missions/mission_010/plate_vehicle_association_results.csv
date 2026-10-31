@@ -1,0 +1,323 @@
+frame_id,filename,plate_index,plate_box,plate_detector_conf,plate_ocr_text,plate_ocr_conf,vehicle_track_id,association_status,association_confidence,containment_iop,competing_vehicle_ids,needs_review,review_reasons
+1,20261015_013942_111_TruckEntry_سقج8568_L96_C96.jpg,1,"[2529, 298, 2978, 541]",0.892,سفقج ٨٥٦٨,0.672,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+2,20261015_030516_425_TruckEntry_سمج3998_L94_C96.jpg,1,"[1347, 182, 1944, 552]",0.8985,سمج ٣٩٩٨,0.7958,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+3,20261015_031837_578_TruckEntry_سمج6733_L94_C96.jpg,1,"[2510, 144, 2971, 407]",0.8915,سمج ٦٧٣٣,0.8311,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+4,20261015_041510_522_TruckEntry_موي4358_L96_C96.jpg,1,"[2591, 225, 3028, 475]",0.878,موى ٤٣٥٨,0.7783,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+5,20261015_051657_638_TruckEntry_سمج6733_L95_C96.jpg,1,"[2589, 166, 3032, 425]",0.8965,سمج ٦٧٣٣,0.7926,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+6,20261015_053247_386_TruckEntry_عأن3767_L96_C96.jpg,1,"[2521, 508, 2933, 739]",0.8674,عأن ٣٧٦٧,0.756,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+7,20261015_053956_843_TruckEntry_أجق9198_L96_C95.jpg,1,"[2851, 540, 3300, 800]",0.8822,أجق ٩١٩٨,0.7968,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+8,20261015_060530_816_TruckEntry_قأه5636_L96_C96.jpg,1,"[2972, 440, 3426, 691]",0.8831,قأھ ٥٦٣٦,0.705,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+9,20261015_062806_214_TruckEntry_سقب9256_L90_C89.jpg,1,"[1621, 660, 2167, 1019]",0.8856,,0.0,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+10,20261015_062935_370_TruckEntry_سأه8313_L96_C96.jpg,1,"[2413, 213, 2874, 482]",0.8757,سأھ ٨٣١٣,0.707,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+11,20261015_063257_536_TruckEntry_قوي2813_L81_C96.jpg,1,"[2560, 474, 2977, 715]",0.888,قوى ٢٨١٣,0.7843,1,confident,0.8592,1.0,NONE,False,NONE
+12,20261015_064503_984_TruckEntry_أصن2879_L91_C96.jpg,1,"[2850, 582, 3311, 840]",0.912,أصن ٢٨٧٩,0.7877,1,ambiguous,0.9156,1.0,1;2,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [1, 2] with score delta 0.014 < 0.15"
+13,20261015_065418_423_TruckEntry_وعر5146_L66_C94.jpg,1,"[3295, 203, 3764, 453]",0.8997,وعر ٥١٤٦,0.5731,2,confident,0.8677,1.0,NONE,False,NONE
+14,20261015_070935_483_TruckEntry_يرع8231_L79_C95.jpg,1,"[2948, 410, 3401, 651]",0.8981,ىرع ٨٢٣١,0.7573,1,confident,0.9649,1.0,NONE,False,NONE
+15,20261015_071152_587_TruckEntry_أصي3128_L79_C95.jpg,1,"[2494, 386, 2882, 594]",0.9144,أصى ٣١٢٨,0.8138,1,ambiguous,0.8892,1.0,1;2,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [1, 2] with score delta 0.016 < 0.15"
+16,20261015_071613_326_TruckEntry_جطف713_L90_C96.jpg,1,"[2909, 300, 3406, 574]",0.8998,جطف ٧١٣,0.81,1,ambiguous,0.9087,1.0,1;2,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [1, 2] with score delta 0.016 < 0.15"
+17,20261015_072113_925_TruckEntry_هل4996_L95_C96.jpg,1,"[2928, 517, 3409, 773]",0.8881,ھل ٤٩٩٦,0.8062,1,confident,0.9357,1.0,NONE,False,NONE
+18,20261015_074931_793_TruckEntry_طفد7672_L92_C96.jpg,1,"[2821, 519, 3234, 740]",0.9043,طفد ٧٦٧٢,0.8556,1,ambiguous,0.9308,1.0,1;2,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [1, 2] with score delta 0.006 < 0.15"
+20,20261015_081420_532_TruckEntry_قبع6756_L94_C97.jpg,1,"[2801, 559, 3240, 789]",0.8968,قبع ٦٧٥٦,0.8402,2,confident,0.9688,1.0,NONE,False,NONE
+21,20261015_082759_037_TruckEntry_فقأ461_L90_C96.jpg,1,"[2194, 470, 2721, 787]",0.9031,فقأ ٤٦١,0.7478,1,ambiguous,0.8697,1.0,1;2,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [1, 2] with score delta 0.025 < 0.15"
+22,20261015_082815_601_TruckEntry_سقج8568_L95_C95.jpg,1,"[2596, 284, 3114, 563]",0.9095,سقج ٨٥٦٨,0.7811,1,confident,0.9556,1.0,NONE,False,NONE
+23,20261015_083226_107_TruckEntry_مسم563_L77_C96.jpg,1,"[2642, 471, 3052, 695]",0.8937,مسم ٥٦٣,0.7699,1,confident,0.9377,1.0,NONE,False,NONE
+24,20261015_083354_772_TruckEntry_أبو9851_L88_C96.jpg,1,"[2392, 260, 2880, 533]",0.9169,أبو ٩٨٥١,0.8088,2,ambiguous,0.8582,1.0,2;1,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [2, 1] with score delta 0.013 < 0.15"
+25,20261015_083559_264_TruckEntry_ربأ4992_L94_C96.jpg,1,"[2514, 553, 2905, 785]",0.9105,ربأ ٤٩٩٢,0.8006,2,ambiguous,0.8657,1.0,2;1,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [2, 1] with score delta 0.010 < 0.15"
+26,20261015_084040_532_TruckEntry_أصأ9827_L71_C96.jpg,1,"[2734, 261, 3180, 503]",0.9058,أصأ ٩٨٢٧,0.7942,2,confident,0.938,1.0,NONE,False,NONE
+27,20261015_084126_736_TruckEntry_طن9313_L90_C96.jpg,1,"[2475, 248, 2980, 527]",0.9143,طن ٩٣١٣,0.789,1,ambiguous,0.904,1.0,1;2,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [1, 2] with score delta 0.021 < 0.15"
+28,20261015_084736_225_TruckEntry_دوو359_L96_C97.jpg,1,"[2724, 414, 3170, 657]",0.9002,دوو ٣٥٩,0.8338,2,confident,0.9382,1.0,NONE,False,NONE
+29,20261015_084909_559_TruckEntry_سلج5979_L95_C96.jpg,1,"[2814, 495, 3238, 722]",0.9102,سلج ٥٩٧٩,0.7754,2,confident,0.8985,1.0,NONE,False,NONE
+30,20261015_085454_414_TruckEntry_أبو8597_L37_C96.jpg,1,"[2738, 295, 3223, 551]",0.9177,أبو ٨٥٩٧,0.813,2,ambiguous,0.9124,1.0,2;1,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [2, 1] with score delta 0.023 < 0.15"
+31,20261015_090257_569_TruckEntry_ربع2538_L48_C96.jpg,1,"[2642, 374, 3083, 616]",0.9005,ربع ٢٥٣٨,0.782,2,confident,0.9123,1.0,NONE,False,NONE
+32,20261015_090328_773_TruckEntry_سرص2275_L93_C96.jpg,1,"[2904, 462, 3341, 695]",0.9179,سرص ٢٢٧٥,0.8474,1,confident,0.9563,1.0,NONE,False,NONE
+33,20261015_090520_061_TruckEntry_فس1673_L56_C94.jpg,1,"[2791, 559, 3162, 789]",0.8763,فس ١٦٧٣,0.7401,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+35,20261015_092107_041_TruckEntry_جطف816_L76_C96.jpg,1,"[2438, 396, 2962, 687]",0.9026,جطف ٨١٦,0.7917,1,confident,0.9351,1.0,NONE,False,NONE
+36,20261015_092736_393_TruckEntry_قجأ9741_L95_C96.jpg,1,"[2170, 442, 2658, 744]",0.9197,قجأ ٩٧٤١,0.7755,1,confident,0.9156,1.0,NONE,False,NONE
+40,20261015_094445_578_TruckEntry_أيط4869_L93_C96.jpg,1,"[2825, 418, 3252, 656]",0.9009,أىط ٤٨٦٩,0.827,1,confident,0.9676,1.0,NONE,False,NONE
+41,20261015_095029_570_TruckEntry_نل3211_L88_C96.jpg,1,"[2604, 248, 3045, 488]",0.893,نل ٣٢١١,0.7893,1,confident,0.9396,1.0,NONE,False,NONE
+42,20261015_095335_915_TruckEntry_أهع7548_L91_C96.jpg,1,"[2180, 442, 2710, 742]",0.9009,أھع ٧٥٤٨,0.8324,1,confident,0.8911,1.0,NONE,False,NONE
+43,20261015_095618_909_TruckEntry_كدم8573_L95_C96.jpg,1,"[2909, 406, 3356, 652]",0.9006,دم ٨٥٧٣,0.8197,1,confident,0.9623,1.0,NONE,False,NONE
+45,20261015_095647_662_TruckEntry_أدر4643_L96_C96.jpg,1,"[2925, 420, 3356, 665]",0.8922,أدر ٤٦٤٣,0.8044,1,confident,0.9756,1.0,NONE,False,NONE
+46,20261015_095717_136_TruckEntry_أدر4643_L95_C96.jpg,1,"[2799, 456, 3237, 702]",0.9049,أدر ٤٦٤٣,0.8153,1,confident,0.9552,1.0,NONE,False,NONE
+47,20261015_100242_918_TruckEntry_يف4697_L86_C96.jpg,1,"[2714, 498, 3155, 734]",0.8841,ىف ٤٦٩٧,0.7271,1,ambiguous,0.8691,1.0,1;8,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [1, 8] with score delta 0.013 < 0.15"
+48,20261015_100358_654_TruckEntry_سعم6726_L88_C96.jpg,1,"[2655, 393, 3137, 664]",0.9098,سعم ٦٧٢٦,0.8337,1,confident,0.9524,1.0,NONE,False,NONE
+49,20261015_100433_509_TruckEntry_عأن3767_L93_C96.jpg,1,"[2457, 555, 2863, 780]",0.8955,عأن ٣٧٦٧,0.8095,8,ambiguous,0.875,1.0,8;1,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [8, 1] with score delta 0.006 < 0.15"
+50,20261015_100814_409_TruckEntry_أيق8943_L63_C96.jpg,1,"[2741, 519, 3160, 742]",0.8899,أىق ٨٩٤٣,0.8061,8,confident,0.9252,1.0,NONE,False,NONE
+51,20261015_101201_311_TruckEntry_هجن862_L95_C96.jpg,1,"[2329, 544, 2876, 848]",0.9071,ھجن ٨٦٢,0.7783,8,ambiguous,0.8685,1.0,8;1,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [8, 1] with score delta 0.015 < 0.15"
+52,20261015_101358_381_TruckEntry_لسر317_L62_C96.jpg,1,"[2963, 527, 3345, 761]",0.8734,لسر ٣١٧,0.6857,8,confident,0.9488,1.0,NONE,False,NONE
+53,20261015_101705_223_TruckEntry_قبط8189_L96_C96.jpg,1,"[3028, 285, 3463, 513]",0.9014,قبط ٨١٨٩,0.8107,8,confident,0.9669,1.0,NONE,False,NONE
+55,20261015_102249_340_TruckEntry_طلص8693_L87_C96.jpg,1,"[2219, 499, 2758, 821]",0.8975,طلص ٨٦٩٣,0.7986,8,confident,0.9217,1.0,NONE,False,NONE
+56,20261015_102450_678_TruckEntry_قصه2683_L42_C96.jpg,1,"[2973, 403, 3419, 632]",0.8874,قصھ ٢٦٨٣,0.8198,8,confident,0.9502,1.0,NONE,False,NONE
+57,20261015_102557_087_TruckEntry_موو526_L96_C96.jpg,1,"[2803, 436, 3241, 674]",0.8962,موو ٥٢٦,0.7988,8,confident,0.9585,1.0,NONE,False,NONE
+59,20261015_103700_074_TruckEntry_أبق1846_L95_C95.jpg,1,"[2736, 468, 3161, 707]",0.9094,بق ١٨٤٦,0.8144,8,confident,0.9245,1.0,NONE,False,NONE
+60,20261015_103807_399_TruckEntry_نبج592_L68_C97.jpg,1,"[3047, 411, 3446, 639]",0.8999,نبج ٥٩٢,0.8196,8,confident,0.966,1.0,NONE,False,NONE
+61,20261015_103846_197_TruckEntry_ربأ6267_L95_C96.jpg,1,"[2616, 605, 3099, 870]",0.8924,ربأ ٦٢٦٧,0.8278,8,ambiguous,0.9283,1.0,8;11,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [8, 11] with score delta 0.057 < 0.15"
+62,20261015_104035_878_TruckEntry_فهو683_L97_C96.jpg,1,"[2773, 261, 3231, 518]",0.908,فھو ٦٨٣,0.8083,11,confident,0.9541,1.0,NONE,False,NONE
+63,20261015_104758_850_TruckEntry_ططب7159_L49_C96.jpg,1,"[2544, 361, 3083, 629]",0.9148,ططب ٧١٥٩,0.8308,8,confident,0.9603,1.0,NONE,False,NONE
+64,20261015_105052_585_TruckEntry_قفن_L47_C92.jpg,1,"[2594, 271, 3061, 531]",0.9124,قفن ٧٤٦٩,0.8612,11,ambiguous,0.9538,1.0,11;8,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [11, 8] with score delta 0.047 < 0.15"
+66,20261015_105341_630_TruckEntry_بأل526_L93_C96.jpg,1,"[3003, 320, 3445, 564]",0.8827,بأل ٥٢٦,0.7993,8,confident,0.9612,1.0,NONE,False,NONE
+67,20261015_105357_599_TruckEntry_روط2645_L96_C96.jpg,1,"[2716, 415, 3145, 646]",0.9193,روط ٢٦٤٥,0.8604,8,confident,0.9514,1.0,NONE,False,NONE
+68,20261015_105822_060_TruckEntry_أسو3536_L96_C96.jpg,1,"[2869, 325, 3315, 570]",0.8825,أسو ٣٥٣٦,0.8079,8,confident,0.9565,1.0,NONE,False,NONE
+69,20261015_110237_926_TruckEntry_أمص2678_L95_C95.jpg,1,"[3006, 541, 3457, 778]",0.9243,أمص ٢٦٧٨,0.8202,8,ambiguous,0.9065,1.0,8;12,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [8, 12] with score delta 0.003 < 0.15"
+70,20261015_111046_001_TruckEntry_بس6378_L35_C96.jpg,1,"[2970, 328, 3395, 581]",0.8725,بس ٦٣٧٨,0.7578,8,ambiguous,0.9111,1.0,8;12,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [8, 12] with score delta 0.041 < 0.15"
+71,20261015_111600_189_TruckEntry_بي4631_L54_C96.jpg,1,"[2776, 569, 3234, 814]",0.9064,بى ٤٦٣١,0.7304,8,confident,0.9583,1.0,NONE,False,NONE
+72,20261015_112545_438_TruckEntry_جيأ4561_L94_C96.jpg,1,"[2874, 479, 3319, 719]",0.9083,جىأ ٤٥٦١,0.7906,12,confident,0.9395,1.0,NONE,False,NONE
+73,20261015_113120_516_TruckEntry_قص1484_L88_C96.jpg,1,"[2600, 427, 3008, 651]",0.8719,قص ١٤٨٤,0.7444,12,ambiguous,0.9041,1.0,12;8,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [12, 8] with score delta 0.023 < 0.15"
+74,20261015_113205_001_TruckEntry_ويم736_L90_C95.jpg,1,"[1884, 474, 2476, 806]",0.9088,وىم ٧٣٦٦,0.59,12,confident,0.9177,1.0,NONE,False,NONE
+75,20261015_113452_577_TruckEntry_طبأ753_L78_C96.jpg,1,"[2148, 556, 2783, 953]",0.909,طبأ ٧٥٣,0.7825,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+76,20261015_113620_011_TruckEntry_طجب745_L95_C97.jpg,1,"[3068, 463, 3473, 697]",0.9252,طجب ٧٤٥,0.8394,8,confident,0.9387,1.0,NONE,False,NONE
+78,20261015_114940_987_TruckEntry_ججب1263_L94_C97.jpg,1,"[3060, 386, 3505, 630]",0.9026,ججب ١٢٦٣,0.8353,8,confident,0.9094,1.0,NONE,False,NONE
+79,20261015_115046_223_TruckEntry_فير7461_L42_C96.jpg,1,"[2106, 398, 2571, 676]",0.8828,فىرأ ٧٤٦,0.6825,8,confident,0.8885,1.0,NONE,False,NONE
+81,20261015_120144_166_TruckEntry_ألع6876_L93_C96.jpg,1,"[2621, 258, 3075, 500]",0.893,ألع ٦٨٧٦,0.7936,8,confident,0.8936,1.0,NONE,False,NONE
+82,20261015_120403_364_TruckEntry_لهع314_L96_C96.jpg,1,"[1974, 665, 2417, 906]",0.9079,لھع ٣١٤,0.8467,8,confident,0.8955,1.0,NONE,False,NONE
+83,20261015_120725_347_TruckEntry_سقج8581_L96_C96.jpg,1,"[1781, 495, 2194, 722]",0.8982,سقج ٨٥٨١,0.8392,8,confident,0.9101,1.0,NONE,False,NONE
+84,20261015_120739_794_TruckEntry_أقن3575_L91_C96.jpg,1,"[1506, 503, 1940, 746]",0.8915,أقن ٣٥٧٥,0.8254,15,ambiguous,0.8448,1.0,15;8,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [15, 8] with score delta 0.025 < 0.15"
+85,20261015_121013_800_TruckEntry_سوب2791_L38_C96.jpg,1,"[1464, 434, 1904, 693]",0.917,سوب ٢٧٩١,0.8566,8,confident,0.8962,1.0,NONE,False,NONE
+86,20261015_121049_091_TruckEntry_جعأ5354_L88_C96.jpg,1,"[1427, 620, 1829, 851]",0.891,جعأ ٥٣٥٤,0.7954,15,confident,0.8677,1.0,NONE,False,NONE
+87,20261015_121648_369_TruckEntry_رسه752_L96_C96.jpg,1,"[1746, 673, 2183, 910]",0.8924,رسھ ٧٧٥٢,0.657,15,confident,0.9068,1.0,NONE,False,NONE
+88,20261015_121850_620_TruckEntry_كدو1396_L96_C96.jpg,1,"[1720, 643, 2154, 881]",0.9131,دو ١٣٩٦,0.8394,15,confident,0.9058,1.0,NONE,False,NONE
+89,20261015_122545_886_TruckEntry_قبف1373_L74_C96.jpg,1,"[1304, 571, 1732, 815]",0.901,قبف ١٣٧٣,0.7537,15,confident,0.8762,1.0,NONE,False,NONE
+90,20261015_122625_861_TruckEntry_أفل2873_L95_C96.jpg,1,"[1821, 721, 2262, 967]",0.8869,أفل ٢٨٧٣,0.8089,15,confident,0.9062,1.0,NONE,False,NONE
+91,20261015_122857_004_TruckEntry_كطو2796_L96_C96.jpg,1,"[1709, 594, 2133, 833]",0.9199,طو ٢٧٩٦,0.8536,15,confident,0.91,1.0,NONE,False,NONE
+92,20261015_122918_290_TruckEntry_سلج1419_L47_C96.jpg,1,"[1460, 474, 1893, 720]",0.9049,سلج ١٤١٩,0.8017,15,confident,0.8839,1.0,NONE,False,NONE
+93,20261015_123002_208_TruckEntry_طيف7815_L95_C96.jpg,1,"[1637, 584, 2097, 817]",0.8947,طىف ٧٨١٥,0.7312,15,ambiguous,0.841,1.0,15;17,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [15, 17] with score delta 0.002 < 0.15"
+94,20261015_123421_743_TruckEntry_أجس8214_L92_C95.jpg,1,"[1791, 637, 2240, 888]",0.8919,أجس ٨٢١٤,0.577,17,confident,0.8971,1.0,NONE,False,NONE
+95,20261015_123603_876_TruckEntry_قبف4989_L58_C96.jpg,1,"[1576, 604, 2026, 859]",0.9131,قبف ٤٩٨٩,0.8018,15,confident,0.9363,1.0,NONE,False,NONE
+96,20261015_124012_725_TruckEntry_سفف138_L96_C96.jpg,1,"[1574, 691, 2015, 932]",0.9054,سفف ١٣٨,0.8519,17,confident,0.8914,1.0,NONE,False,NONE
+97,20261015_124218_053_TruckEntry_أفي4387_L96_C96.jpg,1,"[1657, 704, 2089, 954]",0.8911,أفى ٤٣٨٧,0.7719,17,ambiguous,0.8549,1.0,17;15,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [17, 15] with score delta 0.013 < 0.15"
+98,20261015_124615_624_TruckEntry_صدأ5263_L96_C96.jpg,1,"[1744, 682, 2202, 933]",0.8989,صدأ ٥٢٦٣,0.7375,17,confident,0.9125,1.0,NONE,False,NONE
+100,20261015_124644_641_TruckEntry_رفل3974_L51_C88.jpg,1,"[1475, 595, 1922, 853]",0.8934,رفل ٣٩٧٤,0.8326,17,confident,0.9214,1.0,NONE,False,NONE
+101,20261015_124659_979_TruckEntry_أمه871_L92_C96.jpg,1,"[1405, 512, 1844, 759]",0.8899,أمھ ٨٧١,0.8081,15,ambiguous,0.8472,1.0,15;17,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [15, 17] with score delta 0.013 < 0.15"
+102,20261015_124822_145_TruckEntry_أهس2747_L89_C96.jpg,1,"[1526, 449, 2051, 741]",0.919,أھس ٢٧٤٧,0.8349,17,confident,0.8739,1.0,NONE,False,NONE
+103,20261015_124911_079_TruckEntry_ميف3968_L95_C96.jpg,1,"[1818, 692, 2268, 937]",0.9,مىف ٣٩٦٨,0.7903,17,confident,0.9081,1.0,NONE,False,NONE
+104,20261015_125351_918_TruckEntry_ألج2195_L95_C96.jpg,1,"[1858, 562, 2301, 808]",0.9083,ألج ٢١٩٥,0.7935,17,confident,0.926,1.0,NONE,False,NONE
+105,20261015_125456_245_TruckEntry_أقي9671_L96_C96.jpg,1,"[1742, 641, 2167, 872]",0.8884,أقى ٩٦٧١,0.7892,17,confident,0.87,1.0,NONE,False,NONE
+106,20261015_125507_497_TruckEntry_هوس386_L95_C96.jpg,1,"[1765, 682, 2210, 928]",0.9054,ھوس ٣٨٦,0.829,23,ambiguous,0.8335,1.0,23;17,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [23, 17] with score delta 0.001 < 0.15"
+107,20261015_125600_363_TruckEntry_أنط4767_L96_C96.jpg,1,"[1830, 550, 2281, 796]",0.9063,أنط ٤٧٦٧,0.8339,17,confident,0.8822,1.0,NONE,False,NONE
+108,20261015_125828_983_TruckEntry_جدع618_L96_C96.jpg,1,"[1612, 651, 2058, 902]",0.9115,جدع ٦١٨,0.8099,17,confident,0.8937,1.0,NONE,False,NONE
+109,20261015_125949_022_TruckEntry_يفس736_L96_C97.jpg,1,"[1924, 604, 2377, 845]",0.8986,ىفس ٧٣٦,0.8237,23,confident,0.929,1.0,NONE,False,NONE
+110,20261015_130006_924_TruckEntry_جق7995_L94_C97.jpg,1,"[1429, 419, 1930, 685]",0.893,جق ٧٩٩٥,0.8145,17,confident,0.9006,1.0,NONE,False,NONE
+111,20261015_130121_986_TruckEntry_أقم9794_L96_C95.jpg,1,"[1654, 499, 2126, 738]",0.9077,قم ٩٧٩٤,0.8175,23,confident,0.893,1.0,NONE,False,NONE
+112,20261015_130219_880_TruckEntry_سسه965_L91_C96.jpg,1,"[1736, 509, 2187, 744]",0.8948,سسھ ٩٦٥,0.7422,23,confident,0.8917,1.0,NONE,False,NONE
+113,20261015_130908_119_TruckEntry_سعه8798_L40_C96.jpg,1,"[1405, 686, 1803, 903]",0.8825,سعھ ٨٧٩٨,0.7596,17,confident,0.8444,1.0,NONE,False,NONE
+114,20261015_131314_016_TruckEntry_أنط3731_L95_C96.jpg,1,"[1546, 508, 1979, 763]",0.8787,أنط ٣٧٣١,0.8189,23,confident,0.859,1.0,NONE,False,NONE
+115,20261015_131351_257_TruckEntry_كمد5817_L83_C94.jpg,1,"[3146, 661, 3307, 749]",0.6062,جلط ٦٥٢١,0.5635,26,confident,0.9147,1.0,NONE,False,NONE
+116,20261015_131402_062_TruckEntry_جلط6521_L94_C96.jpg,1,"[1301, 463, 1736, 705]",0.9101,جلط ٦٥٢١,0.8192,17,confident,0.891,1.0,NONE,False,NONE
+117,20261015_131939_875_TruckEntry_سطص538_L91_C96.jpg,1,"[1608, 602, 2043, 871]",0.8865,سطص ٥٣٨,0.7856,17,confident,0.8868,1.0,NONE,False,NONE
+118,20261015_131957_297_TruckEntry_وهن329_L96_C96.jpg,1,"[1875, 539, 2356, 795]",0.9053,وھن ٣٢٩,0.7771,17,confident,0.8933,1.0,NONE,False,NONE
+119,20261015_132017_212_TruckEntry_جطع4124_L94_C96.jpg,1,"[1769, 554, 2232, 804]",0.9062,جطع ٤١٢٤,0.8116,27,ambiguous,0.8926,1.0,27;17,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [27, 17] with score delta 0.042 < 0.15"
+120,20261015_132354_545_TruckEntry_رع3949_L95_C96.jpg,1,"[1642, 744, 2101, 980]",0.904,رع ٣٩٤٩,0.7036,17,ambiguous,0.8532,1.0,17;27,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [17, 27] with score delta 0.026 < 0.15"
+121,20261015_132607_518_TruckEntry_قرج5951_L96_C97.jpg,1,"[1757, 631, 2178, 866]",0.9193,قرج ٥٩٥١,0.8436,27,confident,0.9009,1.0,NONE,False,NONE
+122,20261015_132958_211_TruckEntry_كدط9172_L96_C96.jpg,1,"[1771, 622, 2219, 866]",0.901,دط ٩١٧٢,0.8083,27,confident,0.8945,1.0,NONE,False,NONE
+123,20261015_133218_957_TruckEntry_قوأ3269_L81_C95.jpg,1,"[1475, 646, 1852, 879]",0.8766,قوأ ٣٢٦٩,0.7905,17,confident,0.8813,1.0,NONE,False,NONE
+124,20261015_133307_227_TruckEntry_ففر678_L80_C95.jpg,1,"[1674, 660, 2131, 916]",0.9041,ففر ٦٧٨,0.8228,27,confident,0.916,1.0,NONE,False,NONE
+125,20261015_133351_994_TruckEntry_كعف2173_L91_C96.jpg,1,"[1673, 463, 2109, 704]",0.9104,ع ٢١٧٣,0.7957,17,ambiguous,0.8627,1.0,17;27,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [17, 27] with score delta 0.003 < 0.15"
+126,20261015_133535_570_TruckEntry_دن3988_L63_C96.jpg,1,"[1629, 615, 2106, 871]",0.8839,دن ٣٩٨٨,0.8022,17,confident,0.9053,1.0,NONE,False,NONE
+127,20261015_133627_365_TruckEntry_كج8287_L96_C96.jpg,1,"[1805, 669, 2231, 894]",0.892,ج ٨٢٨٧,0.8093,27,ambiguous,0.858,1.0,27;17,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [27, 17] with score delta 0.002 < 0.15"
+128,20261015_134039_604_TruckEntry_جدن736_L96_C97.jpg,1,"[1674, 386, 2114, 631]",0.9097,جدن ٧٣٦,0.8409,17,confident,0.8825,1.0,NONE,False,NONE
+129,20261015_134145_497_TruckEntry_أصج7181_L96_C96.jpg,1,"[1854, 697, 2331, 955]",0.894,أصج ٧١٨١,0.7936,17,confident,0.9196,1.0,NONE,False,NONE
+130,20261015_134215_937_TruckEntry_أفي3271_L96_C96.jpg,1,"[1663, 482, 2129, 737]",0.898,أفى ٣٢٧١,0.7323,27,ambiguous,0.8643,1.0,27;17,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [27, 17] with score delta 0.008 < 0.15"
+131,20261015_134320_691_TruckEntry_هجط914_L76_C95.jpg,1,"[511, 641, 1158, 1058]",0.9015,ھجط ٩١٤,0.74,17,confident,0.8026,1.0,NONE,False,NONE
+132,20261015_134540_842_TruckEntry_جيأ4561_L95_C96.jpg,1,"[1847, 735, 2281, 977]",0.923,جىأ ٤٥٦١,0.7972,17,ambiguous,0.8629,1.0,17;27,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [17, 27] with score delta 0.017 < 0.15"
+133,20261015_134652_674_TruckEntry_نو2788_L95_C96.jpg,1,"[1690, 530, 2118, 762]",0.8906,نو ٢٧٨٨,0.8415,17,confident,0.8977,1.0,NONE,False,NONE
+134,20261015_134709_911_TruckEntry_قمو741_L95_C95.jpg,1,"[1438, 713, 1851, 963]",0.8851,قمو ٧٤١,0.7651,27,confident,0.8853,1.0,NONE,False,NONE
+135,20261015_134728_951_TruckEntry_كرد3479_L94_C96.jpg,1,"[1427, 541, 1870, 794]",0.9001,رد ٣٤٧٩,0.8299,17,ambiguous,0.8547,1.0,17;27,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [17, 27] with score delta 0.046 < 0.15"
+136,20261015_135547_992_TruckEntry_سقج8568_L96_C95.jpg,1,"[1920, 502, 2388, 749]",0.8948,سقج ٨٥٦٨,0.7777,17,confident,0.9332,1.0,NONE,False,NONE
+137,20261015_135713_668_TruckEntry_دفق342_L95_C96.jpg,1,"[1651, 581, 2112, 832]",0.9022,دفق ٣٤٢,0.8421,27,confident,0.8779,1.0,NONE,False,NONE
+138,20261015_135737_060_TruckEntry_أيط7634_L96_C96.jpg,1,"[1742, 482, 2216, 734]",0.9012,أىط ٧٦٣٤,0.8048,27,ambiguous,0.8774,1.0,27;17,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [27, 17] with score delta 0.048 < 0.15"
+139,20261015_140102_906_TruckEntry_نقق245_L96_C96.jpg,1,"[1754, 594, 2242, 859]",0.8982,نقق ٢٤٥,0.8009,27,confident,0.9105,1.0,NONE,False,NONE
+140,20261015_140331_220_TruckEntry_أهل9731_L86_C96.jpg,1,"[1778, 530, 2256, 788]",0.898,أھل ٩٧٣١,0.8229,27,confident,0.8326,1.0,NONE,False,NONE
+141,20261015_140659_816_TruckEntry_قبف7952_L95_C97.jpg,1,"[1761, 694, 2206, 928]",0.9164,قبف ٧٩٥٢,0.8585,27,confident,0.9147,1.0,NONE,False,NONE
+142,20261015_141043_169_TruckEntry_لقن124_L96_C96.jpg,1,"[1628, 421, 2086, 661]",0.8922,لقن ١٢٤,0.7438,27,ambiguous,0.8622,1.0,27;29,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [27, 29] with score delta 0.023 < 0.15"
+143,20261015_141115_646_TruckEntry_نصأ725_L95_C96.jpg,1,"[1969, 725, 2400, 971]",0.9055,نصأ ٧٢٥,0.7085,29,confident,0.8898,1.0,NONE,False,NONE
+144,20261015_141659_315_TruckEntry_جسب3947_L95_C97.jpg,1,"[1712, 511, 2138, 737]",0.8991,جسب ٣٩٤٧,0.8516,27,confident,0.8716,1.0,NONE,False,NONE
+145,20261015_142136_024_TruckEntry_ديأ1556_L96_C96.jpg,1,"[1449, 707, 1894, 962]",0.8823,دىأ ١٥٥٦,0.7064,27,confident,0.8731,1.0,NONE,False,NONE
+146,20261015_142753_097_TruckEntry_عمص5746_L96_C96.jpg,1,"[1613, 715, 2095, 984]",0.897,عمص ٥٧٤٦,0.7374,27,confident,0.8538,1.0,NONE,False,NONE
+147,20261015_143033_139_TruckEntry_كي8479_L95_C96.jpg,1,"[1714, 745, 2181, 1011]",0.9115,ى ٨٤٧٩,0.828,27,ambiguous,0.8544,1.0,27;30,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [27, 30] with score delta 0.016 < 0.15"
+148,20261015_143045_103_TruckEntry_قسن3472_L95_C96.jpg,1,"[1752, 698, 2174, 926]",0.9216,قسن ٣٤٧٢,0.8453,27,confident,0.8844,1.0,NONE,False,NONE
+149,20261015_143335_516_TruckEntry_جطع4353_L96_C97.jpg,1,"[1725, 602, 2149, 835]",0.8848,جطع ٤٣٥٣,0.8217,30,confident,0.9081,1.0,NONE,False,NONE
+150,20261015_143455_214_TruckEntry_بعأ684_L57_C96.jpg,1,"[1632, 494, 2064, 762]",0.8787,بعأ ٦٨٤,0.7485,30,confident,0.9048,1.0,NONE,False,NONE
+151,20261015_143713_937_TruckEntry_دمم147_L95_C96.jpg,1,"[1645, 668, 2090, 913]",0.9025,دمم ١٤٧,0.7875,30,confident,0.9014,1.0,NONE,False,NONE
+152,20261015_144250_147_TruckEntry_مرو392_L96_C96.jpg,1,"[1497, 623, 1928, 867]",0.8959,مرو ٣٩٢,0.8249,30,confident,0.8541,1.0,NONE,False,NONE
+153,20261015_144320_520_TruckEntry_ديأ1556_L96_C96.jpg,1,"[1525, 739, 1952, 976]",0.9142,دىأ ١٥٥٦,0.7791,30,confident,0.8773,1.0,NONE,False,NONE
+154,20261015_144536_514_TruckEntry_قبف4989_L84_C96.jpg,1,"[1626, 598, 2081, 852]",0.8947,قبف ٤٩٨٩,0.8123,30,confident,0.9271,1.0,NONE,False,NONE
+155,20261015_144555_709_TruckEntry_كطد1524_L96_C96.jpg,1,"[1527, 494, 2000, 758]",0.8957,طد ١٥٢٤,0.7753,30,confident,0.9025,1.0,NONE,False,NONE
+155,20261015_144555_709_TruckEntry_كطد1524_L96_C96.jpg,2,"[1229, 508, 1472, 680]",0.3701,,0.0,30,confident,0.8335,1.0,NONE,False,NONE
+156,20261015_145024_972_TruckEntry_سقج8581_L96_C96.jpg,1,"[1728, 519, 2178, 777]",0.8781,سقج ٨٥٨١,0.8149,30,confident,0.9082,1.0,NONE,False,NONE
+157,20261015_145603_389_TruckEntry_أبس6972_L96_C96.jpg,1,"[1392, 762, 1843, 1015]",0.9129,أبس ٦٩٧٢,0.8322,30,confident,0.9015,1.0,NONE,False,NONE
+158,20261015_145804_590_TruckEntry_جقد7362_L96_C97.jpg,1,"[1545, 718, 1948, 941]",0.894,جقد ٧٣٦٢,0.825,30,ambiguous,0.8526,1.0,30;32,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [30, 32] with score delta 0.019 < 0.15"
+159,20261015_145948_294_TruckEntry_ردر435_L96_C96.jpg,1,"[1866, 611, 2337, 872]",0.8848,ردر ٤٣٥,0.8207,30,confident,0.9206,1.0,NONE,False,NONE
+160,20261015_150017_217_TruckEntry_كبأ3427_L96_C96.jpg,1,"[1167, 593, 1727, 914]",0.9,بأ ٣٤٢٧,0.8017,30,ambiguous,0.848,1.0,30;32,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [30, 32] with score delta 0.026 < 0.15"
+161,20261015_150230_036_TruckEntry_أنه9575_L96_C96.jpg,1,"[1537, 599, 2016, 869]",0.89,أنھ ٩٥٧٥,0.7994,30,confident,0.9092,1.0,NONE,False,NONE
+162,20261015_150244_290_TruckEntry_صبص1356_L95_C96.jpg,1,"[1401, 593, 1910, 886]",0.9041,صبص ١٣٥٦,0.788,30,confident,0.8807,1.0,NONE,False,NONE
+163,20261015_150259_031_TruckEntry_نفع657_L96_C96.jpg,1,"[1902, 567, 2359, 816]",0.9169,نفع ٦٥٧,0.7799,30,confident,0.8819,1.0,NONE,False,NONE
+164,20261015_150428_232_TruckEntry_كدأ7615_L92_C96.jpg,1,"[1747, 575, 2210, 828]",0.9046,دأ ٧٦١٥٤,0.667,30,ambiguous,0.8873,1.0,30;32,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [30, 32] with score delta 0.029 < 0.15"
+165,20261015_151111_699_TruckEntry_أجي2798_L96_C95.jpg,1,"[1934, 701, 2379, 947]",0.8898,أجى ٢٧٩٨,0.6955,32,confident,0.8852,1.0,NONE,False,NONE
+166,20261015_151225_867_TruckEntry_أنص5315_L96_C96.jpg,1,"[1417, 733, 1972, 1046]",0.9099,أنص ٥٣١٥,0.8223,30,confident,0.9115,1.0,NONE,False,NONE
+167,20261015_151508_954_TruckEntry_هفط586_L96_C96.jpg,1,"[1806, 594, 2208, 818]",0.8862,ھفط ٥٨٦,0.7924,32,confident,0.888,1.0,NONE,False,NONE
+168,20261015_151852_746_TruckEntry_نب685_L72_C93.jpg,1,"[1321, 506, 1744, 762]",0.89,نب ٦٨٥٢,0.7098,30,confident,0.9004,1.0,NONE,False,NONE
+169,20261015_151929_578_TruckEntry_بجط712_L95_C96.jpg,1,"[1708, 582, 2104, 812]",0.8825,بجط ٧١٢,0.8091,32,confident,0.8803,1.0,NONE,False,NONE
+170,20261015_152218_660_TruckEntry_كده5193_L96_C96.jpg,1,"[1457, 432, 1943, 712]",0.9041,دھ ٥١٩٣,0.7915,30,confident,0.903,1.0,NONE,False,NONE
+171,20261015_152232_769_TruckEntry_أهع6352_L96_C96.jpg,1,"[1317, 642, 1746, 894]",0.9047,أھع ٦٣٥٢,0.8192,30,confident,0.892,1.0,NONE,False,NONE
+172,20261015_152451_058_TruckEntry_أصأ1286_L95_C94.jpg,1,"[1834, 692, 2293, 925]",0.9064,أصأ ١٢٨٦,0.7032,30,ambiguous,0.8825,1.0,30;32,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [30, 32] with score delta 0.038 < 0.15"
+173,20261015_152516_478_TruckEntry_أيم5846_L96_C96.jpg,1,"[1824, 548, 2287, 801]",0.9104,أىم ٥٨٤٦,0.8262,32,confident,0.9226,1.0,NONE,False,NONE
+174,20261015_153049_505_TruckEntry_ألأ5418_L85_C95.jpg,1,"[1615, 610, 2078, 872]",0.8821,ألأ ٥٤١٨,0.7496,32,confident,0.8521,1.0,NONE,False,NONE
+175,20261015_153300_943_TruckEntry_أطق1965_L96_C96.jpg,1,"[1784, 637, 2210, 880]",0.9087,أطق ١٩٦٥,0.82,30,confident,0.9786,1.0,NONE,False,NONE
+176,20261015_153437_509_TruckEntry_ني2616_L95_C96.jpg,1,"[1473, 702, 1918, 940]",0.895,نج ٢٦١٦,0.6686,32,ambiguous,0.8617,1.0,32;30,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [32, 30] with score delta 0.014 < 0.15"
+177,20261015_155211_806_TruckEntry_أسف2854_L47_C95.jpg,1,"[993, 452, 1502, 750]",0.8697,أسف ٢٨٥٤,0.7554,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No enclosing vehicle matched association criteria
+178,20261015_155227_186_TruckEntry_أفع4869_L96_C96.jpg,1,"[1185, 612, 1659, 892]",0.8877,أفع ٤٨٦٩,0.8051,32,ambiguous,0.8169,1.0,32;30,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [32, 30] with score delta 0.005 < 0.15"
+179,20261015_155414_657_TruckEntry_سأه8328_L94_C96.jpg,1,"[1065, 499, 1558, 786]",0.8904,سأھ ٨٣٢٨,0.8111,32,ambiguous,0.8676,1.0,32;30,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [32, 30] with score delta 0.038 < 0.15"
+180,20261015_155954_532_TruckEntry_كك2647_L62_C96.jpg,1,"[859, 615, 1410, 929]",0.8748,٢٦٤٧٤,0.6805,30,confident,0.818,1.0,NONE,False,NONE
+181,20261015_160301_994_TruckEntry_كرد6534_L95_C96.jpg,1,"[1530, 455, 2023, 723]",0.916,ىرد ٦٥٣٤,0.6901,30,confident,0.8899,1.0,NONE,False,NONE
+182,20261015_160329_453_TruckEntry_طصج498_L96_C95.jpg,1,"[1782, 698, 2207, 952]",0.8939,طصع ٤٩٨,0.6733,30,ambiguous,0.8836,1.0,30;32,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [30, 32] with score delta 0.028 < 0.15"
+183,20261015_160347_856_TruckEntry_أمن2796_L95_C96.jpg,1,"[1503, 606, 2051, 910]",0.8918,أمن ٢٧٩٦,0.7889,30,ambiguous,0.8618,1.0,30;32,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [30, 32] with score delta 0.008 < 0.15"
+185,20261015_160750_402_TruckEntry_عسط754_L94_C96.jpg,1,"[1169, 410, 1593, 681]",0.8718,عسط ٧٥٤,0.8259,30,confident,0.8822,1.0,NONE,False,NONE
+186,20261015_160830_604_TruckEntry_ربأ783_L92_C95.jpg,1,"[1687, 600, 2120, 862]",0.8918,ربأ ٧٨٣,0.7409,30,confident,0.8823,1.0,NONE,False,NONE
+187,20261015_161328_678_TruckEntry_ععي847_L92_C96.jpg,1,"[1384, 545, 1826, 799]",0.9083,ععى ٨٤٧,0.8667,30,confident,0.9072,1.0,NONE,False,NONE
+188,20261015_161345_936_TruckEntry_صرم4342_L95_C96.jpg,1,"[1121, 631, 1540, 885]",0.8967,صرم ٤٣٤٢,0.8029,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No enclosing vehicle matched association criteria
+189,20261015_161512_406_TruckEntry_ددن238_L96_C96.jpg,1,"[1427, 628, 1877, 881]",0.8999,ددن ٢٣٨,0.8262,35,ambiguous,0.8474,1.0,35;30,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [35, 30] with score delta 0.022 < 0.15"
+190,20261015_161521_669_TruckEntry_سقج8538_L96_C95.jpg,1,"[675, 561, 1213, 889]",0.8962,سقج ٨٥٣٨,0.7992,37,ambiguous,0.8317,1.0,37;35,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [37, 35] with score delta 0.017 < 0.15"
+192,20261015_162445_701_TruckEntry_جرط543_L95_C95.jpg,1,"[1396, 558, 1891, 838]",0.9191,جرط ٥٤٦,0.8106,35,confident,0.8365,1.0,NONE,False,NONE
+193,20261015_162501_172_TruckEntry_أعص5364_L33_C96.jpg,1,"[134, 152, 714, 545]",0.8635,أعص ٥٦٦٤,0.7172,37,confident,0.7402,1.0,NONE,True,HIGH_PLATE_PLACEMENT
+194,20261015_162924_998_TruckEntry_كعق4296_L96_C96.jpg,1,"[1600, 580, 2068, 854]",0.9106,عق ٤٢٩٦,0.8445,35,confident,0.8574,1.0,NONE,False,NONE
+195,20261015_162942_587_TruckEntry_هوأ754_L96_C94.jpg,1,"[1644, 692, 2102, 970]",0.8839,ھو ٧٥٤,0.6762,35,confident,0.8987,1.0,NONE,False,NONE
+196,20261015_163005_949_TruckEntry_كأط7856_L95_C96.jpg,1,"[1346, 577, 1814, 847]",0.9002,أط ٧٨٥٦,0.7912,35,confident,0.8413,1.0,NONE,False,NONE
+197,20261015_163051_096_TruckEntry_بيط6824_L95_C95.jpg,1,"[1268, 662, 1719, 925]",0.905,بىط ٦٨٢٤,0.7171,35,confident,0.8962,1.0,NONE,False,NONE
+198,20261015_163548_735_TruckEntry_سأه8313_L84_C96.jpg,1,"[1181, 454, 1689, 757]",0.9114,سأھ ٨٣١٣,0.8307,35,ambiguous,0.8756,1.0,35;38,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [35, 38] with score delta 0.038 < 0.15"
+199,20261015_163612_172_TruckEntry_أمق674_L95_C95.jpg,1,"[1662, 641, 2162, 923]",0.9201,أمق ٦٧٤,0.7412,38,confident,0.8755,1.0,NONE,False,NONE
+200,20261015_163833_760_TruckEntry_سقج8581_L85_C96.jpg,1,"[1787, 503, 2256, 765]",0.8947,سقج ٨٥٨١,0.8226,38,confident,0.885,1.0,NONE,False,NONE
+201,20261015_163936_773_TruckEntry_أسع9256_L95_C95.jpg,1,"[1509, 629, 2004, 910]",0.9075,أسع ٩٢٥٦,0.7186,38,confident,0.8993,1.0,NONE,False,NONE
+202,20261015_164108_082_TruckEntry_رسب9439_L95_C97.jpg,1,"[1534, 574, 1989, 834]",0.9013,رسب ٩٤٣٩,0.8587,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+203,20261015_164631_226_TruckEntry_أ38117_L96_C94.jpg,1,"[1782, 545, 2247, 791]",0.9031,أ ٣٨١١٧,0.799,38,confident,0.8213,1.0,NONE,False,NONE
+204,20261015_164920_359_TruckEntry_جوه6732_L94_C96.jpg,1,"[964, 536, 1505, 836]",0.9011,جوھ ٦٧٣٢,0.8205,38,ambiguous,0.8454,1.0,38;39,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [38, 39] with score delta 0.032 < 0.15"
+205,20261015_165019_177_TruckEntry_سقج8568_L75_C95.jpg,1,"[1391, 509, 1879, 774]",0.8839,سقج ٨٥٦٨,0.7876,39,confident,0.9135,1.0,NONE,False,NONE
+206,20261015_165029_118_TruckEntry_دفج6859_L94_C96.jpg,1,"[1514, 629, 1987, 881]",0.8964,دفج ٦٨٥٩,0.8122,39,confident,0.9154,1.0,NONE,False,NONE
+207,20261015_165310_057_TruckEntry_جون2535_L94_C97.jpg,1,"[1351, 503, 1892, 805]",0.8979,جون ٢٥٣٥,0.8142,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No enclosing vehicle matched association criteria
+208,20261015_165916_448_TruckEntry_ألم3632_L93_C96.jpg,1,"[472, 410, 1109, 796]",0.8842,ألم ٣٦٣٦٢,0.6724,39,confident,0.791,1.0,NONE,False,NONE
+209,20261015_170337_896_TruckEntry_أعق2769_L66_C96.jpg,1,"[1515, 540, 1997, 819]",0.9154,أعق ٢٧٦٩,0.8209,39,confident,0.8883,1.0,NONE,False,NONE
+210,20261015_170401_052_TruckEntry_صجو1498_L93_C96.jpg,1,"[1337, 707, 1845, 995]",0.8884,صجو ١٤٩٨,0.7912,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No enclosing vehicle matched association criteria
+211,20261015_170421_640_TruckEntry_أجع6354_L36_C96.jpg,1,"[1466, 600, 1930, 862]",0.8763,أجع ٦٣٥٤,0.792,39,confident,0.7997,1.0,NONE,False,NONE
+212,20261015_170922_708_TruckEntry_سجب924_L66_C95.jpg,1,"[1654, 641, 2109, 891]",0.6681,سجب ٩٩٤,0.5727,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+213,20261015_171037_432_TruckEntry_كأط9425_L57_C96.jpg,1,"[1802, 667, 2267, 922]",0.9021,طأط ٩٤٢٥,0.6409,39,confident,0.8422,1.0,NONE,False,NONE
+214,20261015_171909_350_TruckEntry_دصأ548_L95_C95.jpg,1,"[824, 698, 1319, 989]",0.8938,دصأ ٥٤٨,0.6717,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No enclosing vehicle matched association criteria
+215,20261015_172157_467_TruckEntry_ألس8658_L95_C96.jpg,1,"[1332, 694, 1786, 956]",0.8893,ألس ٨٦٥٨,0.7458,39,ambiguous,0.8959,1.0,39;43,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [39, 43] with score delta 0.051 < 0.15"
+216,20261015_172222_627_TruckEntry_أقي1291_L95_C96.jpg,1,"[1371, 582, 1978, 917]",0.8951,أقى ١٢٩١,0.7732,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+217,20261015_172330_669_TruckEntry_جرب458_L95_C95.jpg,1,"[908, 755, 1499, 1119]",0.9057,جرب ٤٥٨,0.6331,39,confident,0.9078,1.0,NONE,False,NONE
+218,20261015_172513_147_TruckEntry_قصط7376_L96_C96.jpg,1,"[1063, 579, 1613, 890]",0.9032,قصط ٧٣٧٦,0.86,43,confident,0.8728,1.0,NONE,False,NONE
+219,20261015_172733_972_TruckEntry_يطج8241_L93_C94.jpg,1,"[1137, 791, 1713, 1097]",0.8897,ىطج ٨٦٤١,0.6062,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+220,20261015_173107_793_TruckEntry_طمن231_L95_C96.jpg,1,"[1684, 627, 2207, 944]",0.9038,طمن ٢٣١,0.7741,43,confident,0.9225,1.0,NONE,False,NONE
+222,20261015_173644_724_TruckEntry_قجط269_L96_C96.jpg,1,"[1816, 704, 2289, 978]",0.8908,قجط ٢٦٩,0.8366,43,confident,0.9092,1.0,NONE,False,NONE
+223,20261015_173705_695_TruckEntry_أبد8589_L95_C96.jpg,1,"[1540, 521, 2025, 783]",0.8938,أبد ٨٥٨٩,0.8055,43,confident,0.9073,1.0,NONE,False,NONE
+224,20261015_173731_697_TruckEntry_أهج6947_L96_C94.jpg,1,"[1541, 817, 2099, 1122]",0.9121,أھج ٦٩٤٧,0.559,43,confident,0.9294,1.0,NONE,False,NONE
+225,20261015_174332_835_TruckEntry_هصه142_L96_C96.jpg,1,"[1685, 678, 2177, 953]",0.9087,ھصھ ١٤٢,0.7925,43,confident,0.9278,1.0,NONE,False,NONE
+226,20261015_174355_213_TruckEntry_كقج8329_L90_C97.jpg,1,"[2407, 501, 2708, 662]",0.8479,فقج ٨٣٢٩,0.7694,43,confident,0.9462,1.0,NONE,False,NONE
+227,20261015_174358_620_TruckEntry_كقج8329_L93_C96.jpg,1,"[1776, 541, 2258, 804]",0.904,قج ٨٣٢٩,0.8551,43,confident,0.9141,1.0,NONE,False,NONE
+228,20261015_174810_110_TruckEntry_كعق4569_L77_C97.jpg,1,"[1509, 392, 1970, 644]",0.8853,فعق ٤٥٦٩,0.6812,43,ambiguous,0.874,1.0,43;47,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [43, 47] with score delta 0.008 < 0.15"
+229,20261015_174917_616_TruckEntry_كطع7598_L87_C96.jpg,1,"[1045, 538, 1551, 830]",0.9094,طع ٧٥٩٨,0.8569,43,confident,0.8939,1.0,NONE,False,NONE
+230,20261015_180007_668_TruckEntry_gga3574_L92_C96.jpg,1,"[1537, 525, 2049, 805]",0.8881,ججأ ٣٥٧٤,0.7757,47,confident,0.9268,1.0,NONE,False,NONE
+231,20261015_180118_212_TruckEntry_ayr726_L96_C95.jpg,1,"[1469, 655, 1950, 922]",0.9114,أىر ٧٢٦,0.7678,47,confident,0.9127,1.0,NONE,False,NONE
+232,20261015_180146_259_TruckEntry_crm3735_L96_C96.jpg,1,"[1550, 511, 2055, 786]",0.8858,صرم ٣٧٣٥,0.7869,47,confident,0.9062,1.0,NONE,False,NONE
+233,20261015_181855_037_TruckEntry_ntd136_L95_C95.jpg,1,"[676, 732, 1294, 1129]",0.8978,لطد ٦٣١,0.6974,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+234,20261015_182044_309_TruckEntry_sfw2824_L96_C96.jpg,1,"[1974, 481, 2469, 751]",0.9052,سفو ٤٢٨٢,0.8113,47,confident,0.9084,1.0,NONE,False,NONE
+235,20261015_182342_296_TruckEntry_qmf1425_L95_C96.jpg,1,"[1028, 486, 1583, 816]",0.903,مف ٥٢٤١٤,0.6392,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+236,20261015_182502_665_TruckEntry_cat734_L96_C96.jpg,1,"[1537, 635, 2031, 919]",0.9137,صأط ٤٣٧,0.838,47,confident,0.9053,1.0,NONE,False,NONE
+237,20261015_182831_757_TruckEntry_qgc6328_L87_C96.jpg,1,"[1701, 477, 2177, 730]",0.9051,فجص ٨٢٣٦,0.7228,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+238,20261015_183013_979_TruckEntry_anc5852_L97_C96.jpg,1,"[1602, 616, 2117, 894]",0.8908,أنص ٢٥٨٥,0.786,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+239,20261015_183049_864_TruckEntry_rbb532_L93_C96.jpg,1,"[1605, 449, 2093, 716]",0.9135,ربب ٢٣٥,0.815,47,confident,0.9035,1.0,NONE,False,NONE
+240,20261015_183105_925_TruckEntry_qkr4365_L94_C97.jpg,1,"[1156, 477, 1607, 742]",0.9023,قر ٥٦٣٤,0.8386,51,confident,0.841,1.0,NONE,False,NONE
+241,20261015_183756_167_TruckEntry_crm5292_L96_C96.jpg,1,"[1624, 723, 2061, 968]",0.887,صرم ٢٩٢٥,0.8096,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+242,20261015_184048_916_TruckEntry_fgn953_L96_C96.jpg,1,"[1614, 545, 2080, 803]",0.9017,فجق ٣٥٩,0.7138,47,confident,0.908,1.0,NONE,False,NONE
+243,20261015_185014_320_TruckEntry_qrd1548_L96_C96.jpg,1,"[1602, 533, 2087, 797]",0.9016,فرد ٨٤٥١,0.8149,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+244,20261015_185332_554_TruckEntry_lcn496_L96_C97.jpg,1,"[1587, 614, 2079, 887]",0.8983,لصن ٦٩٤,0.8303,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+245,20261015_185721_638_TruckEntry_abn6968_L96_C95.jpg,1,"[1372, 408, 1861, 680]",0.8756,بن ٨٦٩٦٩,0.6584,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+246,20261015_190027_364_TruckEntry_qgm4152_L96_C96.jpg,1,"[1773, 436, 2275, 709]",0.9063,فجم ٢٥١٤,0.7308,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+247,20261015_190217_899_TruckEntry_hfe168_L95_C94.jpg,1,"[1383, 727, 1836, 966]",0.8902,ھفف ٨٦٦,0.6829,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+248,20261015_190259_018_TruckEntry_skb194_L96_C96.jpg,1,"[1923, 657, 2380, 921]",0.8952,سقب ٤٩١,0.7826,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+249,20261015_191426_935_TruckEntry_adt2726_L96_C96.jpg,1,"[1575, 629, 2115, 920]",0.9055,أدط ٦٢٧٢,0.8141,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+250,20261015_191700_740_TruckEntry_ady6986_L96_C95.jpg,1,"[1486, 577, 1955, 841]",0.8936,أدى ٦٨٩٦,0.715,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+251,20261015_191729_329_TruckEntry_ace4194_L95_C96.jpg,1,"[1653, 600, 2131, 870]",0.8777,أصع ٤٩١٤,0.79,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+252,20261015_192806_930_TruckEntry_abd2824_L96_C96.jpg,1,"[1480, 601, 1928, 856]",0.8832,أبد ٤٢٨٢,0.7972,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+253,20261015_193049_714_TruckEntry_sc7678_L86_C95.jpg,1,"[1378, 726, 1762, 1008]",0.5752,لص ٨٧٦٧,0.4093,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+254,20261015_193306_876_TruckEntry_gne572_L96_C96.jpg,1,"[1624, 717, 2091, 971]",0.8852,جنع ٣٧٥,0.6338,52,confident,0.7517,0.8909,NONE,True,UNUSUALLY_LARGE_PLATE_RATIO
+255,20261015_193622_784_TruckEntry_ahf3529_L96_C96.jpg,1,"[1514, 644, 1982, 913]",0.906,أھف ٩٢٥٣,0.8175,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+256,20261015_194603_798_TruckEntry_hbt395_L94_C96.jpg,1,"[1346, 661, 1772, 925]",0.8926,ھبط ٥٩٣,0.7764,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+257,20261015_195201_998_TruckEntry_skg8358_L96_C96.jpg,1,"[1093, 526, 1554, 798]",0.8983,سقج ٨٥٣٨,0.8276,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+258,20261015_195307_373_TruckEntry_gle916_L90_C96.jpg,1,"[1306, 619, 1729, 863]",0.8874,علع ٦٩٩,0.5761,53,confident,0.8718,1.0,NONE,False,NONE
+259,20261015_195418_125_TruckEntry_ahs7472_L96_C96.jpg,1,"[1716, 454, 2213, 732]",0.9124,أھس ٢٧٤٧,0.8034,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+260,20261015_195723_047_TruckEntry_ans9421_L96_C93.jpg,1,"[797, 726, 1362, 1068]",0.8995,مقس ٢٤٩,0.4985,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+261,20261015_195744_358_TruckEntry_agh4916_L96_C96.jpg,1,"[1447, 528, 1900, 787]",0.8944,أجھ ٦١٩٤,0.7895,54,ambiguous,0.8214,1.0,54;53,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [54, 53] with score delta 0.017 < 0.15"
+262,20261015_195804_924_TruckEntry_ehk361_L91_C96.jpg,1,"[1253, 637, 1675, 897]",0.8822,عھق ١٦٣,0.8145,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+263,20261015_195819_565_TruckEntry_edb9588_L96_C96.jpg,1,"[1415, 687, 1874, 954]",0.896,عدب ٨٨٥٩,0.7804,54,ambiguous,0.802,1.0,54;53,True,"AMBIGUOUS_ASSOCIATION: Competing vehicle tracks [54, 53] with score delta 0.001 < 0.15"
+264,20261015_195834_340_TruckEntry_tyk2146_L94_C96.jpg,1,"[1448, 605, 1903, 863]",0.8845,طىق ٦٤١٢,0.811,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+265,20261015_200009_083_TruckEntry_qeb2145_L97_C96.jpg,1,"[1405, 636, 1868, 896]",0.8962,فعب ٥٤١٢,0.7637,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+266,20261015_200022_109_TruckEntry_tfh358_L95_C96.jpg,1,"[1289, 681, 1785, 976]",0.898,طفھ ٨٥٣,0.7207,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+267,20261015_200243_610_TruckEntry_qge5894_L96_C96.jpg,1,"[1069, 672, 1558, 954]",0.8936,فجع ٤٩٨٥,0.8202,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+268,20261015_200709_677_TruckEntry_alf3491_L96_C96.jpg,1,"[1454, 638, 1931, 906]",0.9034,ألف ١٩٤٣,0.8191,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+269,20261015_200823_872_TruckEntry_sah8238_L95_C96.jpg,1,"[1288, 472, 1781, 750]",0.9175,سأھ ٨٣٢٨,0.8104,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+270,20261015_200932_374_TruckEntry_sah8238_L94_C96.jpg,1,"[1167, 494, 1657, 776]",0.885,سأھ ٨٣٢٨,0.7902,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+272,20261015_200953_131_TruckEntry_qrd6358_L95_C96.jpg,1,"[1440, 573, 1891, 834]",0.8965,رد ٨٥٣٦,0.8181,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+273,20261015_201419_816_TruckEntry_qtn2485_L94_C96.jpg,1,"[1033, 466, 1475, 726]",0.8961,طن ٥٨٤٢,0.8142,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+275,20261015_202132_732_TruckEntry_ack6134_L95_C95.jpg,1,"[1113, 693, 1605, 990]",0.8992,أھق ٣١٦,0.6238,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+276,20261015_202205_794_TruckEntry_bt86_L91_C89.jpg,1,"[552, 806, 1132, 1077]",0.8728,بط,0.2276,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+277,20261015_202233_422_TruckEntry_agl8792_L95_C96.jpg,1,"[1401, 736, 1825, 975]",0.8996,أجل ٢٩٧٨,0.7992,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+278,20261015_202630_576_TruckEntry_anr7857_L95_C95.jpg,1,"[1471, 594, 1882, 831]",0.8864,أنر ٧٥٨٧,0.785,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+279,20261015_202729_230_TruckEntry_cq3631_L96_C96.jpg,1,"[1170, 609, 1619, 878]",0.8843,صف ١٣٦٣,0.6646,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+280,20261015_202913_641_TruckEntry_ars1242_L96_C96.jpg,1,"[1202, 605, 1674, 879]",0.8894,أرس ٢٤٢١,0.7767,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+281,20261015_203146_529_TruckEntry_ncd463_L96_C96.jpg,1,"[1629, 646, 2047, 899]",0.8768,نصد ٣٦٤,0.6778,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+282,20261015_203642_335_TruckEntry_qtd9314_L96_C96.jpg,1,"[1479, 515, 1966, 788]",0.8846,طد ٤١٣٩,0.8238,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+283,20261015_203719_107_TruckEntry_wsl915_L95_C95.jpg,1,"[1357, 665, 1831, 932]",0.9019,وسل ١٩,0.8324,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+284,20261015_204418_171_TruckEntry_dww953_L96_C97.jpg,1,"[1623, 625, 2107, 899]",0.8975,دوو ٣٥٩٦,0.7112,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+285,20261015_204507_511_TruckEntry_ldh712_L96_C96.jpg,1,"[1301, 575, 1775, 853]",0.9009,لدھ ٢١٧,0.8345,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+286,20261015_204641_769_TruckEntry_als5242_L96_C96.jpg,1,"[1352, 517, 1806, 784]",0.8818,ألس ٢٤٢٥,0.7783,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+287,20261015_204701_683_TruckEntry_ard8285_L95_C95.jpg,1,"[1070, 506, 1519, 774]",0.8707,أأرد ٥٨٢٨,0.7371,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+288,20261015_205440_220_TruckEntry_ml8865_L96_C95.jpg,1,"[1648, 663, 2126, 927]",0.9037,مل ٥٦٨٨,0.8285,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+289,20261015_205808_926_TruckEntry_qte1267_L95_C96.jpg,1,"[1556, 570, 2019, 820]",0.8997,فطع ٧٦٢١,0.7979,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+290,20261015_205822_824_TruckEntry_ghb3256_L93_C96.jpg,1,"[1525, 614, 1968, 884]",0.8771,جھب ٦٥٢٣,0.8142,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+291,20261015_210013_059_TruckEntry_kra2878_L96_C96.jpg,1,"[1396, 612, 1847, 879]",0.8917,قرأ ٨٧٨٢,0.7996,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+292,20261015_210127_624_TruckEntry_qtr3514_L96_C96.jpg,1,"[1535, 586, 1990, 845]",0.8898,فطر ٤١٥٣,0.6968,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+293,20261015_210145_843_TruckEntry_aty267_L95_C94.jpg,1,"[0, 715, 474, 1074]",0.8572,طو ٢٦,0.5445,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+294,20261015_210638_533_TruckEntry_lha859_L61_C94.jpg,1,"[973, 685, 1491, 1017]",0.8903,لھأ ٩٥٨,0.5226,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+295,20261015_210826_412_TruckEntry_lgt542_L95_C93.jpg,1,"[1081, 705, 1505, 968]",0.872,لجھم ٤,0.4345,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+296,20261015_210954_719_TruckEntry_ahc9391_L96_C96.jpg,1,"[1322, 631, 1734, 873]",0.8799,أھص ١٩٣٩,0.7357,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+297,20261015_211141_202_TruckEntry_akh2959_L96_C96.jpg,1,"[1518, 618, 1978, 873]",0.8796,أقھ ٩٥٩٢,0.7956,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+298,20261015_211220_928_TruckEntry_qdt3529_L96_C96.jpg,1,"[1431, 676, 1893, 940]",0.9035,دط ٩٢٥٣,0.8226,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+299,20261015_211241_816_TruckEntry_ach9429_L94_C96.jpg,1,"[1067, 503, 1510, 773]",0.8814,أصھ ٩٢٤٩,0.7865,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+301,20261015_211624_025_TruckEntry_aka392_L92_C94.jpg,1,"[1276, 663, 1687, 922]",0.8737,قأ ٢٩٦,0.6422,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+302,20261015_211641_944_TruckEntry_qfh7958_L95_C96.jpg,1,"[1192, 578, 1646, 838]",0.9011,ففھ ٨٥٩٧,0.7766,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+303,20261015_211838_039_TruckEntry_hfl957_L96_C96.jpg,1,"[1573, 759, 2075, 1035]",0.9047,ھفط ٧٥٩,0.712,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+304,20261015_211931_796_TruckEntry_ank7841_L95_C95.jpg,1,"[1144, 469, 1591, 732]",0.8986,أنق ١٤٨٧,0.811,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+305,20261015_211957_002_TruckEntry_qah2651_L96_C96.jpg,1,"[1211, 642, 1667, 902]",0.8931,أھ ١٥٦٢,0.7963,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+306,20261015_212319_402_TruckEntry_qte6725_L95_C96.jpg,1,"[1423, 617, 1918, 894]",0.8897,فطع ٥٢٧٦,0.6973,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+307,20261015_212334_591_TruckEntry_chc964_L93_C96.jpg,1,"[1854, 668, 2317, 916]",0.906,صھص ٤٦٩,0.7184,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No enclosing vehicle matched association criteria
+308,20261015_212347_127_TruckEntry_abs4781_L96_C95.jpg,1,"[1513, 576, 2034, 852]",0.9034,أبس ١٨٧٤,0.805,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+309,20261015_212358_513_TruckEntry_qmf8361_L95_C96.jpg,1,"[1277, 465, 1729, 720]",0.8983,فمف ١٦٣٨,0.6742,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+310,20261015_212457_544_TruckEntry_akb357_L95_C96.jpg,1,"[1281, 364, 1699, 620]",0.8973,أقب ٧٥٣,0.7199,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+311,20261015_212638_171_TruckEntry_ee2735_L94_C96.jpg,1,"[1341, 615, 1810, 870]",0.7767,عع ٥٣٧٢,0.6768,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+312,20261015_212721_166_TruckEntry_esd3823_L96_C97.jpg,1,"[1500, 546, 1973, 811]",0.9118,عسد ٣٢٨٣,0.8603,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+313,20261015_212737_178_TruckEntry_kgc625_L96_C96.jpg,1,"[1488, 680, 1903, 929]",0.8995,قجص ٥٢٦,0.815,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+314,20261015_212938_767_TruckEntry_lae579_L96_C96.jpg,1,"[1645, 500, 2083, 764]",0.8853,لأع ٩٣٥,0.7352,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+315,20261015_213118_380_TruckEntry_qgt5791_L93_C96.jpg,1,"[1268, 596, 1703, 857]",0.884,جط ١٩٧٥,0.8243,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No enclosing vehicle matched association criteria
+316,20261015_213228_619_TruckEntry_qtw8534_L96_C96.jpg,1,"[1551, 545, 2004, 791]",0.8992,فطو ٤٣٥٨,0.7552,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+317,20261015_213243_754_TruckEntry_fdh683_L95_C95.jpg,1,"[605, 711, 1173, 1067]",0.9011,فدھ ٣٨٦,0.7789,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+318,20261015_213255_437_TruckEntry_amn4728_L95_C96.jpg,1,"[1579, 634, 2049, 884]",0.8921,أمن ٨٢٧٤,0.8135,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+319,20261015_213627_485_TruckEntry_srn9529_L96_C96.jpg,1,"[1589, 583, 2040, 827]",0.8899,سرن ٩٢٥٩,0.807,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No enclosing vehicle matched association criteria
+320,20261015_213853_326_TruckEntry_agh4176_L93_C96.jpg,1,"[1135, 616, 1570, 866]",0.8759,أجھ ٦٧١٤,0.738,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+321,20261015_213929_054_TruckEntry_qba5173_L93_C96.jpg,1,"[1450, 585, 1873, 828]",0.8935,فبأ ٣٧١٥,0.7748,58,confident,0.7955,1.0,NONE,False,NONE
+322,20261015_213942_266_TruckEntry_akl5657_L96_C96.jpg,1,"[679, 543, 1220, 879]",0.8808,أقل ٧٥٦٥,0.7071,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+324,20261015_214008_429_TruckEntry_agh5132_L96_C96.jpg,1,"[1398, 479, 1851, 725]",0.8991,أجھ ٢٣١٥,0.7813,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+325,20261015_214533_528_TruckEntry_etw217_L86_C94.jpg,1,"[929, 654, 1466, 978]",0.8976,عطو ٧١٢,0.666,58,confident,0.8392,1.0,NONE,False,NONE
+326,20261015_214548_454_TruckEntry_ktk853_L95_C95.jpg,1,"[485, 715, 1207, 1134]",0.8617,قطق ٥,0.7667,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+327,20261015_215038_496_TruckEntry_qke9371_L96_C96.jpg,1,"[1631, 636, 2111, 910]",0.9077,قع ١٧٣٩,0.844,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+328,20261015_215426_743_TruckEntry_wfc458_L90_C96.jpg,1,"[1311, 600, 1712, 852]",0.8859,وفص ٨٥٤,0.8218,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+329,20261015_215713_285_TruckEntry_tyf3987_L96_C96.jpg,1,"[884, 511, 1379, 805]",0.8806,طىف ٧٨٩٣,0.802,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+330,20261015_215856_568_TruckEntry_ety293_L96_C96.jpg,1,"[1351, 704, 1789, 957]",0.8743,عطىم ٣٩,0.5644,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+331,20261015_215956_197_TruckEntry_qtd2981_L51_C96.jpg,1,"[1334, 603, 1772, 863]",0.8753,فطد ١٨٩٢,0.7944,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+332,20261015_220737_138_TruckEntry_agm8923_L96_C96.jpg,1,"[1544, 483, 2031, 751]",0.8967,أجم ٣٢٩٨,0.8048,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+333,20261015_221223_839_TruckEntry_age1787_L95_C96.jpg,1,"[1637, 609, 2085, 868]",0.8738,أجع ٧٨٧١,0.6468,59,confident,0.8288,1.0,NONE,False,NONE
+334,20261015_221238_344_TruckEntry_weg539_L95_C93.jpg,1,"[527, 579, 1012, 916]",0.8856,ع ٩٥٩,0.4967,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+335,20261015_221819_100_TruckEntry_qte4831_L94_C96.jpg,1,"[1691, 636, 2129, 882]",0.8979,وطع ١٣٨٤,0.6865,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+336,20261015_222926_654_TruckEntry_ksl8793_L96_C96.jpg,1,"[1220, 666, 1688, 934]",0.9094,قسل ٣٩٧٨,0.8354,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+337,20261015_223123_835_TruckEntry_dma531_L96_C95.jpg,1,"[1384, 514, 1810, 772]",0.8818,مأ ١٣٥٥,0.5776,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+338,20261015_223204_074_TruckEntry_afm8139_L64_C96.jpg,1,"[1682, 497, 2169, 768]",0.8924,أفم ٩٣١٨,0.7926,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+339,20261015_223444_011_TruckEntry_qek5981_L96_C96.jpg,1,"[1738, 636, 2205, 901]",0.91,فعق ١٨٩٥,0.7177,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame
+340,20261015_223517_659_TruckEntry_wns468_L95_C96.jpg,1,"[1067, 551, 1490, 814]",0.8923,ونس ٨٦٤,0.814,UNASSIGNED,unassigned,0.0,0.0,NONE,True,UNASSIGNED_PLATE: No vehicle detected in frame

@@ -1,0 +1,682 @@
+{
+  "rtdetr_l_pretrained": {
+    "specification": {
+      "name": "Pretrained RT-DETR-L (COCO)",
+      "architecture": "RT-DETR-L (Vision Transformer)",
+      "checkpoint_path": "rtdetr-l.pt",
+      "sha256": "6de60b10d4bc566f00cda0f5b4d64afe4b66d48dc9695d2171effb7859d8e73f",
+      "size_bytes": 66511432,
+      "parameters_count": 32970476,
+      "license": "Apache-2.0 upstream (Baidu) / AGPL-3.0 Ultralytics runner",
+      "is_finetuned": false
+    },
+    "latency_profile": {
+      "warmup_iterations": 50,
+      "timed_iterations": 200,
+      "input_resolution": "640x640",
+      "device": "NVIDIA GeForce RTX 4060",
+      "mean_latency_ms": 47.031,
+      "median_p50_latency_ms": 45.448,
+      "p95_latency_ms": 58.162,
+      "min_latency_ms": 42.197,
+      "max_latency_ms": 80.361,
+      "std_latency_ms": 5.048,
+      "fps_mean": 21.26,
+      "peak_gpu_memory_allocated_mib": 243.85
+    },
+    "development_test_v1": {
+      "split_name": "development_test_v1",
+      "total_frames": 72,
+      "total_ground_truth_vehicles": 72,
+      "total_predicted_boxes": 226,
+      "true_positives_50": 55,
+      "false_positives_50": 171,
+      "false_negatives_50": 17,
+      "precision_50": 0.2434,
+      "recall_50": 0.7639,
+      "f1_score_50": 0.3691,
+      "map50": 0.6459,
+      "map50_95": 0.1849,
+      "false_positives_per_frame": 2.375,
+      "frame_detection_yield_pct": 91.67,
+      "lighting_breakdown": {
+        "NIGHT_IR": {
+          "frames": 2,
+          "frames_detected": 2,
+          "yield_pct": 100.0,
+          "tp": 1,
+          "fp": 1,
+          "fn": 1,
+          "precision": 0.5,
+          "recall": 0.5
+        },
+        "DAYLIGHT": {
+          "frames": 44,
+          "frames_detected": 44,
+          "yield_pct": 100.0,
+          "tp": 40,
+          "fp": 111,
+          "fn": 5,
+          "precision": 0.2649,
+          "recall": 0.8889
+        },
+        "EVENING_IR": {
+          "frames": 26,
+          "frames_detected": 20,
+          "yield_pct": 76.92,
+          "tp": 14,
+          "fp": 59,
+          "fn": 11,
+          "precision": 0.1918,
+          "recall": 0.56
+        }
+      },
+      "class_breakdown": {
+        "heavy_truck": {
+          "ground_truth_instances": 71,
+          "true_positives": 55,
+          "recall": 0.7746
+        },
+        "passenger_car": {
+          "ground_truth_instances": 1,
+          "true_positives": 0,
+          "recall": 0.0
+        }
+      },
+      "visibility_breakdown": {
+        "truncated_by_frame": {
+          "ground_truth_instances": 71,
+          "true_positives": 55,
+          "recall": 0.7746
+        },
+        "heavily_occluded": {
+          "ground_truth_instances": 1,
+          "true_positives": 0,
+          "recall": 0.0
+        }
+      }
+    },
+    "validation": {
+      "split_name": "validation",
+      "total_frames": 72,
+      "total_ground_truth_vehicles": 72,
+      "total_predicted_boxes": 178,
+      "true_positives_50": 54,
+      "false_positives_50": 124,
+      "false_negatives_50": 18,
+      "precision_50": 0.3034,
+      "recall_50": 0.75,
+      "f1_score_50": 0.432,
+      "map50": 0.6963,
+      "map50_95": 0.2196,
+      "false_positives_per_frame": 1.7222,
+      "frame_detection_yield_pct": 83.33,
+      "lighting_breakdown": {
+        "NIGHT_IR": {
+          "frames": 2,
+          "frames_detected": 1,
+          "yield_pct": 50.0,
+          "tp": 1,
+          "fp": 2,
+          "fn": 1,
+          "precision": 0.3333,
+          "recall": 0.5
+        },
+        "DAYLIGHT": {
+          "frames": 43,
+          "frames_detected": 43,
+          "yield_pct": 100.0,
+          "tp": 42,
+          "fp": 92,
+          "fn": 2,
+          "precision": 0.3134,
+          "recall": 0.9545
+        },
+        "EVENING_IR": {
+          "frames": 27,
+          "frames_detected": 16,
+          "yield_pct": 59.26,
+          "tp": 11,
+          "fp": 30,
+          "fn": 15,
+          "precision": 0.2683,
+          "recall": 0.4231
+        }
+      },
+      "class_breakdown": {
+        "heavy_truck": {
+          "ground_truth_instances": 70,
+          "true_positives": 54,
+          "recall": 0.7714
+        },
+        "passenger_car": {
+          "ground_truth_instances": 1,
+          "true_positives": 0,
+          "recall": 0.0
+        }
+      },
+      "visibility_breakdown": {
+        "truncated_by_frame": {
+          "ground_truth_instances": 71,
+          "true_positives": 54,
+          "recall": 0.7606
+        },
+        "heavily_occluded": {
+          "ground_truth_instances": 1,
+          "true_positives": 0,
+          "recall": 0.0
+        }
+      }
+    }
+  },
+  "rtdetr_l_finetuned": {
+    "specification": {
+      "name": "Fine-Tuned RT-DETR-L (Domain Adapted)",
+      "architecture": "RT-DETR-L (Vision Transformer)",
+      "checkpoint_path": "artifacts/missions/mission_013/checkpoints/rtdetr_l_finetuned_best.pt",
+      "sha256": "47f0cc1a288cc2d2f630f80841caa0e90b92eda025dd570424d4402836975613",
+      "size_bytes": 66213878,
+      "parameters_count": 32808131,
+      "license": "Apache-2.0 upstream architecture & fine-tuned domain weights",
+      "is_finetuned": true
+    },
+    "latency_profile": {
+      "warmup_iterations": 50,
+      "timed_iterations": 200,
+      "input_resolution": "640x640",
+      "device": "NVIDIA GeForce RTX 4060",
+      "mean_latency_ms": 47.477,
+      "median_p50_latency_ms": 45.946,
+      "p95_latency_ms": 56.797,
+      "min_latency_ms": 43.449,
+      "max_latency_ms": 81.032,
+      "std_latency_ms": 4.432,
+      "fps_mean": 21.06,
+      "peak_gpu_memory_allocated_mib": 335.39
+    },
+    "development_test_v1": {
+      "split_name": "development_test_v1",
+      "total_frames": 72,
+      "total_ground_truth_vehicles": 72,
+      "total_predicted_boxes": 18,
+      "true_positives_50": 4,
+      "false_positives_50": 14,
+      "false_negatives_50": 68,
+      "precision_50": 0.2222,
+      "recall_50": 0.0556,
+      "f1_score_50": 0.0889,
+      "map50": 0.0421,
+      "map50_95": 0.0307,
+      "false_positives_per_frame": 0.1944,
+      "frame_detection_yield_pct": 5.56,
+      "lighting_breakdown": {
+        "NIGHT_IR": {
+          "frames": 2,
+          "frames_detected": 0,
+          "yield_pct": 0.0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "DAYLIGHT": {
+          "frames": 44,
+          "frames_detected": 2,
+          "yield_pct": 4.55,
+          "tp": 2,
+          "fp": 5,
+          "fn": 43,
+          "precision": 0.2857,
+          "recall": 0.0444
+        },
+        "EVENING_IR": {
+          "frames": 26,
+          "frames_detected": 2,
+          "yield_pct": 7.69,
+          "tp": 2,
+          "fp": 9,
+          "fn": 23,
+          "precision": 0.1818,
+          "recall": 0.08
+        }
+      },
+      "class_breakdown": {
+        "heavy_truck": {
+          "ground_truth_instances": 71,
+          "true_positives": 4,
+          "recall": 0.0563
+        },
+        "passenger_car": {
+          "ground_truth_instances": 1,
+          "true_positives": 0,
+          "recall": 0.0
+        }
+      },
+      "visibility_breakdown": {
+        "truncated_by_frame": {
+          "ground_truth_instances": 71,
+          "true_positives": 4,
+          "recall": 0.0563
+        },
+        "heavily_occluded": {
+          "ground_truth_instances": 1,
+          "true_positives": 0,
+          "recall": 0.0
+        }
+      }
+    },
+    "validation": {
+      "split_name": "validation",
+      "total_frames": 72,
+      "total_ground_truth_vehicles": 72,
+      "total_predicted_boxes": 3,
+      "true_positives_50": 2,
+      "false_positives_50": 1,
+      "false_negatives_50": 70,
+      "precision_50": 0.6667,
+      "recall_50": 0.0278,
+      "f1_score_50": 0.0533,
+      "map50": 0.0264,
+      "map50_95": 0.0158,
+      "false_positives_per_frame": 0.0139,
+      "frame_detection_yield_pct": 2.78,
+      "lighting_breakdown": {
+        "NIGHT_IR": {
+          "frames": 2,
+          "frames_detected": 1,
+          "yield_pct": 50.0,
+          "tp": 1,
+          "fp": 1,
+          "fn": 1,
+          "precision": 0.5,
+          "recall": 0.5
+        },
+        "DAYLIGHT": {
+          "frames": 43,
+          "frames_detected": 0,
+          "yield_pct": 0.0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 44,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "EVENING_IR": {
+          "frames": 27,
+          "frames_detected": 1,
+          "yield_pct": 3.7,
+          "tp": 1,
+          "fp": 0,
+          "fn": 25,
+          "precision": 1.0,
+          "recall": 0.0385
+        }
+      },
+      "class_breakdown": {
+        "heavy_truck": {
+          "ground_truth_instances": 70,
+          "true_positives": 2,
+          "recall": 0.0286
+        },
+        "passenger_car": {
+          "ground_truth_instances": 1,
+          "true_positives": 0,
+          "recall": 0.0
+        }
+      },
+      "visibility_breakdown": {
+        "truncated_by_frame": {
+          "ground_truth_instances": 71,
+          "true_positives": 2,
+          "recall": 0.0282
+        },
+        "heavily_occluded": {
+          "ground_truth_instances": 1,
+          "true_positives": 0,
+          "recall": 0.0
+        }
+      }
+    }
+  },
+  "yolov8m_pretrained": {
+    "specification": {
+      "name": "Pretrained YOLOv8m (COCO)",
+      "architecture": "YOLOv8m (CSPDarknet CNN)",
+      "checkpoint_path": "yolov8m.pt",
+      "sha256": "5d4a90cdc7a21786cc59cd19778e9eafff836df9e2da32524737c7ee6efe4fe5",
+      "size_bytes": 52136884,
+      "parameters_count": 25902640,
+      "license": "AGPL-3.0 Ultralytics",
+      "is_finetuned": false
+    },
+    "latency_profile": {
+      "warmup_iterations": 50,
+      "timed_iterations": 200,
+      "input_resolution": "640x640",
+      "device": "NVIDIA GeForce RTX 4060",
+      "mean_latency_ms": 19.017,
+      "median_p50_latency_ms": 18.198,
+      "p95_latency_ms": 24.303,
+      "min_latency_ms": 15.943,
+      "max_latency_ms": 40.793,
+      "std_latency_ms": 3.038,
+      "fps_mean": 52.58,
+      "peak_gpu_memory_allocated_mib": 398.33
+    },
+    "development_test_v1": {
+      "split_name": "development_test_v1",
+      "total_frames": 72,
+      "total_ground_truth_vehicles": 72,
+      "total_predicted_boxes": 107,
+      "true_positives_50": 52,
+      "false_positives_50": 55,
+      "false_negatives_50": 20,
+      "precision_50": 0.486,
+      "recall_50": 0.7222,
+      "f1_score_50": 0.581,
+      "map50": 0.6029,
+      "map50_95": 0.1763,
+      "false_positives_per_frame": 0.7639,
+      "frame_detection_yield_pct": 86.11,
+      "lighting_breakdown": {
+        "NIGHT_IR": {
+          "frames": 2,
+          "frames_detected": 2,
+          "yield_pct": 100.0,
+          "tp": 1,
+          "fp": 1,
+          "fn": 1,
+          "precision": 0.5,
+          "recall": 0.5
+        },
+        "DAYLIGHT": {
+          "frames": 44,
+          "frames_detected": 44,
+          "yield_pct": 100.0,
+          "tp": 41,
+          "fp": 41,
+          "fn": 4,
+          "precision": 0.5,
+          "recall": 0.9111
+        },
+        "EVENING_IR": {
+          "frames": 26,
+          "frames_detected": 16,
+          "yield_pct": 61.54,
+          "tp": 10,
+          "fp": 13,
+          "fn": 15,
+          "precision": 0.4348,
+          "recall": 0.4
+        }
+      },
+      "class_breakdown": {
+        "heavy_truck": {
+          "ground_truth_instances": 71,
+          "true_positives": 52,
+          "recall": 0.7324
+        },
+        "passenger_car": {
+          "ground_truth_instances": 1,
+          "true_positives": 0,
+          "recall": 0.0
+        }
+      },
+      "visibility_breakdown": {
+        "truncated_by_frame": {
+          "ground_truth_instances": 71,
+          "true_positives": 52,
+          "recall": 0.7324
+        },
+        "heavily_occluded": {
+          "ground_truth_instances": 1,
+          "true_positives": 0,
+          "recall": 0.0
+        }
+      }
+    },
+    "validation": {
+      "split_name": "validation",
+      "total_frames": 72,
+      "total_ground_truth_vehicles": 72,
+      "total_predicted_boxes": 68,
+      "true_positives_50": 46,
+      "false_positives_50": 22,
+      "false_negatives_50": 26,
+      "precision_50": 0.6765,
+      "recall_50": 0.6389,
+      "f1_score_50": 0.6571,
+      "map50": 0.6049,
+      "map50_95": 0.2101,
+      "false_positives_per_frame": 0.3056,
+      "frame_detection_yield_pct": 66.67,
+      "lighting_breakdown": {
+        "NIGHT_IR": {
+          "frames": 2,
+          "frames_detected": 0,
+          "yield_pct": 0.0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "DAYLIGHT": {
+          "frames": 43,
+          "frames_detected": 43,
+          "yield_pct": 100.0,
+          "tp": 42,
+          "fp": 18,
+          "fn": 2,
+          "precision": 0.7,
+          "recall": 0.9545
+        },
+        "EVENING_IR": {
+          "frames": 27,
+          "frames_detected": 5,
+          "yield_pct": 18.52,
+          "tp": 4,
+          "fp": 4,
+          "fn": 22,
+          "precision": 0.5,
+          "recall": 0.1538
+        }
+      },
+      "class_breakdown": {
+        "heavy_truck": {
+          "ground_truth_instances": 70,
+          "true_positives": 46,
+          "recall": 0.6571
+        },
+        "passenger_car": {
+          "ground_truth_instances": 1,
+          "true_positives": 0,
+          "recall": 0.0
+        }
+      },
+      "visibility_breakdown": {
+        "truncated_by_frame": {
+          "ground_truth_instances": 71,
+          "true_positives": 46,
+          "recall": 0.6479
+        },
+        "heavily_occluded": {
+          "ground_truth_instances": 1,
+          "true_positives": 0,
+          "recall": 0.0
+        }
+      }
+    }
+  },
+  "yolov8m_finetuned": {
+    "specification": {
+      "name": "Fine-Tuned YOLOv8m (Domain Adapted)",
+      "architecture": "YOLOv8m (CSPDarknet CNN)",
+      "checkpoint_path": "artifacts/missions/mission_013/checkpoints/yolov8m_finetuned_best.pt",
+      "sha256": "b2e462fe4b06f1aa5479d615445c2246941d6ea1a91ebdb235e6b056788ca03d",
+      "size_bytes": 52003019,
+      "parameters_count": 25856899,
+      "license": "AGPL-3.0 Ultralytics",
+      "is_finetuned": true
+    },
+    "latency_profile": {
+      "warmup_iterations": 50,
+      "timed_iterations": 200,
+      "input_resolution": "640x640",
+      "device": "NVIDIA GeForce RTX 4060",
+      "mean_latency_ms": 19.628,
+      "median_p50_latency_ms": 18.423,
+      "p95_latency_ms": 26.379,
+      "min_latency_ms": 15.623,
+      "max_latency_ms": 43.042,
+      "std_latency_ms": 3.732,
+      "fps_mean": 50.95,
+      "peak_gpu_memory_allocated_mib": 499.85
+    },
+    "development_test_v1": {
+      "split_name": "development_test_v1",
+      "total_frames": 72,
+      "total_ground_truth_vehicles": 72,
+      "total_predicted_boxes": 79,
+      "true_positives_50": 70,
+      "false_positives_50": 9,
+      "false_negatives_50": 2,
+      "precision_50": 0.8861,
+      "recall_50": 0.9722,
+      "f1_score_50": 0.9272,
+      "map50": 0.9697,
+      "map50_95": 0.8884,
+      "false_positives_per_frame": 0.125,
+      "frame_detection_yield_pct": 100.0,
+      "lighting_breakdown": {
+        "NIGHT_IR": {
+          "frames": 2,
+          "frames_detected": 2,
+          "yield_pct": 100.0,
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "DAYLIGHT": {
+          "frames": 44,
+          "frames_detected": 44,
+          "yield_pct": 100.0,
+          "tp": 43,
+          "fp": 7,
+          "fn": 2,
+          "precision": 0.86,
+          "recall": 0.9556
+        },
+        "EVENING_IR": {
+          "frames": 26,
+          "frames_detected": 26,
+          "yield_pct": 100.0,
+          "tp": 25,
+          "fp": 2,
+          "fn": 0,
+          "precision": 0.9259,
+          "recall": 1.0
+        }
+      },
+      "class_breakdown": {
+        "heavy_truck": {
+          "ground_truth_instances": 71,
+          "true_positives": 70,
+          "recall": 0.9859
+        },
+        "passenger_car": {
+          "ground_truth_instances": 1,
+          "true_positives": 0,
+          "recall": 0.0
+        }
+      },
+      "visibility_breakdown": {
+        "truncated_by_frame": {
+          "ground_truth_instances": 71,
+          "true_positives": 70,
+          "recall": 0.9859
+        },
+        "heavily_occluded": {
+          "ground_truth_instances": 1,
+          "true_positives": 0,
+          "recall": 0.0
+        }
+      }
+    },
+    "validation": {
+      "split_name": "validation",
+      "total_frames": 72,
+      "total_ground_truth_vehicles": 72,
+      "total_predicted_boxes": 76,
+      "true_positives_50": 70,
+      "false_positives_50": 6,
+      "false_negatives_50": 2,
+      "precision_50": 0.9211,
+      "recall_50": 0.9722,
+      "f1_score_50": 0.9459,
+      "map50": 0.9699,
+      "map50_95": 0.8984,
+      "false_positives_per_frame": 0.0833,
+      "frame_detection_yield_pct": 100.0,
+      "lighting_breakdown": {
+        "NIGHT_IR": {
+          "frames": 2,
+          "frames_detected": 2,
+          "yield_pct": 100.0,
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "DAYLIGHT": {
+          "frames": 43,
+          "frames_detected": 43,
+          "yield_pct": 100.0,
+          "tp": 42,
+          "fp": 3,
+          "fn": 2,
+          "precision": 0.9333,
+          "recall": 0.9545
+        },
+        "EVENING_IR": {
+          "frames": 27,
+          "frames_detected": 27,
+          "yield_pct": 100.0,
+          "tp": 26,
+          "fp": 3,
+          "fn": 0,
+          "precision": 0.8966,
+          "recall": 1.0
+        }
+      },
+      "class_breakdown": {
+        "heavy_truck": {
+          "ground_truth_instances": 70,
+          "true_positives": 69,
+          "recall": 0.9857
+        },
+        "passenger_car": {
+          "ground_truth_instances": 1,
+          "true_positives": 0,
+          "recall": 0.0
+        }
+      },
+      "visibility_breakdown": {
+        "truncated_by_frame": {
+          "ground_truth_instances": 71,
+          "true_positives": 70,
+          "recall": 0.9859
+        },
+        "heavily_occluded": {
+          "ground_truth_instances": 1,
+          "true_positives": 0,
+          "recall": 0.0
+        }
+      }
+    }
+  }
+}

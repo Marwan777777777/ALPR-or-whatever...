@@ -1,0 +1,42 @@
+{
+  "rtdetr_l_pretrained": {
+    "name": "Pretrained RT-DETR-L (COCO)",
+    "architecture": "RT-DETR-L (Vision Transformer)",
+    "checkpoint_path": "rtdetr-l.pt",
+    "sha256": "6de60b10d4bc566f00cda0f5b4d64afe4b66d48dc9695d2171effb7859d8e73f",
+    "size_bytes": 66511432,
+    "parameters_count": 32970476,
+    "license": "Apache-2.0 upstream (Baidu) / AGPL-3.0 Ultralytics runner",
+    "is_finetuned": false
+  },
+  "rtdetr_l_finetuned": {
+    "name": "Fine-Tuned RT-DETR-L (Domain Adapted)",
+    "architecture": "RT-DETR-L (Vision Transformer)",
+    "checkpoint_path": "artifacts/missions/mission_013/checkpoints/rtdetr_l_finetuned_best.pt",
+    "sha256": "47f0cc1a288cc2d2f630f80841caa0e90b92eda025dd570424d4402836975613",
+    "size_bytes": 66213878,
+    "parameters_count": 32808131,
+    "license": "Apache-2.0 upstream architecture & fine-tuned domain weights",
+    "is_finetuned": true
+  },
+  "yolov8m_pretrained": {
+    "name": "Pretrained YOLOv8m (COCO)",
+    "architecture": "YOLOv8m (CSPDarknet CNN)",
+    "checkpoint_path": "yolov8m.pt",
+    "sha256": "5d4a90cdc7a21786cc59cd19778e9eafff836df9e2da32524737c7ee6efe4fe5",
+    "size_bytes": 52136884,
+    "parameters_count": 25902640,
+    "license": "AGPL-3.0 Ultralytics",
+    "is_finetuned": false
+  },
+  "yolov8m_finetuned": {
+    "name": "Fine-Tuned YOLOv8m (Domain Adapted)",
+    "architecture": "YOLOv8m (CSPDarknet CNN)",
+    "checkpoint_path": "artifacts/missions/mission_013/checkpoints/yolov8m_finetuned_best.pt",
+    "sha256": "b2e462fe4b06f1aa5479d615445c2246941d6ea1a91ebdb235e6b056788ca03d",
+    "size_bytes": 52003019,
+    "parameters_count": 25856899,
+    "license": "AGPL-3.0 Ultralytics",
+    "is_finetuned": true
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "status": "PASSED",
+  "validation_timestamp": "2026-10-30T22:34:16.486250",
+  "total_samples": 340,
+  "total_vehicle_boxes": 344,
+  "empty_frames_count": 2,
+  "multi_vehicle_frames_count": 6,
+  "adjudication_flagged_count": 17,
+  "lighting_distribution": {
+    "NIGHT_IR": 10,
+    "DAYLIGHT": 209,
+    "EVENING_IR": 121
+  },
+  "class_distribution": {
+    "heavy_truck": 336,
+    "passenger_car": 6,
+    "motorcycle": 1,
+    "light_commercial": 1
+  },
+  "visibility_distribution": {
+    "truncated_by_frame": 336,
+    "heavily_occluded": 6,
+    "partially_visible": 2
+  },
+  "error_count": 0,
+  "warning_count": 0,
+  "errors": [],
+  "warnings": []
+}

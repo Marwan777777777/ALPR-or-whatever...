@@ -1,0 +1,10 @@
+model_id,dataset_split,lighting_regime,test_frame_count,sample_size_disclosure,ground_truth_boxes,frames_with_detection,frame_detection_yield_pct,true_positives,false_positives,false_negatives,precision,recall,f1_score
+yolov8n,held_out_test_set,NIGHT_IR,2,n=2 frames (statistically limited for NIGHT_IR),2,0,0.0,0,0,2,0.0,0.0,0.0
+yolov8n,held_out_test_set,DAYLIGHT,44,n=44 frames,45,37,84.09,30,13,15,0.6977,0.6667,0.6818
+yolov8n,held_out_test_set,EVENING_IR,26,n=26 frames,25,5,19.23,1,4,24,0.2,0.04,0.0667
+yolov8m,held_out_test_set,NIGHT_IR,2,n=2 frames (statistically limited for NIGHT_IR),2,2,100.0,1,1,1,0.5,0.5,0.5
+yolov8m,held_out_test_set,DAYLIGHT,44,n=44 frames,45,44,100.0,39,32,6,0.5493,0.8667,0.6724
+yolov8m,held_out_test_set,EVENING_IR,26,n=26 frames,25,16,61.54,10,12,15,0.4545,0.4,0.4255
+rtdetr-l,held_out_test_set,NIGHT_IR,2,n=2 frames (statistically limited for NIGHT_IR),2,2,100.0,1,1,1,0.5,0.5,0.5
+rtdetr-l,held_out_test_set,DAYLIGHT,44,n=44 frames,45,44,100.0,40,50,5,0.4444,0.8889,0.5926
+rtdetr-l,held_out_test_set,EVENING_IR,26,n=26 frames,25,20,76.92,13,32,12,0.2889,0.52,0.3714

@@ -1,0 +1,104 @@
+================================================================================
+MISSION 012B: INTEGRATION & REGRESSION TEST RESULTS
+================================================================================
+Timestamp: 2026-10-30T22:54:00+02:00
+Environment: Windows 11, Python 3.11.9, pytest-9.2.0, pluggy-1.7.0, PyTorch 2.6.0+cu124
+GPU: NVIDIA GeForce RTX 4060 Laptop GPU (8187 MiB VRAM), CUDA 12.4
+
+--------------------------------------------------------------------------------
+1. Mission 010 - 012B Specific Test Suite Execution
+--------------------------------------------------------------------------------
+Command:
+.\.venv\Scripts\python.exe -m pytest tests\test_mission_010_vehicle_tracking.py tests\test_mission_011_vehicle_detection.py tests\test_mission_012_benchmark.py tests\test_mission_012b_benchmark.py -v
+
+Output:
+============================= test session starts =============================
+platform win32 -- Python 3.11.9, pytest-9.2.0, pluggy-1.7.0 -- C:\Users\MARWAN\computer vision\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\MARWAN\computer vision
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.15.1
+collected 19 items
+
+tests/test_mission_010_vehicle_tracking.py::test_vehicle_tracker_lifecycle PASSED [  5%]
+tests/test_mission_010_vehicle_tracking.py::test_plate_containment_association PASSED [ 10%]
+tests/test_mission_010_vehicle_tracking.py::test_plate_distance_fallback_association PASSED [ 15%]
+tests/test_mission_010_vehicle_tracking.py::test_unassigned_plate_when_no_vehicle PASSED [ 21%]
+tests/test_mission_010_vehicle_tracking.py::test_multi_vehicle_differentiation PASSED [ 26%]
+tests/test_mission_010_vehicle_tracking.py::test_transit_event_multi_frame_aggregation PASSED [ 31%]
+tests/test_mission_010_vehicle_tracking.py::test_pipeline_plate_only_fallback PASSED [ 36%]
+tests/test_mission_010_vehicle_tracking.py::test_no_filename_plate_leakage PASSED [ 42%]
+tests/test_mission_011_vehicle_detection.py::test_vehicle_detector_interface PASSED [ 47%]
+tests/test_mission_011_vehicle_detection.py::test_vehicle_detector_registry PASSED [ 52%]
+tests/test_mission_011_vehicle_detection.py::test_rtdetr_wrapper_mock PASSED     [ 57%]
+tests/test_mission_011_vehicle_detection.py::test_pipeline_e2e_with_vehicle_detection PASSED [ 63%]
+tests/test_mission_012_benchmark.py::test_dataset_340_frames_and_annotations PASSED [ 68%]
+tests/test_mission_012_benchmark.py::test_temporal_split_isolation PASSED       [ 73%]
+tests/test_mission_012_benchmark.py::test_benchmark_outputs_exist PASSED         [ 78%]
+tests/test_mission_012b_benchmark.py::test_split_isolation_and_no_leakage PASSED [ 84%]
+tests/test_mission_012b_benchmark.py::test_held_out_test_metrics_integrity PASSED [ 89%]
+tests/test_mission_012b_benchmark.py::test_association_accounting_completeness PASSED [ 94%]
+tests/test_mission_012b_benchmark.py::test_licensing_matrix_qualifications PASSED [100%]
+
+============================== 19 passed in 4.90s ==============================
+
+--------------------------------------------------------------------------------
+2. Full Repository Regression Suite Execution
+--------------------------------------------------------------------------------
+Command:
+.\.venv\Scripts\python.exe -m pytest -q -rs
+
+Output:
+============================= test session starts =============================
+platform win32 -- Python 3.11.9, pytest-9.2.0, pluggy-1.7.0
+rootdir: C:\Users\MARWAN\computer vision
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.15.1
+collected 112 items
+
+tests\test_aggregator.py ..                                              [  1%]
+tests\test_annotation_007e.py .....                                      [  6%]
+tests\test_api.py ..                                                     [  8%]
+tests\test_audit_007f.py .......                                         [ 14%]
+tests\test_benchmark.py .                                                [ 15%]
+tests\test_config.py ...                                                 [ 17%]
+tests\test_data_splitter.py ......                                       [ 23%]
+tests\test_dataset_audit.py ...                                          [ 25%]
+tests\test_detectors.py ......                                           [ 31%]
+tests\test_domain.py ......                                              [ 36%]
+tests\test_eval_detection.py ......                                      [ 41%]
+tests\test_eval_ocr.py ....                                              [ 45%]
+tests\test_golden_plates.py .                                            [ 46%]
+tests\test_labeling_roundtrip.py .........                               [ 54%]
+tests\test_media_loader.py ...                                           [ 57%]
+tests\test_mission_008.py .......                                        [ 63%]
+tests\test_mission_009_integration.py ...........                        [ 73%]
+tests\test_mission_010_vehicle_tracking.py ........                      [ 80%]
+tests\test_mission_011_vehicle_detection.py ....                         [ 83%]
+tests\test_mission_012_benchmark.py ...                                  [ 86%]
+tests\test_mission_012b_benchmark.py ....                                [ 90%]
+tests\test_ocr_reading_order.py ...                                      [ 92%]
+tests\test_prepare_dataset.py ...                                        [ 95%]
+tests\test_privacy.py ...                                                [ 98%]
+tests\test_tracker.py ..                                                 [100%]
+
+============================== warnings summary ===============================
+tests/test_api.py::test_api_health_endpoint
+  C:\Users\MARWAN\computer vision\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================= 112 passed, 1 warning in 14.91s =======================
+
+--------------------------------------------------------------------------------
+3. Verification Summary & Preservation Compliance
+--------------------------------------------------------------------------------
+- Historical artifacts preserved intact (Mission 007A-F, 008, 009, 010, 011, 012).
+- Zero modifications to plate detector or character OCR weights.
+- Zero modifications to independent human vehicle annotations (344 annotations preserved).
+- Frozen test split (72 frames, 16 events) preserved strictly without alteration.
+- BaseVehicleDetector interface preserved intact.
+- Ultralytics dependency preserved for existing pipeline components.
+- Zero test failures across 112 tests.

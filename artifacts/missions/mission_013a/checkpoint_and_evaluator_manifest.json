@@ -1,0 +1,69 @@
+{
+  "evaluation_timestamp": "2026-10-31T17:03:32",
+  "environment": {
+    "os": "Windows 11 (build 26100)",
+    "python_version": "3.11.9",
+    "pytorch_version": "2.6.0+cu124",
+    "ultralytics_version": "8.4.192",
+    "cuda_available": true,
+    "cuda_device_name": "NVIDIA GeForce RTX 4060",
+    "gpu_vram_total_mib": 8187.38
+  },
+  "provenance_hashes": {
+    "yolov8m_pretrained_checkpoint": {
+      "path": "yolov8m.pt",
+      "sha256": "5d4a90cdc7a21786cc59cd19778e9eafff836df9e2da32524737c7ee6efe4fe5",
+      "size_bytes": 52136884
+    },
+    "rtdetr_l_pretrained_checkpoint": {
+      "path": "rtdetr-l.pt",
+      "sha256": "6de60b10d4bc566f00cda0f5b4d64afe4b66d48dc9695d2171effb7859d8e73f",
+      "size_bytes": 66511432
+    },
+    "yolov8m_finetuned_checkpoint": {
+      "path": "artifacts/missions/mission_013/checkpoints/yolov8m_finetuned_best.pt",
+      "sha256": "b2e462fe4b06f1aa5479d615445c2246941d6ea1a91ebdb235e6b056788ca03d",
+      "size_bytes": 52003019
+    },
+    "yolov8m_training_run_best_weights": {
+      "path": "artifacts/missions/mission_013/runs/yolov8m/yolov8m_domain_exp/weights/best.pt",
+      "sha256": "b2e462fe4b06f1aa5479d615445c2246941d6ea1a91ebdb235e6b056788ca03d",
+      "size_bytes": 52003019
+    },
+    "rtdetr_l_finetuned_checkpoint": {
+      "path": "artifacts/missions/mission_013/checkpoints/rtdetr_l_finetuned_best.pt",
+      "sha256": "47f0cc1a288cc2d2f630f80841caa0e90b92eda025dd570424d4402836975613",
+      "size_bytes": 66213878
+    },
+    "rtdetr_l_training_run_best_weights": {
+      "path": "artifacts/missions/mission_013/runs/rtdetr_l/rtdetr_l_domain_exp/weights/best.pt",
+      "sha256": "47f0cc1a288cc2d2f630f80841caa0e90b92eda025dd570424d4402836975613",
+      "size_bytes": 66213878
+    },
+    "evaluation_script_mission_013": {
+      "path": "scripts/evaluate_mission_013_comparison.py",
+      "sha256": "433558997ea1f5c067b7cc7470cab8511db91034af40529d623cb016a474373e",
+      "size_bytes": 20030
+    },
+    "benchmark_script_mission_012b": {
+      "path": "scripts/run_mission_012b_split_benchmark.py",
+      "sha256": "bb4b7fca4cf69ca5c9fb097abc68c4d3f8aea11a020e3548cdf48b4297cad203",
+      "size_bytes": 18684
+    },
+    "vehicle_ground_truth_json": {
+      "path": "artifacts/missions/mission_012/vehicle_ground_truth.json",
+      "sha256": "f1c6d085119ec81d390faa8ef794054ebd2e3cca09f45f3c9677895cf963000b",
+      "size_bytes": 264989
+    },
+    "benchmark_splits_json": {
+      "path": "artifacts/missions/mission_012/benchmark_splits.json",
+      "sha256": "3138160cff5f6368d1d848cce48ede77b6ea2acbfc98c2dd0f566a5f24ada39e",
+      "size_bytes": 42693
+    }
+  },
+  "provenance_verification": {
+    "yolov8m_finetuned_matches_training_best": true,
+    "rtdetr_l_finetuned_matches_training_best": true,
+    "provenance_conclusion": "VERIFIED: The fine-tuned checkpoints evaluated in Mission 013 are bit-for-bit identical to the training run best weights."
+  }
+}

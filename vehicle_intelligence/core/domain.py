@@ -97,6 +97,22 @@ class BoundingBox(BaseModel):
             return 0.0
         return intersection_area / union_area
 
+    def intersection(self, other: BoundingBox) -> float:
+        """Computes intersection area with another bounding box."""
+        ix1 = max(self.x1, other.x1)
+        iy1 = max(self.y1, other.y1)
+        ix2 = min(self.x2, other.x2)
+        iy2 = min(self.y2, other.y2)
+        w = max(0.0, ix2 - ix1)
+        h = max(0.0, iy2 - iy1)
+        return w * h
+
+    def intersection_over_self(self, other: BoundingBox) -> float:
+        """Computes ratio of intersection area over self area (IoP)."""
+        if self.area <= 0.0:
+            return 0.0
+        return self.intersection(other) / self.area
+
 
 class VehicleDetection(BaseModel):
     """Structured detection result for a vehicle candidate."""
@@ -170,8 +186,79 @@ class VehicleSessionSummary(BaseModel):
     attributes: Optional[VehicleAttributes] = None
     stickers: List[StickerDetection] = Field(default_factory=list)
     permits: List[PermitResult] = Field(default_factory=list)
+    alternative_readings: List[PlateTextResult] = Field(
+        default_factory=list,
+        description="Conflicting or alternative candidate readings observed during the track",
+    )
+    best_evidence_frame_id: Optional[int] = Field(
+        default=None,
+        description="Frame index of the highest-confidence evidence observation",
+    )
+    best_crop_path: Optional[str] = Field(
+        default=None,
+        description="Path to best cropped plate image evidence",
+    )
+    has_conflicting_reads: bool = Field(
+        default=False,
+        description="True if multiple distinct non-empty plate strings were observed across the transit",
+    )
     needs_review: bool = False
     review_reasons: List[str] = Field(default_factory=list)
+
+
+class AssociationStatus(str, Enum):
+    """Plate-to-vehicle association status."""
+    CONFIDENT = "confident"
+    AMBIGUOUS = "ambiguous"
+    UNASSIGNED = "unassigned"
+
+
+class PlateVehicleAssociation(BaseModel):
+    """Structured result of associating a detected plate with a vehicle candidate/track."""
+    plate_box: BoundingBox
+    plate_confidence: float = Field(..., ge=0.0, le=1.0)
+    vehicle_track_id: Optional[int] = None
+    vehicle_box: Optional[BoundingBox] = None
+    vehicle_class: Optional[VehicleClass] = None
+    association_confidence: float = Field(default=0.0, ge=0.0, le=1.0)
+    status: AssociationStatus = AssociationStatus.UNASSIGNED
+    competing_vehicle_ids: List[int] = Field(default_factory=list)
+    containment_ratio: float = Field(default=0.0, description="Intersection over plate area (IoP)")
+    relative_center_offset: Tuple[float, float] = Field(default=(0.0, 0.0))
+    scale_ratio: float = Field(default=0.0, description="Plate area / Vehicle area")
+    needs_review: bool = False
+    review_reasons: List[str] = Field(default_factory=list)
+
+
+class VehicleTransitEvent(BaseModel):
+    """Upgraded coherent vehicle transit event consolidating vehicle track and associated plate readings."""
+    event_type: str = "VEHICLE_TRANSIT"
+    vehicle_track_id: int = Field(..., description="Independent vehicle track identifier")
+    vehicle_class: VehicleClass = Field(default=VehicleClass.UNKNOWN, description="Vehicle classification")
+    vehicle_confidence: float = Field(..., ge=0.0, le=1.0, description="Vehicle detection/track confidence")
+    first_seen_timestamp: float = Field(..., description="Timestamp of first vehicle observation")
+    last_seen_timestamp: float = Field(..., description="Timestamp of last vehicle observation")
+    total_frames_tracked: int = Field(default=1, description="Total frames vehicle was tracked")
+    plate_reading: Optional[PlateTextResult] = Field(default=None, description="Consolidated primary plate OCR reading")
+    plate_text: str = Field(default="", description="Primary plate logical text")
+    letters: str = Field(default="", description="Primary plate Arabic letters")
+    digits: str = Field(default="", description="Primary plate Arabic numerals")
+    plate_confidence: float = Field(default=0.0, ge=0.0, le=1.0, description="Confidence of primary plate reading")
+    plate_association_confidence: float = Field(default=0.0, ge=0.0, le=1.0, description="Confidence of plate-to-vehicle association")
+    association_status: AssociationStatus = Field(default=AssociationStatus.CONFIDENT)
+    best_vehicle_box: BoundingBox = Field(..., description="Best vehicle bounding box across transit")
+    best_plate_box: Optional[BoundingBox] = Field(default=None, description="Best plate bounding box")
+    best_evidence_frame_id: Optional[int] = Field(default=None, description="Frame index of best evidence")
+    best_crop_path: Optional[str] = Field(default=None, description="Path to best cropped plate image")
+    best_evidence_source_id: Optional[str] = Field(default=None, description="Source ID of best evidence frame")
+    observation_timestamps: List[float] = Field(default_factory=list, description="Timestamps of all observations in track")
+    alternative_readings: List[PlateTextResult] = Field(default_factory=list, description="Differing candidate readings observed")
+    has_conflicting_reads: bool = Field(default=False, description="True if multiple distinct plate strings were read")
+    has_conflicting_association: bool = Field(default=False, description="True if plate association was ambiguous across transit")
+    competing_vehicle_ids: List[int] = Field(default_factory=list, description="Alternative vehicle candidate IDs if ambiguous")
+    attributes: Optional[VehicleAttributes] = None
+    needs_review: bool = Field(default=False, description="Requires human verification")
+    review_reasons: List[str] = Field(default_factory=list, description="Specific triggers requiring human review")
 
 
 class ALPRPlateResult(BaseModel):
@@ -189,6 +276,10 @@ class ALPRPlateResult(BaseModel):
     bounding_box: BoundingBox = Field(..., description="Plate bounding box [x1, y1, x2, y2]")
     vehicle_bounding_box: Optional[BoundingBox] = Field(default=None, description="Enclosing vehicle bounding box")
     track_id: Optional[int] = Field(default=None, description="Tracking ID if video transit mode")
+    vehicle_track_id: Optional[int] = Field(default=None, description="Associated vehicle track ID")
+    association_confidence: float = Field(default=0.0, description="Confidence of plate-to-vehicle association")
+    association_status: AssociationStatus = Field(default=AssociationStatus.UNASSIGNED)
     crop_path: Optional[str] = Field(default=None, description="Path to saved plate crop image")
     annotated_image_path: Optional[str] = Field(default=None, description="Path to saved annotated visualization")
+
 

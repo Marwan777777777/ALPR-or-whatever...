@@ -1,0 +1,7 @@
+model_id,dataset_split,total_plate_observations,geometric_containment_rate_pct,association_accuracy_pct,unassigned_rate_pct,unassigned_no_vehicle_count,unassigned_no_candidate_count,ambiguity_rate_pct,ambiguous_count,partial_clipping_rate_pct,partially_clipped_count,incorrect_association_count,accounting_sum_verified
+yolov8n,held_out_test_set,69,47.83,44.93,49.28,30,4,0.0,0,2.9,2,2,True
+yolov8n,entire_dataset_descriptive,322,63.35,61.18,36.02,110,6,0.0,0,0.62,2,7,True
+yolov8m,held_out_test_set,69,79.71,72.46,18.84,10,3,0.0,0,1.45,1,5,True
+yolov8m,entire_dataset_descriptive,322,77.02,73.6,22.67,66,7,0.31,1,0.31,1,10,True
+rtdetr-l,held_out_test_set,69,85.51,69.57,11.59,6,2,8.7,6,2.9,2,5,True
+rtdetr-l,entire_dataset_descriptive,322,86.34,75.47,12.11,31,8,4.04,13,1.55,5,22,True

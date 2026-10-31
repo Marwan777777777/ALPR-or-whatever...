@@ -11,9 +11,11 @@ from typing import Dict, List, Optional, Tuple
 
 import cv2
 import numpy as np
+import torch
 from ultralytics import YOLO
 
 from vehicle_intelligence.core.domain import ALPRPlateResult, BoundingBox
+from vehicle_intelligence.core.exceptions import ModelWeightsNotFoundError
 from vehicle_intelligence.ocr.reading_order import (
     CharacterBox,
     EgyptianPlateReadingOrder,
@@ -30,35 +32,71 @@ class EndToEndALPRPipeline:
         char_weights: str | Path = "artifacts/runs/detect_chars/ealpr_characters_yolov8n/weights/best.pt",
         device: str = "cuda:0",
         det_conf: float = 0.25,
+        det_iou: float = 0.45,
+        det_imgsz: int = 640,
+        det_agnostic_nms: bool = False,
         char_conf: float = 0.25,
+        char_iou: float = 0.45,
+        char_imgsz: int = 320,
         confidence_threshold: float = 0.82,  # Calibrated on validation split
-        agnostic_nms: bool = False,
+        agnostic_nms: bool = True,
     ):
         """Initializes the ALPR pipeline.
 
         Args:
             detector_weights: Path to trained plate detector checkpoint.
             char_weights: Path to trained 27-class character detector checkpoint.
-            device: Torch execution device.
+            device: Torch execution device (auto-falls back to 'cpu' if CUDA unavailable).
             det_conf: Detection confidence cutoff (default: 0.25).
+            det_iou: Detection NMS IoU threshold (default: 0.45).
+            det_imgsz: Detection image resolution (default: 640 baseline, 1280 experimental).
+            det_agnostic_nms: Plate detector agnostic NMS (default: False).
             char_conf: Character confidence cutoff (default: 0.25).
+            char_iou: Character NMS IoU threshold (default: 0.45 per Mission 008/009 standard).
+            char_imgsz: Character detector image resolution (default: 320).
             confidence_threshold: Calibrated multi-tier confidence threshold (default: 0.82).
             agnostic_nms: If True, executes class-agnostic NMS across all character classes.
-                Defaults to False for reproducibility. Measured validation fact: validation split
-                exact match is 276/300 with agnostic_nms=True vs 275/300 with agnostic_nms=False
-                (no test-split comparison prior to freezing).
+                Defaults to True as established in Mission 008 (suppresses multi-class duplicate
+                box insertions). Set to False to reproduce historical Mission 007 baselines.
         """
-        self.device = device
+        # Validate device availability
+        if "cuda" in str(device).lower() and not torch.cuda.is_available():
+            import logging
+            logging.getLogger(__name__).warning(
+                f"Requested device '{device}' is not available (CUDA not detected). Falling back to CPU."
+            )
+            device = "cpu"
+
+        self.device = str(device)
         self.det_conf = det_conf
+        self.det_iou = det_iou
+        self.det_imgsz = det_imgsz
+        self.det_agnostic_nms = det_agnostic_nms
         self.char_conf = char_conf
+        self.char_iou = char_iou
+        self.char_imgsz = char_imgsz
         self.confidence_threshold = confidence_threshold
         self.agnostic_nms = agnostic_nms
 
-        self.detector = YOLO(str(detector_weights))
-        self.char_detector = YOLO(str(char_weights))
+        det_path = Path(detector_weights)
+        char_path = Path(char_weights)
+        if not det_path.is_file():
+            raise ModelWeightsNotFoundError(
+                model_name="plate_detector",
+                weights_path=str(det_path)
+            )
+        if not char_path.is_file():
+            raise ModelWeightsNotFoundError(
+                model_name="character_detector",
+                weights_path=str(char_path)
+            )
+
+        self.detector = YOLO(str(det_path))
+        self.char_detector = YOLO(str(char_path))
 
         # Initialize tracker for video transit replay
         self.tracker = CentroidIoUTracker()
+
 
     @staticmethod
     def compute_plate_confidence(det_conf: float, char_confs: List[float]) -> float:
@@ -85,7 +123,9 @@ class EndToEndALPRPipeline:
         res = self.detector.predict(
             source=image,
             conf=self.det_conf,
-            imgsz=640,
+            iou=self.det_iou,
+            imgsz=self.det_imgsz,
+            agnostic_nms=self.det_agnostic_nms,
             device=self.device,
             verbose=False,
         )[0]
@@ -110,13 +150,13 @@ class EndToEndALPRPipeline:
             plate_box = BoundingBox(x1=bx1, y1=by1, x2=bx2, y2=by2)
             plate_crop = image[by1:by2, bx1:bx2]
 
-            # 2. Run character detection with configurable agnostic_nms
+            # 2. Run character detection with configurable agnostic_nms and char_iou
             c_res = self.char_detector.predict(
                 source=plate_crop,
                 conf=self.char_conf,
-                iou=0.70,
+                iou=self.char_iou,
                 agnostic_nms=self.agnostic_nms,
-                imgsz=320,
+                imgsz=self.char_imgsz,
                 device=self.device,
                 verbose=False,
             )[0]

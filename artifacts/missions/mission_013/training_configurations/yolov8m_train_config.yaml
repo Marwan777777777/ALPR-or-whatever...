@@ -1,0 +1,22 @@
+model_id: yolov8m_finetuned
+base_weights: yolov8m.pt
+data: C:\Users\MARWAN\computer vision\artifacts\missions\mission_013\dataset\dataset.yaml
+epochs: 25
+batch: 8
+imgsz: 640
+device: '0'
+workers: 0
+optimizer: AdamW
+lr0: 0.001
+lrf: 0.01
+warmup_epochs: 3
+patience: 8
+seed: 42
+deterministic: true
+val: true
+project: C:\Users\MARWAN\computer vision\artifacts\missions\mission_013\runs\yolov8m
+name: yolov8m_domain_exp
+exist_ok: true
+save: true
+save_period: -1
+verbose: true

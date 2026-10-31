@@ -1,0 +1,28 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.9, pytest-9.2.0, pluggy-1.7.0 -- C:\Users\MARWAN\computer vision\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\MARWAN\computer vision
+configfile: pyproject.toml
+plugins: anyio-4.15.1
+collecting ... collected 8 items
+
+tests/test_mission_010_vehicle_tracking.py::test_scenario_1_single_vehicle_single_plate_multiple_frames PASSED [ 12%]
+tests/test_mission_010_vehicle_tracking.py::test_scenario_2_two_vehicles_in_same_frame PASSED [ 25%]
+tests/test_mission_010_vehicle_tracking.py::test_scenario_3_two_vehicles_passing_close_together PASSED [ 37%]
+tests/test_mission_010_vehicle_tracking.py::test_scenario_4_intermittent_plate_detection PASSED [ 50%]
+tests/test_mission_010_vehicle_tracking.py::test_scenario_5_plate_detected_without_vehicle_detection PASSED [ 62%]
+tests/test_mission_010_vehicle_tracking.py::test_scenario_6_ambiguous_plate_vehicle_association PASSED [ 75%]
+tests/test_mission_010_vehicle_tracking.py::test_scenario_7_conflicting_ocr_observations_for_one_vehicle PASSED [ 87%]
+tests/test_mission_010_vehicle_tracking.py::test_scenario_8_temporary_vehicle_detection_loss_and_recovery PASSED [100%]
+
+============================== 8 passed in 0.04s ==============================
+
+Summary of Scenario Verifications:
+- Scenario 1 (Single vehicle, single plate, multiple frames): PASSED. Track ID maintained, plate containment ratio >= 0.99, coherent transit event produced.
+- Scenario 2 (Two vehicles in same frame): PASSED. Independent track IDs assigned, disjoint spatial matching, plates assigned to correct vehicles without cross-talk.
+- Scenario 3 (Two vehicles passing close together): PASSED. Normalized distance + IoU metric prevented track ID swaps.
+- Scenario 4 (Intermittent plate detection): PASSED. Vehicle track retained across 6 frames while plate detected in only 3 frames; consolidated event created.
+- Scenario 5 (Plate detected without vehicle): PASSED. Handled gracefully without crash; preserved as UNASSIGNED with needs_review=True.
+- Scenario 6 (Ambiguous association): PASSED. Detected overlapping vehicles, preserved competing candidate IDs, flagged needs_review=True without forcing arbitrary assignment.
+- Scenario 7 (Conflicting OCR reads): PASSED. Tracked conflicting candidate reads, selected top confidence, preserved alternatives in alternative_readings, flagged for review.
+- Scenario 8 (Temporary detection loss & recovery): PASSED. Maintained track across 2 lost frames, recovered track on reappearance within max_lost_frames.

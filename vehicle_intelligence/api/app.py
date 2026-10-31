@@ -28,11 +28,29 @@ from vehicle_intelligence.pipeline.alpr_pipeline import EndToEndALPRPipeline
 _pipeline: EndToEndALPRPipeline | None = None
 
 
-def get_pipeline() -> EndToEndALPRPipeline:
+def get_pipeline(
+    det_imgsz: int | None = None,
+    char_iou: float | None = None,
+    agnostic_nms: bool | None = None,
+) -> EndToEndALPRPipeline:
     global _pipeline
     if _pipeline is None:
-        _pipeline = EndToEndALPRPipeline()
+        import os
+        imgsz = det_imgsz or int(os.environ.get("ALPR_DET_IMGSZ", 640))
+        iou = char_iou if char_iou is not None else float(os.environ.get("ALPR_CHAR_IOU", 0.45))
+        agn = agnostic_nms if agnostic_nms is not None else (os.environ.get("ALPR_AGNOSTIC_NMS", "true").lower() in ("true", "1"))
+        _pipeline = EndToEndALPRPipeline(
+            det_imgsz=imgsz,
+            char_iou=iou,
+            agnostic_nms=agn,
+        )
     return _pipeline
+
+
+def reset_pipeline() -> None:
+    """Resets the singleton instance (useful for test isolation)."""
+    global _pipeline
+    _pipeline = None
 
 
 app = FastAPI(

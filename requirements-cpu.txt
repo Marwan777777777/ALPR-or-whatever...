@@ -1,0 +1,12 @@
+# ==============================================================================
+# CPU Fallback Profile (Windows 11 / Linux CPU-Only Execution)
+# ==============================================================================
+# Install with:
+#   pip install -r requirements-cpu.txt
+# ==============================================================================
+
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.6.0
+torchvision==0.21.0
+
+-r requirements.txt

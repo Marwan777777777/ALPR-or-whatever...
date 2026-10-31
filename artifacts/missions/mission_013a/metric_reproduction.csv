@@ -1,0 +1,9 @@
+model_id,model_name,split,metric_source,true_positives,false_positives,false_negatives,precision_50,recall_50,f1_score_50,map50,map50_95,fp_per_frame,yield_pct,reproduction_delta,status
+yolov8m_finetuned,Fine-Tuned YOLOv8m (Domain Adapted),development_test_v1 (72 frames),Mission 013 Reported,70,9,2,0.8861,0.9722,0.9272,0.9697,0.8884,0.125,100.0,0.0,VERIFIED_EXACT_MATCH
+yolov8m_finetuned,Fine-Tuned YOLOv8m (Domain Adapted),development_test_v1 (72 frames),Mission 013A Independent Reproduction,70,9,2,0.8861,0.9722,0.9272,0.9697,0.8884,0.125,100.0,0.0,VERIFIED_EXACT_MATCH
+yolov8m_finetuned,Fine-Tuned YOLOv8m (Domain Adapted),validation (72 frames),Mission 013 Reported,70,6,2,0.9211,0.9722,0.9459,0.9699,0.8984,0.0833,100.0,0.0,VERIFIED_EXACT_MATCH
+yolov8m_finetuned,Fine-Tuned YOLOv8m (Domain Adapted),validation (72 frames),Mission 013A Independent Reproduction,70,6,2,0.9211,0.9722,0.9459,0.9699,0.8984,0.0833,100.0,0.0,VERIFIED_EXACT_MATCH
+yolov8m_pretrained,Pretrained YOLOv8m (COCO),development_test_v1 (72 frames),"Mission 013 Reported (COCO classes [1,2,3,5,7], NMS=False)",52,55,20,0.486,0.7222,0.581,0.6029,0.1763,0.7639,86.11,0.0,VERIFIED_EXACT_MATCH
+yolov8m_pretrained,Pretrained YOLOv8m (COCO),held_out_test_set (72 frames),"Mission 012B Reported (COCO classes [2,3,5,7], NMS=True)",50,45,22,0.5263,0.6944,0.5988,0.5263,0.0996,0.625,86.11,0.0,RECONCILED_DUE_TO_SECONDARY_NMS_AND_SURROGATE_MAP
+rtdetr_l_pretrained,Pretrained RT-DETR-L (COCO),development_test_v1 (72 frames),"Mission 013 Reported (COCO classes [1,2,3,5,7], NMS=False)",55,171,17,0.2434,0.7639,0.3691,0.6459,0.1849,2.375,91.67,0.0011,VERIFIED_MATCH (Borderline query confidence 0.25008 across 1 instance)
+rtdetr_l_pretrained,Pretrained RT-DETR-L (COCO),held_out_test_set (72 frames),"Mission 012B Reported (COCO classes [2,3,5,7], NMS=True)",54,83,18,0.3942,0.75,0.5167,0.3942,0.0817,1.1528,91.67,0.0,RECONCILED_DUE_TO_SECONDARY_NMS_AND_SURROGATE_MAP

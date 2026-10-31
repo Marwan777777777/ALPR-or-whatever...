@@ -1,0 +1,1051 @@
+{
+  "mission": "MISSION 009",
+  "title": "End-to-End Gate Pipeline Integration & Replay Benchmark",
+  "date": "2026-10-30",
+  "device": "cuda:0",
+  "gpu_name": "NVIDIA GeForce RTX 4060",
+  "model_checkpoints": {
+    "plate_detector": "artifacts/runs/detect/ealpr_cleaned_yolov8n/weights/best.pt",
+    "character_recognizer": "artifacts/runs/detect_chars/ealpr_characters_yolov8n/weights/best.pt"
+  },
+  "configurations": [
+    {
+      "config_name": "Configuration A (640 / char_iou 0.70)",
+      "detector_resolution": 640,
+      "detector_iou": 0.45,
+      "detector_agnostic_nms": false,
+      "character_nms_iou": 0.7,
+      "character_agnostic_nms": true,
+      "total_frames_processed": 100,
+      "total_processing_time_seconds": 22.736,
+      "fps": 4.4,
+      "latency_metrics_ms": {
+        "mean_frame_latency": 227.36,
+        "median_frame_latency": 128.06,
+        "p95_frame_latency": 440.44,
+        "min_frame_latency": 75.39,
+        "max_frame_latency": 4013.6
+      },
+      "component_breakdown_ms": {
+        "load_and_decode": 111.31,
+        "plate_detection_model": 52.13,
+        "crop_extraction": 0.02,
+        "character_ocr_model": 26.67,
+        "tracking_and_association": 0.6,
+        "evidence_output": 30.12,
+        "total_model_latency": 78.8,
+        "total_non_model_latency": 142.04
+      },
+      "gpu_memory_usage_mb": 36.22,
+      "counts": {
+        "plate_detections": 81,
+        "ocr_results": 81,
+        "emitted_transit_events": 17,
+        "duplicate_or_fragmented_events": 0,
+        "low_confidence_results": 59
+      },
+      "finalized_summaries": [
+        {
+          "track_id": 1,
+          "first_seen": 0.1,
+          "last_seen": 1.7,
+          "total_frames": 4,
+          "plate_text": "سقج ٨٥٦٨",
+          "plate_confidence": 0.7789,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 3,
+          "best_evidence_frame_id": 1,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_A_640___char_iou_0.70\\crops\\frame_001_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (4 variants: ['سقج ٨٥٦٨', 'سمج ٦٧٣٣', 'موى ٤٣٥٨', 'سأھ ٨٣١٣'])",
+            "Plate OCR confidence (0.78) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 2,
+          "first_seen": 0.3,
+          "last_seen": 0.3,
+          "total_frames": 1,
+          "plate_text": "سمج ٣٩٩٨",
+          "plate_confidence": 0.7768,
+          "has_conflicting_reads": false,
+          "alternative_readings_count": 0,
+          "best_evidence_frame_id": 3,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_A_640___char_iou_0.70\\crops\\frame_003_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Plate OCR confidence (0.78) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 3,
+          "first_seen": 0.9,
+          "last_seen": 6.3,
+          "total_frames": 14,
+          "plate_text": "أبو ٩٨٥١",
+          "plate_confidence": 0.8274,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 12,
+          "best_evidence_frame_id": 40,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_A_640___char_iou_0.70\\crops\\frame_040_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (13 variants: ['عأن ٣٧٦٧', 'قوى ٢٨١٣', 'أصى ٣١٢٨', 'سقج ٨٥٦٨', 'أبو ٩٨٥١', 'طن ٩٣١٣', 'أبو ٨٥٩٧', 'ربع ٢٥٣٨', 'جطف ٨١٦', 'قجأ ٩٧٤١', 'أھع ٧٥٤٨', 'ھجن ٨٦٢', 'طلص ٨٦٩٣'])"
+          ]
+        },
+        {
+          "track_id": 4,
+          "first_seen": 1.1,
+          "last_seen": 4.1,
+          "total_frames": 7,
+          "plate_text": "قبع ٦٧٥٦",
+          "plate_confidence": 0.8333,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 6,
+          "best_evidence_frame_id": 33,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_A_640___char_iou_0.70\\crops\\frame_033_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (7 variants: ['أجق ٩١٩٨', 'قأھ ٥٦٣٦', 'أصن ٢٨٧٩', 'ھل ٤٩٩٦', 'قبع ٦٧٥٦', 'مسم ٥٦٣', 'ربأأ ٤٩٩٢'])"
+          ]
+        },
+        {
+          "track_id": 5,
+          "first_seen": 1.5,
+          "last_seen": 1.5,
+          "total_frames": 1,
+          "plate_text": "ب ٢",
+          "plate_confidence": 0.5016,
+          "has_conflicting_reads": false,
+          "alternative_readings_count": 0,
+          "best_evidence_frame_id": 15,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_A_640___char_iou_0.70\\crops\\frame_015_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Plate OCR confidence (0.50) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 6,
+          "first_seen": 2.3,
+          "last_seen": 2.3,
+          "total_frames": 1,
+          "plate_text": "وعر ١٤٦",
+          "plate_confidence": 0.6607,
+          "has_conflicting_reads": false,
+          "alternative_readings_count": 0,
+          "best_evidence_frame_id": 23,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_A_640___char_iou_0.70\\crops\\frame_023_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Plate OCR confidence (0.66) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 7,
+          "first_seen": 2.5,
+          "last_seen": 2.9,
+          "total_frames": 2,
+          "plate_text": "جطف ٧١٣",
+          "plate_confidence": 0.7863,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 1,
+          "best_evidence_frame_id": 29,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_A_640___char_iou_0.70\\crops\\frame_029_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (2 variants: ['ىرع ٨٢٣١', 'جطف ٧١٣'])",
+            "Plate OCR confidence (0.79) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 8,
+          "first_seen": 3.5,
+          "last_seen": 3.5,
+          "total_frames": 1,
+          "plate_text": "فقأ ٤٦١",
+          "plate_confidence": 0.6545,
+          "has_conflicting_reads": false,
+          "alternative_readings_count": 0,
+          "best_evidence_frame_id": 35,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_A_640___char_iou_0.70\\crops\\frame_035_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Plate OCR confidence (0.65) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 9,
+          "first_seen": 4.2,
+          "last_seen": 7.5,
+          "total_frames": 15,
+          "plate_text": "دوو ٣٥٩",
+          "plate_confidence": 0.8429,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 14,
+          "best_evidence_frame_id": 44,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_A_640___char_iou_0.70\\crops\\frame_044_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (15 variants: ['أصأ ٩٨٢٧', 'دوو ٣٥٩', 'سلج ٥٩٧٩', 'سرص ٢٢٧٥', 'فس ١٦٧٣', 'أىط ٤٨٦٩', 'ودم ٨٥٧٣', 'ىف ٤٦٩٧', 'سعم ٦٧٢٦', 'أىق ٨٩٤٣', 'لسر ٣١٧', 'نبج ٥٩٢', 'بأل ٥٢٦', 'أسو ٣٥٣٦', 'بس ٦٣٧٨'])"
+          ]
+        },
+        {
+          "track_id": 10,
+          "first_seen": 5.3,
+          "last_seen": 5.3,
+          "total_frames": 1,
+          "plate_text": "نل ٣٢١١",
+          "plate_confidence": 0.7779,
+          "has_conflicting_reads": false,
+          "alternative_readings_count": 0,
+          "best_evidence_frame_id": 53,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_A_640___char_iou_0.70\\crops\\frame_053_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Plate OCR confidence (0.78) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 11,
+          "first_seen": 6.2,
+          "last_seen": 8.4,
+          "total_frames": 9,
+          "plate_text": "قفن ٧٤٦٩",
+          "plate_confidence": 0.8731,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 8,
+          "best_evidence_frame_id": 70,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_A_640___char_iou_0.70\\crops\\frame_070_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (9 variants: ['قبط ٨١٨٩', 'قصھ ٢٦٨٣', 'موو ٥٢٦', 'فھو ٦٨٣', 'ططب ٧١٥٩', 'قفن ٧٤٦٩', 'روط ٢٦٤٥', 'قص ١٤٨٤', 'ألع ٦٨٧٦'])"
+          ]
+        },
+        {
+          "track_id": 12,
+          "first_seen": 6.7,
+          "last_seen": 7.6,
+          "total_frames": 2,
+          "plate_text": "ربأ ٦٢٦٧",
+          "plate_confidence": 0.8165,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 1,
+          "best_evidence_frame_id": 67,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_A_640___char_iou_0.70\\crops\\frame_067_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (2 variants: ['ربأ ٦٢٦٧', 'بى ٤٦٣١'])",
+            "Plate OCR confidence (0.82) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 13,
+          "first_seen": 7.4,
+          "last_seen": 8.2,
+          "total_frames": 4,
+          "plate_text": "ججب ١٢٦٣",
+          "plate_confidence": 0.8379,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 3,
+          "best_evidence_frame_id": 82,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_A_640___char_iou_0.70\\crops\\frame_082_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (4 variants: ['أمص ٢٦٧٨', 'جىأ ٤٥٦١', 'طجب ٧٤٥', 'ججب ١٢٦٣'])"
+          ]
+        },
+        {
+          "track_id": 14,
+          "first_seen": 7.9,
+          "last_seen": 9.6,
+          "total_frames": 7,
+          "plate_text": "لھع ٣١٤",
+          "plate_confidence": 0.8352,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 6,
+          "best_evidence_frame_id": 85,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_A_640___char_iou_0.70\\crops\\frame_085_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (7 variants: ['وىم ٧٣٦', 'طبأ ٧٥٣', 'لھع ٣١٤', 'رسھ ٧٥٢', 'فدو ١٣٩٦', 'أفل ٢٨٧٣', 'أجس ٨٢١٤'])"
+          ]
+        },
+        {
+          "track_id": 15,
+          "first_seen": 8.3,
+          "last_seen": 8.3,
+          "total_frames": 1,
+          "plate_text": "فىر ٧٤٦",
+          "plate_confidence": 0.7874,
+          "has_conflicting_reads": false,
+          "alternative_readings_count": 0,
+          "best_evidence_frame_id": 83,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_A_640___char_iou_0.70\\crops\\frame_083_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Plate OCR confidence (0.79) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 16,
+          "first_seen": 8.6,
+          "last_seen": 9.9,
+          "total_frames": 6,
+          "plate_text": "سقج ٨٥٨١",
+          "plate_confidence": 0.8467,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 5,
+          "best_evidence_frame_id": 86,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_A_640___char_iou_0.70\\crops\\frame_086_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (6 variants: ['سقج ٨٥٨١', 'طو ٢٧٩٦', 'طىف ٧٨١٥', 'قبف ٤٩٨٩', 'سفف ١٣٨', 'أفى ٤٣٨٧'])"
+          ]
+        },
+        {
+          "track_id": 17,
+          "first_seen": 8.7,
+          "last_seen": 10.0,
+          "total_frames": 5,
+          "plate_text": "سوب ٢٧٩١",
+          "plate_confidence": 0.854,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 4,
+          "best_evidence_frame_id": 87,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_A_640___char_iou_0.70\\crops\\frame_087_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (5 variants: ['سوب ٢٧٩١', 'جعأ ٥٣٥٤', 'قبف ١٣٧٣', 'سلج ١٤١٩', 'رفل ٣٩٧٤'])"
+          ]
+        }
+      ]
+    },
+    {
+      "config_name": "Configuration B (640 / char_iou 0.45)",
+      "detector_resolution": 640,
+      "detector_iou": 0.45,
+      "detector_agnostic_nms": false,
+      "character_nms_iou": 0.45,
+      "character_agnostic_nms": true,
+      "total_frames_processed": 100,
+      "total_processing_time_seconds": 13.691,
+      "fps": 7.3,
+      "latency_metrics_ms": {
+        "mean_frame_latency": 136.9,
+        "median_frame_latency": 105.55,
+        "p95_frame_latency": 276.3,
+        "min_frame_latency": 62.89,
+        "max_frame_latency": 1349.96
+      },
+      "component_breakdown_ms": {
+        "load_and_decode": 34.97,
+        "plate_detection_model": 23.22,
+        "crop_extraction": 0.02,
+        "character_ocr_model": 24.19,
+        "tracking_and_association": 0.16,
+        "evidence_output": 45.74,
+        "total_model_latency": 47.41,
+        "total_non_model_latency": 80.89
+      },
+      "gpu_memory_usage_mb": 60.05,
+      "counts": {
+        "plate_detections": 81,
+        "ocr_results": 81,
+        "emitted_transit_events": 17,
+        "duplicate_or_fragmented_events": 0,
+        "low_confidence_results": 59
+      },
+      "finalized_summaries": [
+        {
+          "track_id": 1,
+          "first_seen": 0.1,
+          "last_seen": 1.7,
+          "total_frames": 4,
+          "plate_text": "سقج ٨٥٦٨",
+          "plate_confidence": 0.7789,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 3,
+          "best_evidence_frame_id": 1,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_B_640___char_iou_0.45\\crops\\frame_001_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (4 variants: ['سقج ٨٥٦٨', 'سمج ٦٧٣٣', 'موى ٤٣٥٨', 'سأھ ٨٣١٣'])",
+            "Plate OCR confidence (0.78) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 2,
+          "first_seen": 0.3,
+          "last_seen": 0.3,
+          "total_frames": 1,
+          "plate_text": "سمج ٣٩٩٨",
+          "plate_confidence": 0.7768,
+          "has_conflicting_reads": false,
+          "alternative_readings_count": 0,
+          "best_evidence_frame_id": 3,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_B_640___char_iou_0.45\\crops\\frame_003_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Plate OCR confidence (0.78) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 3,
+          "first_seen": 0.9,
+          "last_seen": 6.3,
+          "total_frames": 14,
+          "plate_text": "أبو ٩٨٥١",
+          "plate_confidence": 0.8274,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 12,
+          "best_evidence_frame_id": 40,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_B_640___char_iou_0.45\\crops\\frame_040_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (13 variants: ['عأن ٣٧٦٧', 'قوى ٢٨١٣', 'أصى ٣١٢٨', 'سقج ٨٥٦٨', 'أبو ٩٨٥١', 'طن ٩٣١٣', 'أبو ٨٥٩٧', 'ربع ٢٥٣٨', 'جطف ٨١٦', 'قجأ ٩٧٤١', 'أھع ٧٥٤٨', 'ھجن ٨٦٢', 'طلص ٨٦٩٣'])"
+          ]
+        },
+        {
+          "track_id": 4,
+          "first_seen": 1.1,
+          "last_seen": 4.1,
+          "total_frames": 7,
+          "plate_text": "قبع ٦٧٥٦",
+          "plate_confidence": 0.8333,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 6,
+          "best_evidence_frame_id": 33,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_B_640___char_iou_0.45\\crops\\frame_033_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (7 variants: ['أجق ٩١٩٨', 'قأھ ٥٦٣٦', 'أصن ٢٨٧٩', 'ھل ٤٩٩٦', 'قبع ٦٧٥٦', 'مسم ٥٦٣', 'ربأ ٤٩٩٢'])"
+          ]
+        },
+        {
+          "track_id": 5,
+          "first_seen": 1.5,
+          "last_seen": 1.5,
+          "total_frames": 1,
+          "plate_text": "ب ٢",
+          "plate_confidence": 0.5016,
+          "has_conflicting_reads": false,
+          "alternative_readings_count": 0,
+          "best_evidence_frame_id": 15,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_B_640___char_iou_0.45\\crops\\frame_015_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Plate OCR confidence (0.50) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 6,
+          "first_seen": 2.3,
+          "last_seen": 2.3,
+          "total_frames": 1,
+          "plate_text": "وعر ١٤٦",
+          "plate_confidence": 0.6607,
+          "has_conflicting_reads": false,
+          "alternative_readings_count": 0,
+          "best_evidence_frame_id": 23,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_B_640___char_iou_0.45\\crops\\frame_023_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Plate OCR confidence (0.66) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 7,
+          "first_seen": 2.5,
+          "last_seen": 2.9,
+          "total_frames": 2,
+          "plate_text": "جطف ٧١٣",
+          "plate_confidence": 0.7863,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 1,
+          "best_evidence_frame_id": 29,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_B_640___char_iou_0.45\\crops\\frame_029_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (2 variants: ['ىرع ٨٢٣١', 'جطف ٧١٣'])",
+            "Plate OCR confidence (0.79) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 8,
+          "first_seen": 3.5,
+          "last_seen": 3.5,
+          "total_frames": 1,
+          "plate_text": "فقأ ٤٦١",
+          "plate_confidence": 0.6545,
+          "has_conflicting_reads": false,
+          "alternative_readings_count": 0,
+          "best_evidence_frame_id": 35,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_B_640___char_iou_0.45\\crops\\frame_035_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Plate OCR confidence (0.65) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 9,
+          "first_seen": 4.2,
+          "last_seen": 7.5,
+          "total_frames": 15,
+          "plate_text": "دوو ٣٥٩",
+          "plate_confidence": 0.8429,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 14,
+          "best_evidence_frame_id": 44,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_B_640___char_iou_0.45\\crops\\frame_044_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (15 variants: ['أصأ ٩٨٢٧', 'دوو ٣٥٩', 'سلج ٥٩٧٩', 'سرص ٢٢٧٥', 'فس ١٦٧٣', 'أىط ٤٨٦٩', 'ودم ٨٥٧٣', 'ىف ٤٦٩٧', 'سعم ٦٧٢٦', 'أىق ٨٩٤٣', 'لسر ٣١٧', 'نبج ٥٩٢', 'بأل ٥٢٦', 'أسو ٣٥٣٦', 'بس ٦٣٧٨'])"
+          ]
+        },
+        {
+          "track_id": 10,
+          "first_seen": 5.3,
+          "last_seen": 5.3,
+          "total_frames": 1,
+          "plate_text": "نل ٣٢١١",
+          "plate_confidence": 0.7779,
+          "has_conflicting_reads": false,
+          "alternative_readings_count": 0,
+          "best_evidence_frame_id": 53,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_B_640___char_iou_0.45\\crops\\frame_053_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Plate OCR confidence (0.78) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 11,
+          "first_seen": 6.2,
+          "last_seen": 8.4,
+          "total_frames": 9,
+          "plate_text": "قفن ٧٤٦٩",
+          "plate_confidence": 0.8731,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 8,
+          "best_evidence_frame_id": 70,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_B_640___char_iou_0.45\\crops\\frame_070_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (9 variants: ['قبط ٨١٨٩', 'قصھ ٢٦٨٣', 'موو ٥٢٦', 'فھو ٦٨٣', 'ططب ٧١٥٩', 'قفن ٧٤٦٩', 'روط ٢٦٤٥', 'قص ١٤٨٤', 'ألع ٦٨٧٦'])"
+          ]
+        },
+        {
+          "track_id": 12,
+          "first_seen": 6.7,
+          "last_seen": 7.6,
+          "total_frames": 2,
+          "plate_text": "ربأ ٦٢٦٧",
+          "plate_confidence": 0.8165,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 1,
+          "best_evidence_frame_id": 67,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_B_640___char_iou_0.45\\crops\\frame_067_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (2 variants: ['ربأ ٦٢٦٧', 'بى ٤٦٣١'])",
+            "Plate OCR confidence (0.82) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 13,
+          "first_seen": 7.4,
+          "last_seen": 8.2,
+          "total_frames": 4,
+          "plate_text": "ججب ١٢٦٣",
+          "plate_confidence": 0.8379,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 3,
+          "best_evidence_frame_id": 82,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_B_640___char_iou_0.45\\crops\\frame_082_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (4 variants: ['أمص ٢٦٧٨', 'جىأ ٤٥٦١', 'طجب ٧٤٥', 'ججب ١٢٦٣'])"
+          ]
+        },
+        {
+          "track_id": 14,
+          "first_seen": 7.9,
+          "last_seen": 9.6,
+          "total_frames": 7,
+          "plate_text": "لھع ٣١٤",
+          "plate_confidence": 0.8352,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 6,
+          "best_evidence_frame_id": 85,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_B_640___char_iou_0.45\\crops\\frame_085_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (7 variants: ['وىم ٧٣٦', 'طبأ ٧٥٣', 'لھع ٣١٤', 'رسھ ٧٥٢', 'فدو ١٣٩٦', 'أفل ٢٨٧٣', 'أجس ٨٢١٤'])"
+          ]
+        },
+        {
+          "track_id": 15,
+          "first_seen": 8.3,
+          "last_seen": 8.3,
+          "total_frames": 1,
+          "plate_text": "فىر ٧٤٦",
+          "plate_confidence": 0.7874,
+          "has_conflicting_reads": false,
+          "alternative_readings_count": 0,
+          "best_evidence_frame_id": 83,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_B_640___char_iou_0.45\\crops\\frame_083_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Plate OCR confidence (0.79) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 16,
+          "first_seen": 8.6,
+          "last_seen": 9.9,
+          "total_frames": 6,
+          "plate_text": "سقج ٨٥٨١",
+          "plate_confidence": 0.8467,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 5,
+          "best_evidence_frame_id": 86,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_B_640___char_iou_0.45\\crops\\frame_086_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (6 variants: ['سقج ٨٥٨١', 'طو ٢٧٩٦', 'طىف ٧٨١٥', 'قبف ٤٩٨٩', 'سفف ١٣٨', 'أفى ٤٣٨٧'])"
+          ]
+        },
+        {
+          "track_id": 17,
+          "first_seen": 8.7,
+          "last_seen": 10.0,
+          "total_frames": 5,
+          "plate_text": "سوب ٢٧٩١",
+          "plate_confidence": 0.854,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 4,
+          "best_evidence_frame_id": 87,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_B_640___char_iou_0.45\\crops\\frame_087_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (5 variants: ['سوب ٢٧٩١', 'جعأ ٥٣٥٤', 'قبف ١٣٧٣', 'سلج ١٤١٩', 'رفل ٣٩٧٤'])"
+          ]
+        }
+      ]
+    },
+    {
+      "config_name": "Configuration C (1280 / char_iou 0.45)",
+      "detector_resolution": 1280,
+      "detector_iou": 0.45,
+      "detector_agnostic_nms": false,
+      "character_nms_iou": 0.45,
+      "character_agnostic_nms": true,
+      "total_frames_processed": 100,
+      "total_processing_time_seconds": 11.92,
+      "fps": 8.39,
+      "latency_metrics_ms": {
+        "mean_frame_latency": 119.2,
+        "median_frame_latency": 107.95,
+        "p95_frame_latency": 183.75,
+        "min_frame_latency": 64.39,
+        "max_frame_latency": 545.99
+      },
+      "component_breakdown_ms": {
+        "load_and_decode": 33.52,
+        "plate_detection_model": 27.99,
+        "crop_extraction": 0.02,
+        "character_ocr_model": 22.94,
+        "tracking_and_association": 0.18,
+        "evidence_output": 27.79,
+        "total_model_latency": 50.93,
+        "total_non_model_latency": 61.51
+      },
+      "gpu_memory_usage_mb": 118.56,
+      "counts": {
+        "plate_detections": 86,
+        "ocr_results": 86,
+        "emitted_transit_events": 23,
+        "duplicate_or_fragmented_events": 0,
+        "low_confidence_results": 62
+      },
+      "finalized_summaries": [
+        {
+          "track_id": 1,
+          "first_seen": 0.1,
+          "last_seen": 1.7,
+          "total_frames": 4,
+          "plate_text": "سقج ٨٥٦٨",
+          "plate_confidence": 0.8015,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 3,
+          "best_evidence_frame_id": 1,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_C_1280___char_iou_0.45\\crops\\frame_001_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (4 variants: ['سقج ٨٥٦٨', 'سمج ٦٧٣٣', 'موى ٤٣٥٨', 'سأھ ٨٣١٣'])",
+            "Plate OCR confidence (0.80) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 2,
+          "first_seen": 0.3,
+          "last_seen": 0.3,
+          "total_frames": 1,
+          "plate_text": "سمج ٣٩٩٨",
+          "plate_confidence": 0.7791,
+          "has_conflicting_reads": false,
+          "alternative_readings_count": 0,
+          "best_evidence_frame_id": 3,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_C_1280___char_iou_0.45\\crops\\frame_003_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Plate OCR confidence (0.78) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 3,
+          "first_seen": 0.6,
+          "last_seen": 1.0,
+          "total_frames": 3,
+          "plate_text": "جلط ١٦",
+          "plate_confidence": 0.6266,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 2,
+          "best_evidence_frame_id": 8,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_C_1280___char_iou_0.45\\crops\\frame_008_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (3 variants: ['جلط ١٦٤٨', 'جلط ١٦', 'جلط ١٦٤'])",
+            "Plate OCR confidence (0.63) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 4,
+          "first_seen": 0.9,
+          "last_seen": 6.3,
+          "total_frames": 14,
+          "plate_text": "عأن ٣٧٦٧",
+          "plate_confidence": 0.8351,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 12,
+          "best_evidence_frame_id": 58,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_C_1280___char_iou_0.45\\crops\\frame_058_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (13 variants: ['عأن ٣٧٦٧', 'قوى ٢٨١٣', 'أصى ٣١٢٨', 'سقج ٨٥٦٨', 'أبو ٩٨٥١', 'طن ٩٣١٣', 'أبو ٨٥٩٧', 'ربع ٢٥٣٨', 'جطف ٨١٦', 'قجأ ٩٧٤', 'أھع ٧٥٤٨', 'ھجن ٨٦٢', 'طلص ٨٦٩٣'])"
+          ]
+        },
+        {
+          "track_id": 5,
+          "first_seen": 1.1,
+          "last_seen": 1.3,
+          "total_frames": 2,
+          "plate_text": "أجق ٩١٩٨",
+          "plate_confidence": 0.7991,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 1,
+          "best_evidence_frame_id": 11,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_C_1280___char_iou_0.45\\crops\\frame_011_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (2 variants: ['أجق ٩١٩٨', 'قأھ ٥٦٣٦'])",
+            "Plate OCR confidence (0.80) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 6,
+          "first_seen": 2.1,
+          "last_seen": 4.1,
+          "total_frames": 5,
+          "plate_text": "ھل ٤٩٩٦",
+          "plate_confidence": 0.8356,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 4,
+          "best_evidence_frame_id": 31,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_C_1280___char_iou_0.45\\crops\\frame_031_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (5 variants: ['أصن ٢٨٧٩', 'ھل ٤٩٩٦', 'قبع ٦٧٥٦', 'مسم ٥٦٣', 'ربأ ٤٩٩٢'])"
+          ]
+        },
+        {
+          "track_id": 7,
+          "first_seen": 2.3,
+          "last_seen": 2.3,
+          "total_frames": 1,
+          "plate_text": "وعر ٥١٤٦",
+          "plate_confidence": 0.6179,
+          "has_conflicting_reads": false,
+          "alternative_readings_count": 0,
+          "best_evidence_frame_id": 23,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_C_1280___char_iou_0.45\\crops\\frame_023_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Plate OCR confidence (0.62) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 8,
+          "first_seen": 2.4,
+          "last_seen": 3.0,
+          "total_frames": 2,
+          "plate_text": "رفل ٣٩٧٤",
+          "plate_confidence": 0.7636,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 1,
+          "best_evidence_frame_id": 24,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_C_1280___char_iou_0.45\\crops\\frame_024_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (2 variants: ['رفل ٣٩٧٤', '١١'])",
+            "Plate OCR confidence (0.76) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 9,
+          "first_seen": 2.5,
+          "last_seen": 2.9,
+          "total_frames": 2,
+          "plate_text": "جطف ٧١٣",
+          "plate_confidence": 0.8358,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 1,
+          "best_evidence_frame_id": 29,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_C_1280___char_iou_0.45\\crops\\frame_029_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (2 variants: ['ىرعأم ٨٣', 'جطف ٧١٣'])"
+          ]
+        },
+        {
+          "track_id": 10,
+          "first_seen": 3.5,
+          "last_seen": 3.5,
+          "total_frames": 1,
+          "plate_text": "فقأ ٤٦١",
+          "plate_confidence": 0.7314,
+          "has_conflicting_reads": false,
+          "alternative_readings_count": 0,
+          "best_evidence_frame_id": 35,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_C_1280___char_iou_0.45\\crops\\frame_035_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Plate OCR confidence (0.73) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 11,
+          "first_seen": 3.8,
+          "last_seen": 3.8,
+          "total_frames": 1,
+          "plate_text": "فمد ٨١٧",
+          "plate_confidence": 0.4069,
+          "has_conflicting_reads": false,
+          "alternative_readings_count": 0,
+          "best_evidence_frame_id": 38,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_C_1280___char_iou_0.45\\crops\\frame_038_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Plate OCR confidence (0.41) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 12,
+          "first_seen": 4.2,
+          "last_seen": 7.0,
+          "total_frames": 14,
+          "plate_text": "أىط ٤٨٦٩",
+          "plate_confidence": 0.8477,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 13,
+          "best_evidence_frame_id": 52,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_C_1280___char_iou_0.45\\crops\\frame_052_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (14 variants: ['أصأ ٩٨٢٧', 'دوو ٣٥٩', 'سلج ٥٩٧٩', 'سرص ٢٢٧٥', 'فس ١٦٧٣', 'أىط ٤٨٦٩', 'دم ٨٥٧٣', 'ىف ٤٦٩٧', 'سعم ٦٧٢٦', 'أىق ٨٩٤٣', 'لسر ٣١٧', 'موو ٥٢٦', 'ططب ٧١٥٩', 'قفن ٧٤٦٩'])"
+          ]
+        },
+        {
+          "track_id": 13,
+          "first_seen": 5.3,
+          "last_seen": 5.3,
+          "total_frames": 1,
+          "plate_text": "نل ٣٢١١",
+          "plate_confidence": 0.7829,
+          "has_conflicting_reads": false,
+          "alternative_readings_count": 0,
+          "best_evidence_frame_id": 53,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_C_1280___char_iou_0.45\\crops\\frame_053_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Plate OCR confidence (0.78) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 14,
+          "first_seen": 6.2,
+          "last_seen": 7.5,
+          "total_frames": 6,
+          "plate_text": "قصھ ٢٦٨٣",
+          "plate_confidence": 0.8254,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 5,
+          "best_evidence_frame_id": 64,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_C_1280___char_iou_0.45\\crops\\frame_064_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (6 variants: ['قبط ٨١٨٩', 'قصھ ٢٦٨٣', 'نبج ٥٩٢', 'بأل ٥٢٦', 'أسو ٣٥٣٦', 'بس ٦٣٧٨'])"
+          ]
+        },
+        {
+          "track_id": 15,
+          "first_seen": 6.7,
+          "last_seen": 7.7,
+          "total_frames": 3,
+          "plate_text": "ربأ ٦٢٦٧",
+          "plate_confidence": 0.8,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 2,
+          "best_evidence_frame_id": 67,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_C_1280___char_iou_0.45\\crops\\frame_067_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (3 variants: ['ربأ ٦٢٦٧', 'بى ٤٦٣١', 'جىأ ٤٥٦١'])",
+            "Plate OCR confidence (0.80) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 16,
+          "first_seen": 6.8,
+          "last_seen": 7.8,
+          "total_frames": 3,
+          "plate_text": "روط ٢٦٤٥",
+          "plate_confidence": 0.844,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 2,
+          "best_evidence_frame_id": 72,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_C_1280___char_iou_0.45\\crops\\frame_072_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (3 variants: ['فھو ٦٨٣', 'روط ٢٦٤٥', 'قص ١٤٨٤'])"
+          ]
+        },
+        {
+          "track_id": 17,
+          "first_seen": 7.4,
+          "last_seen": 8.2,
+          "total_frames": 3,
+          "plate_text": "ججب ١٢٦٣",
+          "plate_confidence": 0.8479,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 2,
+          "best_evidence_frame_id": 82,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_C_1280___char_iou_0.45\\crops\\frame_082_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (3 variants: ['أمص ٢٦٧٨', 'طجب ٧٤٥', 'ججب ١٢٦٣'])"
+          ]
+        },
+        {
+          "track_id": 18,
+          "first_seen": 7.9,
+          "last_seen": 9.6,
+          "total_frames": 7,
+          "plate_text": "أفل ٢٨٧٣",
+          "plate_confidence": 0.8361,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 6,
+          "best_evidence_frame_id": 92,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_C_1280___char_iou_0.45\\crops\\frame_092_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (7 variants: ['وىم ٧٣٦٦', 'طبأ ٧٥٣', 'لھع ٣١٤', 'رسھ ٧٥٢', 'دو ١٣٩٦٤', 'أفل ٢٨٧٣', 'أجس ٨٢١٤'])"
+          ]
+        },
+        {
+          "track_id": 19,
+          "first_seen": 8.3,
+          "last_seen": 8.3,
+          "total_frames": 1,
+          "plate_text": "فىرأ ٧٤٦",
+          "plate_confidence": 0.7303,
+          "has_conflicting_reads": false,
+          "alternative_readings_count": 0,
+          "best_evidence_frame_id": 83,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_C_1280___char_iou_0.45\\crops\\frame_083_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Plate OCR confidence (0.73) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 20,
+          "first_seen": 8.4,
+          "last_seen": 8.4,
+          "total_frames": 1,
+          "plate_text": "ألع ٦٨٧٦",
+          "plate_confidence": 0.795,
+          "has_conflicting_reads": false,
+          "alternative_readings_count": 0,
+          "best_evidence_frame_id": 84,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_C_1280___char_iou_0.45\\crops\\frame_084_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Plate OCR confidence (0.80) is below threshold (0.82)"
+          ]
+        },
+        {
+          "track_id": 21,
+          "first_seen": 8.6,
+          "last_seen": 9.9,
+          "total_frames": 6,
+          "plate_text": "سفف ١٣٨",
+          "plate_confidence": 0.8453,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 5,
+          "best_evidence_frame_id": 98,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_C_1280___char_iou_0.45\\crops\\frame_098_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (6 variants: ['سقج ٨٥٨١', 'طو ٢٧٩٦', 'طىف ٧٨١٥', 'قبف ٤٩٨٩', 'سفف ١٣٨', 'أفى ٤٣٨٧'])"
+          ]
+        },
+        {
+          "track_id": 22,
+          "first_seen": 8.7,
+          "last_seen": 10.0,
+          "total_frames": 3,
+          "plate_text": "سوب ٢٧٩١",
+          "plate_confidence": 0.8396,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 2,
+          "best_evidence_frame_id": 87,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_C_1280___char_iou_0.45\\crops\\frame_087_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (3 variants: ['سوب ٢٧٩١', 'سلج ١٤١٩', 'رفل ٣٩٧٤'])"
+          ]
+        },
+        {
+          "track_id": 23,
+          "first_seen": 8.8,
+          "last_seen": 9.1,
+          "total_frames": 2,
+          "plate_text": "قبف ١٣٧٣",
+          "plate_confidence": 0.8092,
+          "has_conflicting_reads": true,
+          "alternative_readings_count": 1,
+          "best_evidence_frame_id": 91,
+          "best_crop_path": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_009\\benchmark_runs\\Configuration_C_1280___char_iou_0.45\\crops\\frame_091_plate_1.jpg",
+          "needs_review": true,
+          "review_reasons": [
+            "Ambiguous OCR: conflicting reads observed across transit (2 variants: ['جعأ ٥٣٥٤', 'قبف ١٣٧٣'])",
+            "Plate OCR confidence (0.81) is below threshold (0.82)"
+          ]
+        }
+      ]
+    }
+  ]
+}

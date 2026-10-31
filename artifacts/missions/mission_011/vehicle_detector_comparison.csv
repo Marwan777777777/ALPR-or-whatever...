@@ -1,0 +1,6 @@
+model_id,architecture,weights_file,parameters_millions,license,commercial_compatible,total_benchmark_frames,total_vehicles_detected,daylight_vehicles_detected,night_ir_vehicles_detected,night_detection_rate_pct,mean_confidence,mean_latency_ms,detected_classes
+yolov8n,YOLOv8 Nano (Anchor-free CNN),yolov8n.pt,3.2,AGPL-3.0,No (Requires Commercial License from Ultralytics or Open Source Disclosure),16,8,8,0,0.0,0.5659,195.33,car:3;truck:4;bus:1
+yolov8s,YOLOv8 Small (CNN),yolov8s.pt,11.2,AGPL-3.0,No (Requires Commercial License),16,9,8,1,10.0,0.6096,41.24,car:5;truck:3;bus:1
+yolov8m,YOLOv8 Medium (CNN),yolov8m.pt,25.9,AGPL-3.0,No (Requires Commercial License),16,11,8,3,30.0,0.4842,38.61,car:6;truck:4;bus:1
+yolo11n,YOLO11 Nano (Next-Gen CNN/Attention),yolo11n.pt,2.6,AGPL-3.0,No (Requires Commercial License),16,7,7,0,0.0,0.5926,69.37,truck:4;car:2;bus:1
+rtdetr-l,RT-DETR Large (Real-Time Vision Transformer),rtdetr-l.pt,32.0,Apache-2.0,"Yes (Permissive Open Source, Commercial Friendly)",16,45,21,24,240.0,0.4159,140.06,car:31;truck:11;bus:3

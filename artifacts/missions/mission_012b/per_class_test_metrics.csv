@@ -1,0 +1,7 @@
+model_id,dataset_split,ground_truth_class,test_instance_count,sample_size_note,recalled_instances,class_recall_50
+yolov8n,held_out_test_set,heavy_truck,71,n=71 instances in held-out test split,31,0.4366
+yolov8n,held_out_test_set,passenger_car,1,n=1 instances in held-out test split,0,0.0
+yolov8m,held_out_test_set,heavy_truck,71,n=71 instances in held-out test split,50,0.7042
+yolov8m,held_out_test_set,passenger_car,1,n=1 instances in held-out test split,0,0.0
+rtdetr-l,held_out_test_set,heavy_truck,71,n=71 instances in held-out test split,54,0.7606
+rtdetr-l,held_out_test_set,passenger_car,1,n=1 instances in held-out test split,0,0.0

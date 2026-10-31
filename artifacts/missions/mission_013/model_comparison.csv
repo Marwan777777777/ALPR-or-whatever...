@@ -1,0 +1,5 @@
+model_id,model_name,architecture,is_finetuned,test_precision_50,test_recall_50,test_f1_50,test_map50,test_map50_95,test_fp_per_frame,test_yield_pct,test_night_ir_yield_pct,test_evening_ir_yield_pct,test_daylight_yield_pct,val_precision_50,val_recall_50,val_f1_50,val_map50,val_map50_95,latency_p50_ms,latency_p95_ms,peak_vram_mib
+rtdetr_l_pretrained,Pretrained RT-DETR-L (COCO),RT-DETR-L (Vision Transformer),False,0.2434,0.7639,0.3691,0.6459,0.1849,2.375,91.67,100.0,76.92,100.0,0.3034,0.75,0.432,0.6963,0.2196,45.448,58.162,243.85
+rtdetr_l_finetuned,Fine-Tuned RT-DETR-L (Domain Adapted),RT-DETR-L (Vision Transformer),True,0.2222,0.0556,0.0889,0.0421,0.0307,0.1944,5.56,0.0,7.69,4.55,0.6667,0.0278,0.0533,0.0264,0.0158,45.946,56.797,335.39
+yolov8m_pretrained,Pretrained YOLOv8m (COCO),YOLOv8m (CSPDarknet CNN),False,0.486,0.7222,0.581,0.6029,0.1763,0.7639,86.11,100.0,61.54,100.0,0.6765,0.6389,0.6571,0.6049,0.2101,18.198,24.303,398.33
+yolov8m_finetuned,Fine-Tuned YOLOv8m (Domain Adapted),YOLOv8m (CSPDarknet CNN),True,0.8861,0.9722,0.9272,0.9697,0.8884,0.125,100.0,100.0,100.0,100.0,0.9211,0.9722,0.9459,0.9699,0.8984,18.423,26.379,499.85

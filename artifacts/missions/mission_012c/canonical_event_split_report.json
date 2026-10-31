@@ -1,0 +1,86 @@
+{
+  "milestone": "MISSION_012C",
+  "title": "Canonical Event Split Reconciliation and Verification Report",
+  "timestamp": "2026-10-30T23:01:41.420678",
+  "splits_source_file": "artifacts/missions/mission_012/benchmark_splits.json",
+  "splits_source_sha256": "3138160cff5f6368d1d848cce48ede77b6ea2acbfc98c2dd0f566a5f24ada39e",
+  "original_split_preserved": true,
+  "clustering_algorithm": {
+    "name": "Deterministic temporal gap thresholding",
+    "gap_threshold_seconds": 20.0,
+    "sorting_key": "ISO-formatted millisecond timestamp parsed from filename"
+  },
+  "canonical_partition_summary": {
+    "train": {
+      "event_count": 175,
+      "frame_count": 196,
+      "frame_percentage": 57.65,
+      "lighting_breakdown_frames": {
+        "NIGHT_IR": 6,
+        "DAYLIGHT": 122,
+        "EVENING_IR": 68
+      }
+    },
+    "validation": {
+      "event_count": 58,
+      "frame_count": 72,
+      "frame_percentage": 21.18,
+      "lighting_breakdown_frames": {
+        "NIGHT_IR": 2,
+        "DAYLIGHT": 43,
+        "EVENING_IR": 27
+      }
+    },
+    "development_test_v1": {
+      "historical_alias": "test",
+      "event_count": 58,
+      "frame_count": 72,
+      "frame_percentage": 21.18,
+      "lighting_breakdown_frames": {
+        "NIGHT_IR": 2,
+        "DAYLIGHT": 44,
+        "EVENING_IR": 26
+      }
+    },
+    "dataset_total": {
+      "total_events": 291,
+      "total_frames": 340,
+      "total_frame_percentage": 100.0
+    }
+  },
+  "leakage_and_overlap_audit": {
+    "train_val_event_overlap": 0,
+    "train_test_event_overlap": 0,
+    "val_test_event_overlap": 0,
+    "train_val_frame_overlap": 0,
+    "train_test_frame_overlap": 0,
+    "val_test_frame_overlap": 0,
+    "unassigned_frames": 0,
+    "duplicate_frame_assignments": 0,
+    "zero_leakage_verified": true
+  },
+  "resolution_of_contradictory_counts": {
+    "count_175_58_58": {
+      "status": "CANONICAL_VERIFIED",
+      "description": "The exact, ground-truth partition recorded in artifacts/missions/mission_012/benchmark_splits.json and validated by artifacts/missions/mission_012b/temporal_split_integrity.json.",
+      "train_events": 175,
+      "val_events": 58,
+      "test_events": 58,
+      "sum_events": 291
+    },
+    "count_16_test_events": {
+      "status": "RESOLVED_AS_DRAFTING_TYPO",
+      "description": "A typographical error introduced during manual text composition in Mission 012B integration_test_results.txt (line 101) and executive notes, writing 16 instead of 58 test events.",
+      "correct_value": 58
+    },
+    "count_169_62_60": {
+      "status": "RESOLVED_AS_UNGROUNDED_NARRATIVE_ERROR",
+      "description": "An ungrounded manual miscalculation typed into the narrative summary of the Mission 012B completion response. Refuted by the actual JSON artifacts which consistently record 175/58/58.",
+      "canonical_correction": "175 train / 58 val / 58 test events"
+    }
+  },
+  "scientific_definition_of_events": {
+    "heuristic_nature": "Temporal gap clustering (>20.0s) is an operational anti-leakage grouping mechanism to guarantee that adjacent frames of the same vehicle ingress sequence are placed in the same split.",
+    "physical_identity_distinction": "This heuristic does NOT represent ground-truth vehicle re-identification. Closely tailgating trucks (<20s) may be grouped into one event, while a slow truck (>20s) could be split into two. True vehicle identity is established solely through human ground truth annotation."
+  }
+}

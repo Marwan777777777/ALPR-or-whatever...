@@ -1,0 +1,14 @@
+experiment_id,description,inference_size,confidence_threshold,total_frames_tested,total_vehicles_detected,daylight_vehicles_detected,night_ir_vehicles_detected,mean_confidence,mean_latency_ms,detected_classes,night_ir_improvement
+Exp01_Baseline_Raw_640,Raw BGR at default imgsz=640,640,0.2,15,9,0,9,0.5531,206.63,car:4;truck:4;bus:1,YES
+Exp02_Raw_Resolution_1280,Raw BGR scaled to 1280px inference size,1280,0.2,15,6,0,6,0.4313,25.09,truck:3;car:1;bus:2,YES
+Exp03_Raw_Resolution_1920,Raw BGR scaled to 1920px inference size,1920,0.2,15,9,0,9,0.3617,43.03,truck:5;car:1;bus:3,YES
+Exp04_Raw_Conf_010,Raw BGR with lower confidence threshold (0.10),640,0.1,15,13,0,13,0.4252,21.67,car:6;bus:2;truck:5,YES
+Exp05_Raw_Conf_005,Raw BGR with very low confidence threshold (0.05),640,0.05,15,19,0,19,0.3141,20.17,car:11;truck:6;bus:2,YES
+Exp06_CLAHE_Clip2_640,"CLAHE with clipLimit=2.0, tileGrid=(8,8)",640,0.2,15,8,0,8,0.5033,19.13,car:3;bus:2;truck:3,YES
+Exp07_CLAHE_Clip4_640,"CLAHE with clipLimit=4.0, tileGrid=(8,8)",640,0.2,15,5,0,5,0.5902,58.19,truck:4;bus:1,YES
+Exp08_CLAHE_Clip2_1280,CLAHE clip=2.0 combined with 1280px resolution,1280,0.2,15,4,0,4,0.3561,87.92,truck:2;bus:2,YES
+Exp09_Gamma_05_640,Gamma correction gamma=0.5 (lifts dark shadow tones),640,0.2,15,7,0,7,0.5206,26.68,truck:4;car:2;bus:1,YES
+Exp10_Gamma_07_640,Gamma correction gamma=0.7 (moderate shadow lift),640,0.2,15,9,0,9,0.5188,31.09,car:4;truck:4;bus:1,YES
+Exp11_Gamma_15_640,Gamma correction gamma=1.5 (darkens washed highlights),640,0.2,15,8,0,8,0.571,44.86,car:3;truck:4;bus:1,YES
+Exp12_AutoContrast_640,Min-Max linear contrast stretch (1st to 99th percentile),640,0.2,15,11,0,11,0.4659,28.1,bus:2;car:5;truck:4,YES
+Exp13_BilateralFilter_640,Bilateral filter (edge-preserving denoising),640,0.2,15,8,0,8,0.5296,21.68,car:2;truck:4;bus:2,YES

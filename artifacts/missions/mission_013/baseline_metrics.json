@@ -1,0 +1,344 @@
+{
+  "milestone": "MISSION_013",
+  "title": "Pre-Training Reproducible Baseline Metrics and Latency Profiles",
+  "timestamp": "2026-10-30T23:35:25",
+  "cryptographic_manifest": {
+    "rtdetr_l_checkpoint_sha256": "6de60b10d4bc566f00cda0f5b4d64afe4b66d48dc9695d2171effb7859d8e73f",
+    "yolov8m_checkpoint_sha256": "5d4a90cdc7a21786cc59cd19778e9eafff836df9e2da32524737c7ee6efe4fe5",
+    "vehicle_ground_truth_sha256": "f1c6d085119ec81d390faa8ef794054ebd2e3cca09f45f3c9677895cf963000b",
+    "benchmark_splits_sha256": "3138160cff5f6368d1d848cce48ede77b6ea2acbfc98c2dd0f566a5f24ada39e",
+    "dataset_yaml_sha256": "5b3c90d4bef44f431622bca498e0b5cc7b4425c1c81db380dd1ad5a5706e4d6b"
+  },
+  "experimental_protocol": {
+    "evaluation_resolution": "640x640",
+    "confidence_threshold": 0.25,
+    "iou_matching_threshold": 0.5,
+    "latency_warmup_runs": 50,
+    "latency_timed_runs": 200,
+    "device": "NVIDIA GeForce RTX 4060 Laptop GPU (8GB VRAM)"
+  },
+  "pretrained_baselines": {
+    "rtdetr_l": {
+      "checkpoint": "rtdetr-l.pt",
+      "sha256": "6de60b10d4bc566f00cda0f5b4d64afe4b66d48dc9695d2171effb7859d8e73f",
+      "architecture": "RT-DETR Large (Vision Transformer, HGNetv2 backbone)",
+      "parameters_count": 32970476,
+      "license": "Apache-2.0 upstream (Baidu) / AGPL-3.0 Ultralytics wrapper execution",
+      "latency_profile": {
+        "warmup_iterations": 50,
+        "timed_iterations": 200,
+        "input_resolution": "640x640",
+        "device": "NVIDIA GeForce RTX 4060",
+        "mean_latency_ms": 57.792,
+        "median_p50_latency_ms": 54.606,
+        "p95_latency_ms": 77.526,
+        "min_latency_ms": 44.663,
+        "max_latency_ms": 106.048,
+        "std_latency_ms": 10.654,
+        "fps_mean": 17.3,
+        "peak_gpu_memory_allocated_mib": 243.85
+      },
+      "development_test_v1_evaluation": {
+        "split_name": "development_test_v1",
+        "total_frames": 72,
+        "total_ground_truth_vehicles": 72,
+        "total_predicted_boxes": 220,
+        "true_positives_50": 55,
+        "false_positives_50": 165,
+        "false_negatives_50": 17,
+        "precision_50": 0.25,
+        "recall_50": 0.7639,
+        "f1_score_50": 0.3767,
+        "false_positives_per_frame": 2.2917,
+        "frame_detection_yield_pct": 91.67,
+        "lighting_breakdown": {
+          "NIGHT_IR": {
+            "frames": 2,
+            "frames_detected": 2,
+            "yield_pct": 100.0,
+            "tp": 1,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.5,
+            "recall": 0.5
+          },
+          "DAYLIGHT": {
+            "frames": 44,
+            "frames_detected": 44,
+            "yield_pct": 100.0,
+            "tp": 40,
+            "fp": 106,
+            "fn": 5,
+            "precision": 0.274,
+            "recall": 0.8889
+          },
+          "EVENING_IR": {
+            "frames": 26,
+            "frames_detected": 20,
+            "yield_pct": 76.92,
+            "tp": 14,
+            "fp": 58,
+            "fn": 11,
+            "precision": 0.1944,
+            "recall": 0.56
+          }
+        },
+        "class_breakdown": {
+          "heavy_truck": {
+            "ground_truth_instances": 71,
+            "true_positives": 55,
+            "recall": 0.7746
+          },
+          "passenger_car": {
+            "ground_truth_instances": 1,
+            "true_positives": 0,
+            "recall": 0.0
+          }
+        },
+        "visibility_breakdown": {
+          "truncated_by_frame": {
+            "ground_truth_instances": 71,
+            "true_positives": 55,
+            "recall": 0.7746
+          },
+          "heavily_occluded": {
+            "ground_truth_instances": 1,
+            "true_positives": 0,
+            "recall": 0.0
+          }
+        }
+      },
+      "validation_evaluation": {
+        "split_name": "validation_set",
+        "total_frames": 72,
+        "total_ground_truth_vehicles": 72,
+        "total_predicted_boxes": 178,
+        "true_positives_50": 54,
+        "false_positives_50": 124,
+        "false_negatives_50": 18,
+        "precision_50": 0.3034,
+        "recall_50": 0.75,
+        "f1_score_50": 0.432,
+        "false_positives_per_frame": 1.7222,
+        "frame_detection_yield_pct": 83.33,
+        "lighting_breakdown": {
+          "NIGHT_IR": {
+            "frames": 2,
+            "frames_detected": 1,
+            "yield_pct": 50.0,
+            "tp": 1,
+            "fp": 2,
+            "fn": 1,
+            "precision": 0.3333,
+            "recall": 0.5
+          },
+          "DAYLIGHT": {
+            "frames": 43,
+            "frames_detected": 43,
+            "yield_pct": 100.0,
+            "tp": 42,
+            "fp": 92,
+            "fn": 2,
+            "precision": 0.3134,
+            "recall": 0.9545
+          },
+          "EVENING_IR": {
+            "frames": 27,
+            "frames_detected": 16,
+            "yield_pct": 59.26,
+            "tp": 11,
+            "fp": 30,
+            "fn": 15,
+            "precision": 0.2683,
+            "recall": 0.4231
+          }
+        },
+        "class_breakdown": {
+          "heavy_truck": {
+            "ground_truth_instances": 70,
+            "true_positives": 54,
+            "recall": 0.7714
+          },
+          "passenger_car": {
+            "ground_truth_instances": 1,
+            "true_positives": 0,
+            "recall": 0.0
+          }
+        },
+        "visibility_breakdown": {
+          "truncated_by_frame": {
+            "ground_truth_instances": 71,
+            "true_positives": 54,
+            "recall": 0.7606
+          },
+          "heavily_occluded": {
+            "ground_truth_instances": 1,
+            "true_positives": 0,
+            "recall": 0.0
+          }
+        }
+      }
+    },
+    "yolov8m": {
+      "checkpoint": "yolov8m.pt",
+      "sha256": "5d4a90cdc7a21786cc59cd19778e9eafff836df9e2da32524737c7ee6efe4fe5",
+      "architecture": "YOLOv8 Medium (CSPDarknet CNN)",
+      "parameters_count": 25902640,
+      "license": "AGPL-3.0 (Ultralytics)",
+      "latency_profile": {
+        "warmup_iterations": 50,
+        "timed_iterations": 200,
+        "input_resolution": "640x640",
+        "device": "NVIDIA GeForce RTX 4060",
+        "mean_latency_ms": 19.242,
+        "median_p50_latency_ms": 17.896,
+        "p95_latency_ms": 25.895,
+        "min_latency_ms": 16.56,
+        "max_latency_ms": 49.687,
+        "std_latency_ms": 3.674,
+        "fps_mean": 51.97,
+        "peak_gpu_memory_allocated_mib": 459.91
+      },
+      "development_test_v1_evaluation": {
+        "split_name": "development_test_v1",
+        "total_frames": 72,
+        "total_ground_truth_vehicles": 72,
+        "total_predicted_boxes": 106,
+        "true_positives_50": 52,
+        "false_positives_50": 54,
+        "false_negatives_50": 20,
+        "precision_50": 0.4906,
+        "recall_50": 0.7222,
+        "f1_score_50": 0.5843,
+        "false_positives_per_frame": 0.75,
+        "frame_detection_yield_pct": 86.11,
+        "lighting_breakdown": {
+          "NIGHT_IR": {
+            "frames": 2,
+            "frames_detected": 2,
+            "yield_pct": 100.0,
+            "tp": 1,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.5,
+            "recall": 0.5
+          },
+          "DAYLIGHT": {
+            "frames": 44,
+            "frames_detected": 44,
+            "yield_pct": 100.0,
+            "tp": 41,
+            "fp": 40,
+            "fn": 4,
+            "precision": 0.5062,
+            "recall": 0.9111
+          },
+          "EVENING_IR": {
+            "frames": 26,
+            "frames_detected": 16,
+            "yield_pct": 61.54,
+            "tp": 10,
+            "fp": 13,
+            "fn": 15,
+            "precision": 0.4348,
+            "recall": 0.4
+          }
+        },
+        "class_breakdown": {
+          "heavy_truck": {
+            "ground_truth_instances": 71,
+            "true_positives": 52,
+            "recall": 0.7324
+          },
+          "passenger_car": {
+            "ground_truth_instances": 1,
+            "true_positives": 0,
+            "recall": 0.0
+          }
+        },
+        "visibility_breakdown": {
+          "truncated_by_frame": {
+            "ground_truth_instances": 71,
+            "true_positives": 52,
+            "recall": 0.7324
+          },
+          "heavily_occluded": {
+            "ground_truth_instances": 1,
+            "true_positives": 0,
+            "recall": 0.0
+          }
+        }
+      },
+      "validation_evaluation": {
+        "split_name": "validation_set",
+        "total_frames": 72,
+        "total_ground_truth_vehicles": 72,
+        "total_predicted_boxes": 68,
+        "true_positives_50": 46,
+        "false_positives_50": 22,
+        "false_negatives_50": 26,
+        "precision_50": 0.6765,
+        "recall_50": 0.6389,
+        "f1_score_50": 0.6571,
+        "false_positives_per_frame": 0.3056,
+        "frame_detection_yield_pct": 66.67,
+        "lighting_breakdown": {
+          "NIGHT_IR": {
+            "frames": 2,
+            "frames_detected": 0,
+            "yield_pct": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "DAYLIGHT": {
+            "frames": 43,
+            "frames_detected": 43,
+            "yield_pct": 100.0,
+            "tp": 42,
+            "fp": 18,
+            "fn": 2,
+            "precision": 0.7,
+            "recall": 0.9545
+          },
+          "EVENING_IR": {
+            "frames": 27,
+            "frames_detected": 5,
+            "yield_pct": 18.52,
+            "tp": 4,
+            "fp": 4,
+            "fn": 22,
+            "precision": 0.5,
+            "recall": 0.1538
+          }
+        },
+        "class_breakdown": {
+          "heavy_truck": {
+            "ground_truth_instances": 70,
+            "true_positives": 46,
+            "recall": 0.6571
+          },
+          "passenger_car": {
+            "ground_truth_instances": 1,
+            "true_positives": 0,
+            "recall": 0.0
+          }
+        },
+        "visibility_breakdown": {
+          "truncated_by_frame": {
+            "ground_truth_instances": 71,
+            "true_positives": 46,
+            "recall": 0.6479
+          },
+          "heavily_occluded": {
+            "ground_truth_instances": 1,
+            "true_positives": 0,
+            "recall": 0.0
+          }
+        }
+      }
+    }
+  }
+}

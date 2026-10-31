@@ -1,0 +1,39 @@
+{
+  "status": "PASSED",
+  "verification_timestamp": "2026-10-30T22:44:19.936553",
+  "total_dataset_files": 340,
+  "total_reconstructed_events": 291,
+  "split_summary": {
+    "train": {
+      "frame_count": 196,
+      "event_count": 175,
+      "percentage_frames": 57.65
+    },
+    "validation": {
+      "frame_count": 72,
+      "event_count": 58,
+      "percentage_frames": 21.18
+    },
+    "test": {
+      "frame_count": 72,
+      "event_count": 58,
+      "percentage_frames": 21.18
+    }
+  },
+  "leakage_audit": {
+    "train_val_frame_overlap_count": 0,
+    "train_test_frame_overlap_count": 0,
+    "val_test_frame_overlap_count": 0,
+    "train_val_event_overlap_count": 0,
+    "train_test_event_overlap_count": 0,
+    "val_test_event_overlap_count": 0,
+    "events_spanning_multiple_splits_count": 0,
+    "unassigned_frames_count": 0,
+    "duplicate_assignments_count": 0,
+    "zero_leakage_verified": true
+  },
+  "methodological_limitations": {
+    "nature_of_event_grouping": "The 20.0-second gap threshold is an empirical operational heuristic based on typical barrier cycle cadence. It does NOT represent verified physical vehicle re-identification or ground-truth vehicle identity. Vehicles queuing closely (<20s) may be clustered into a single event, while vehicles lingering in front of the gate (>20s) could be separated into two events. However, for preventing train/test data leakage of adjacent near-identical frames, this heuristic is strictly conservative.",
+    "night_sample_scarcity": "The test split contains exactly 2 deep-night IR frames (out of 10 total across the dataset). While this preserves the 60/20/20 proportion, n=2 is statistically inadequate for robust generalized performance claims. Deep-night test metrics must be reported with explicit disclosure of sample size."
+  }
+}

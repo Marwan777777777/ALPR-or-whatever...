@@ -10,6 +10,8 @@ import pytest
 from vehicle_intelligence.pipeline.alpr_pipeline import EndToEndALPRPipeline
 
 
+import torch
+
 @pytest.fixture(scope="module")
 def alpr_pipeline():
     detector_weights = Path("artifacts/runs/detect/ealpr_cleaned_yolov8n/weights/best.pt")
@@ -18,11 +20,13 @@ def alpr_pipeline():
     if not detector_weights.exists() or not char_weights.exists():
         pytest.skip("Model weights not available in artifacts directory.")
 
+    device = "cuda:0" if torch.cuda.is_available() else "cpu"
     return EndToEndALPRPipeline(
         detector_weights=detector_weights,
         char_weights=char_weights,
-        device="cuda:0",
+        device=device,
     )
+
 
 
 def test_golden_dataset_regression(alpr_pipeline: EndToEndALPRPipeline):

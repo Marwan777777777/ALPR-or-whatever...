@@ -17,8 +17,10 @@ class DetectorConfig(BaseModel):
     confidence_threshold: float = Field(default=0.45, ge=0.0, le=1.0)
     iou_threshold: float = Field(default=0.45, ge=0.0, le=1.0)
     input_size: int = Field(default=640, description="Inference input image resolution (square)")
+    imgsz: int = Field(default=640, description="Plate detector input resolution (640 baseline, 1280 experimental)")
     device: str = Field(default="cpu", description="Compute device: 'cpu', 'cuda', 'cuda:0'")
     half_precision: bool = Field(default=True, description="Use FP16 half precision on CUDA")
+    agnostic_nms: bool = Field(default=False, description="Class-agnostic NMS for plate detector (unchanged)")
 
 
 class OCRConfig(BaseModel):
@@ -28,6 +30,9 @@ class OCRConfig(BaseModel):
     min_confidence_for_acceptance: float = Field(default=0.75, ge=0.0, le=1.0)
     device: str = Field(default="cpu")
     enable_arabic_transcription: bool = Field(default=True)
+    iou_threshold: float = Field(default=0.45, ge=0.0, le=1.0, description="IoU threshold for character NMS (Mission 008/009 standard: 0.45)")
+    imgsz: int = Field(default=320, description="Character detector input resolution (square)")
+    agnostic_nms: bool = Field(default=True, description="Class-agnostic NMS across character classes (Mission 008/009 standard)")
 
 
 class TrackingConfig(BaseModel):
@@ -55,6 +60,15 @@ class PrivacyRetentionConfig(BaseModel):
     audit_logging_enabled: bool = Field(default=True, description="Record operator access to plate records")
 
 
+class PathsConfig(BaseModel):
+    """Local and environment-specific dataset, footage, and checkpoint directories."""
+    data_dir: Path = Field(default=Path("data"), description="Root directory for local data")
+    gate_dir: Optional[Path] = Field(default=None, description="Path to gate CCTV captures (e.g. D:/TruckEntry)")
+    weights_dir: Path = Field(default=Path("weights"), description="Directory where model checkpoints are stored")
+    artifacts_dir: Path = Field(default=Path("artifacts"), description="Directory where run artifacts are written")
+    golden_dir: Path = Field(default=Path("tests/golden"), description="Directory containing regression golden samples")
+
+
 class SystemConfig(BaseSettings):
     """Root system configuration."""
     model_config = SettingsConfigDict(
@@ -72,7 +86,28 @@ class SystemConfig(BaseSettings):
     ocr: OCRConfig = Field(default_factory=OCRConfig)
     tracking: TrackingConfig = Field(default_factory=TrackingConfig)
     privacy: PrivacyRetentionConfig = Field(default_factory=PrivacyRetentionConfig)
+    paths: PathsConfig = Field(default_factory=PathsConfig)
     streams: List[StreamConfig] = Field(default_factory=list)
+
+    def resolve_gate_dir(self) -> Optional[Path]:
+        """Resolves gate CCTV footage directory from config or environment variables."""
+        if self.paths.gate_dir and self.paths.gate_dir.is_dir():
+            return self.paths.gate_dir
+        env_val = os.environ.get("GATE_DIR") or os.environ.get("TRUCKENTRY_DIR")
+        if env_val:
+            p = Path(env_val)
+            if p.is_dir():
+                return p
+        d_truck = Path("D:/TruckEntry")
+        if d_truck.is_dir():
+            return d_truck
+        return None
+
+    def ensure_directories(self) -> None:
+        """Safely creates runtime directories if they do not exist."""
+        self.paths.data_dir.mkdir(parents=True, exist_ok=True)
+        self.paths.weights_dir.mkdir(parents=True, exist_ok=True)
+        self.paths.artifacts_dir.mkdir(parents=True, exist_ok=True)
 
     @classmethod
     def from_yaml(cls, yaml_path: str | Path) -> SystemConfig:
@@ -85,3 +120,4 @@ class SystemConfig(BaseSettings):
             data = yaml.safe_load(f) or {}
 
         return cls(**data)
+

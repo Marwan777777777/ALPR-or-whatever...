@@ -1,0 +1,61 @@
+{
+  "audit_milestone": "MISSION_012C.1",
+  "audit_title": "Independent Temporal Event Membership and Data Leakage Verification",
+  "timestamp": "2026-10-30T23:17:25.557444",
+  "source_data_dir": "D:\\TruckEntry",
+  "benchmark_splits_artifact": "artifacts\\missions\\mission_012\\benchmark_splits.json",
+  "benchmark_splits_sha256": "3138160cff5f6368d1d848cce48ede77b6ea2acbfc98c2dd0f566a5f24ada39e",
+  "source_file_count_on_disk": 340,
+  "chronological_sorting_verified": true,
+  "clustering_rule": "20.0-second consecutive gap thresholding on sorted timestamps",
+  "total_reconstructed_events": 291,
+  "membership_comparison_by_split": {
+    "train": {
+      "stored_event_count": 175,
+      "stored_frame_count": 196,
+      "reconstructed_frame_count": 196,
+      "exact_frame_sequence_match": true,
+      "missing_frames_in_split": [],
+      "extraneous_frames_in_split": []
+    },
+    "val": {
+      "stored_event_count": 58,
+      "stored_frame_count": 72,
+      "reconstructed_frame_count": 72,
+      "exact_frame_sequence_match": true,
+      "missing_frames_in_split": [],
+      "extraneous_frames_in_split": []
+    },
+    "test": {
+      "stored_event_count": 58,
+      "stored_frame_count": 72,
+      "reconstructed_frame_count": 72,
+      "exact_frame_sequence_match": true,
+      "missing_frames_in_split": [],
+      "extraneous_frames_in_split": []
+    }
+  },
+  "event_disjointness_audit": {
+    "train_event_count": 175,
+    "val_event_count": 58,
+    "test_event_count": 58,
+    "train_val_event_overlap_count": 0,
+    "train_test_event_overlap_count": 0,
+    "val_test_event_overlap_count": 0,
+    "events_spanning_multiple_splits_count": 0,
+    "events_spanning_splits_details": []
+  },
+  "frame_disjointness_audit": {
+    "train_frame_count": 196,
+    "val_frame_count": 72,
+    "test_frame_count": 72,
+    "train_val_frame_overlap_count": 0,
+    "train_test_frame_overlap_count": 0,
+    "val_test_frame_overlap_count": 0,
+    "duplicate_frame_assignments": 0,
+    "unassigned_source_frames": 0,
+    "extraneous_split_frames": 0
+  },
+  "comprehensive_zero_leakage_verified": true,
+  "verification_verdict": "PASSED: Exact reconstructed event membership and complete disjoint partition verified."
+}

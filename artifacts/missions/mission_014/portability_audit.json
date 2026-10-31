@@ -1,0 +1,123 @@
+{
+  "timestamp": "2026-10-31T17:32:50",
+  "verdict": "PORTABLE",
+  "python_runtime": {
+    "version": "3.11.9",
+    "architecture": "64-bit",
+    "platform": "Windows-10-10.0.22621-SP0",
+    "status": "PASS"
+  },
+  "dependencies": {
+    "installed_count": 11,
+    "missing_count": 0,
+    "missing_packages": [],
+    "packages": {
+      "numpy": "2.4.6",
+      "opencv-python": "5.0.0",
+      "pillow": "13.0.0",
+      "pydantic": "2.14.1",
+      "pydantic-settings": "2.16.2",
+      "pyyaml": "6.0.3",
+      "python-dotenv": "installed",
+      "pytest": "9.2.0",
+      "ultralytics": "8.4.192",
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124"
+    },
+    "status": "PASS"
+  },
+  "compute_device": {
+    "mode": "GPU_ACCELERATED",
+    "cuda_available": true,
+    "cuda_version": "12.4",
+    "device_count": 1,
+    "device_name": "NVIDIA GeForce RTX 4060",
+    "vram_gb": 8.0,
+    "status": "PASS"
+  },
+  "unicode_io": {
+    "unicode_read_support": "PASS",
+    "arabic_path_tested": "\u0627\u062e\u062a\u0628\u0627\u0631_\u0644\u0648\u062d\u0629_\u062a\u0631\u062e\u064a\u0635_\u0661\u0662\u0663.jpg",
+    "status": "PASS"
+  },
+  "configuration": {
+    "system_config_validation": "PASS",
+    "yaml_config_status": "LOADED_VALID",
+    "has_env_file": false,
+    "has_env_example": true,
+    "gate_footage_dir": "D:\\TruckEntry",
+    "gate_dir_status": "CONFIGURED",
+    "status": "PASS"
+  },
+  "checkpoints": {
+    "total_checkpoints_defined": 7,
+    "missing_core_count": 0,
+    "missing_optional_count": 0,
+    "checkpoints": {
+      "ealpr_cleaned_plate_detector": {
+        "model_name": "EALPR Cleaned Plate Detector (YOLOv8n)",
+        "category": "core_production",
+        "resolved_path": "artifacts/runs/detect/ealpr_cleaned_yolov8n/weights/best.pt",
+        "sha256": "1d9ab549c626ee1b708b3439ad63320515c6de105283a5c980b3c5952337b279",
+        "hash_verified": true,
+        "status": "VERIFIED_PRESENT"
+      },
+      "ealpr_characters_detector": {
+        "model_name": "EALPR 27-Class Character OCR Detector (YOLOv8n)",
+        "category": "core_production",
+        "resolved_path": "artifacts/runs/detect_chars/ealpr_characters_yolov8n/weights/best.pt",
+        "sha256": "875b76e18b1df480829f84809e1f26d2c38d2c92c7f66d3bd85492db14488319",
+        "hash_verified": true,
+        "status": "VERIFIED_PRESENT"
+      },
+      "yolov8m_finetuned_vehicle_detector": {
+        "model_name": "Fine-Tuned Heavy Vehicle Domain Detector (YOLOv8m)",
+        "category": "domain_adapted_vehicle",
+        "resolved_path": "artifacts/missions/mission_013/checkpoints/yolov8m_finetuned_best.pt",
+        "sha256": "b2e462fe4b06f1aa5479d615445c2246941d6ea1a91ebdb235e6b056788ca03d",
+        "hash_verified": true,
+        "status": "VERIFIED_PRESENT"
+      },
+      "rtdetr_l_finetuned_vehicle_detector": {
+        "model_name": "Fine-Tuned Vehicle Detector (RT-DETR-L)",
+        "category": "research_baseline",
+        "resolved_path": "artifacts/missions/mission_013/checkpoints/rtdetr_l_finetuned_best.pt",
+        "sha256": "47f0cc1a288cc2d2f630f80841caa0e90b92eda025dd570424d4402836975613",
+        "hash_verified": true,
+        "status": "VERIFIED_PRESENT"
+      },
+      "yolov8m_pretrained": {
+        "model_name": "Pretrained YOLOv8m (COCO)",
+        "category": "upstream_pretrained",
+        "resolved_path": "yolov8m.pt",
+        "sha256": "5d4a90cdc7a21786cc59cd19778e9eafff836df9e2da32524737c7ee6efe4fe5",
+        "hash_verified": true,
+        "status": "VERIFIED_PRESENT"
+      },
+      "rtdetr_l_pretrained": {
+        "model_name": "Pretrained RT-DETR-L (COCO)",
+        "category": "upstream_pretrained",
+        "resolved_path": "rtdetr-l.pt",
+        "sha256": "6de60b10d4bc566f00cda0f5b4d64afe4b66d48dc9695d2171effb7859d8e73f",
+        "hash_verified": true,
+        "status": "VERIFIED_PRESENT"
+      },
+      "yolov8n_pretrained": {
+        "model_name": "Pretrained YOLOv8n (COCO)",
+        "category": "upstream_pretrained",
+        "resolved_path": "yolov8n.pt",
+        "sha256": "f59b3d833e2ff32e194b5bb8e08d211dc7c5bdf144b90d2c8412c47ccfc83b36",
+        "hash_verified": true,
+        "status": "VERIFIED_PRESENT"
+      }
+    },
+    "status": "PASS"
+  },
+  "golden_regression": {
+    "expectations_count": 20,
+    "missing_images_count": 0,
+    "status": "PASS"
+  },
+  "errors": [],
+  "warnings": []
+}

@@ -69,6 +69,11 @@ artifacts/evaluation_cleaned_*/
 artifacts/evaluation_ocr/
 artifacts/benchmark/
 runs/
+artifacts/missions/**/dataset/
+artifacts/missions/**/images/
+artifacts/**/*.jpg
+artifacts/**/*.png
+artifacts/**/*.jpeg
 *.mp4
 *.avi
 

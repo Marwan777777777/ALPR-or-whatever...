@@ -1,0 +1,18 @@
+{
+  "milestone": "MISSION_013",
+  "timestamp": "2026-10-31T00:00:48",
+  "runs": {
+    "track_a_rtdetr_l": {
+      "model_id": "rtdetr_l_finetuned",
+      "training_time_sec": 776.74,
+      "best_checkpoint": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_013\\checkpoints\\rtdetr_l_finetuned_best.pt",
+      "run_dir": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_013\\runs\\rtdetr_l\\rtdetr_l_domain_exp"
+    },
+    "track_b_yolov8m": {
+      "model_id": "yolov8m_finetuned",
+      "training_time_sec": 493.85,
+      "best_checkpoint": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_013\\checkpoints\\yolov8m_finetuned_best.pt",
+      "run_dir": "C:\\Users\\MARWAN\\computer vision\\artifacts\\missions\\mission_013\\runs\\yolov8m\\yolov8m_domain_exp"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+model_id,architecture,checkpoint_sha256,dataset_split,frame_count,ground_truth_boxes,predicted_boxes,true_positives_50,false_positives_50,false_negatives_50,precision_50,recall_50,f1_score_50,mAP_50,mAP_50_95,false_positives_per_image,frame_detection_yield_pct,mean_gpu_latency_ms,throughput_fps,conf_threshold,iou_matching_threshold
+yolov8n,YOLOv8 Nano (CNN),f59b3d833e2ff32e,held_out_test_set,72,72,48,31,17,41,0.6458,0.4306,0.5167,0.6458,0.0988,0.2361,58.33,27.35,36.6,0.25,0.5
+yolov8n,YOLOv8 Nano (CNN),f59b3d833e2ff32e,validation_set,72,72,49,41,8,31,0.8367,0.5694,0.6777,0.8367,0.1614,0.1111,59.72,26.41,37.9,0.25,0.5
+yolov8n,YOLOv8 Nano (CNN),f59b3d833e2ff32e,training_set,196,200,171,128,43,72,0.7485,0.64,0.69,0.7485,0.1945,0.2194,72.45,24.09,41.5,0.25,0.5
+yolov8n,YOLOv8 Nano (CNN),f59b3d833e2ff32e,entire_dataset_in_sample_descriptive,340,344,268,200,68,144,0.7463,0.5814,0.6536,0.7463,0.1653,0.2,66.76,25.27,39.6,0.25,0.5
+yolov8m,YOLOv8 Medium (CNN),5d4a90cdc7a21786,held_out_test_set,72,72,95,50,45,22,0.5263,0.6944,0.5988,0.5263,0.0996,0.625,86.11,26.57,37.6,0.25,0.5
+yolov8m,YOLOv8 Medium (CNN),5d4a90cdc7a21786,validation_set,72,72,62,46,16,26,0.7419,0.6389,0.6866,0.7419,0.1576,0.2222,66.67,23.35,42.8,0.25,0.5
+yolov8m,YOLOv8 Medium (CNN),5d4a90cdc7a21786,training_set,196,200,211,148,63,52,0.7014,0.74,0.7202,0.7014,0.1904,0.3214,82.65,27.29,36.6,0.25,0.5
+yolov8m,YOLOv8 Medium (CNN),5d4a90cdc7a21786,entire_dataset_in_sample_descriptive,340,344,368,244,124,100,0.663,0.7093,0.6854,0.663,0.1582,0.3647,80.0,26.3,38.0,0.25,0.5
+rtdetr-l,RT-DETR Large (Transformer),6de60b10d4bc566f,held_out_test_set,72,72,137,54,83,18,0.3942,0.75,0.5167,0.3942,0.0817,1.1528,91.67,67.22,14.9,0.25,0.5
+rtdetr-l,RT-DETR Large (Transformer),6de60b10d4bc566f,validation_set,72,72,118,53,65,19,0.4492,0.7361,0.5579,0.4492,0.0933,0.9028,83.33,68.56,14.6,0.25,0.5
+rtdetr-l,RT-DETR Large (Transformer),6de60b10d4bc566f,training_set,196,200,284,155,129,45,0.5458,0.775,0.6405,0.5458,0.1493,0.6582,93.37,54.59,18.3,0.25,0.5
+rtdetr-l,RT-DETR Large (Transformer),6de60b10d4bc566f,entire_dataset_in_sample_descriptive,340,344,539,262,277,82,0.4861,0.7616,0.5934,0.4861,0.1179,0.8147,90.88,60.22,16.6,0.25,0.5

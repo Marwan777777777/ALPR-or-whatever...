@@ -1,0 +1,156 @@
+{
+  "manifest_version": "1.0.0",
+  "project": "Egyptian Vehicle Intelligence & License Plate Recognition",
+  "description": "Cryptographic specification and provenance manifest for all model weights used across ALPR inference, vehicle detection, and research milestones.",
+  "security_policy": "NEVER commit binary model checkpoints to public version control. Checkpoint paths are git-ignored by default (*.pt, *.pth, *.onnx).",
+  "checkpoints": {
+    "ealpr_cleaned_plate_detector": {
+      "model_id": "ealpr_cleaned_plate_detector",
+      "model_name": "EALPR Cleaned Plate Detector (YOLOv8n)",
+      "architecture": "YOLOv8n (CNN, 3.2M parameters)",
+      "task": "license_plate_detection",
+      "category": "core_production",
+      "expected_relative_path": "artifacts/runs/detect/ealpr_cleaned_yolov8n/weights/best.pt",
+      "alternative_paths": [
+        "weights/ealpr_cleaned_yolov8n.pt",
+        "artifacts/checkpoints/ealpr_cleaned_yolov8n.pt"
+      ],
+      "sha256": "1d9ab549c626ee1b708b3439ad63320515c6de105283a5c980b3c5952337b279",
+      "size_bytes": 6489635,
+      "license": "AGPL-3.0 (Ultralytics fine-tune)",
+      "commercial_compatibility": "Requires Ultralytics Enterprise License if distributed or SaaS-hosted",
+      "input_resolution": "640x640",
+      "classes_count": 1,
+      "classes": [
+        "license_plate"
+      ],
+      "obtaining_instructions": "Internal production artifact trained on cleaned EALPR dataset. In a clean repository clone, copy 'best.pt' from secure internal storage or backup to 'artifacts/runs/detect/ealpr_cleaned_yolov8n/weights/best.pt'.",
+      "workflow_classification": "Required for normal ALPR"
+    },
+    "ealpr_characters_detector": {
+      "model_id": "ealpr_characters_detector",
+      "model_name": "EALPR 27-Class Character OCR Detector (YOLOv8n)",
+      "architecture": "YOLOv8n (CNN, 3.2M parameters)",
+      "task": "license_plate_character_ocr",
+      "category": "core_production",
+      "expected_relative_path": "artifacts/runs/detect_chars/ealpr_characters_yolov8n/weights/best.pt",
+      "alternative_paths": [
+        "weights/ealpr_characters_yolov8n.pt",
+        "artifacts/checkpoints/ealpr_characters_yolov8n.pt"
+      ],
+      "sha256": "875b76e18b1df480829f84809e1f26d2c38d2c92c7f66d3bd85492db14488319",
+      "size_bytes": 6473251,
+      "license": "AGPL-3.0 (Ultralytics fine-tune)",
+      "commercial_compatibility": "Requires Ultralytics Enterprise License if distributed or SaaS-hosted",
+      "input_resolution": "320x320",
+      "classes_count": 27,
+      "classes": [
+        "Arabic Letters (17 classes)",
+        "Arabic-Indic Digits 0-9 (10 classes)"
+      ],
+      "obtaining_instructions": "Internal production artifact trained on isolated plate character crops. In a clean clone, copy 'best.pt' from team storage to 'artifacts/runs/detect_chars/ealpr_characters_yolov8n/weights/best.pt'.",
+      "workflow_classification": "Required for normal ALPR"
+    },
+    "yolov8m_finetuned_vehicle_detector": {
+      "model_id": "yolov8m_finetuned_vehicle_detector",
+      "model_name": "Fine-Tuned Heavy Vehicle Domain Detector (YOLOv8m)",
+      "architecture": "YOLOv8m (CSPDarknet CNN, 25.9M parameters)",
+      "task": "heavy_commercial_truck_detection",
+      "category": "domain_adapted_vehicle",
+      "expected_relative_path": "artifacts/missions/mission_013/checkpoints/yolov8m_finetuned_best.pt",
+      "alternative_paths": [
+        "weights/yolov8m_finetuned_best.pt"
+      ],
+      "sha256": "b2e462fe4b06f1aa5479d615445c2246941d6ea1a91ebdb235e6b056788ca03d",
+      "size_bytes": 52003019,
+      "license": "AGPL-3.0 (Ultralytics fine-tune)",
+      "commercial_compatibility": "AGPL-3.0 copyleft terms apply",
+      "input_resolution": "640x640",
+      "classes_count": 1,
+      "classes": [
+        "vehicle"
+      ],
+      "obtaining_instructions": "Trained in Mission 013 on 196 Egyptian gate ingress captures. Place in 'artifacts/missions/mission_013/checkpoints/yolov8m_finetuned_best.pt'.",
+      "workflow_classification": "Required for vehicle detection"
+    },
+    "rtdetr_l_finetuned_vehicle_detector": {
+      "model_id": "rtdetr_l_finetuned_vehicle_detector",
+      "model_name": "Fine-Tuned Vehicle Detector (RT-DETR-L)",
+      "architecture": "RT-DETR-L (Vision Transformer, 32.8M parameters)",
+      "task": "vehicle_detection",
+      "category": "research_baseline",
+      "expected_relative_path": "artifacts/missions/mission_013/checkpoints/rtdetr_l_finetuned_best.pt",
+      "alternative_paths": [
+        "weights/rtdetr_l_finetuned_best.pt"
+      ],
+      "sha256": "47f0cc1a288cc2d2f630f80841caa0e90b92eda025dd570424d4402836975613",
+      "size_bytes": 66213878,
+      "license": "Apache-2.0 upstream architecture & fine-tuned domain weights",
+      "commercial_compatibility": "Permissive Apache-2.0 upstream",
+      "input_resolution": "640x640",
+      "classes_count": 1,
+      "classes": [
+        "vehicle"
+      ],
+      "obtaining_instructions": "Mission 013 Track A research artifact. Place in 'artifacts/missions/mission_013/checkpoints/rtdetr_l_finetuned_best.pt'.",
+      "workflow_classification": "Optional experimental"
+    },
+    "yolov8m_pretrained": {
+      "model_id": "yolov8m_pretrained",
+      "model_name": "Pretrained YOLOv8m (COCO)",
+      "architecture": "YOLOv8m (CSPDarknet CNN, 25.9M parameters)",
+      "task": "vehicle_detection_baseline",
+      "category": "upstream_pretrained",
+      "expected_relative_path": "yolov8m.pt",
+      "alternative_paths": [
+        "weights/yolov8m.pt"
+      ],
+      "sha256": "5d4a90cdc7a21786cc59cd19778e9eafff836df9e2da32524737c7ee6efe4fe5",
+      "size_bytes": 52136884,
+      "license": "AGPL-3.0 (Ultralytics)",
+      "commercial_compatibility": "AGPL-3.0 copyleft terms apply",
+      "input_resolution": "640x640",
+      "download_url": "https://github.com/ultralytics/assets/releases/download/v8.2.0/yolov8m.pt",
+      "obtaining_instructions": "Download directly from Ultralytics release asset or run 'yolo predict model=yolov8m.pt' which auto-downloads to repository root.",
+      "workflow_classification": "Required for vehicle detection"
+    },
+    "rtdetr_l_pretrained": {
+      "model_id": "rtdetr_l_pretrained",
+      "model_name": "Pretrained RT-DETR-L (COCO)",
+      "architecture": "RT-DETR-L (Vision Transformer, 32.9M parameters)",
+      "task": "vehicle_detection_baseline",
+      "category": "upstream_pretrained",
+      "expected_relative_path": "rtdetr-l.pt",
+      "alternative_paths": [
+        "weights/rtdetr-l.pt"
+      ],
+      "sha256": "6de60b10d4bc566f00cda0f5b4d64afe4b66d48dc9695d2171effb7859d8e73f",
+      "size_bytes": 66511432,
+      "license": "Apache-2.0 upstream (Baidu) / AGPL-3.0 runner",
+      "commercial_compatibility": "Permissive Apache-2.0 architecture",
+      "input_resolution": "640x640",
+      "download_url": "https://github.com/ultralytics/assets/releases/download/v8.2.0/rtdetr-l.pt",
+      "obtaining_instructions": "Download from Ultralytics official assets release.",
+      "workflow_classification": "Optional experimental"
+    },
+    "yolov8n_pretrained": {
+      "model_id": "yolov8n_pretrained",
+      "model_name": "Pretrained YOLOv8n (COCO)",
+      "architecture": "YOLOv8n (CNN, 3.2M parameters)",
+      "task": "vehicle_detection_lightweight_baseline",
+      "category": "upstream_pretrained",
+      "expected_relative_path": "yolov8n.pt",
+      "alternative_paths": [
+        "weights/yolov8n.pt"
+      ],
+      "sha256": "f59b3d833e2ff32e194b5bb8e08d211dc7c5bdf144b90d2c8412c47ccfc83b36",
+      "size_bytes": 6549796,
+      "license": "AGPL-3.0 (Ultralytics)",
+      "commercial_compatibility": "AGPL-3.0 copyleft terms apply",
+      "input_resolution": "640x640",
+      "download_url": "https://github.com/ultralytics/assets/releases/download/v8.2.0/yolov8n.pt",
+      "obtaining_instructions": "Download from Ultralytics release assets.",
+      "workflow_classification": "Obsolete or unused"
+    }
+  }
+}

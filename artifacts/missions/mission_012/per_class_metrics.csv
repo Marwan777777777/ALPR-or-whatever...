@@ -1,0 +1,5 @@
+ground_truth_class,total_ground_truth_instances,yolov8n_recall,yolov8m_recall,rtdetr_l_recall
+heavy_truck,336,0.68,0.74,0.96
+passenger_car,6,0.67,0.83,1.0
+motorcycle,1,0.0,1.0,1.0
+light_commercial,1,1.0,1.0,1.0

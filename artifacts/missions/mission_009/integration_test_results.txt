@@ -1,0 +1,21 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.9, pytest-9.2.0, pluggy-1.7.0 -- C:\Users\MARWAN\computer vision\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\MARWAN\computer vision
+configfile: pyproject.toml
+plugins: anyio-4.15.1
+collecting ... collected 11 items
+
+tests/test_mission_009_integration.py::test_configuration_propagation_cli PASSED [  9%]
+tests/test_mission_009_integration.py::test_configuration_propagation_cli_historical_baseline PASSED [ 18%]
+tests/test_mission_009_integration.py::test_configuration_propagation_api PASSED [ 27%]
+tests/test_mission_009_integration.py::test_nms_and_resolution_settings_reach_model PASSED [ 36%]
+tests/test_mission_009_integration.py::test_vehicle_observed_across_multiple_frames PASSED [ 45%]
+tests/test_mission_009_integration.py::test_multiple_plate_observations_associated_with_one_track PASSED [ 54%]
+tests/test_mission_009_integration.py::test_stronger_later_observation_improves_earlier_weak_read PASSED [ 63%]
+tests/test_mission_009_integration.py::test_conflicting_ocr_results_preserved_and_flagged PASSED [ 72%]
+tests/test_mission_009_integration.py::test_missing_plate_detections_handled_gracefully PASSED [ 81%]
+tests/test_mission_009_integration.py::test_low_confidence_results_flagged PASSED [ 90%]
+tests/test_mission_009_integration.py::test_event_creation_and_evidence_persistence PASSED [100%]
+
+============================= 11 passed in 3.26s ==============================

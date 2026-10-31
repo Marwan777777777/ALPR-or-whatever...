@@ -1,19 +1,42 @@
-# Core Computer Vision & Processing
-numpy>=1.26.0
-opencv-python-headless>=4.9.0
+# ==============================================================================
+# Egyptian Vehicle Intelligence System: Core Python Dependencies
+# ==============================================================================
+# Compatible with Python 3.10 and 3.11 on Windows 11 / Linux.
+#
+# NOTE ON PYTORCH:
+# PyTorch should be installed first using the appropriate hardware index URL:
+#   For NVIDIA GPU (CUDA 12.4):
+#     pip install -r requirements-gpu.txt
+#   For CPU-only machines:
+#     pip install -r requirements-cpu.txt
+#   Or run the automated setup script:
+#     powershell -ExecutionPolicy Bypass -File .\setup_windows.ps1
+# ==============================================================================
+
+# Core Computer Vision & Numerical Computing
+numpy>=1.26.0,<2.5.0
+opencv-python-headless>=4.9.0,<=5.0.0.93
 pillow>=10.2.0
 
+# Deep Learning & Object Detection Runtime (Tested with 8.4.192)
+ultralytics>=8.4.0,<=8.4.192
+pycocotools>=2.0.7
+matplotlib>=3.8.0
+scipy>=1.12.0
+
 # Structured Schema, Validation & Configuration
-pydantic>=2.7.0
+pydantic>=2.7.0,<3.0.0
 pydantic-settings>=2.2.0
 pyyaml>=6.0.1
 python-dotenv>=1.0.0
+requests>=2.31.0
+psutil>=5.9.0
 
-# Testing & Quality
+# Testing & Quality Assurance
 pytest>=8.0.0
+pytest-cov>=4.1.0
 
-# Optional / Production acceleration profiles:
-# For GPU inference with PyTorch:
-#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
-# For FastAPI service:
-#   pip install fastapi uvicorn
+# Optional API Service
+fastapi>=0.110.0
+uvicorn[standard]>=0.28.0
+python-multipart>=0.0.9

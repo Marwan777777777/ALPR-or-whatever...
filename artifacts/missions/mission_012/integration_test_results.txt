@@ -1,0 +1,45 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.9, pytest-9.2.0, pluggy-1.7.0 -- C:\Users\MARWAN\computer vision\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\MARWAN\computer vision
+configfile: pyproject.toml
+plugins: anyio-4.15.1
+collecting ... collected 15 items
+
+tests/test_mission_010_vehicle_tracking.py::test_scenario_1_single_vehicle_single_plate_multiple_frames PASSED [  6%]
+tests/test_mission_010_vehicle_tracking.py::test_scenario_2_two_vehicles_in_same_frame PASSED [ 13%]
+tests/test_mission_010_vehicle_tracking.py::test_scenario_3_two_vehicles_passing_close_together PASSED [ 20%]
+tests/test_mission_010_vehicle_tracking.py::test_scenario_4_intermittent_plate_detection PASSED [ 26%]
+tests/test_mission_010_vehicle_tracking.py::test_scenario_5_plate_detected_without_vehicle_detection PASSED [ 33%]
+tests/test_mission_010_vehicle_tracking.py::test_scenario_6_ambiguous_plate_vehicle_association PASSED [ 40%]
+tests/test_mission_010_vehicle_tracking.py::test_scenario_7_conflicting_ocr_observations_for_one_vehicle PASSED [ 46%]
+tests/test_mission_010_vehicle_tracking.py::test_scenario_8_temporary_vehicle_detection_loss_and_recovery PASSED [ 53%]
+tests/test_mission_011_vehicle_detection.py::test_pytorch_yolo_licensing_info PASSED [ 60%]
+tests/test_mission_011_vehicle_detection.py::test_pytorch_yolo_preprocessing_modes PASSED [ 66%]
+tests/test_mission_011_vehicle_detection.py::test_pytorch_yolo_deduplication PASSED [ 73%]
+tests/test_mission_011_vehicle_detection.py::test_pytorch_yolo_raises_on_missing_weights PASSED [ 80%]
+tests/test_mission_012_benchmark.py::test_ground_truth_integrity_and_validation PASSED [ 86%]
+tests/test_mission_012_benchmark.py::test_benchmark_splits_reproducibility_and_anti_leakage PASSED [ 93%]
+tests/test_mission_012_benchmark.py::test_annotation_interface_files_exist_and_clean PASSED [100%]
+
+============================= 15 passed in 6.37s ==============================
+
+Full Repository Regression Suite:
+======================= 108 passed, 1 warning in 14.17s =======================
+
+Summary of Mission 012 Test Coverage:
+1. Ground Truth Integrity & Validation (test_ground_truth_integrity_and_validation):
+   - Confirms all 340 gate captures are accounted for.
+   - Confirms zero coordinate boundary violations, zero inverted coordinates (x2 <= x1, y2 <= y1).
+   - Confirms valid class vocabulary (heavy_truck, light_commercial, passenger_car, bus, microbus_van, motorcycle, tricycle, other_vehicle).
+   - Confirms valid visibility categories (fully_visible, partially_visible, heavily_occluded, truncated_by_frame).
+2. Benchmark Splits Anti-Leakage (test_benchmark_splits_reproducibility_and_anti_leakage):
+   - Confirms zero frame overlap between train (196 frames, 57.65%), val (72 frames, 21.18%), and test (72 frames, 21.18%).
+   - Confirms temporal event clustering prevents adjacent observations of the same vehicle from leaking across splits.
+3. Annotation Interface Independence (test_annotation_interface_files_exist_and_clean):
+   - Confirms existence of standalone interface (index.html, styles.css, annotator.js).
+   - Confirms zero model predictions or legacy plate strings are hardcoded in DOM or JS.
+4. Preserved ALPR and Tracking Regression:
+   - All 8 Mission 010 tracking and association scenarios pass cleanly.
+   - All Mission 011 preprocessing, deduplication, and licensing introspection tests pass cleanly.
+   - Full test suite passes (108 passed, 1 warning).

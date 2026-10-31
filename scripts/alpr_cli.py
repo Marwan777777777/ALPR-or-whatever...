@@ -193,15 +193,40 @@ def process_video_stream(
             frame_idx += 1
 
         if gate_replay:
-            print(f"Gate Replay: Processing {len(transit_observations)} vehicle transits...")
+            print(f"Gate Replay: Consolidating {len(transit_observations)} vehicle transits...")
             for track_id, obs_list in transit_observations.items():
                 # Pick the best frame per transit by composite plate confidence
-                best_obs = max(obs_list, key=lambda x: x.plate_confidence)
+                valid_obs = [o for o in obs_list if o.plate_text]
+                best_obs = max(valid_obs, key=lambda x: x.plate_confidence) if valid_obs else obs_list[0]
+
+                # Identify all unique plate texts
+                distinct_texts = list(dict.fromkeys(o.plate_text for o in valid_obs if o.plate_text))
+                has_conflicts = len(distinct_texts) > 1
+                alt_candidates = []
+
+                if has_conflicts:
+                    best_obs.needs_review = True
+                    best_obs.review_reasons.append(
+                        f"Conflicting plate reads observed across transit: {distinct_texts}"
+                    )
+                    seen_texts = {best_obs.plate_text}
+                    for cand in sorted(valid_obs, key=lambda x: x.plate_confidence, reverse=True):
+                        if cand.plate_text not in seen_texts:
+                            alt_candidates.append(cand.model_dump())
+                            seen_texts.add(cand.plate_text)
+
                 event_data = {
                     "event_type": "VEHICLE_TRANSIT",
                     "track_id": track_id,
                     "total_observations": len(obs_list),
+                    "first_seen_timestamp": obs_list[0].timestamp,
+                    "last_seen_timestamp": obs_list[-1].timestamp,
                     "best_reading": best_obs.model_dump(),
+                    "alternative_readings": alt_candidates,
+                    "has_conflicting_reads": has_conflicts,
+                    "is_stable": not has_conflicts,
+                    "best_evidence_frame": best_obs.source_id,
+                    "best_crop_path": best_obs.crop_path,
                 }
                 jsonl_file.write(json.dumps(event_data, ensure_ascii=False) + "\n")
 
@@ -213,21 +238,62 @@ def process_video_stream(
 
 
 def main():
+    import torch
+
+    default_device = "cuda:0" if torch.cuda.is_available() else "cpu"
+
     parser = argparse.ArgumentParser(description="Egyptian ALPR Command Line Interface.")
     parser.add_argument("--input", type=str, required=True, help="Path to single image, image folder, video file, or RTSP URL")
     parser.add_argument("--output-dir", type=Path, default=Path("artifacts/cli_output"), help="Output directory")
     parser.add_argument("--fps", type=float, default=2.0, help="Frame sampling rate for video streams")
-    parser.add_argument("--device", type=str, default="cuda:0", help="Inference device (cuda:0 or cpu)")
+    parser.add_argument("--device", type=str, default=default_device, help=f"Inference device (cuda:0 or cpu, default: {default_device})")
+    parser.add_argument(
+        "--detector-weights",
+        type=Path,
+        default=Path("artifacts/runs/detect/ealpr_cleaned_yolov8n/weights/best.pt"),
+        help="Path to trained plate detector weights",
+    )
+    parser.add_argument(
+        "--char-weights",
+        type=Path,
+        default=Path("artifacts/runs/detect_chars/ealpr_characters_yolov8n/weights/best.pt"),
+        help="Path to trained character detector weights",
+    )
     parser.add_argument("--conf-threshold", type=float, default=0.82, help="Plate confidence threshold for review")
     parser.add_argument("--gate-replay", action="store_true", help="Enable simulated gate transit tracking mode")
+    parser.add_argument(
+        "--agnostic-nms",
+        default=True,
+        action=argparse.BooleanOptionalAction,
+        help="Enable class-agnostic NMS across character classes (default: True, use --no-agnostic-nms for historical baseline)",
+    )
+    parser.add_argument(
+        "--char-iou",
+        type=float,
+        default=0.45,
+        help="Character NMS IoU threshold (default: 0.45 per Mission 008/009 standard, 0.70 for historical baseline)",
+    )
+    parser.add_argument(
+        "--det-imgsz",
+        type=int,
+        default=640,
+        choices=[640, 960, 1280],
+        help="Plate detector input resolution (default: 640 compatibility baseline, 1280 experimental option)",
+    )
     args = parser.parse_args()
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
     pipeline = EndToEndALPRPipeline(
+        detector_weights=args.detector_weights,
+        char_weights=args.char_weights,
         device=args.device,
+        det_imgsz=args.det_imgsz,
+        char_iou=args.char_iou,
         confidence_threshold=args.conf_threshold,
+        agnostic_nms=args.agnostic_nms,
     )
+
 
     in_path = Path(args.input)
     if in_path.is_file() and in_path.suffix.lower() in {".jpg", ".jpeg", ".png", ".bmp"}:

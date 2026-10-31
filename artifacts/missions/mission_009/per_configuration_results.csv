@@ -1,0 +1,4 @@
+configuration,det_resolution,char_nms_iou,total_frames,total_time_sec,fps,mean_latency_ms,median_latency_ms,p95_latency_ms,model_latency_ms,non_model_latency_ms,plate_detections,ocr_results,transit_events,duplicate_or_fragmented_events,low_confidence_count,peak_vram_mb
+Configuration A (640 / char_iou 0.70),640,0.7,100,22.736,4.4,227.36,128.06,440.44,78.8,142.04,81,81,17,0,59,36.22
+Configuration B (640 / char_iou 0.45),640,0.45,100,13.691,7.3,136.9,105.55,276.3,47.41,80.89,81,81,17,0,59,60.05
+Configuration C (1280 / char_iou 0.45),1280,0.45,100,11.92,8.39,119.2,107.95,183.75,50.93,61.51,86,86,23,0,62,118.56
